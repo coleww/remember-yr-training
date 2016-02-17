@@ -1,0 +1,90 @@
+{
+  instruments: {
+    kick: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    },
+    snare: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    },
+    tom: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    },
+    hat: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    },
+    bBass: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    },
+    wBass: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    },
+    piano: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    },
+    sparkles: {
+      patterns: [
+        [[], [], []],
+        [[]]
+      ],
+      current: 0,
+      config: {
+        gain: 0.5
+      }
+    }
+  },
+  key: {
+    tonic: 'A',
+    scale: 'minor'
+  },
+  bpm: 112,
+  current: 0
+}

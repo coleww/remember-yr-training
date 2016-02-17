@@ -7,6 +7,19 @@ https://en.wikipedia.org/wiki/1983_Soviet_nuclear_false_alarm_incident
 
 
 
+TITLE/INTRO SCREEN: you are to be stationed at ||||||||| from ||||| until ||||. remember your training. be vigilant.
+UDK what the computers do. radars. buttons. "pretty sure you shouldn't press those right now" (maybe u can find booze and get drunk and courageous? early end game?)
+
+
+
+
+WHO IS THIS CAHRACTER?
+brooding, existential, 
+self-deprecating, 
+me as an egg >_<
+
+
+
 
 ASKED QUESTIONS TO GET ONE OF _ PERSONALITIES
 ...
