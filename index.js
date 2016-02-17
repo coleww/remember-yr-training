@@ -44,43 +44,43 @@ preload.prototype = {
 
 var titleScreen = function(game){}
 titleScreen.prototype = {
-     create: function(){
-          var titleBG = game.add.tileSprite(0, 0, game.width, game.height, "backsplash")
-          titleBG.tint = bgColors[game.rnd.between(0, bgColors.length - 1)]
-          var title = game.add.image(game.width / 2, 210, "title")
-          title.anchor.set(0.5)
-          var playButton = game.add.button(game.width / 2, game.height - 150, "playbutton", this.startGame)
-          playButton.anchor.set(0.5)
-          var tween = game.add.tween(playButton).to({
-               width: 220,
-               height:220
-          }, 1500, "Linear", true, 0, -1)
-          tween.yoyo(true)
-     },
-     startGame: function(){
-          game.state.start("Bunker")
-     }
+  create: function(){
+    var titleBG = game.add.tileSprite(0, 0, game.width, game.height, "backsplash")
+    titleBG.tint = bgColors[game.rnd.between(0, bgColors.length - 1)]
+    var title = game.add.image(game.width / 2, 210, "title")
+    title.anchor.set(0.5)
+    var playButton = game.add.button(game.width / 2, game.height - 150, "playbutton", this.startGame)
+    playButton.anchor.set(0.5)
+    var tween = game.add.tween(playButton).to({
+      width: 220,
+      height:220
+    }, 1500, "Linear", true, 0, -1)
+    tween.yoyo(true)
+  },
+  startGame: function(){
+    game.state.start("Bunker")
+  }
 }
 
 var Bunker = function(game){}
 Bunker.prototype = {
-     create: function(){
-          console.log("in the bunker")
-     }
+  create: function(){
+    console.log("in the bunker")
+  }
 }
 
 var Twine = function(game){}
 Twine.prototype = {
-     create: function(){
-          console.log("doing the twine thing")
-     }
+  create: function(){
+    console.log("doing the twine thing")
+  }
 }
 
 var Silo = function(game){}
 Silo.prototype = {
-     create: function(){
-          console.log("climbing the silo")
-     }
+  create: function(){
+    console.log("climbing the silo")
+  }
 }
 
 var gameOverScreen = function(game){}
