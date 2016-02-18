@@ -1,4 +1,5 @@
-var Phaser = require('phaser')
+
+// var Phaser = require('phaser')
 var game
 var bgColors = [0xF16745, 0xFFC65D, 0x7BC8A4, 0x4CC3D9, 0x93648D, 0x7c786a, 0x588c73, 0x8c4646, 0x2a5b84, 0x73503c]
 var tunnelWidth = 256;
@@ -7,7 +8,7 @@ var shipMoveDelay = 0;
 var shipVerticalSpeed = 15000;
 
 window.onload = function() {
-  game = new Phaser.Game(640, 960, Phaser.AUTO, "")
+  game = new window.Phaser.Game(640, 960, Phaser.AUTO, "")
      game.state.add("Boot", boot)
      game.state.add("Preload", preload)
      game.state.add("TitleScreen", titleScreen)
@@ -39,7 +40,8 @@ preload.prototype = {
           game.load.setPreloadSprite(loadingBar)
           game.load.image("title", "assets/sprites/title.png")
           game.load.image("playbutton", "assets/sprites/playbutton.png")
-          game.load.image("backsplash", "assets/sprites/backsplash.png")game.load.image("tunnelbg", "assets/sprites/tunnelbg.png");
+          game.load.image("backsplash", "assets/sprites/backsplash.png")
+          game.load.image("tunnelbg", "assets/sprites/tunnelbg.png");
           game.load.image("wall", "assets/sprites/wall.png");
           game.load.image("ship", "assets/sprites/ship.png");
           game.load.image("smoke", "assets/sprites/smoke.png");
