@@ -1,7 +1,7 @@
 {
   "name": "keep-pushing-on",
   "version": "1.0.0",
-  "description": "https://en.wikipedia.org/wiki/1983_Soviet_nuclear_false_alarm_incident",
+  "description": "a game about poems and jetpacks",
   "main": "index.js",
   "scripts": {
     "test": "node test.js",

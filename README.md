@@ -1,15 +1,13 @@
-CLIMBING GAME
-=====================
+REMEMBER YOUR TRAINING
+-----------------------------------
 
-REMEMBER YR TRAINING!
-RECALL YOUR TRAINING!
-REFLECT ON YOUR TRAINING, AND ACT!
-...
+a game about poems and jetpacks
 
-https://en.wikipedia.org/wiki/1983_Soviet_nuclear_false_alarm_incident
 
-procedurally seed?
-use...device id? hrmm. 
+http://phaser.io/tutorials/making-your-first-phaser-game/part3
+https://gumroad.com/a/333067379
+http://codepen.io/jackrugile/pen/fqHtn
 
-### lib
-- https://github.com/netgfx/Phaser-typewriter
+
+ 
+
