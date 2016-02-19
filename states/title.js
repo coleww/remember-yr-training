@@ -15,8 +15,8 @@ titleScreen.prototype = {
     playButton.anchor.set(0.5)
     var tween = game.add.tween(playButton).to({width: 220, height:220}, 1500, "Linear", true, 0, -1)
     tween.yoyo(true)
-    // PROBABLY a load game button i guess?
-    // ALSO a screen to see yr training manuals?
+    // PROBABLY a continue button i guess?
+    // ALSO a screen to see yr saved poems?
   },
   startGame: function(){
     this.game.state.start("Bunker")

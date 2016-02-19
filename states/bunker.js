@@ -1,3 +1,7 @@
+var db = require('../db')
+var get = db.get
+var set = db.set
+
 var bunker = function (game) {
   this.game = this.game
 }
@@ -6,6 +10,7 @@ bunker.prototype = {
   create: function () {
     console.log("WE IN THE BUNKER")
     this.inventory = [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}]
+    this.wallet = 25
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -59,15 +64,18 @@ bunker.prototype = {
   },
   drawMenu: function () {
     this.hpDisplay = this.game.add.text(16, 16, 'hp: 100/100', { fontSize: '32px', fill: '#000' });
-    this.inventoryDisplay = this.game.add.text(16, 40, 'inventory:' + this.inventory.map(function (item) {
+    this.inventoryDisplay = this.game.add.text(16, 42, 'inventory:' + this.inventory.map(function (item) {
         return item.name
     }).join(', '), { fontSize: '32px', fill: '#000' });
+
+    this.walletDisplay = this.game.add.text(16, 65, this.wallet + '$', { fontSize: '32px', fill: '#000' });
     // LATER: actually do this with like, erm, buttons for the items?
   },
   openDialog: function (thing) {
     // based on whatever the thing is...."inspect thing" etc.
     // draw a dialog box, display the thing, prompt the user to do stuff
     // IF the thing is the poetry journal, defer to openJournal
+    // IF it's the chest/vending machine, defer to those
   },
   useThing: function (thing) {
     // activate the fx of a thing
@@ -100,9 +108,12 @@ bunker.prototype = {
           this.player.animations.stop()
           this.player.frame = [11, 9][~~(Math.random() * 2)]
         }
-    } else if (this.cursors.down.isDown) {
+    } else if (this.cursors.down.isDown && this.player.body.touching.down) {
         //  PLAYER IS PRESSING DOWN, TRYING TO ACTIVATE SOMETHING?
         // figure out what thing they are touching/near? and then openDialog(thatThingYouDo)
+        this.player.animations.stop();
+        this.player.frame = 12
+        this.player.body.velocity.x = 0
     } else {
       var goingUp = !this.player.body.velocity.x
       var goingRight = this.player.body.velocity.x > 0

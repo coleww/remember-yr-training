@@ -1,3 +1,11 @@
+var db = require('../db')
+var get = db.get
+var set = db.set
+
+// construct markov poet barrier maker thing based on their choices or lack thereof
+// save which lines they touch
+// make enemies? explosions? slowly rising fire?
+// lol put random stuff to inspect along the way
 
 var Silo = function(game){
   this.game = game
