@@ -34,8 +34,8 @@ bunker.prototype = {
     ledge.body.immovable = true;
 
     // The this.player and its settings
-    this.player = this.game.add.sprite(32, this.game.world.height - 150, 'dude');
-
+    this.player = this.game.add.sprite(32, this.game.world.height - 350, 'dude');
+    this.player.scale.setTo(2,2)
     //  We need to enable physics on the this.player
     this.game.physics.arcade.enable(this.player);
 
