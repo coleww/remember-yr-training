@@ -15,7 +15,6 @@ bunker.prototype = {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
     //  A simple background for our this.game
-    this.game.add.sprite(0, 0, 'sky');
 
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
     this.platforms = this.game.add.group();
@@ -24,26 +23,29 @@ bunker.prototype = {
     this.platforms.enableBody = true;
 
     // Here we create the ground.
-    var ground = this.platforms.create(0, this.game.world.height - 64, 'ground');
+    var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
-    ground.scale.setTo(2, 2);
+    ground.scale.setTo(1.6, 2);
 
     //  This stops it from falling away when you jump on it
     ground.body.immovable = true;
 
     //  Now let's create two ledges
-    var ledge = this.platforms.create(400, 400, 'ground');
+    var ledge = this.platforms.create(this.game.world.width / 2 - 150, this.game.world.height - 420, 'platform');
     ledge.body.immovable = true;
 
-    ledge = this.platforms.create(-150, 250, 'ground');
-    ledge.body.immovable = true;
+
 
     // The this.player and its settings
-    this.player = this.game.add.sprite(32, this.game.world.height - 350, 'dude');
-    this.player.scale.setTo(2,2)
+    this.player = this.game.add.sprite(this.game.world.width - 140, this.game.world.height - 305, 'dude');
+    this.player.scale.setTo(1.5,1)
     //  We need to enable physics on the this.player
     this.game.physics.arcade.enable(this.player);
+        //  This adjusts the collision body size to be a 100x50 box.
+    //  50, 25 is the X and Y offset of the newly sized box.
+
+    this.player.body.setSize(10, 48, 20, 0);
 
     //  this.Player physics properties. Give the little guy a slight bounce.
     this.player.body.bounce.y = 0.2;
@@ -55,6 +57,20 @@ bunker.prototype = {
     this.player.animations.add('right', [8, 9, 10, 11], 10, true);
     this.player.animations.add('up', [12, 13, 14, 15], 10, true);
     this.player.animations.add('down', [0, 1, 2, 3], 10, true);
+
+
+
+
+
+
+
+    this.bed = this.game.add.sprite(this.game.world.width - 150, this.game.world.height - 305, 'cryobed');
+    // this.bed.frame = 1
+
+    var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
+
+    this.bed.animations.play('close', true)
+    // close.loop = false
 
     this.drawMenu()
     // //  The score

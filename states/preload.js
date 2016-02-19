@@ -20,9 +20,9 @@ preload.prototype = {
     game.load.image("barrier", "assets/sprites/barrier.png")
     game.load.image("separator", "assets/sprites/separator.png")
 
-    game.load.image('sky', 'assets/sprites/sky.png');
-    game.load.image('ground', 'assets/sprites/platform.png');
-    game.load.image('star', 'assets/sprites/star.png');
+    game.load.image('ground', 'assets/sprites/gbground.png');
+    game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);
+    game.load.image('platform', 'assets/sprites/gbplat.png');
     game.load.spritesheet('dude', 'assets/sprites/protocoldroid2.png', 32, 48);
 
 
@@ -33,7 +33,7 @@ preload.prototype = {
 
   },
   create: function(){
-    this.game.state.start("TitleScreen")
+    this.game.state.start("Bunker")
   }
 }
 module.exports = preload

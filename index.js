@@ -3,6 +3,7 @@ var preload = require('./states/preload')
 var titleScreen = require('./states/title')
 var Bunker = require('./states/bunker')
 var Silo = require('./states/silo')
+var Outside = require('./states/outside')
 var gameOverScreen = require('./states/game_over')
 
 window.onload = function() {
@@ -18,6 +19,7 @@ window.onload = function() {
   game.state.add("TitleScreen", titleScreen)
   game.state.add("Bunker", Bunker)
   game.state.add("Silo", Silo)
+  game.state.add("Outside", Outside)
   game.state.add("GameOverScreen", gameOverScreen)
   game.state.start("Boot")
 }

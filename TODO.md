@@ -5,5 +5,6 @@
 - electron app? ooooo. later.
 - enable wasd
 - HOW TO display results of actions? dialog screen?
+- vending machine: STILL CAPITALIST! necklace...books...food...
 - maybe have different items do different stuff? OH this could be another twine thing?
-- WHAT IS YR NAME? 3 letters, rolls numbers to get 5000, etc.
+- WHAT IS YR NAME? 3 letters, rolls numbers to get 5000, etc. either PET or ROV? maybe dependent on what u do? find yr name outside?
