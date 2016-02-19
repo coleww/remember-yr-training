@@ -17,10 +17,10 @@ preload.prototype = {
     game.load.image("barrier", "assets/sprites/barrier.png")
     game.load.image("separator", "assets/sprites/separator.png")
 
-    game.load.image('sky', 'assets/sky.png');
-    game.load.image('ground', 'assets/platform.png');
-    game.load.image('star', 'assets/star.png');
-    game.load.spritesheet('dude', 'assets/dude.png', 32, 48);
+    game.load.image('sky', 'assets/sprites/sky.png');
+    game.load.image('ground', 'assets/sprites/platform.png');
+    game.load.image('star', 'assets/sprites/star.png');
+    game.load.spritesheet('dude', 'assets/sprites/protocoldroid2.png', 32, 48);
 
 
     game.load.bitmapFont("font", "assets/fonts/font.png", "assets/fonts/font.fnt")
