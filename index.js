@@ -5,6 +5,10 @@ var Bunker = require('./states/bunker')
 var Silo = require('./states/silo')
 var gameOverScreen = require('./states/game_over')
 
+
+
+
+
 window.onload = function() {
   var width = 640
   var height = 960

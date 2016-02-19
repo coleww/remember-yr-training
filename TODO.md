@@ -1,0 +1,7 @@
+- make bunker space more in center of screen. two floors, platform in middle with computer/ladder?
+- add some sort of STATS thing below/above it? inventory...health...time...day...save/etc.
+- better background thing. images? hrmmm. fine
+- save system? localStorage? fine. later.
+- electron app? ooooo. later.
+- enable wasd
+- HOW TO display results of actions? dialog screen?
