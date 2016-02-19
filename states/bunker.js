@@ -13,7 +13,6 @@ bunker.prototype = {
     this.wallet = 25
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
-
     //  A simple background for our this.game
 
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
@@ -36,6 +35,10 @@ bunker.prototype = {
     ledge.body.immovable = true;
 
 
+
+    var vend = this.platforms.create(12, this.game.world.height - 345, 'vend')
+    vend.body.immovable = true
+    vend.body.setSize(60, 100, 0, 0)
 
     // The this.player and its settings
     this.player = this.game.add.sprite(this.game.world.width - 140, this.game.world.height - 305, 'dude');
@@ -64,27 +67,27 @@ bunker.prototype = {
 
 
 
-    this.bed = this.game.add.sprite(this.game.world.width - 150, this.game.world.height - 305, 'cryobed');
-    // this.bed.frame = 1
+    this.bed = this.game.add.sprite(this.game.world.width - 100, this.game.world.height - 305, 'cryobed');
+    this.bed.frame = 1
 
-    var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
+    // var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
 
-    this.bed.animations.play('close', true)
+    // this.bed.animations.play('close', true)
     // close.loop = false
 
-    this.drawMenu()
+
     // //  The score
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
 
   },
   drawMenu: function () {
-    this.hpDisplay = this.game.add.text(16, 16, 'hp: 100/100', { fontSize: '32px', fill: '#000' });
-    this.inventoryDisplay = this.game.add.text(16, 42, 'inventory:' + this.inventory.map(function (item) {
+    this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
+    this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + this.inventory.map(function (item) {
         return item.name
-    }).join(', '), { fontSize: '32px', fill: '#000' });
+    }).join(', '), { fontSize: '22px', fill: '#FFF' });
 
-    this.walletDisplay = this.game.add.text(16, 65, this.wallet + '$', { fontSize: '32px', fill: '#000' });
+    this.walletDisplay = this.game.add.text(16, 75, this.wallet + '$', { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
   },
   openDialog: function (thing) {
@@ -103,7 +106,7 @@ bunker.prototype = {
 
   },
   update: function () {
-
+    this.drawMenu()
     this.game.physics.arcade.collide(this.player, this.platforms);
 
     if (this.cursors.left.isDown) {
