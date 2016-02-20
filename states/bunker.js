@@ -38,12 +38,12 @@ bunker.prototype = {
 
 
 
-    var vend = this.platforms.create(12, this.game.world.height - 345, 'vend')
+    var vend = this.platforms.create(-8, this.game.world.height - 345, 'vend')
     vend.body.immovable = true
-    vend.body.setSize(60, 100, 0, 0)
+    vend.body.setSize(75, 75, 0, 27)
 
     // The this.player and its settings
-    this.player = this.game.add.sprite(this.game.world.width - 140, this.game.world.height - 305, 'dude');
+    this.player = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 305, 'dude');
     this.player.scale.setTo(1.5,1)
     //  We need to enable physics on the this.player
     this.game.physics.arcade.enable(this.player);
