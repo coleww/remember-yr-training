@@ -232,6 +232,7 @@ ticks.animations.play('slow');
     console.log(this.poem)
      this.poemDisplay.setText(this.poem)
     var words = this.poem.split(' ')
+    if (next == 'linebreak') words = []
     console.log('NEXTS', [words[words.length - 2], words[words.length - 1]].join(' '))
     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), 'linebreak']
     var options = []
