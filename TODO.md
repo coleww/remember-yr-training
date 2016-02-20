@@ -14,3 +14,5 @@
 - the fan. make some joke about it? get an item?
 - DIFFERENT CRAP ON THE DESK EACH DAY? just put an if else thing in the setup?
 - DONT MAKE IT CONSTANTLY LOOK BACK AT U ITS KINDA CREEPY. keep it lookoing L/R. or w/e. unless u land a jump and aren't hildinng anything down or smth.... idk w/e
+- ADD PUNCTUATION TO THE POETRY
+- SOUND FX BANK? LOTS OF LASERS!

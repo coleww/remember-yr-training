@@ -234,18 +234,17 @@ ticks.animations.play('slow');
     if (next == 'linebreak') words = []
     console.log('NEXTS', [words[words.length - 2], words[words.length - 1]].join(' '))
     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), 'linebreak']
-    var options = []
     var that = this
     nexts.forEach(function (opt, i) {
         var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#F00' })
         option.inputEnabled = true;
         option.events.onInputDown.add(select, that);
-        options.push(option)
+        that.currentOptions.push(option)
     })
 
 
     function select (thing) {
-      options.forEach(function (opt) {
+      that.currentOptions.forEach(function (opt) {
           opt.destroy()
       })
       console.log(thing.text)
@@ -254,13 +253,43 @@ ticks.animations.play('slow');
 
   },
   writeAPoem: function () {
+        this.currentOptions = []
     var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
     poetryBG.scale.setTo(30, 25)
-    this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
+    var instructions = this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
 
     this.poem = poetryGen()
     this.poemDisplay = this.game.add.text(155, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })
     this.runPoem()
+var that = this
+    var quit = that.game.add.text(175, 135, 'quit', { fontSize: '20px', fill: '#00F' })
+    var save = that.game.add.text(250, 135, 'save', { fontSize: '20px', fill: '#00F' })
+
+
+    save.inputEnabled = true;
+    quit.inputEnabled = true;
+
+    quit.events.onInputDown.add(function () {
+      poetryBG.destroy()
+      that.poemDisplay.destroy()
+      quit.destroy()
+      instructions.destroy()
+      save.destroy()
+      that.inDialog = false
+    }, that);
+
+    save.events.onInputDown.add(function () {
+      var c = get('poemCount')
+      set('poem' + c, that.poem)
+      set('poemCount', ++c)
+
+      poetryBG.destroy()
+      that.poemDisplay.destroy()
+      quit.destroy()
+      instructions.destroy()
+      save.destroy()
+      that.inDialog = false
+    }, that);
 
 
 
@@ -321,10 +350,11 @@ ticks.animations.play('slow');
               console.log('touching the lefty')
               // this.inDialog = true
 
-          } else if (x >= 250 && x < 270) {
+          } else if (x >= 250 && x < 275) {
 
             console.log('touching the desk')
-            // this.inDialog = true
+            this.writeAPoem()
+            this.inDialog = true
           } else if (x >= 300 && x < 320) {
               // right desk item
               console.log('touching the righty')
