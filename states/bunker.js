@@ -89,6 +89,49 @@ bunker.prototype = {
     var fuse = this.game.add.sprite(this.game.world.width / 2 - 114, 246, 'fuse');
     fuse.scale.setTo(0.5, 0.75)
 
+    var arrows = this.game.add.sprite(215, 405, 'arrows');
+    // arrows.scale.setTo(0.5, 0.5)
+
+    var bars = this.game.add.sprite(230, 350, 'bars');
+    // bars.scale.setTo(0.4, 0.78)
+
+    var circs = this.game.add.sprite(173, 428, 'circs');
+    // circs.scale.setTo(0.45, 0.78)
+
+    var squares = this.game.add.sprite(205, 360, 'squares');
+    // squares.scale.setTo(0.3, 0.7)
+
+    var ticks = this.game.add.sprite(235, 350, 'ticks');
+    // ticks.scale.setTo(0.5, 0.75)
+
+    var switchy = this.game.add.sprite(200, 310, 'switchy');
+    switchy.scale.setTo(0.75)
+
+    arrows.animations.add('slow', [0, 1, 2, 3, 2, 1, 2, 3, 0, 1, 3, 0, 2], 0.5, true);
+    arrows.animations.add('fast', [0, 1, 2, 3], 3, true);
+    bars.animations.add('slow', [0, 1, 2, 1], 0.5, true);
+    bars.animations.add('fast', [0, 1, 2], 2, true);
+    circs.animations.add('slow', [0, 1, 2, 3, 4, 5], 0.75, true);
+    circs.animations.add('fast', [0, 1, 2, 3, 4, 3, 2, 5, 4, 2, 3, 1, 2, 3, 1, 2, 5, 4], 5, true);
+    squares.animations.add('slow', [0, 1, 2, 3], 0.33, true);
+    squares.animations.add('fast', [0, 1, 2, 3], 3, true);
+    ticks.animations.add('slow', [0, 1, 2, 3, 4, 5, 4, 5, 4, 3, 2, 1], 2, true);
+    ticks.animations.add('fast', [0, 1, 2, 3, 4, 5, 4, 3, 2, 1], 7, true);
+    switchy.animations.add('slow', [0, 1], 1, true);
+
+
+
+
+arrows.animations.play('slow');
+bars.animations.play('slow');
+circs.animations.play('slow');
+squares.animations.play('slow');
+ticks.animations.play('slow');
+// switchy.animations.play('slow');
+
+
+
+
     var tippyTop = this.platforms.create(this.game.world.width / 2 - 72, 343, 'grid');
     tippyTop.scale.setTo(0.05, 0.1)
     tippyTop.body.setSize(1000, 1, 0, 0)
@@ -207,6 +250,8 @@ bunker.prototype = {
 
   },
   update: function () {
+    console.log(this.game.input.x,
+this.game.input.y)
     this.drawMenu()
     this.game.physics.arcade.collide(this.player, this.platforms);
 

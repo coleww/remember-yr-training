@@ -37,6 +37,12 @@ preload.prototype = {
     game.load.image("siren", "assets/sprites/computer/policecar_n.png")
     game.load.image("bulb", "assets/sprites/computer/car1.png")
     game.load.image("fuse", "assets/sprites/computer/bus.png")
+    game.load.spritesheet("arrows", "assets/sprites/computer/arrows.png", 30, 25) // 4
+    game.load.spritesheet("bars", "assets/sprites/computer/bars.png", 33.333333333333333333, 100) // 3
+    game.load.spritesheet("circs", "assets/sprites/computer/circs.png", 25, 25) // 6
+    game.load.spritesheet("squares", "assets/sprites/computer/squares.png", 30, 32) // 4
+    game.load.spritesheet("ticks", "assets/sprites/computer/ticks.png", 25, 100) // 6
+    game.load.spritesheet("switchy", "assets/sprites/computer/switch.png", 50, 34) // 2
 
 
     game.load.image("ladder", "assets/sprites/ladder1.png")
