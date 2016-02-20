@@ -121,7 +121,7 @@ bunker.prototype = {
         //  This adjusts the collision body size to be a 100x50 box.
     //  50, 25 is the X and Y offset of the newly sized box.
 
-    this.player.body.setSize(10, 48, 20, 0);
+    this.player.body.setSize(10, 42, 20, 0);
 
     //  this.Player physics properties. Give the little guy a slight bounce.
     this.player.body.bounce.y = 0.2;
