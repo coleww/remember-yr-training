@@ -18,6 +18,7 @@ ASSETS:
  
 http://untamed.wild-refuge.net/rmxpresources.php?characters
 http://pousse.rapiere.free.fr/tome/
+http://opengameart.org/content/objects-0
 http://opengameart.org/content/animated-display-static
 http://opengameart.org/content/various-inventory-24-pixel-icon-set
 http://opengameart.org/content/isharacomix-sprite-dump

@@ -94,6 +94,19 @@ bunker.prototype = {
     tippyTop.body.setSize(1000, 1, 0, 0)
     tippyTop.body.immovable = true
 
+    var chair = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'chair');
+    chair.scale.setTo(5)
+    var table = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
+    table.scale.setTo(2, 1.5)
+
+
+    var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
+    book1.scale.setTo(0.5)
+
+    var book2 = this.game.add.sprite(this.game.world.width / 2 - 10, this.game.world.height - 300, 'book2');
+    book2.scale.setTo(0.5)
+
+    var books = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'books');
 
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 
