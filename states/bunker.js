@@ -6,6 +6,8 @@ var bunker = function (game) {
   this.game = this.game
 }
 
+var poetryGen = require('../poet')
+
 bunker.prototype = {
   create: function () {
     console.log("WE IN THE BUNKER")
@@ -188,9 +190,6 @@ ticks.animations.play('slow');
 
 
 
-
-
-
     this.bed = this.game.add.sprite(this.game.world.width - 100, this.game.world.height - 305, 'cryobed');
     this.bed.frame = 1
 
@@ -204,6 +203,7 @@ ticks.animations.play('slow');
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.startDay(1)
+    this.writeAPoem()
   },
   drawMenu: function () {
     this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
@@ -223,7 +223,55 @@ ticks.animations.play('slow');
   useThing: function (thing) {
     // activate the fx of a thing
   },
-  openJournal: function () {
+
+  runPoem: function (next) {
+    console.log()
+    if (next) {
+        this.poem += ' ' + (next == 'linebreak' ? '\n' : next)
+    }
+     this.poemDisplay.setText(this.poem)
+    var words = this.poem.split(' ')
+    var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), 'linebreak']
+    var options = []
+    var that = this
+    nexts.forEach(function (opt, i) {
+        var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#F00' })
+        option.inputEnabled = true;
+        option.events.onInputDown.add(select, that);
+        options.push(option)
+    })
+
+
+    function select (thing) {
+      options.forEach(function (opt) {
+          opt.destroy()
+      })
+      console.log(thing.text)
+      this.runPoem(thing.text)
+  }
+
+  },
+  writeAPoem: function () {
+    var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
+    poetryBG.scale.setTo(30, 25)
+    this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
+
+    this.poem = poetryGen()
+    this.poemDisplay = this.game.add.text(155, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })
+    this.runPoem()
+
+
+
+
+    //
+    // while (poem.length < 666) { // erm, no, step through as player clicks. EVENTED!
+    //     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' '))]
+    //     // make buttons for each next. when clicked, runs the loop again?
+
+
+    // }
+
+
 
   },
   goToSleep: function () {
@@ -260,8 +308,8 @@ ticks.animations.play('slow');
     // figure these out once object positions are set in stone
   },
   update: function () {
-    console.log(this.game.input.x,
-    this.game.input.y)
+    // console.log(this.game.input.x,
+    // this.game.input.y)
     this.drawMenu()
     this.game.physics.arcade.collide(this.player, this.platforms);
 
