@@ -99,15 +99,26 @@ bunker.prototype = {
     var table = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
     table.scale.setTo(2, 1.5)
 
+// maybe this on day 1
+    // var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
+    // book1.scale.setTo(0.5)
+    // var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
+    // mug.scale.setTo(0.75)
 
-    var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
-    book1.scale.setTo(0.5)
-
-    var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 300, 'book2');
+// this on day 2....
+    var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
+    jug.scale.setTo(0.5)
+    var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
     book2.scale.setTo(0.5)
+//
 
+// swap paper styles between days?
     var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
-    // paper.scale.setTo(2)
+    // var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
+
+
+// ALWAYS 3 things on the table u can interact with
+
 
     var books = this.game.add.sprite(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
     books.scale.setTo(2)

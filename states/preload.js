@@ -47,6 +47,7 @@ preload.prototype = {
     game.load.image("book1", "assets/sprites/Book.png")
     game.load.image("book2", "assets/sprites/Book2.png")
     game.load.image("mug", "assets/sprites/mug.png")
+    game.load.image("jug", "assets/sprites/jug.png")
     game.load.image("linedpaper", "assets/sprites/PaperDecoration_Lined.png")
     game.load.image("blankpaper", "assets/sprites/PaperDecoration_Blank.png")
 
