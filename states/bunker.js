@@ -9,8 +9,10 @@ var bunker = function (game) {
 bunker.prototype = {
   create: function () {
     console.log("WE IN THE BUNKER")
-    this.inventory = [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}]
-    this.wallet = 25
+
+
+    this.game.add.tileSprite(0, 720, 640, 960, 'walll');
+    this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our this.game
@@ -83,11 +85,11 @@ bunker.prototype = {
   },
   drawMenu: function () {
     this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
-    this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + this.inventory.map(function (item) {
+    this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + this.game.inventory.map(function (item) {
         return item.name
     }).join(', '), { fontSize: '22px', fill: '#FFF' });
 
-    this.walletDisplay = this.game.add.text(16, 75, this.wallet + '$', { fontSize: '22px', fill: '#FFF' });
+    this.walletDisplay = this.game.add.text(16, 75, this.game.wallet + '$', { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
   },
   openDialog: function (thing) {

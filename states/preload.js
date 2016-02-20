@@ -20,6 +20,8 @@ preload.prototype = {
     game.load.image("barrier", "assets/sprites/barrier.png")
     game.load.image("separator", "assets/sprites/separator.png")
     game.load.image("vend", "assets/sprites/vend.png")
+    game.load.image("walll", "assets/sprites/wall.jpg")
+    game.load.image("wallll", "assets/sprites/metal_wall_1.jpg")
 
     game.load.image('ground', 'assets/sprites/gbground.png');
     game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);
@@ -31,6 +33,8 @@ preload.prototype = {
     game.load.audio("explosion", ["assets/sounds/explosion.mp3", "assets/sounds/explosion.ogg"])
 
     // TODO: check if the player has a saved game
+    game.inventory = [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}]
+    game.wallet = 25
 
   },
   create: function(){

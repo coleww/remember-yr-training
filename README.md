@@ -14,7 +14,7 @@ http://phaser.io/examples
 
 
 ASSETS:
-
+(not everything on this list ended up being used, but hopefully everything I used is on this list!)
  
 http://untamed.wild-refuge.net/rmxpresources.php?characters
 http://pousse.rapiere.free.fr/tome/
@@ -32,7 +32,12 @@ http://opengameart.org/content/game-boy-platformer-tileset
 http://opengameart.org/content/pack-of-ladders
 http://opengameart.org/content/book-animation
 http://opengameart.org/content/pixel-books
+http://opengameart.org/content/seamless-industrial-textures
+http://opengameart.org/content/epical-science-fiction-pack
+http://opengameart.org/content/midi-keyboards
+http://opengameart.org/content/audio-knobs-button-sliders-etc
 
+http://opengameart.org/content/a-blocky-dungeon
 https://www.freesound.org/people/f4ngy/sounds/240789/
 https://www.freesound.org/people/keweldog/sounds/181774/
 https://www.freesound.org/people/MeefBeef/sounds/333256/
