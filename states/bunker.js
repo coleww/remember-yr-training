@@ -103,10 +103,14 @@ bunker.prototype = {
     var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
     book1.scale.setTo(0.5)
 
-    var book2 = this.game.add.sprite(this.game.world.width / 2 - 10, this.game.world.height - 300, 'book2');
+    var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 300, 'book2');
     book2.scale.setTo(0.5)
 
-    var books = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'books');
+    var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
+    // paper.scale.setTo(2)
+
+    var books = this.game.add.sprite(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
+    books.scale.setTo(2)
 
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 

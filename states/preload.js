@@ -46,6 +46,9 @@ preload.prototype = {
     game.load.image("chair", "assets/sprites/chair.png")
     game.load.image("book1", "assets/sprites/Book.png")
     game.load.image("book2", "assets/sprites/Book2.png")
+    game.load.image("mug", "assets/sprites/mug.png")
+    game.load.image("linedpaper", "assets/sprites/PaperDecoration_Lined.png")
+    game.load.image("blankpaper", "assets/sprites/PaperDecoration_Blank.png")
 
     game.load.image('ground', 'assets/sprites/gbground.png');
     game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);

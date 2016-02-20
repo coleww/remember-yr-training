@@ -12,3 +12,4 @@
 - unleash the dragon, it bloodily smooshes u. can either destroy bunker & die or write poems and then fly home (from drinking th ebeer and touching the computer early?)
 - when bunker starts breaking down, make the screen shake/flash red? (probably change a global translate/rotate a bunch)
 - the fan. make some joke about it? get an item?
+- DIFFERENT CRAP ON THE DESK EACH DAY? just put an if else thing in the setup?
