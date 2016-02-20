@@ -286,7 +286,7 @@ this.game.input.y)
       if (this.player.body.touching.down) {
         //  Stand still
         this.player.animations.stop();
-        this.player.frame = 0
+
         this.player.body.velocity.x = 0
       } else {
         if (goingUp) {
