@@ -11,7 +11,9 @@
   "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)",
   "license": "MIT",
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "browserify-shim": {
     "Phaser": "global:Phaser"
@@ -22,6 +24,7 @@
     "browserify-shim": "^3.8.12",
     "bubble-bass": "^1.1.0",
     "dj-snazzy-snare": "^1.0.0",
+    "fast-ish-markov": "^1.0.0",
     "int2freq": "^1.0.1",
     "pie-ano": "^1.1.0",
     "really-hi-hat": "^1.0.0",
@@ -30,5 +33,8 @@
     "touch-down-dance": "^1.0.0",
     "warlock-bass": "^1.0.0",
     "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "@coleww/markov": "0.0.8"
   }
 }

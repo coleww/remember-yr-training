@@ -1,14 +1,14 @@
-// var markov = ???
-// var instructions = ???
-// var poems = ???
+var markov = require('fast-ish-markov')
+var instructions = require('./corpus/instructions')
+var m = markov(instructions, 2)
 
 
 
 module.exports = function (start) {
   if (start == undefined) {
     // pick a rando start
-    return 'butts and asses'
+    return m.fill(m.pick(), 3)
   } else {
-    return 'wow'
+    return m.fill(start, 1)
   }
 }
