@@ -247,11 +247,18 @@ ticks.animations.play('slow');
 
   },
   goToSleep: function () {
-
+    var bookAnim = this.game.add.sprite(-30, -250, 'sweetbook');
+    bookAnim.scale.setTo(25, 35)
+    bookAnim.animations.add('blocky', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], false)
+    bookAnim.animations.play('blocky', 50)
+    var the_day = 1
+    this.game.add.text(16, 75, 'September ' + (22 + the_day), { fontSize: '50px', fill: '#FFF' });
+    // bookAnim.destroy() // settimeout?
+    // reset data, re-run stuff? hrm? some way to re-start it? OH, make a dream state!
   },
   update: function () {
     console.log(this.game.input.x,
-this.game.input.y)
+    this.game.input.y)
     this.drawMenu()
     this.game.physics.arcade.collide(this.player, this.platforms);
 

@@ -45,6 +45,9 @@ preload.prototype = {
     game.load.spritesheet("switchy", "assets/sprites/computer/switch.png", 50, 34) // 2
 
 
+
+    game.load.spritesheet("sweetbook", "assets/sprites/sweetbook.png", 28, 35) // 2
+
     game.load.image("ladder", "assets/sprites/ladder1.png")
     game.load.image("table", "assets/sprites/table.png")
     game.load.image("books", "assets/sprites/books.png")
