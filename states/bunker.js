@@ -13,6 +13,13 @@ bunker.prototype = {
 
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
+    this.game.add.tileSprite(0, 0, 640, 150, 'walllll');
+    var ladder = this.game.add.sprite(this.game.world.width / 2 - 10, 365, 'ladder');
+    ladder.scale.setTo(0.15, 0.5)
+
+
+
+
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our this.game
@@ -23,6 +30,9 @@ bunker.prototype = {
     //  We will enable physics for any object that is created in this group
     this.platforms.enableBody = true;
 
+    var chute = this.platforms.create(this.game.world.width / 2 - 25, 150, 'chute');
+    chute.scale.setTo(0.45, 0.78)
+    chute.body.immovable = true
     // Here we create the ground.
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 

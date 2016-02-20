@@ -22,6 +22,10 @@ preload.prototype = {
     game.load.image("vend", "assets/sprites/vend.png")
     game.load.image("walll", "assets/sprites/wall.jpg")
     game.load.image("wallll", "assets/sprites/metal_wall_1.jpg")
+    game.load.image("walllll", "assets/sprites/vent_5_spec.jpg")
+    game.load.image("chute", "assets/sprites/metal_ground_2.jpg")
+
+    game.load.image("ladder", "assets/sprites/ladder1.png")
 
     game.load.image('ground', 'assets/sprites/gbground.png');
     game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);
