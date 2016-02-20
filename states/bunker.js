@@ -142,26 +142,6 @@ ticks.animations.play('slow');
     var table = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
     table.scale.setTo(2, 1.5)
 
-// maybe this on day 1
-    // var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
-    // book1.scale.setTo(0.5)
-    // var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
-    // mug.scale.setTo(0.75)
-    // var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
-
-// this on day 2....
-    // var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
-    // jug.scale.setTo(0.5)
-    // var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
-    // book2.scale.setTo(0.5)
-    // var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
-
-// day 3
-    var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
-    // papert.scale.setTo(0.5)
-    var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
-    pizza.scale.setTo(0.75)
-    var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
 
     var books = this.game.add.sprite(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
     books.scale.setTo(2)
@@ -223,7 +203,7 @@ ticks.animations.play('slow');
     // //  The score
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
-
+    this.startDay(1)
   },
   drawMenu: function () {
     this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
@@ -256,6 +236,29 @@ ticks.animations.play('slow');
     // bookAnim.destroy() // settimeout?
     // reset data, re-run stuff? hrm? some way to re-start it? OH, make a dream state!
   },
+  startDay: function (day) {
+    if (day == 1) {
+        var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
+        book1.scale.setTo(0.5)
+        var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
+        mug.scale.setTo(0.75)
+        var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
+    } else if (day == 2) {
+        var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
+        jug.scale.setTo(0.5)
+        var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
+        book2.scale.setTo(0.5)
+        var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
+    } else {
+        var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
+        var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
+        pizza.scale.setTo(0.75)
+        var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
+    }
+  },
+  interactIfTouchingThing: function (x, y) {
+    // figure these out once object positions are set in stone
+  },
   update: function () {
     console.log(this.game.input.x,
     this.game.input.y)
@@ -286,6 +289,7 @@ ticks.animations.play('slow');
         this.player.animations.stop();
         this.player.frame = 12
         this.player.body.velocity.x = 0
+        this.interactIfTouchingThing(this.player.x, this.player.y)
     } else {
       var goingUp = !this.player.body.velocity.x
       var goingRight = this.player.body.velocity.x > 0
