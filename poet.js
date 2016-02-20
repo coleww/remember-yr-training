@@ -9,6 +9,7 @@ module.exports = function (start) {
     // pick a rando start
     return m.fill(m.pick(), 3)
   } else {
-    return m.fill(start, 1)
+    var words = m.fill(start, 3).split(' ')
+    return words[words.length - 1]
   }
 }
