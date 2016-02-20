@@ -10,6 +10,7 @@ var poetryGen = require('../poet')
 
 bunker.prototype = {
   create: function () {
+    this.inDialog = false
     console.log("WE IN THE BUNKER")
 
 
@@ -174,7 +175,7 @@ ticks.animations.play('slow');
         //  This adjusts the collision body size to be a 100x50 box.
     //  50, 25 is the X and Y offset of the newly sized box.
 
-    this.player.body.setSize(10, 42, 20, 0);
+    this.player.body.setSize(10, 43, 20, 0);
 
     //  this.Player physics properties. Give the little guy a slight bounce.
     this.player.body.bounce.y = 0.2;
@@ -203,7 +204,6 @@ ticks.animations.play('slow');
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.startDay(1)
-    this.writeAPoem()
   },
   drawMenu: function () {
     this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
@@ -229,7 +229,6 @@ ticks.animations.play('slow');
         this.poem += ' ' + (next == 'linebreak' ? '\n' : next)
     }
 
-    console.log(this.poem)
      this.poemDisplay.setText(this.poem)
     var words = this.poem.split(' ')
     if (next == 'linebreak') words = []
@@ -306,8 +305,41 @@ ticks.animations.play('slow');
         pizza.scale.setTo(0.75)
         var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
     }
+    this.game.world.bringToTop(this.platforms)
+    this.game.world.bringToTop(this.player)
   },
   interactIfTouchingThing: function (x, y) {
+    if (!this.inDialog) {
+      if (y > 669 && y < 685) {
+          // TOUCHING THE GROUND!!!!!
+          if (x >= 45 && x < 50) {
+              // vending machine
+              console.log('touching the vend')
+              // this.inDialog = true
+          } else if (x >= 210 && x < 245) {
+              // left desk item
+              console.log('touching the lefty')
+              // this.inDialog = true
+
+          } else if (x >= 250 && x < 270) {
+
+            console.log('touching the desk')
+            // this.inDialog = true
+          } else if (x >= 300 && x < 320) {
+              // right desk item
+              console.log('touching the righty')
+              // this.inDialog = true
+          } else if (x >= 150 && x < 200) {
+            // BOOKSHELF!
+            console.log('touching the books')
+            // this.inDialog = true
+          } else {
+              console.log(x, y, 'idk')
+          }
+          //
+      }
+    }
+
     // figure these out once object positions are set in stone
   },
   update: function () {
