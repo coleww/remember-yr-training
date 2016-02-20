@@ -24,6 +24,19 @@ preload.prototype = {
     game.load.image("wallll", "assets/sprites/metal_wall_1.jpg")
     game.load.image("walllll", "assets/sprites/vent_5_spec.jpg")
     game.load.image("chute", "assets/sprites/metal_ground_2.jpg")
+    game.load.image("grid", "assets/sprites/metal_grid_1.jpg")
+
+    game.load.image("base", "assets/sprites/computer/container_1.png")
+    game.load.image("butts", "assets/sprites/computer/misc_2.jpg")
+    game.load.image("speaker", "assets/sprites/computer/obj_speaker001.png")
+    game.load.image("tv", "assets/sprites/computer/obj_tv001.png")
+    game.load.image("radio", "assets/sprites/computer/obj_radio001.png")
+    game.load.image("fan", "assets/sprites/computer/obj_fan001.png")
+    game.load.image("mach", "assets/sprites/computer/theMachine.png")
+    game.load.image("siren", "assets/sprites/computer/policecar_n.png")
+    game.load.image("bulb", "assets/sprites/computer/car1.png")
+    game.load.image("fuse", "assets/sprites/computer/bus.png")
+
 
     game.load.image("ladder", "assets/sprites/ladder1.png")
 

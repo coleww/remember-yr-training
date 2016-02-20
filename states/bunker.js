@@ -14,7 +14,10 @@ bunker.prototype = {
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
     this.game.add.tileSprite(0, 0, 640, 150, 'walllll');
-    var ladder = this.game.add.sprite(this.game.world.width / 2 - 10, 365, 'ladder');
+
+
+    // make the ladder drop down later
+    var ladder = this.game.add.sprite(this.game.world.width / 2 + 40, 250, 'ladder');
     ladder.scale.setTo(0.15, 0.5)
 
 
@@ -30,10 +33,61 @@ bunker.prototype = {
     //  We will enable physics for any object that is created in this group
     this.platforms.enableBody = true;
 
-    var chute = this.platforms.create(this.game.world.width / 2 - 25, 150, 'chute');
+    var chute = this.platforms.create(this.game.world.width / 2 + 25, 150, 'chute');
     chute.scale.setTo(0.45, 0.78)
     chute.body.immovable = true
     // Here we create the ground.
+
+
+
+    var voltagebox = this.platforms.create(this.game.world.width / 2 - 120, 445, 'base');
+    voltagebox.scale.setTo(0.1, 0.1)
+    voltagebox.body.immovable = true
+
+
+    var speakerL = this.platforms.create(this.game.world.width / 2 - 152, 465, 'speaker');
+    speakerL.scale.setTo(0.45, 0.78)
+    speakerL.body.immovable = true
+
+    var speakerR = this.platforms.create(this.game.world.width / 2 - 27, 465, 'speaker');
+    speakerR.scale.setTo(0.45, 0.78)
+    speakerR.body.immovable = true
+
+
+    var buttonthing = this.platforms.create(this.game.world.width / 2 - 120, 347, 'butts');
+    buttonthing.scale.setTo(0.1, 0.1)
+    buttonthing.body.immovable = true
+
+    var tv = this.platforms.create(this.game.world.width / 2 - 153, 425, 'tv');
+    tv.scale.setTo(0.4, 0.4)
+    tv.body.immovable = true
+
+    var radio = this.platforms.create(this.game.world.width / 2 - 123, 272, 'radio');
+    radio.scale.setTo(0.45, 0.78)
+    radio.body.setSize(93, 50, 5, 25)
+    radio.body.immovable = true
+
+    var fan = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fan');
+    fan.scale.setTo(0.5, 0.5)
+
+    var mach = this.game.add.sprite(this.game.world.width / 2 - 90,  245, 'mach');
+    mach.scale.setTo(0.4, 0.78)
+
+    var siren = this.game.add.sprite(this.game.world.width / 2 - 20, 420, 'siren');
+    siren.scale.setTo(0.45, 0.78)
+
+    var bulb = this.game.add.sprite(this.game.world.width / 2 - 78, 220, 'bulb');
+    bulb.scale.setTo(0.3, 0.7)
+
+    var fuse = this.game.add.sprite(this.game.world.width / 2 - 114, 246, 'fuse');
+    fuse.scale.setTo(0.5, 0.75)
+
+    var tippyTop = this.platforms.create(this.game.world.width / 2 - 72, 343, 'grid');
+    tippyTop.scale.setTo(0.05, 0.1)
+    tippyTop.body.setSize(1000, 1, 0, 0)
+    tippyTop.body.immovable = true
+
+
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
@@ -53,7 +107,7 @@ bunker.prototype = {
     vend.body.setSize(75, 75, 0, 27)
 
     // The this.player and its settings
-    this.player = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 305, 'dude');
+    this.player = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 800, 'dude');
     this.player.scale.setTo(1.5,1)
     //  We need to enable physics on the this.player
     this.game.physics.arcade.enable(this.player);
