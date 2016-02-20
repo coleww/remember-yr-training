@@ -8,3 +8,7 @@
 - vending machine: STILL CAPITALIST! necklace...books...food...
 - maybe have different items do different stuff? OH this could be another twine thing?
 - WHAT IS YR NAME? 3 letters, rolls numbers to get 5000, etc. either PET or ROV? maybe dependent on what u do? find yr name outside?
+- kick the computer to make it stop buzzing
+- unleash the dragon, it bloodily smooshes u. can either destroy bunker & die or write poems and then fly home (from drinking th ebeer and touching the computer early?)
+- when bunker starts breaking down, make the screen shake/flash red? (probably change a global translate/rotate a bunch)
+- the fan. make some joke about it? get an item?

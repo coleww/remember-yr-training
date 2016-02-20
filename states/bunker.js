@@ -13,7 +13,7 @@ bunker.prototype = {
 
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
-    this.game.add.tileSprite(0, 0, 640, 150, 'walllll');
+    var top = this.game.add.tileSprite(0, 0, 640, 150, 'walllll');
 
 
     // make the ladder drop down later
@@ -27,11 +27,18 @@ bunker.prototype = {
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our this.game
 
+
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
     this.platforms = this.game.add.group();
 
     //  We will enable physics for any object that is created in this group
     this.platforms.enableBody = true;
+
+    var topBarrier = this.platforms.create(0, 150, 'blank')
+    topBarrier.body.setSize(640, 1, 0, 0)
+    topBarrier.body.immovable = true
+
+
 
     var chute = this.platforms.create(this.game.world.width / 2 + 25, 150, 'chute');
     chute.scale.setTo(0.45, 0.78)

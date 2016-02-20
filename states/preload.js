@@ -10,6 +10,7 @@ preload.prototype = {
     var loadingBar = this.add.sprite(game.width / 2, game.height / 2, "loading")
     loadingBar.anchor.setTo(0.5)
     game.load.setPreloadSprite(loadingBar)
+    game.load.image("blank", "assets/sprites/blank.gif")
     game.load.image("title", "assets/sprites/title.png")
     game.load.image("playbutton", "assets/sprites/playbutton.png")
     game.load.image("backsplash", "assets/sprites/backsplash.png")
