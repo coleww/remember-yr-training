@@ -17,3 +17,24 @@
 - ADD PUNCTUATION TO THE POETRY
 - SOUND FX BANK? LOTS OF LASERS!
 - TAKE DAMAGE if yr in the air for too long? or jump from the radio? isJumping, maxHeight, etc.
+
+
+['greed', 'nature', 'fight']
+// if player overwhelmingly picks one alignment, different ending? ALSO if player fails to escape
+3 + 1 + 1
+if player gets super faded and turns on the machine early
+if player decides to never get out of bed
+if player drinks some combo of mushroom and potion, becomes the dragon, destroys bunker, dies in fire (or escapes if that just works?)
+
+8 endings?
+
+
+
+if u use the lantern: remarks that robots have night vision, turns screen all white for a few sceconds or smth
+
+
+
+
+
+
+HOW TO DO THEEEE OUTFITS?

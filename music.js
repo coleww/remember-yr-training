@@ -22,7 +22,14 @@ module.exports = function () {
   sparkles.connect(mainVolume)
   mainVolume.connect(ac.destination)
 
+
+  var fxVolume = ac.createGain()
+  fxVolume.connect(ac.destination)
+
   return {
+    playFX: function (fx) {
+
+    },
     fadeIn: function () {
       // adsr(mainVolume, ac.currentTime, {attack: 0.25, decay: 0.1, sustain: 0.2, release: 0.05, peak: 0.7, mid: 0.5, end: 0.000001})
     },

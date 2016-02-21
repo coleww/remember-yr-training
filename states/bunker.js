@@ -16,14 +16,26 @@ bunker.prototype = {
     this.tableStuff = []
 
     this.vendingItems = shuffle([
+      {name: 'RANDOM!',
+        descriptions: [
+          'these shiny pebbles might be worth something, or maybe it is food? A GAMBLE!',
+          'a skeleton key! that means it can open any door in the building! i wonder if there are any doors tho...',
+          'a lantern, excellent for exploring dark corridors.'],
+        sprites: ['pebbles', 'key', 'lantern'],
+        names: ['shiny pebbles', 'skeleton key', 'lantern'],
+        fx: ['drop','key','light'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: ['greed', 'greed', 'nature']// keys to an object of corpii for later?
+
+      },
       {name: 'boots',
         descriptions: [
-          'green boots are great for running and hiking through nature! no grass stains! booyah!',
-          'these soft luxurious boots are excellent for lounging and chilling',
-          'you like to kick stuff rly hard and also you like shiny things'],
+          'sparkly green crystals. so pretty',
+          'these blue crystals smell like sweet berries and u would like to gnaw on them vvv badly',
+          'purplish crystals, look pretty dense, probably worth something to somebody'],
         sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal'],
+        names: ['green crystals', 'blue crystals', 'purple crystals'],
         fx: ['greenspeed','flashy','kick'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: []// keys to an object of corpii for later?
+        seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
 
       },
       {name: 'foods',
@@ -31,46 +43,52 @@ bunker.prototype = {
         'delicious bread. you can maybe hang slices of bread on the wall like art?',
         'some sort of leg to an animal. poor thing. you will honor the life of this magnificient creature by wielding this bone as a crude bludgeon in your quest for justice'],
         sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick'],
+        names: ['strong ale', 'bread loaf', 'animal leg'],
         fx: ['faded','breadart','chickenattack'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: []// keys to an object of corpii for later?
+        seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
       },
-      {name: 'gloves',
-        descriptions: ['gold is actually quite malleable and not very protective but DAMN THESE GLOVES LOOK GOOD',
-        'leather gloves. sturdy, flexible, dependable. you can also wear one on your head and pretend to be a chicken',
-        'CLEAN MEAN STEEL. good for punching people and also walls'],
+      {name: 'MAGICAL ITEMS',
+        descriptions: ['a bright glowing star! good for illuminating dark spaces! or also as a party light.',
+        '"DRINK FROM THIS CHALICE, AND U SHALL ATTAIN ALL KNOWLEDGE" is what it says underneath the microwave safe notice',
+        'this orb is mysterious and probably powerful. or at least u could throw it at something'],
+        names: ['star of glowingness', 'chalice of knowledge', 'orb of mystery'],
         sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel'],
-        fx: ['flashy','chickenhead','punch'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: []// keys to an object of corpii for later?
+        fx: ['light','know','drop'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: ['nature', 'greed', 'fight']// keys to an object of corpii for later?
       },
       {name: 'shrooms',
         descriptions: ['looks like the sort of mushroom that you get on pizzas. mmmm. pizza. yes you totally can probably eat this',
         'this one looks...intriguing. it has like, this kind of aura going on, you know? but the aura is also menacing?',
         'this mushroom is literally oozing out what appears to be blood, and when you put your ear close to it a faint grinding and gnashing sound can be heard.'],
         sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed'],
+        names: ['brown mushroom', 'purple mushroom', 'red mushroom'],
         fx: ['hp25','transformtrip','transformevil'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: []// keys to an object of corpii for later?
+        seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
       },
-      {name: 'robes',
-        descriptions: ['this robe is blue, and it looks just like the ocean under the moon','this robe is green, which is the same as the emotion that i get from you','this robe is red, which is the color of your heart which you should give to me or else forget about it'],
+      {name: 'big sodas',
+        descriptions: ['this soda is blue, and it looks just like the ocean under the moon','this soda is green, which is the same as the emotion that i get from you','this soda is red, which is the color of your heart which you should give to me or else forget about it'],
         sprites: ['RobeB', 'RobeG', 'RobeR'],
+        names: ['blue soda', 'green soda', 'red soda'],
         fx: ['hp25','$10','hp25'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: []// keys to an object of corpii for later?
+        seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
       },
       {name: 'swords',
         descriptions: ['this sword appears to be constantly on fire, which is itself pretty frigging sweet, but on top of that free heater for life? KA CHING',
         'erm, this sword is pretty gross and just keeps leaking this slime everywhere, it kind of has the consistency of gak? do you remember gak? *googles to see if they still make gak*',
         'this sword casts a shadow upon everything near it and appears to be sucking in all the light in the room. it appears quite powerful but may also control your soul if you wield it?'],
         sprites: ['Sword1', 'Sword2', 'Sword3'],
+        names: ['fire sword', 'goo sword', 'sword of all-consuming darkness'],
         fx: ['fireslash','gooslash','darkslash'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: []// keys to an object of corpii for later?
+        seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
       },
       {name: 'potions',
         descriptions: ['a green potion, the color of MORE MONEY! or is nature?',
         'a red potion, the color of your blood and the blood of your enemies!',
         'a yellow potion, the color of, um, piss? pee pee. number 1. *giggles*'],
         sprites: ['VialG', 'VialR', 'VialY'],
+        names: ['green potion', 'red potion', 'yellow potion'],
         fx: ['makeTree','makeBloodSculpture','makeGold'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: []// keys to an object of corpii for later?
+        seed: ['nature', 'fight', 'greed']// keys to an object of corpii for later?
       },
     ])
 
@@ -277,10 +295,26 @@ candle1.scale.x *= -1;
     this.bed = this.game.add.sprite(this.game.world.width - 100, this.game.world.height - 305, 'cryobed');
     this.bed.frame = 1
 
+
+
     // var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
 
     // this.bed.animations.play('close', true)
     // close.loop = false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     // //  The score
@@ -292,9 +326,9 @@ candle1.scale.x *= -1;
     this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
     this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + this.game.inventory.map(function (item) {
         return item.name
-    }).join(', '), { fontSize: '22px', fill: '#FFF' });
+    }).join(', '), { fontSize: '22px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
 
-    this.walletDisplay = this.game.add.text(16, 75, this.game.wallet + '$', { fontSize: '22px', fill: '#FFF' });
+    this.walletDisplay = this.game.add.text(150, 25, this.game.wallet + '$', { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
   },
   redrawInventory: function () {
@@ -346,9 +380,11 @@ candle1.scale.x *= -1;
 
       }, this);
     } else {
+
       var ok  = this.game.add.text(150, 370, 'YOU AINT GOT ENOUGH CASH! GET A JOB! oh wait, this is yr job, when do u get paid? hmmmm', { fontSize: '40px', fill: '#FFF' });
       ok.inputEnabled = true
       ok.events.onInputDown.add(function (clicky) {
+        instruct.destroy()
         ok.destroy()
         menmen.destroy()
       })
@@ -370,7 +406,8 @@ candle1.scale.x *= -1;
       var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#FFF', wordWrap: true, wordWrapWidth: 150  });
       staticy.inputEnabled = true
       staticy.events.onInputDown.add(function () {
-        that.game.inventory.push({name: item.name, description: item.descriptions[i], sprite: opt})
+        that.game.inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i]})
+        set(get('seeds').push(item.seed[i]))
         that.redrawInventory()
         items.forEach(function (it){ it.destroy()})
         menu.destroy()

@@ -1,5 +1,6 @@
 var db = require('../db')
 var get = db.get
+var set = db.set
 
 var preload = function(game){
   this.game = game
@@ -54,27 +55,30 @@ preload.prototype = {
     game.load.spritesheet("static", "assets/sprites/computer/dss.png", 64, 64)
 
     game.load.spritesheet("sweetbook", "assets/sprites/sweetbook.png", 28, 35) // 2
-    game.load.image("BootsGreen", "assets/sprites/vending/BootsGreen.png")
-    game.load.image("BootsSoft", "assets/sprites/vending/BootsLeatherSoft.png")
-    game.load.image("BootsMetal", "assets/sprites/vending/BootsMetal.png")
+    game.load.image("BootsGreen", "assets/sprites/vending/CrystalsGreen.png")
+    game.load.image("BootsSoft", "assets/sprites/vending/CrystalsBlue.png")
+    game.load.image("BootsMetal", "assets/sprites/vending/CrystalsPurple.png")
     game.load.image("FoodAle", "assets/sprites/vending/FoodAle.png")
     game.load.image("FoodBread", "assets/sprites/vending/FoodBread.png")
     game.load.image("FoodDrumstick", "assets/sprites/vending/FoodDrumstick.png")
-    game.load.image("GlovesGold", "assets/sprites/vending/GlovesGolden.png")
-    game.load.image("GlovesLeather", "assets/sprites/vending/GlovesLeatherHard.png")
-    game.load.image("GlovesSteel", "assets/sprites/vending/GlovesSteel.png")
+    game.load.image("GlovesGold", "assets/sprites/vending/LightStar.png")
+    game.load.image("GlovesLeather", "assets/sprites/vending/LightChalice.png")
+    game.load.image("GlovesSteel", "assets/sprites/vending/LightOrb.png")
     game.load.image("MushroomBrown", "assets/sprites/vending/HB_MushroomBrownSpotted.png")
     game.load.image("MushroomPurple", "assets/sprites/vending/HB_MushroomPurple.png")
     game.load.image("MushroomRed", "assets/sprites/vending/HB_MushroomRed.png")
-    game.load.image("RobeB", "assets/sprites/vending/RobeBlue.png")
-    game.load.image("RobeG", "assets/sprites/vending/RobeGreen.png")
-    game.load.image("RobeR", "assets/sprites/vending/RobeRed.png")
+    game.load.image("RobeB", "assets/sprites/vending/PotionAquamarine.png")
+    game.load.image("RobeG", "assets/sprites/vending/PotionEmerald2.png")
+    game.load.image("RobeR", "assets/sprites/vending/PotionShortRuby.png")
     game.load.image("Sword1", "assets/sprites/vending/Sword25.png")
     game.load.image("Sword2", "assets/sprites/vending/Sword26.png")
     game.load.image("Sword3", "assets/sprites/vending/SwordMedievalMagical.png")
     game.load.image("VialG", "assets/sprites/vending/VialGreen.png")
     game.load.image("VialR", "assets/sprites/vending/VialRed.png")
     game.load.image("VialY", "assets/sprites/vending/VialYellow.png")
+    game.load.image("pebbles", "assets/sprites/vending/Jewels.png")
+    game.load.image("key", "assets/sprites/vending/KeySkull.png")
+    game.load.image("lantern", "assets/sprites/vending/LanternBronze.png")
     game.load.image("candle", "assets/sprites/candle.png")
     game.load.image("menu", "assets/sprites/Menu_2.png")
     game.load.image("ladder", "assets/sprites/ladder1.png")
@@ -104,7 +108,9 @@ preload.prototype = {
 
     // TODO: check if the player has a saved game
     game.inventory = [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}]
+    game.seeds = []
     game.wallet = 25
+    set('seeds', [])
 
   },
   create: function(){
