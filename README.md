@@ -5,6 +5,8 @@ a game about poems and jetpacks
 
 September 26, 1983
 
+P.E.T. POETRY ENGINEERING TECNICHIAN
+
 IS BASICALLY A BUNCH OF CODE HACKED FROM:
 http://phaser.io/tutorials/making-your-first-phaser-game
 https://gumroad.com/a/333067379

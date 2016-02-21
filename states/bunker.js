@@ -19,32 +19,60 @@ bunker.prototype = {
 
     this.vendingItems = shuffle([
       {name: 'boots',
-        descriptions: [],
-        sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal']
+        descriptions: [
+          'green boots are great for running and hiking through nature! no grass stains! booyah!',
+          'these soft luxurious boots are excellent for lounging and chilling',
+          'you like to kick stuff rly hard and also you like shiny things'],
+        sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal'],
+        fx: ['greenspeed','flashy','kick'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: []// keys to an object of corpii for later?
+
       },
       {name: 'foods',
-        descriptions: [],
-        sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick']
+        descriptions: ['a delicious cold beer. yr a robot so i am not sure what will happen if you pour this all over yourself.... be careful!',
+        'delicious bread. you can maybe hang slices of bread on the wall like art?',
+        'some sort of leg to an animal. poor thing. you will honor the life of this magnificient creature by wielding this bone as a crude bludgeon in your quest for justice'],
+        sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick'],
+        fx: ['faded','breadart','chickenattack'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: []// keys to an object of corpii for later?
       },
       {name: 'gloves',
-        descriptions: [],
-        sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel']
+        descriptions: ['gold is actually quite malleable and not very protective but DAMN THESE GLOVES LOOK GOOD',
+        'leather gloves. sturdy, flexible, dependable. you can also wear one on your head and pretend to be a chicken',
+        'CLEAN MEAN STEEL. good for punching people and also walls'],
+        sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel'],
+        fx: ['flashy','chickenhead','punch'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: []// keys to an object of corpii for later?
       },
       {name: 'shrooms',
-        descriptions: [],
-        sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed']
+        descriptions: ['looks like the sort of mushroom that you get on pizzas. mmmm. pizza. yes you totally can probably eat this',
+        'this one looks...intriguing. it has like, this kind of aura going on, you know? but the aura is also menacing?',
+        'this mushroom is literally oozing out what appears to be blood, and when you put your ear close to it a faint grinding and gnashing sound can be heard.'],
+        sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed'],
+        fx: ['hp25','transformtrip','transformevil'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: []// keys to an object of corpii for later?
       },
       {name: 'robes',
-        descriptions: [],
-        sprites: ['RobeB', 'RobeG', 'RobeR']
+        descriptions: ['this robe is blue, and it looks just like the ocean under the moon','this robe is green, which is the same as the emotion that i get from you','this robe is red, which is the color of your heart which you should give to me or else forget about it'],
+        sprites: ['RobeB', 'RobeG', 'RobeR'],
+        fx: ['hp25','$10','hp25'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: []// keys to an object of corpii for later?
       },
       {name: 'swords',
-        descriptions: [],
-        sprites: ['Sword1', 'Sword2', 'Sword3']
+        descriptions: ['this sword appears to be constantly on fire, which is itself pretty frigging sweet, but on top of that free heater for life? KA CHING',
+        'erm, this sword is pretty gross and just keeps leaking this slime everywhere, it kind of has the consistency of gak? do you remember gak? *googles to see if they still make gak*',
+        'this sword casts a shadow upon everything near it and appears to be sucking in all the light in the room. it appears quite powerful but may also control your soul if you wield it?'],
+        sprites: ['Sword1', 'Sword2', 'Sword3'],
+        fx: ['fireslash','gooslash','darkslash'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: []// keys to an object of corpii for later?
       },
       {name: 'potions',
-        descriptions: [],
-        sprites: ['VialG', 'VialR', 'VialY']
+        descriptions: ['a green potion, the color of MORE MONEY! or is nature?',
+        'a red potion, the color of your blood and the blood of your enemies!',
+        'a yellow potion, the color of, um, piss? pee pee. number 1. *giggles*'],
+        sprites: ['VialG', 'VialR', 'VialY'],
+        fx: ['makeTree','makeBloodSculpture','makeGold'],// what happens when the thing is used, run thru huge switch statement o_o
+        seed: []// keys to an object of corpii for later?
       },
     ])
 
@@ -400,10 +428,10 @@ bunker.prototype = {
 
     if (day == 1) {
       this.tableStuff = [
-        {name: 'The Anarchist Cookbook',
-        description: ''},
+        {name: 'Some book about stuff',
+        description: 'whatever you are a robot you already downloaded a pdf of it and read it *yawn*'},
         {name: 'sad old mug',
-        description: ''}
+        description: 'look at me i contain coffee! i think?'}
       ]
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
       book1.scale.setTo(0.5)
@@ -413,9 +441,9 @@ bunker.prototype = {
     } else if (day == 2) {
       this.tableStuff = [
         {name: 'a jug of unknown fluid',
-        description: ''},
+        description: '5 bucks says it piss. no wait 10.'},
         {name: 'Math Textbook',
-        description: ''}
+        description: 'this would make an excellent doorstop...ugh it won\'t fit in yr pocket'}
       ]
       var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
       jug.scale.setTo(0.5)
@@ -425,9 +453,9 @@ bunker.prototype = {
     } else {
       this.tableStuff = [
         {name: 'some papers',
-        description: ''},
+        description: 'you are an excellent doodler. yr works should be on walls everywhere'},
         {name: 'pizza box',
-        description: ''}
+        description: 'you miss the pizza dearly :~~~~('}
       ]
       var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
       var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
