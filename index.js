@@ -14,6 +14,7 @@ window.onload = function() {
       var height = width / windowRatio
   }
   var game = new Phaser.Game(width, height, Phaser.AUTO, "")
+  game.add.plugin(Phaser.Plugin.Debug);
   game.state.add("Boot", boot)
   game.state.add("Preload", preload)
   game.state.add("TitleScreen", titleScreen)
