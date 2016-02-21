@@ -23,6 +23,7 @@ http://opengameart.org/content/recycle-items-set
 http://opengameart.org/content/paper-towel-roll
 http://opengameart.org/content/old-parchment-paper
 http://opengameart.org/content/tiling-cardboard-texture
+http://opengameart.org/content/golden-dialog
 http://opengameart.org/content/paper-decoration
 http://opengameart.org/content/paper-icons
 http://opengameart.org/content/animated-display-static

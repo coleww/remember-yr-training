@@ -13,6 +13,10 @@ bunker.prototype = {
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
+    this.vendingItems = [
+      {name: 'potion', sprites: ['', '', '', '']}
+    ]
+
 
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
@@ -148,6 +152,8 @@ bunker.prototype = {
     var table = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
     table.scale.setTo(2, 1.5)
 
+    var candle = this.game.add.sprite(this.game.world.width / 2 - 40, this.game.world.height - 330, 'candle');
+
 
     var books = this.game.add.sprite(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
     books.scale.setTo(2)
@@ -226,33 +232,68 @@ bunker.prototype = {
   useThing: function (thing) {
     // activate the fx of a thing
   },
+  drawMenuBox: function () {
+    var menuBox = this.game.add.sprite(0, 150, 'menu');
+    menuBox.scale.setTo(3.75, 5)
+    return menuBox
+  },
+  vend: function () {
+    var menmen = this.drawMenuBox()
 
+
+    var instruct = this.game.add.text(50, 220, 'INSERT $5?', { fontSize: '60px', fill: '#FFF' });
+
+    var yay  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#FFF' });
+    var nay  = this.game.add.text(150, 450, 'NAHHHHHHH.', { fontSize: '40px', fill: '#FFF' });
+    yay.inputEnabled = true;
+    nay.inputEnabled = true
+    var that = this
+    yay.events.onInputDown.add(function  (thing) {
+      // RUN THE STUFF!
+      instruct.destroy()
+      yay.destroy()
+      nay.destroy()
+      that.buyThing(menmen)
+    }, this);
+    nay.events.onInputDown.add(function  (thing) {
+
+      instruct.destroy()
+      yay.destroy()
+      nay.destroy()
+      menmen.destroy()
+
+    }, this);
+    // this.game.world.bringToTop(yay)
+    // this.game.world.bringToTop(nay)
+  },
+  buyThing: function (menu) {
+
+    // eventually
+    menu.destroy()
+  },
   runPoem: function (next) {
     if (next) {
-        this.poem += ' ' + (next == 'linebreak' ? '\n' : next)
+      this.poem += ' ' + (next == 'linebreak' ? '\n' : next)
     }
-
-     this.poemDisplay.setText(this.poem)
+    this.poemDisplay.setText(this.poem)
     var words = this.poem.split(' ')
     if (next == 'linebreak') words = []
     console.log('NEXTS', [words[words.length - 2], words[words.length - 1]].join(' '))
     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), 'linebreak']
     var that = this
     nexts.forEach(function (opt, i) {
-        var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#F00' })
-        option.inputEnabled = true;
-        option.events.onInputDown.add(select, that);
-        that.currentOptions.push(option)
+      var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#F00' })
+      option.inputEnabled = true;
+      option.events.onInputDown.add(select, that);
+      that.currentOptions.push(option)
     })
-
-
     function select (thing) {
       that.currentOptions.forEach(function (opt) {
           opt.destroy()
       })
       console.log(thing.text)
       this.runPoem(thing.text)
-  }
+    }
 
   },
   writeAPoem: function () {
@@ -339,6 +380,7 @@ bunker.prototype = {
           if (x >= 45 && x < 50) {
               // vending machine
               console.log('touching the vend')
+              this.vend()
               // this.inDialog = true
           } else if (x >= 210 && x < 245) {
               // left desk item

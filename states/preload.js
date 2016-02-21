@@ -48,6 +48,8 @@ preload.prototype = {
 
     game.load.spritesheet("sweetbook", "assets/sprites/sweetbook.png", 28, 35) // 2
 
+    game.load.image("candle", "assets/sprites/candle.png")
+    game.load.image("menu", "assets/sprites/Menu_2.png")
     game.load.image("ladder", "assets/sprites/ladder1.png")
     game.load.image("table", "assets/sprites/table.png")
     game.load.image("books", "assets/sprites/books.png")
