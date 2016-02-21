@@ -13,9 +13,29 @@ bunker.prototype = {
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
-    this.vendingItems = [
-      {name: 'potion', sprites: ['', '', '', '']}
-    ]
+    this.vendingItems = shuffle([
+      {name: 'boots',
+        descriptions: [],
+        sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal']},
+      {name: 'foods',
+        descriptions: [],
+        sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick']},
+      {name: 'gloves',
+        descriptions: [],
+        sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel']},
+      {name: 'shrooms',
+        descriptions: [],
+        sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed']},
+      {name: 'robes',
+        descriptions: [],
+        sprites: ['RobeB', 'RobeG', 'RobeR']},
+      {name: 'swords',
+        descriptions: [],
+        sprites: ['Sword1', 'Sword2', 'Sword3']},
+      {name: 'potions',
+        descriptions: [],
+        sprites: ['VialG', 'VialR', 'VialY']},
+    ])
 
 
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
@@ -261,15 +281,29 @@ bunker.prototype = {
       yay.destroy()
       nay.destroy()
       menmen.destroy()
+      that.inDialog = false
 
     }, this);
     // this.game.world.bringToTop(yay)
     // this.game.world.bringToTop(nay)
   },
   buyThing: function (menu) {
+    console.log("WHOOOA")
+    var item = this.vendingItems.pop()
+    // display them and stuffzzz.
+    // add the click buttons too
+    var title = this.game.add.text(50, 220, item.name, { fontSize: '60px', fill: '#FFF' });
+    var that = this
+    item.sprites.forEach(function (opt, i) {
+      var staticy = that.game.add.sprite(75 + i * 160, 465, opt);
+      staticy.scale.setTo(4)
+      item.descriptions[i]
+    })
+
+
 
     // eventually
-    menu.destroy()
+    // menu.destroy()
   },
   runPoem: function (next) {
     if (next) {
@@ -466,3 +500,23 @@ bunker.prototype = {
 }
 
 module.exports = bunker
+
+
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
