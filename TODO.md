@@ -29,6 +29,9 @@ if player drinks some combo of mushroom and potion, becomes the dragon, destroys
 8 endings?
 
 
+thing.useable => use it anywhere, something happens
+thing.situational => maybe try somewhere else yo!
+
 
 if u use the lantern: remarks that robots have night vision, turns screen all white for a few sceconds or smth
 

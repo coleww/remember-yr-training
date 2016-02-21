@@ -28,6 +28,7 @@ preload.prototype = {
     game.load.image("chute", "assets/sprites/metal_ground_2.jpg")
     game.load.image("grid", "assets/sprites/metal_grid_1.jpg")
 
+    game.load.image("parch", "assets/sprites/parchment.png")
 
     game.load.image("wallArt1", "assets/sprites/wallart/L3_WallDeco21.png")
     game.load.image("wallArt2", "assets/sprites/wallart/L3_WallDeco26.png")

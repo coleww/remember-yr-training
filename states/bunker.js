@@ -337,21 +337,182 @@ candle1.scale.x *= -1;
     }).join(', '))
   },
   openDialog: function (thing) {
+    var menmen = this.drawMenuBox('parch') // or 'parch'
+    var instruct = this.game.add.text(50, 220, thing.name, { fontSize: '60px', fill: '#FFF' });
+
+    var descrip = this.game.add.text(450, 220, thing.description, { fontSize: '60px', fill: '#FFF' });
+    if (thing.useable) {
+        var yay  = this.game.add.text(150, 370, 'use it!!!', { fontSize: '40px', fill: '#FFF' });
+        var nay  = this.game.add.text(150, 450, 'um, no thanks.', { fontSize: '40px', fill: '#FFF' });
+        yay.inputEnabled = true;
+        nay.inputEnabled = true
+        var that = this
+        yay.events.onInputDown.add(function  (thing) {
+            // RUN THE STUFF!
+            instruct.destroy()
+            descrip.destroy()
+            yay.destroy()
+            nay.destroy()
+            that.useThing(thing, menmen)
+        }, this);
+        nay.events.onInputDown.add(function  (thing) {
+
+            instruct.destroy()
+            descrip.destroy()
+            yay.destroy()
+            nay.destroy()
+            menmen.destroy()
+            that.inDialog = false
+
+        }, this);
+    } else if (thing.situational) {
+        var confirm  = this.game.add.text(150, 370, 'um maybe try to use this somewhere else?', { fontSize: '40px', fill: '#FFF' });
+        confirm.inputEnabled = true;
+        var that = this
+        confirm.events.onInputDown.add(function  (thing) {
+            // RUN THE STUFF!
+            this.inDialog = false
+            menmen.destroy()
+            instruct.destroy()
+            descrip.destroy()
+            confirm.destroy()
+        }, this);
+    } else {
+        var confirm  = this.game.add.text(150, 370, 'this thing appears to be completely useless right now...', { fontSize: '40px', fill: '#FFF' });
+        confirm.inputEnabled = true;
+        var that = this
+        confirm.events.onInputDown.add(function  (thing) {
+            // RUN THE STUFF!
+            this.inDialog = false
+            menmen.destroy()
+            instruct.destroy()
+            descrip.destroy()
+            confirm.destroy()
+        }, this);
+    }
+
+
+
     // based on whatever the thing is...."inspect thing" etc.
     // draw a dialog box, display the thing, prompt the user to do stuff
     // IF the thing is the poetry journal, defer to openJournal
     // IF it's the chest/vending machine, defer to those
   },
-  useThing: function (thing) {
-    // activate the fx of a thing
+  useThing: function (thing, menmen) {
+    switch(thing) {
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+        case '':
+            // stuff
+            break;
+
+    }
+    var whatHappened  = this.game.add.text(150, 570, thing.used, { fontSize: '40px', fill: '#FFF' });
+    var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#FFF' });
+    confirm.inputEnabled = true;
+    var that = this
+    confirm.events.onInputDown.add(function  (thing) {
+        // RUN THE STUFF!
+        this.inDialog = false
+        menmen.destroy()
+        whatHappened.destroy()
+        confirm.destroy()
+    }, this);
+    if (thing.oneTimeUse) {
+        var i = this.inventory.indexOf(thing)
+        this.inventory.splice(i, 1)
+    }
+
   },
-  drawMenuBox: function () {
-    var menuBox = this.game.add.sprite(0, 150, 'menu');
+  drawMenuBox: function (type) {
+    var menuBox = this.game.add.sprite(0, 150, type);
     menuBox.scale.setTo(3.75, 5)
     return menuBox
   },
   vend: function () {
-    var menmen = this.drawMenuBox()
+    var menmen = this.drawMenuBox('menu') // or 'parch'
 
 
     var instruct = this.game.add.text(50, 220, 'INSERT $5?', { fontSize: '60px', fill: '#FFF' });

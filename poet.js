@@ -1,8 +1,21 @@
 var markov = require('fast-ish-markov')
 var instructions = require('./corpus/instructions')
-var m = markov(instructions, 2)
-// erm maybe construct this each time based on the twine choices at the vending machine?
 
+var shorties = instructions.filter(function (line) {
+  return line.length < 140
+})
+
+var longies = instructions.filter(function (line) {
+  return line.length >= 140
+})
+var newbies = []
+for (var i = 0; i < shorties.length; i += 2) {
+  newbies.push(shorties[i] + ' ' + shorties[i + 1])
+}
+
+var m = markov(newbies.concat(longies).map(function (line) {
+  return line.replace(/[^0-9A-Za-z ]/g, '')
+}), 2)
 
 module.exports = function (start) {
   if (start == undefined || !start.replace(/\s/g, '')) {
