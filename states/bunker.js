@@ -211,10 +211,27 @@ bunker.prototype = {
 
     var candle = this.game.add.sprite(this.game.world.width / 2 - 40, this.game.world.height - 330, 'candle');
 
+    var art1 = this.game.add.sprite(10, 170, 'wallArt1');
+    art1.scale.setTo(2)
+    var art2 = this.game.add.sprite(500, 490, 'wallArt2');
+    art2.scale.setTo(2)
+    var art3 = this.game.add.sprite(550, 200, 'wallArt4');
+    art3.scale.setTo(2)
+    var art4 = this.game.add.sprite(75, 510, 'wallArt5');
+    art4.scale.setTo(2)
+
+
+
 
     var books = this.game.add.sprite(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
     books.scale.setTo(2)
+    var candle1 = this.game.add.sprite(220, 605, 'wallArt3');
+    candle1.scale.setTo(2)
+    candle1.anchor.setTo(.5,.5);
 
+candle1.scale.x *= -1;
+    var candle2 = this.game.add.sprite(120, 550, 'wallArt3');
+    candle2.scale.setTo(2)
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
