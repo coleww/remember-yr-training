@@ -381,7 +381,7 @@ bunker.prototype = {
               // vending machine
               console.log('touching the vend')
               this.vend()
-              // this.inDialog = true
+              this.inDialog = true
           } else if (x >= 210 && x < 245) {
               // left desk item
               console.log('touching the lefty')
