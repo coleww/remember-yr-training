@@ -44,7 +44,7 @@ preload.prototype = {
     game.load.spritesheet("ticks", "assets/sprites/computer/ticks.png", 25, 100) // 6
     game.load.spritesheet("switchy", "assets/sprites/computer/switch.png", 50, 34) // 2
 
-
+    game.load.spritesheet("static", "assets/sprites/computer/dss.png", 64, 64)
 
     game.load.spritesheet("sweetbook", "assets/sprites/sweetbook.png", 28, 35) // 2
 

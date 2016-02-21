@@ -124,16 +124,19 @@ bunker.prototype = {
 
 
 
-
-arrows.animations.play('slow');
-bars.animations.play('slow');
-circs.animations.play('slow');
-squares.animations.play('slow');
-ticks.animations.play('slow');
-// switchy.animations.play('slow');
-
+    arrows.animations.play('slow');
+    bars.animations.play('slow');
+    circs.animations.play('slow');
+    squares.animations.play('slow');
+    ticks.animations.play('slow');
+    // switchy.animations.play('slow');
 
 
+    var staticy = this.game.add.sprite(217, 465, 'static');
+    staticy.scale.setTo(0.75, 1)
+    staticy.animations.add('roll')
+    staticy.play('roll', 1.33, true)
+    // this.game.world.bringToTop(staticy)
 
     var tippyTop = this.platforms.create(this.game.world.width / 2 - 72, 343, 'grid');
     tippyTop.scale.setTo(0.05, 0.1)
@@ -253,7 +256,7 @@ ticks.animations.play('slow');
 
   },
   writeAPoem: function () {
-        this.currentOptions = []
+    this.currentOptions = []
     var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
     poetryBG.scale.setTo(30, 25)
     var instructions = this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
@@ -261,7 +264,7 @@ ticks.animations.play('slow');
     this.poem = poetryGen()
     this.poemDisplay = this.game.add.text(155, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })
     this.runPoem()
-var that = this
+    var that = this
     var quit = that.game.add.text(175, 135, 'quit', { fontSize: '20px', fill: '#00F' })
     var save = that.game.add.text(250, 135, 'save', { fontSize: '20px', fill: '#00F' })
 
@@ -275,6 +278,9 @@ var that = this
       quit.destroy()
       instructions.destroy()
       save.destroy()
+      that.currentOptions.forEach(function (opt) {
+          opt.destroy()
+      })
       that.inDialog = false
     }, that);
 
@@ -288,22 +294,11 @@ var that = this
       quit.destroy()
       instructions.destroy()
       save.destroy()
+      that.currentOptions.forEach(function (opt) {
+          opt.destroy()
+      })
       that.inDialog = false
     }, that);
-
-
-
-
-    //
-    // while (poem.length < 666) { // erm, no, step through as player clicks. EVENTED!
-    //     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' '))]
-    //     // make buttons for each next. when clicked, runs the loop again?
-
-
-    // }
-
-
-
   },
   goToSleep: function () {
     var bookAnim = this.game.add.sprite(-30, -250, 'sweetbook');
@@ -334,7 +329,7 @@ var that = this
         pizza.scale.setTo(0.75)
         var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
     }
-    this.game.world.bringToTop(this.platforms)
+    // this.game.world.bringToTop(this.platforms)
     this.game.world.bringToTop(this.player)
   },
   interactIfTouchingThing: function (x, y) {
