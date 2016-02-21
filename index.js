@@ -13,8 +13,9 @@ window.onload = function() {
   if(windowRatio < width / height){
       var height = width / windowRatio
   }
+  Phaser.Time.desiredFps = 30
   var game = new Phaser.Game(width, height, Phaser.AUTO, "")
-  game.add.plugin(Phaser.Plugin.Debug);
+  // game.add.plugin(Phaser.Plugin.Debug);
   game.state.add("Boot", boot)
   game.state.add("Preload", preload)
   game.state.add("TitleScreen", titleScreen)

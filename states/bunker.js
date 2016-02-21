@@ -13,9 +13,7 @@ bunker.prototype = {
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
-    this.tableStuff = [
-
-    ]
+    this.tableStuff = []
 
     this.vendingItems = shuffle([
       {name: 'boots',
@@ -269,11 +267,11 @@ bunker.prototype = {
 
 
     // //  The score
-
+    this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.startDay(1)
   },
-  drawMenu: function () {
+  redrawMenu: function () {
     this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
     this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + this.game.inventory.map(function (item) {
         return item.name
@@ -281,6 +279,11 @@ bunker.prototype = {
 
     this.walletDisplay = this.game.add.text(16, 75, this.game.wallet + '$', { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
+  },
+  redrawInventory: function () {
+    this.inventoryDisplay.setText('inventory:' + this.game.inventory.map(function (item) {
+        return item.name
+    }).join(', '))
   },
   openDialog: function (thing) {
     // based on whatever the thing is...."inspect thing" etc.
@@ -301,28 +304,38 @@ bunker.prototype = {
 
 
     var instruct = this.game.add.text(50, 220, 'INSERT $5?', { fontSize: '60px', fill: '#FFF' });
+    if (this.game.wallet >= 5) {
+      var yay  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#FFF' });
+      var nay  = this.game.add.text(150, 450, 'NAHHHHHHH.', { fontSize: '40px', fill: '#FFF' });
+      yay.inputEnabled = true;
+      nay.inputEnabled = true
+      var that = this
+      yay.events.onInputDown.add(function  (thing) {
+        // RUN THE STUFF!
+        that.game.wallet -= 5
+        this.walletDisplay.setText(that.game.wallet + '$')
+        instruct.destroy()
+        yay.destroy()
+        nay.destroy()
+        that.buyThing(menmen)
+      }, this);
+      nay.events.onInputDown.add(function  (thing) {
 
-    var yay  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#FFF' });
-    var nay  = this.game.add.text(150, 450, 'NAHHHHHHH.', { fontSize: '40px', fill: '#FFF' });
-    yay.inputEnabled = true;
-    nay.inputEnabled = true
-    var that = this
-    yay.events.onInputDown.add(function  (thing) {
-      // RUN THE STUFF!
-      instruct.destroy()
-      yay.destroy()
-      nay.destroy()
-      that.buyThing(menmen)
-    }, this);
-    nay.events.onInputDown.add(function  (thing) {
+        instruct.destroy()
+        yay.destroy()
+        nay.destroy()
+        menmen.destroy()
+        that.inDialog = false
 
-      instruct.destroy()
-      yay.destroy()
-      nay.destroy()
-      menmen.destroy()
-      that.inDialog = false
-
-    }, this);
+      }, this);
+    } else {
+      var ok  = this.game.add.text(150, 370, 'YOU AINT GOT ENOUGH CASH! GET A JOB! oh wait, this is yr job, when do u get paid? hmmmm', { fontSize: '40px', fill: '#FFF' });
+      ok.inputEnabled = true
+      ok.events.onInputDown.add(function (clicky) {
+        ok.destroy()
+        menmen.destroy()
+      })
+    }
     // this.game.world.bringToTop(yay)
     // this.game.world.bringToTop(nay)
   },
@@ -333,10 +346,22 @@ bunker.prototype = {
     // add the click buttons too
     var title = this.game.add.text(50, 220, item.name, { fontSize: '60px', fill: '#FFF' });
     var that = this
+    var items = []
     item.sprites.forEach(function (opt, i) {
-      var staticy = that.game.add.sprite(75 + i * 160, 465, opt);
+      var staticy = that.game.add.sprite(75 + i * 180, 325, opt);
       staticy.scale.setTo(4)
-      item.descriptions[i]
+      var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#FFF', wordWrap: true, wordWrapWidth: 150  });
+      staticy.inputEnabled = true
+      staticy.events.onInputDown.add(function () {
+        that.game.inventory.push({name: item.name, description: item.descriptions[i], sprite: opt})
+        that.redrawInventory()
+        items.forEach(function (it){ it.destroy()})
+        menu.destroy()
+        title.destroy()
+        that.inDialog = false
+      }, that)
+      items.push(staticy)
+      items.push(descrip)
     })
 
 
@@ -504,7 +529,7 @@ bunker.prototype = {
   update: function () {
     // console.log(this.game.input.x,
     // this.game.input.y)
-    this.drawMenu()
+
     this.game.physics.arcade.collide(this.player, this.platforms);
 
     if (this.cursors.left.isDown) {
