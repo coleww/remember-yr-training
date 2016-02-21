@@ -13,28 +13,39 @@ bunker.prototype = {
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
+    this.tableStuff = [
+
+    ]
+
     this.vendingItems = shuffle([
       {name: 'boots',
         descriptions: [],
-        sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal']},
+        sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal']
+      },
       {name: 'foods',
         descriptions: [],
-        sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick']},
+        sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick']
+      },
       {name: 'gloves',
         descriptions: [],
-        sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel']},
+        sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel']
+      },
       {name: 'shrooms',
         descriptions: [],
-        sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed']},
+        sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed']
+      },
       {name: 'robes',
         descriptions: [],
-        sprites: ['RobeB', 'RobeG', 'RobeR']},
+        sprites: ['RobeB', 'RobeG', 'RobeR']
+      },
       {name: 'swords',
         descriptions: [],
-        sprites: ['Sword1', 'Sword2', 'Sword3']},
+        sprites: ['Sword1', 'Sword2', 'Sword3']
+      },
       {name: 'potions',
         descriptions: [],
-        sprites: ['VialG', 'VialR', 'VialY']},
+        sprites: ['VialG', 'VialR', 'VialY']
+      },
     ])
 
 
@@ -386,23 +397,42 @@ bunker.prototype = {
     // reset data, re-run stuff? hrm? some way to re-start it? OH, make a dream state!
   },
   startDay: function (day) {
+
     if (day == 1) {
-        var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
-        book1.scale.setTo(0.5)
-        var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
-        mug.scale.setTo(0.75)
-        var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
+      this.tableStuff = [
+        {name: 'The Anarchist Cookbook',
+        description: ''},
+        {name: 'sad old mug',
+        description: ''}
+      ]
+      var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
+      book1.scale.setTo(0.5)
+      var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
+      mug.scale.setTo(0.75)
+      var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
     } else if (day == 2) {
-        var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
-        jug.scale.setTo(0.5)
-        var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
-        book2.scale.setTo(0.5)
-        var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
+      this.tableStuff = [
+        {name: 'a jug of unknown fluid',
+        description: ''},
+        {name: 'Math Textbook',
+        description: ''}
+      ]
+      var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
+      jug.scale.setTo(0.5)
+      var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
+      book2.scale.setTo(0.5)
+      var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
     } else {
-        var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
-        var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
-        pizza.scale.setTo(0.75)
-        var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
+      this.tableStuff = [
+        {name: 'some papers',
+        description: ''},
+        {name: 'pizza box',
+        description: ''}
+      ]
+      var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
+      var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
+      pizza.scale.setTo(0.75)
+      var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
     }
     // this.game.world.bringToTop(this.platforms)
     this.game.world.bringToTop(this.player)
