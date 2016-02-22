@@ -12,7 +12,6 @@ P.E.T. POETRY ENGINEERING TECNICHIAN
 
 
 CURRENT PRIORITIES:
-- day swap thingy. make sure everything is just localstored
 - inventory use system. discon battery game over. COMPLETE PLAYTHRU!
 - sound fx
 - music
@@ -47,6 +46,24 @@ ASSETS:
 http://untamed.wild-refuge.net/rmxpresources.php?characters
 http://pousse.rapiere.free.fr/tome/
 http://opengameart.org/content/objects-0
+http://opengameart.org/content/animated-particle-effects-2
+http://opengameart.org/content/bomb-explosion-animation
+http://opengameart.org/content/broken-glass
+http://opengameart.org/content/city-pixel-tileset
+http://opengameart.org/content/lpc-flames
+http://opengameart.org/content/nature-tileset
+http://opengameart.org/content/sky-background
+http://opengameart.org/content/haunted-forest-trees
+http://opengameart.org/content/weird-tree
+http://opengameart.org/content/torch-0
+http://opengameart.org/content/owl-animated-dude
+http://opengameart.org/content/lpc-water-fountain
+http://opengameart.org/content/forest-background
+http://opengameart.org/content/pixel-art-flame-icon
+http://opengameart.org/content/platshrooms
+http://opengameart.org/content/heart-animation
+http://opengameart.org/content/mountain-at-dusk-background
+http://opengameart.org/content/country-side-platform-tiles
 http://opengameart.org/content/recycle-items-set
 http://opengameart.org/content/paper-towel-roll
 http://opengameart.org/content/old-parchment-paper

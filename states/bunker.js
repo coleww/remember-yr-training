@@ -733,7 +733,7 @@ candle1.scale.x *= -1;
 
 
 
-
+    // STUFF GETS PROGRESSIVELY MORE GNAR
 
 
 
@@ -792,13 +792,18 @@ candle1.scale.x *= -1;
     bg.scale.setTo(5, 7)
     // bg.anchor.setTo(0.5, 0.5);
     bg.alpha = 1;
-var that = this
+    var that = this
     var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 1000, 1).start();
     t.onLoop.add(function () {
         console.log('looped!')
         // t.onLoopCallback(function(){console.log('Y?')})
         that.game.tweens.remove(t)
       bg.destroy()
+
+
+
+
+      // OHHH MAYBE DROP THE PLAYER IN HERE?
       that.game.world.bringToTop(that.player)
     }, this)
 

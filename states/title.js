@@ -11,6 +11,12 @@ titleScreen.prototype = {
     var title = game.add.image(game.width / 2, 210, "title")
     title.anchor.set(0.5)
     game.add.bitmapText(game.width / 2, 480 , "font", "=^.^=", 48).anchor.x = 0.5
+
+
+    // PUT CONTROLS DESCIRPTION HERE-ISH?
+    // left/right to walk, up to jump, down to inspect. click UNDErLINED text to use
+
+
     var playButton = game.add.button(game.width / 2, game.height - 150, "playbutton", this.startGame)
     playButton.anchor.set(0.5)
     var tween = game.add.tween(playButton).to({width: 220, height:220}, 1500, "Linear", true, 0, -1)

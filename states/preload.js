@@ -111,7 +111,7 @@ preload.prototype = {
     // TODO: check if the player has a saved game
     set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}])
     set('seeds', [])
-    set('currentDay', 1)
+    set('currentDay', 0)
     set('wallet', 25)
 
   },

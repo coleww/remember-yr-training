@@ -39,7 +39,7 @@ if u use the lantern: remarks that robots have night vision, turns screen all wh
 
 
 
-
+when to show instructions?
 
 
 
@@ -50,6 +50,7 @@ claws scratches
 OH THE BONES!
 
 
+BOX => TREE => DEAD TREE => ???
 
 
 
@@ -58,8 +59,7 @@ OH THE BONES!
 
 
 
-
-
+DONT ALLOW MOBILE (until controls are fixed)
 
 
 
