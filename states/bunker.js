@@ -715,6 +715,9 @@ candle1.scale.x *= -1; // wtf is this?
 
     save.events.onInputDown.add(function () {
       var c = get('poemCount')
+      var days = ['', '', '', '']
+      // record the day/time the poem was written
+      // THE FIRST DAY! would be hellllla far in the past tho. only see that after exiting.
       set('poem' + c, that.poem)
       set('poemCount', ++c)
 
