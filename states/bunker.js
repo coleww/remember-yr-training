@@ -645,7 +645,7 @@ candle1.scale.x *= -1;
     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), 'linebreak']
     var that = this
     nexts.forEach(function (opt, i) {
-      var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#08D' })
+      var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#03F' })
       option.inputEnabled = true;
       option.events.onInputDown.add(select, that);
       that.currentOptions.push(option)
@@ -668,6 +668,9 @@ candle1.scale.x *= -1;
     bookAnim.animations.add('blocky', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], false)
     bookAnim.animations.play('blocky', 7)
     var that = this
+
+    this.player.scale.setTo(6, 4)
+    this.game.world.bringToTop(this.player)
     bookAnim.animations.currentAnim.onComplete.add(function () {
         that.writeThatStinkingPoem(bookAnim)
 
@@ -697,8 +700,11 @@ candle1.scale.x *= -1;
       that.currentOptions.forEach(function (opt) {
           opt.destroy()
       })
+      that.player.y = 670
+      that.player.x = 240
+      that.player.scale.setTo(1.5,1)
       that.inDialog = false
-    }, that);
+    }, this);
 
     save.events.onInputDown.add(function () {
       var c = get('poemCount')
@@ -713,9 +719,10 @@ candle1.scale.x *= -1;
       that.currentOptions.forEach(function (opt) {
           opt.destroy()
       })
-      this.hasWrittenAPoemToday = true
+      that.player.scale.setTo(1.5,1)
+      that.hasWrittenAPoemToday = true
       that.inDialog = false
-    }, that);
+    }, this);
   },
 
   cleanUpAndStartNewDay: function () {

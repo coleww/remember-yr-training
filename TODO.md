@@ -54,7 +54,7 @@ MAYBE put gifs on the sides and change them? hrmmm. or just tiled metal textures
 
 
 
-
+get to the death pit by picking the evil sword? and other greedy/fighty stuff?
 
 
 
