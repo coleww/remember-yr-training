@@ -338,12 +338,13 @@ candle1.scale.x *= -1;
   },
   openDialog: function (thing) {
     var menmen = this.drawMenuBox('parch') // or 'parch'
-    var instruct = this.game.add.text(50, 220, thing.name, { fontSize: '60px', fill: '#FFF' });
+    menmen.scale.setTo(1, 1.5)
+    var instruct = this.game.add.text(50, 220, thing.name, { fontSize: '30px', fill: '#FFF' });
+    var descrip = this.game.add.text(50, 420, thing.description, { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
 
-    var descrip = this.game.add.text(450, 220, thing.description, { fontSize: '60px', fill: '#FFF' });
     if (thing.useable) {
-        var yay  = this.game.add.text(150, 370, 'use it!!!', { fontSize: '40px', fill: '#FFF' });
-        var nay  = this.game.add.text(150, 450, 'um, no thanks.', { fontSize: '40px', fill: '#FFF' });
+        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#FFF' });
+        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#FFF' });
         yay.inputEnabled = true;
         nay.inputEnabled = true
         var that = this
@@ -378,7 +379,7 @@ candle1.scale.x *= -1;
             confirm.destroy()
         }, this);
     } else {
-        var confirm  = this.game.add.text(150, 370, 'this thing appears to be completely useless right now...', { fontSize: '40px', fill: '#FFF' });
+        var confirm  = this.game.add.text(500, 220, 'X', { fontSize: '60px', fill: '#FFF' });
         confirm.inputEnabled = true;
         var that = this
         confirm.events.onInputDown.add(function  (thing) {
@@ -716,29 +717,31 @@ candle1.scale.x *= -1;
           if (x >= 45 && x < 50) {
               // vending machine
               console.log('touching the vend')
-              this.vend()
               this.inDialog = true
+              this.vend()
           } else if (x >= 210 && x < 245) {
               // left desk item
               console.log('touching the lefty')
-              this.openDialog(this.tableStuff[0])
               this.inDialog = true
+              this.openDialog(this.tableStuff[0])
 
           } else if (x >= 250 && x < 275) {
 
             console.log('touching the desk')
+              this.inDialog = true
             this.writeAPoem()
-            this.inDialog = true
           } else if (x >= 300 && x < 320) {
               // right desk item
               console.log('touching the righty')
-              this.openDialog(this.tableStuff[1])
+
               this.inDialog = true
+              this.openDialog(this.tableStuff[1])
           } else if (x >= 150 && x < 200) {
             // BOOKSHELF!
             console.log('touching the books')
+              this.inDialog = true
             this.openDialog({name: 'a shelf of books', description: 'wow there are some really good books here, unfortunately none of them are your training manual which u forgot :<'})
-            this.inDialog = true
+
           } else if (x >= 520 && x < 570) {
             console.log('touching the bed')
             this.inDialog = true
@@ -747,18 +750,25 @@ candle1.scale.x *= -1;
       } else if ((y >= 400 && y < 405)) {
         // if (x >= 150 && x < 200) {
             console.log('touching the computer')
+              this.inDialog = true
             this.openDialog({name: 'a huge computer machine', description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?', ifWeapon: 'that horrible noise continues, it sounds like yr band in college, you feel a sudden urge to hit this thing'})
-            this.inDialog = true
+
             // main platformish?
             // kick thing? OK U NEED AN ITEM TO DO THAT?
           // }
       } else if (y >= 375 && y < 385) {
+
+        this.inDialog = true
         this.openDialog({name: 'broken down fan', description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!'})
         // touching the fan thing!
       } else if  (y >= 295 && y < 305) {
+
+        this.inDialog = true
         this.openDialog({name: 'control panel', description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<', ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '})
         // by the switch 220-240 switch, 240+ the machine tubes
       } else if (y >= 250 && y < 260) {
+
+        this.inDialog = true
         this.openDialog({name: 'on top of the world', description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!'})
         // on top of the radio. mention the view?
       }
