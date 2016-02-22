@@ -417,7 +417,7 @@ candle1.scale.x *= -1;
             nay.destroy()
 
             that.inDialog = false
-            this.cleanUpAndStartNewDay()
+            that.game.state.start("DaySwitch")
 
         }, this);
         nay.events.onInputDown.add(function  (thing) {
@@ -793,9 +793,11 @@ candle1.scale.x *= -1;
     // bg.anchor.setTo(0.5, 0.5);
     bg.alpha = 1;
 var that = this
-    var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+    var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 1000, 1).start();
     t.onLoop.add(function () {
-        t.destroy()
+        console.log('looped!')
+        // t.onLoopCallback(function(){console.log('Y?')})
+        that.game.tweens.remove(t)
       bg.destroy()
       that.game.world.bringToTop(that.player)
     }, this)
