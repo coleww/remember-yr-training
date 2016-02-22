@@ -10,6 +10,7 @@ var poetryGen = require('../poet')
 
 bunker.prototype = {
   create: function () {
+
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
@@ -269,7 +270,7 @@ candle1.scale.x *= -1;
     vend.body.setSize(75, 75, 0, 27)
 
     // The this.player and its settings
-    this.player = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 800, 'dude');
+    this.player = this.game.add.sprite(550, 666, 'dude');
     this.player.scale.setTo(1.5,1)
     //  We need to enable physics on the this.player
     this.game.physics.arcade.enable(this.player);
@@ -320,19 +321,19 @@ candle1.scale.x *= -1;
     // //  The score
     this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
-    this.startDay(1)
+    this.startDay()
   },
   redrawMenu: function () {
     this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
-    this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + this.game.inventory.map(function (item) {
+    this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + get('inventory').map(function (item) {
         return item.name
     }).join(', '), { fontSize: '22px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
 
-    this.walletDisplay = this.game.add.text(150, 25, this.game.wallet + '$', { fontSize: '22px', fill: '#FFF' });
+    this.walletDisplay = this.game.add.text(150, 25, get('wallet') + '$', { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
   },
   redrawInventory: function () {
-    this.inventoryDisplay.setText('inventory:' + this.game.inventory.map(function (item) {
+    this.inventoryDisplay.setText('inventory:' + get('inventory').map(function (item) {
         return item.name
     }).join(', '))
   },
@@ -398,6 +399,50 @@ candle1.scale.x *= -1;
     // draw a dialog box, display the thing, prompt the user to do stuff
     // IF the thing is the poetry journal, defer to openJournal
     // IF it's the chest/vending machine, defer to those
+  },
+  maybeGoToSleep: function () {
+    var men = this.drawMenuBox('parch')
+    men.scale.setTo(1, 1.5)
+    if (this.hasWrittenAPoemToday) {
+        var instruct = this.game.add.text(50, 220, 'GO TO SLEEP?', { fontSize: '30px', fill: '#FFF' });
+        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#FFF' });
+        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#FFF' });
+        yay.inputEnabled = true;
+        nay.inputEnabled = true
+        var that = this
+        yay.events.onInputDown.add(function  (thing) {
+            // RUN THE STUFF!
+            instruct.destroy()
+            yay.destroy()
+            nay.destroy()
+
+            that.inDialog = false
+            this.cleanUpAndStartNewDay()
+
+        }, this);
+        nay.events.onInputDown.add(function  (thing) {
+
+            instruct.destroy()
+            yay.destroy()
+            nay.destroy()
+            men.destroy()
+            that.inDialog = false
+
+        }, this);
+    } else {
+        var confirm  = this.game.add.text(50, 220, 'you are not very tired right now, maybe write some poems to relax?', { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
+        confirm.inputEnabled = true;
+        var that = this
+        confirm.events.onInputDown.add(function  (thing) {
+            // RUN THE STUFF!
+            this.inDialog = false
+            men.destroy()
+            instruct.destroy()
+            confirm.destroy()
+        }, this);
+    }
+
+    // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
   },
   useThing: function (thing, menmen) {
     switch(thing) {
@@ -502,8 +547,9 @@ candle1.scale.x *= -1;
         confirm.destroy()
     }, this);
     if (thing.oneTimeUse) {
-        var i = this.inventory.indexOf(thing)
-        this.inventory.splice(i, 1)
+        var inventory = get('inventory')
+        var i = inventory.indexOf(thing)
+        set('inventory', inventory.splice(i, 1))
     }
 
   },
@@ -517,7 +563,8 @@ candle1.scale.x *= -1;
 
 
     var instruct = this.game.add.text(50, 220, 'INSERT $5?', { fontSize: '60px', fill: '#FFF' });
-    if (this.game.wallet >= 5) {
+    var cash
+    if ((cash = get('wallet')) >= 5) {
       var yay  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#FFF' });
       var nay  = this.game.add.text(150, 450, 'NAHHHHHHH.', { fontSize: '40px', fill: '#FFF' });
       yay.inputEnabled = true;
@@ -525,8 +572,8 @@ candle1.scale.x *= -1;
       var that = this
       yay.events.onInputDown.add(function  (thing) {
         // RUN THE STUFF!
-        that.game.wallet -= 5
-        this.walletDisplay.setText(that.game.wallet + '$')
+        set('wallet', cash - 5)
+        this.walletDisplay.setText(cash - 5 + '$')
         instruct.destroy()
         yay.destroy()
         nay.destroy()
@@ -568,7 +615,9 @@ candle1.scale.x *= -1;
       var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#FFF', wordWrap: true, wordWrapWidth: 150  });
       staticy.inputEnabled = true
       staticy.events.onInputDown.add(function () {
-        that.game.inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i]})
+        var inventory = get('inventory')
+        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i]})
+        set('inventory', inventory)
         set(get('seeds').push(item.seed[i]))
         that.redrawInventory()
         items.forEach(function (it){ it.destroy()})
@@ -652,6 +701,7 @@ candle1.scale.x *= -1;
       that.currentOptions.forEach(function (opt) {
           opt.destroy()
       })
+      this.hasWrittenAPoemToday = true
       that.inDialog = false
     }, that);
   },
@@ -665,8 +715,41 @@ candle1.scale.x *= -1;
     // bookAnim.destroy() // settimeout?
     // reset data, re-run stuff? hrm? some way to re-start it? OH, make a dream state!
   },
-  startDay: function (day) {
+  cleanUpAndStartNewDay: function () {
+    // TURN OFF THE CONTROLS?
+    // lower the robot into the bed
+    // close the door (setTimeouts? OH WAIT I GET THE ANIM NOW)
+    // fade 2 black (how 2 do?)
+    // draw day to screen
+    // fade open again, stuff is redrawn, etc.
 
+    this.game.state.start("DaySwitch")
+  },
+  startDay: function () {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    this.hasWrittenAPoemToday = false
+    var day = get('currentDay')
     if (day == 1) {
       this.tableStuff = [
         {name: 'Some book about stuff',
@@ -704,11 +787,21 @@ candle1.scale.x *= -1;
       var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
     }
     // this.game.world.bringToTop(this.platforms)
-    this.game.world.bringToTop(this.player)
+
+    var bg = this.game.add.sprite(0, 0, 'black');
+    bg.scale.setTo(5, 7)
+    // bg.anchor.setTo(0.5, 0.5);
+    bg.alpha = 1;
+var that = this
+    var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, true, 0, 1000, true);
+    t.onLoop.add(function () {
+        t.destroy()
+      bg.destroy()
+      that.game.world.bringToTop(that.player)
+    }, this)
+
   },
-  maybeGoToSleep: function () {
-    // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
-  },
+
   interactIfTouchingThing: function (x, y) {
     if (!this.inDialog) {
        console.log(x, y, 'idk')

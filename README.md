@@ -11,7 +11,11 @@ P.E.T. POETRY ENGINEERING TECNICHIAN
 
 
 
-
+CURRENT PRIORITIES:
+- day swap thingy. make sure everything is just localstored
+- inventory use system. discon battery game over. COMPLETE PLAYTHRU!
+- sound fx
+- music
 
 
 

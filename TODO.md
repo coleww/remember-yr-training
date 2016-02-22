@@ -40,4 +40,35 @@ if u use the lantern: remarks that robots have night vision, turns screen all wh
 
 
 
+
+
+
+
+
+DAY 2: EVERYTHING IS GRIMIER AND MORE FUCKED UP
+claws scratches
+OH THE BONES!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 HOW TO DO THEEEE OUTFITS?

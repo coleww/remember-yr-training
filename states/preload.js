@@ -12,6 +12,7 @@ preload.prototype = {
     loadingBar.anchor.setTo(0.5)
     game.load.setPreloadSprite(loadingBar)
     game.load.image("blank", "assets/sprites/blank.gif")
+    game.load.image("black", "assets/sprites/black.jpeg")
     game.load.image("title", "assets/sprites/title.png")
     game.load.image("playbutton", "assets/sprites/playbutton.png")
     game.load.image("backsplash", "assets/sprites/backsplash.png")
@@ -108,14 +109,14 @@ preload.prototype = {
     game.load.audio("explosion", ["assets/sounds/explosion.mp3", "assets/sounds/explosion.ogg"])
 
     // TODO: check if the player has a saved game
-    game.inventory = [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}]
-    game.seeds = []
-    game.wallet = 25
+    set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}])
     set('seeds', [])
+    set('currentDay', 1)
+    set('wallet', 25)
 
   },
   create: function(){
-    this.game.state.start("Bunker")
+    this.game.state.start("DaySwitch")
   }
 }
 module.exports = preload
