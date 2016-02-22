@@ -661,8 +661,20 @@ candle1.scale.x *= -1;
   },
   writeAPoem: function () {
     this.currentOptions = []
-    var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
-    poetryBG.scale.setTo(30, 25)
+    // var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
+    // poetryBG.scale.setTo(30, 25)
+    var bookAnim = this.game.add.sprite(-30, -250, 'sweetbook');
+    bookAnim.scale.setTo(27, 35)
+    bookAnim.animations.add('blocky', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], false)
+    bookAnim.animations.play('blocky', 7)
+    var that = this
+    bookAnim.animations.currentAnim.onComplete.add(function () {
+        that.writeThatStinkingPoem(bookAnim)
+
+    }, this);
+
+  },
+  writeThatStinkingPoem: function (bookThingy) {
     var instructions = this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
 
     this.poem = poetryGen()
@@ -677,7 +689,7 @@ candle1.scale.x *= -1;
     quit.inputEnabled = true;
 
     quit.events.onInputDown.add(function () {
-      poetryBG.destroy()
+      bookThingy.destroy()
       that.poemDisplay.destroy()
       quit.destroy()
       instructions.destroy()
@@ -693,7 +705,7 @@ candle1.scale.x *= -1;
       set('poem' + c, that.poem)
       set('poemCount', ++c)
 
-      poetryBG.destroy()
+      bookThingy.destroy()
       that.poemDisplay.destroy()
       quit.destroy()
       instructions.destroy()
@@ -705,16 +717,7 @@ candle1.scale.x *= -1;
       that.inDialog = false
     }, that);
   },
-  goToSleep: function () {
-    var bookAnim = this.game.add.sprite(-30, -250, 'sweetbook');
-    bookAnim.scale.setTo(25, 35)
-    bookAnim.animations.add('blocky', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], false)
-    bookAnim.animations.play('blocky', 50)
-    var the_day = 1
-    this.game.add.text(16, 75, 'September ' + (22 + the_day), { fontSize: '50px', fill: '#FFF' });
-    // bookAnim.destroy() // settimeout?
-    // reset data, re-run stuff? hrm? some way to re-start it? OH, make a dream state!
-  },
+
   cleanUpAndStartNewDay: function () {
     // TURN OFF THE CONTROLS?
     // lower the robot into the bed
