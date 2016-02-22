@@ -344,8 +344,8 @@ candle1.scale.x *= -1;
     var descrip = this.game.add.text(50, 420, thing.description, { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
 
     if (thing.useable) {
-        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#FFF' });
-        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#FFF' });
+        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#08D' });
+        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#08D' });
         yay.inputEnabled = true;
         nay.inputEnabled = true
         var that = this
@@ -405,8 +405,8 @@ candle1.scale.x *= -1;
     men.scale.setTo(1, 1.5)
     if (this.hasWrittenAPoemToday) {
         var instruct = this.game.add.text(50, 220, 'GO TO SLEEP?', { fontSize: '30px', fill: '#FFF' });
-        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#FFF' });
-        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#FFF' });
+        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#08D' });
+        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#08D' });
         yay.inputEnabled = true;
         nay.inputEnabled = true
         var that = this
@@ -536,7 +536,7 @@ candle1.scale.x *= -1;
 
     }
     var whatHappened  = this.game.add.text(150, 570, thing.used, { fontSize: '40px', fill: '#FFF' });
-    var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#FFF' });
+    var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#08D' });
     confirm.inputEnabled = true;
     var that = this
     confirm.events.onInputDown.add(function  (thing) {
@@ -565,8 +565,8 @@ candle1.scale.x *= -1;
     var instruct = this.game.add.text(50, 220, 'INSERT $5?', { fontSize: '60px', fill: '#FFF' });
     var cash
     if ((cash = get('wallet')) >= 5) {
-      var yay  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#FFF' });
-      var nay  = this.game.add.text(150, 450, 'NAHHHHHHH.', { fontSize: '40px', fill: '#FFF' });
+      var yay  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#08D'});
+      var nay  = this.game.add.text(150, 450, 'NAHHHHHHH.', { fontSize: '40px', fill: '#08D'});
       yay.inputEnabled = true;
       nay.inputEnabled = true
       var that = this
@@ -590,7 +590,7 @@ candle1.scale.x *= -1;
       }, this);
     } else {
 
-      var ok  = this.game.add.text(150, 370, 'YOU AINT GOT ENOUGH CASH! GET A JOB! oh wait, this is yr job, when do u get paid? hmmmm', { fontSize: '40px', fill: '#FFF' });
+      var ok  = this.game.add.text(150, 370, 'YOU AINT GOT ENOUGH CASH! GET A JOB! oh wait, this is yr job, when do u get paid? hmmmm', { fontSize: '40px', fill: '#08D' });
       ok.inputEnabled = true
       ok.events.onInputDown.add(function (clicky) {
         instruct.destroy()
@@ -645,7 +645,7 @@ candle1.scale.x *= -1;
     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), 'linebreak']
     var that = this
     nexts.forEach(function (opt, i) {
-      var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#F00' })
+      var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#08D' })
       option.inputEnabled = true;
       option.events.onInputDown.add(select, that);
       that.currentOptions.push(option)
@@ -681,8 +681,8 @@ candle1.scale.x *= -1;
     this.poemDisplay = this.game.add.text(155, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })
     this.runPoem()
     var that = this
-    var quit = that.game.add.text(175, 135, 'quit', { fontSize: '20px', fill: '#00F' })
-    var save = that.game.add.text(250, 135, 'save', { fontSize: '20px', fill: '#00F' })
+    var quit = that.game.add.text(175, 135, 'quit', { fontSize: '20px', fill: '#08D' })
+    var save = that.game.add.text(250, 135, 'save', { fontSize: '20px', fill: '#08D' })
 
 
     save.inputEnabled = true;

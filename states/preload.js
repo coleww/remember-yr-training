@@ -106,7 +106,6 @@ preload.prototype = {
 
 
     game.load.bitmapFont("font", "assets/fonts/font.png", "assets/fonts/font.fnt")
-    game.load.audio("explosion", ["assets/sounds/explosion.mp3", "assets/sounds/explosion.ogg"])
 
     // TODO: check if the player has a saved game
     set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}])
@@ -116,7 +115,7 @@ preload.prototype = {
 
   },
   create: function(){
-    this.game.state.start("DaySwitch")
+    this.game.state.start("TitleScreen")
   }
 }
 module.exports = preload

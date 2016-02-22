@@ -45,6 +45,28 @@ when to show instructions?
 
 
 
+
+
+MAYBE put gifs on the sides and change them? hrmmm. or just tiled metal textures i guess yeah
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 DAY 2: EVERYTHING IS GRIMIER AND MORE FUCKED UP
 claws scratches
 OH THE BONES!

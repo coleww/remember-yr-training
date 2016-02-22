@@ -6,7 +6,7 @@ titleScreen.prototype = {
   create: function(){
     var game = this.game
     var titleBG = game.add.tileSprite(0, 0, game.width, game.height, "backsplash")
-    titleBG.tint = 7557180
+    titleBG.tint = 7
     document.body.style.background = "#"+titleBG.tint.toString(16)
     var title = game.add.image(game.width / 2, 210, "title")
     title.anchor.set(0.5)
@@ -25,7 +25,7 @@ titleScreen.prototype = {
     // ALSO a screen to see yr saved poems?
   },
   startGame: function(){
-    this.game.state.start("Bunker")
+    this.game.state.start("DaySwitch")
   }
 }
 module.exports = titleScreen
