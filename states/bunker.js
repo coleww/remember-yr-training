@@ -1,7 +1,7 @@
 var db = require('../db')
 var get = db.get
 var set = db.set
-
+var drawMenu = require('../drawMenu')
 var bunker = function (game) {
   this.game = this.game
 }
@@ -248,7 +248,7 @@ bunker.prototype = {
     candle1.scale.setTo(2)
     candle1.anchor.setTo(.5,.5);
 
-candle1.scale.x *= -1;
+candle1.scale.x *= -1; // wtf is this?
     var candle2 = this.game.add.sprite(505, 350, 'wallArt3');
     candle2.scale.setTo(2)
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
@@ -342,7 +342,7 @@ candle1.scale.x *= -1;
     menmen.scale.setTo(1, 1.5)
     var instruct = this.game.add.text(50, 220, thing.name, { fontSize: '30px', fill: '#FFF' });
     var descrip = this.game.add.text(50, 420, thing.description, { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
-
+//REFACTOR THISSSSSSSSSSS
     if (thing.useable) {
         var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#08D' });
         var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#08D' });
@@ -368,6 +368,7 @@ candle1.scale.x *= -1;
 
         }, this);
     } else if (thing.situational) {
+        //REFACTOR THISSSSSSSSSSS
         var confirm  = this.game.add.text(150, 370, 'um maybe try to use this somewhere else?', { fontSize: '40px', fill: '#FFF' });
         confirm.inputEnabled = true;
         var that = this
@@ -380,6 +381,7 @@ candle1.scale.x *= -1;
             confirm.destroy()
         }, this);
     } else {
+        //REFACTOR THISSSSSSSSSSS
         var confirm  = this.game.add.text(500, 220, 'X', { fontSize: '60px', fill: '#FFF' });
         confirm.inputEnabled = true;
         var that = this
@@ -404,6 +406,7 @@ candle1.scale.x *= -1;
     var men = this.drawMenuBox('parch')
     men.scale.setTo(1, 1.5)
     if (this.hasWrittenAPoemToday) {
+        //REFACTOR THISSSSSSSSSSS
         var instruct = this.game.add.text(50, 220, 'GO TO SLEEP?', { fontSize: '30px', fill: '#FFF' });
         var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#08D' });
         var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#08D' });
@@ -430,6 +433,7 @@ candle1.scale.x *= -1;
 
         }, this);
     } else {
+        //REFACTOR THISSSSSSSSSSS
         var confirm  = this.game.add.text(50, 220, 'you are not very tired right now, maybe write some poems to relax?', { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
         confirm.inputEnabled = true;
         var that = this
@@ -539,6 +543,7 @@ candle1.scale.x *= -1;
     var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#08D' });
     confirm.inputEnabled = true;
     var that = this
+    //REFACTOR THISSSSSSSSSSS
     confirm.events.onInputDown.add(function  (thing) {
         // RUN THE STUFF!
         this.inDialog = false
@@ -570,6 +575,7 @@ candle1.scale.x *= -1;
       yay.inputEnabled = true;
       nay.inputEnabled = true
       var that = this
+      //REFACTOR THISSSSSSSSSSS
       yay.events.onInputDown.add(function  (thing) {
         // RUN THE STUFF!
         set('wallet', cash - 5)
@@ -691,7 +697,7 @@ candle1.scale.x *= -1;
 
     save.inputEnabled = true;
     quit.inputEnabled = true;
-
+//REFACTOR THISSSSSSSSSSS (maybe?)
     quit.events.onInputDown.add(function () {
       bookThingy.destroy()
       that.poemDisplay.destroy()
@@ -743,7 +749,8 @@ candle1.scale.x *= -1;
 
 
 
-
+    // have player emerge from bed?
+    // open the bed door?
 
 
     // STUFF GETS PROGRESSIVELY MORE GNAR

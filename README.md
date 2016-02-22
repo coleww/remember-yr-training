@@ -11,11 +11,6 @@ P.E.T. POETRY ENGINEERING TECNICHIAN
 
 
 
-CURRENT PRIORITIES:
-- inventory use system. discon battery game over. COMPLETE PLAYTHRU!
-- sound fx
-- music
-
 
 
 
