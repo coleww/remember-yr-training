@@ -29,7 +29,7 @@ DaySwitch.prototype = {
     var instruct = this.game.add.text(50, 220, title, { fontSize: '30px', fill: '#FFF' });
     var descrip = this.game.add.text(50, 320, descroppie, { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
 
-    var yay  = this.game.add.text(50, 670, 'YES!', { fontSize: '70px', fill: '#FFF' });
+    var yay  = this.game.add.text(50, 690, 'I DO!', { fontSize: '70px', fill: '#FFF' });
     yay.inputEnabled = true;
     var that = this
     yay.events.onInputDown.add(function  (thing) {
