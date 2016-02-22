@@ -152,7 +152,7 @@ bunker.prototype = {
     tv.scale.setTo(0.4, 0.4)
     tv.body.immovable = true
 
-    var radio = this.platforms.create(this.game.world.width / 2 - 123, 272, 'radio');
+    var radio = this.platforms.create(this.game.world.width / 2 - 125, 272, 'radio');
     radio.scale.setTo(0.45, 0.78)
     radio.body.setSize(93, 50, 5, 25)
     radio.body.immovable = true
@@ -169,22 +169,22 @@ bunker.prototype = {
     var bulb = this.game.add.sprite(this.game.world.width / 2 - 78, 220, 'bulb');
     bulb.scale.setTo(0.3, 0.7)
 
-    var fuse = this.game.add.sprite(this.game.world.width / 2 - 114, 246, 'fuse');
+    var fuse = this.game.add.sprite(this.game.world.width / 2 - 117, 246, 'fuse');
     fuse.scale.setTo(0.5, 0.75)
 
-    var arrows = this.game.add.sprite(215, 405, 'arrows');
+    var arrows = this.game.add.sprite(205, 375, 'arrows');
     // arrows.scale.setTo(0.5, 0.5)
 
-    var bars = this.game.add.sprite(230, 350, 'bars');
+    var bars = this.game.add.sprite(225, 350, 'bars');
     // bars.scale.setTo(0.4, 0.78)
 
-    var circs = this.game.add.sprite(173, 428, 'circs');
+    var circs = this.game.add.sprite(206, 400, 'circs');
     // circs.scale.setTo(0.45, 0.78)
 
-    var squares = this.game.add.sprite(205, 360, 'squares');
+    var squares = this.game.add.sprite(204, 350, 'squares');
     // squares.scale.setTo(0.3, 0.7)
 
-    var ticks = this.game.add.sprite(235, 350, 'ticks');
+    var ticks = this.game.add.sprite(230, 350, 'ticks');
     // ticks.scale.setTo(0.5, 0.75)
 
     var switchy = this.game.add.sprite(200, 310, 'switchy');
@@ -244,12 +244,12 @@ bunker.prototype = {
 
     var books = this.game.add.sprite(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
     books.scale.setTo(2)
-    var candle1 = this.game.add.sprite(220, 605, 'wallArt3');
+    var candle1 = this.game.add.sprite(90, 365, 'wallArt3');
     candle1.scale.setTo(2)
     candle1.anchor.setTo(.5,.5);
 
 candle1.scale.x *= -1;
-    var candle2 = this.game.add.sprite(120, 550, 'wallArt3');
+    var candle2 = this.game.add.sprite(505, 350, 'wallArt3');
     candle2.scale.setTo(2)
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 
@@ -669,7 +669,8 @@ candle1.scale.x *= -1;
     bookAnim.animations.play('blocky', 7)
     var that = this
 
-    this.player.scale.setTo(6, 4)
+    this.player.scale.setTo(9, 6)
+
     this.game.world.bringToTop(this.player)
     bookAnim.animations.currentAnim.onComplete.add(function () {
         that.writeThatStinkingPoem(bookAnim)
@@ -719,6 +720,8 @@ candle1.scale.x *= -1;
       that.currentOptions.forEach(function (opt) {
           opt.destroy()
       })
+      that.player.y = 670
+      that.player.x = 240
       that.player.scale.setTo(1.5,1)
       that.hasWrittenAPoemToday = true
       that.inDialog = false

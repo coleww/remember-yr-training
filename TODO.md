@@ -43,7 +43,18 @@ when to show instructions?
 
 
 
+VENDING MACHINE ITEMS:
+training manual: if the alarm sounds, push the button
+scrawled note, covered in blood spatter: dont push the button
+????????????????
 
+
+
+put a platform/something on top of the bookcase?
+
+
+
+COMPUTER: move the blinky stuff more on top of things. align buttons into more panel like stuff
 
 
 
