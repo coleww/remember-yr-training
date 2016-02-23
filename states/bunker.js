@@ -1,6 +1,8 @@
 var db = require('../db')
 var get = db.get
 var set = db.set
+var dec = db.dec
+var inc = db.inc
 var drawMenu = require('../drawMenu')
 var bunker = function (game) {
   this.game = this.game
@@ -357,6 +359,39 @@ candle1.scale.x *= -1; // wtf is this?
   },
   openInventory: function () {
     // open a dialog, draw out inventory stuff w/ sprites AND ummm like if they are useable?
+
+    var that = this
+    var menmen = this.drawMenuBox('menu')
+    var title = this.game.add.text(50, 220, 'YOUR BACKPACK', { fontSize: '60px', fill: '#FFF' });
+    var that = this
+    var items = []
+    var inv = get('inventory')
+    inv.forEach(function (opt, i) {
+      var staticy = that.game.add.sprite(75 + i * 180, 325, opt.sprite);
+      staticy.scale.setTo(4)
+      var descrip = that.game.add.text(75 + i * 180, 466, opt.name, { fontSize: '15px', fill: '#FFF', wordWrap: true, wordWrapWidth: 150  });
+      staticy.inputEnabled = true
+
+      items.push(staticy)
+      items.push(descrip)
+
+
+      staticy.events.onInputDown.add(function () {
+        items.forEach(function (it){ it.destroy()})
+        that.game.musician.playFX('twinkleshort')
+        title.setText(opt.name)
+        drawMenu(that.game, menmen, opt, function (menu, obj) {
+            // urggggh just put a gigantic case switch here for the few things that have fx?
+            that.inDialog = false
+            title.destroy()
+            useThing(obj, menu) // this will deal with the FX of whatever
+        }, function (thing) {
+            that.inDialog = false
+            title.destroy()
+        })
+
+      }, that)
+    })
   },
   redrawMenu: function () {
     var that = this
@@ -378,21 +413,18 @@ candle1.scale.x *= -1; // wtf is this?
   })
 
   bag.scale.setTo(0.75)
-    this.hpDisplay = this.game.add.text(50, 25, '100/100', { fontSize: '22px', fill: '#FFF' });
+    this.hpDisplay = this.game.add.text(50, 25, get('health') + '/100', { fontSize: '22px', fill: '#FFF' });
     this.inventoryDisplay = this.game.add.text(65, 65, '' + get('inventory').map(function (item) {
         return item.name
     }).join(', '), { fontSize: '16px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
 
-    this.walletDisplay = this.game.add.text(200, 25, get('wallet'), { fontSize: '22px', fill: '#FFF' });
+    this.walletDisplay = this.game.add.text(200, 25, get('wallet') + '$', { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
   },
   redrawInventory: function () {
     this.inventoryDisplay.setText('inventory:' + get('inventory').map(function (item) {
         return item.name
     }).join(', '))
-  },
-  openInventoryDialog: function () {
-
   },
   openDialog: function (thing) {
     var that = this
@@ -602,6 +634,8 @@ candle1.scale.x *= -1; // wtf is this?
   buyThing: function (menu) {
     console.log("WHOOOA")
     var item = this.vendingItems.pop()
+    var newMoneyFlow = dec('wallet', 5)
+    this.walletDisplay.setText(newMoneyFlow + '$')
     // display them and stuffzzz.
     // add the click buttons too
     var title = this.game.add.text(50, 220, item.name, { fontSize: '60px', fill: '#FFF' });
