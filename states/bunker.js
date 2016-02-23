@@ -348,63 +348,25 @@ candle1.scale.x *= -1; // wtf is this?
 
   },
   openDialog: function (thing) {
-    var menmen = this.drawMenuBox('parch') // or 'parch'
-    menmen.scale.setTo(1, 1.5)
-    var instruct = this.game.add.text(50, 220, thing.name, { fontSize: '30px', fill: '#FFF' });
-    var descrip = this.game.add.text(50, 420, thing.description, { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
-//REFACTOR THISSSSSSSSSSS
-    if (thing.useable) {
-        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#08D' });
-        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#08D' });
-        yay.inputEnabled = true;
-        nay.inputEnabled = true
-        var that = this
-        yay.events.onInputDown.add(function  (thing) {
-            // RUN THE STUFF!
-            instruct.destroy()
-            descrip.destroy()
-            yay.destroy()
-            nay.destroy()
-            that.useThing(thing, menmen)
-        }, this);
-        nay.events.onInputDown.add(function  (thing) {
+    var that = this
+    drawMenu(this.game, 'parch', thing, function (menu, obj) {
+        // urggggh just put a gigantic case switch here for the few things that have fx?
+        that.inDialog = false
+        menu.destroy()
+        if (obj.yes !== 'ok') {
+            obj.description = obj.description + ' you ' + obj.yes
+            obj.yes = 'ok'
+            obj.no = ''
+        }
+    }, function (obj) {
+        that.inDialog = false
+        if (obj.yes !== 'ok') {
+            obj.description = obj.description + ' you ' + obj.no
+            obj.yes = 'ok'
+            obj.no = ''
+        }
 
-            instruct.destroy()
-            descrip.destroy()
-            yay.destroy()
-            nay.destroy()
-            menmen.destroy()
-            that.inDialog = false
-
-        }, this);
-    } else if (thing.situational) {
-        //REFACTOR THISSSSSSSSSSS
-        var confirm  = this.game.add.text(150, 370, 'um maybe try to use this somewhere else?', { fontSize: '40px', fill: '#FFF' });
-        confirm.inputEnabled = true;
-        var that = this
-        confirm.events.onInputDown.add(function  (thing) {
-            // RUN THE STUFF!
-            this.inDialog = false
-            menmen.destroy()
-            instruct.destroy()
-            descrip.destroy()
-            confirm.destroy()
-        }, this);
-    } else {
-        //REFACTOR THISSSSSSSSSSS
-        var confirm  = this.game.add.text(500, 220, 'X', { fontSize: '60px', fill: '#FFF' });
-        confirm.inputEnabled = true;
-        var that = this
-        confirm.events.onInputDown.add(function  (thing) {
-            // RUN THE STUFF!
-            this.inDialog = false
-            menmen.destroy()
-            instruct.destroy()
-            descrip.destroy()
-            confirm.destroy()
-        }, this);
-    }
-
+    })
 
 
     // based on whatever the thing is...."inspect thing" etc.
@@ -786,9 +748,12 @@ candle1.scale.x *= -1; // wtf is this?
     if (day == 1) {
       this.tableStuff = [
         {name: 'Some book about stuff',
-        description: 'whatever you are a robot you already downloaded a pdf of it and read it *yawn*'},
+        description: 'yr pretty sure there is a PDF of it in yr memory banks somewhere *yawn*',
+        yes: 'read it already', no: 'could not put it down! a real page turner, 5 stars'},
         {name: 'sad old mug',
-        description: 'look at me i contain coffee! i think?'}
+        description: 'seems to contain...coffee? it is particularly sad looking, you think about smashing it',
+        yes: 'remember drinking from it and decide to save the memories',
+        no: 'take pity on the sad ceramic and resolve to find some super glue'}
       ]
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
       book1.scale.setTo(0.5)
@@ -798,9 +763,13 @@ candle1.scale.x *= -1; // wtf is this?
     } else if (day == 2) {
       this.tableStuff = [
         {name: 'a jug of unknown fluid',
-        description: '5 bucks says it piss. no wait 10.'},
+        description: 'you wonder what it is inside of there...',
+        yes: 'guess "batteries"',
+        no: 'guess "internet"'},
         {name: 'Math Textbook',
-        description: 'this would make an excellent doorstop...ugh it won\'t fit in yr pocket'}
+        description: 'this would make an excellent doorstop...ugh it won\'t fit in yr pocket',
+        yes: 'kiss the book gently',
+        no: 'gnaw on the leather cover for the protein'}
       ]
       var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
       jug.scale.setTo(0.5)
@@ -810,9 +779,14 @@ candle1.scale.x *= -1; // wtf is this?
     } else {
       this.tableStuff = [
         {name: 'some papers',
-        description: 'you are an excellent doodler. yr works should be on walls everywhere'},
-        {name: 'pizza box',
-        description: 'you miss the pizza dearly :~~~~('}
+        description: 'you are an excellent doodler. yr art should be on walls everywhere',
+        yes: 'reflect on the glory of your works',
+        no: 'humbly sink into a depressive impostor syndrome'},
+        {name: 'empty pizza box',
+        description: 'you miss the pizza dearly :~~~~(',
+        yes: 'accept the absence and move on',
+        no: 'continue to mourn the loss'}
+
       ]
       var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
       var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
@@ -863,7 +837,7 @@ candle1.scale.x *= -1; // wtf is this?
             console.log('touching the desk')
               this.inDialog = true
             this.writeAPoem()
-          } else if (x >= 300 && x < 320) {
+          } else if (x >= 280 && x < 320) {
               // right desk item
               console.log('touching the righty')
 
@@ -873,7 +847,10 @@ candle1.scale.x *= -1; // wtf is this?
             // BOOKSHELF!
             console.log('touching the books')
               this.inDialog = true
-            this.openDialog({name: 'a shelf of books', description: 'wow there are some really good books here, unfortunately none of them are your training manual which u forgot :<'})
+            this.openDialog({name: 'a shelf of books',
+                            description: 'wow there are some really good books here, unfortunately none of them are your training manual which u forgot :<',
+        yes: 'struggle to remember your training',
+        no: 'DGAF about the training you are here to party'})
 
           } else if (x >= 520 && x < 570) {
             console.log('touching the bed')
@@ -884,7 +861,10 @@ candle1.scale.x *= -1; // wtf is this?
         // if (x >= 150 && x < 200) {
             console.log('touching the computer')
               this.inDialog = true
-            this.openDialog({name: 'a huge computer machine', description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?', ifWeapon: 'that horrible noise continues, it sounds like yr band in college, you feel a sudden urge to hit this thing'})
+            this.openDialog({name: 'a huge computer machine',
+                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
+        yes: 'think about the cooling system',
+        no: 'try kicking it'})
 
             // main platformish?
             // kick thing? OK U NEED AN ITEM TO DO THAT?
@@ -892,17 +872,27 @@ candle1.scale.x *= -1; // wtf is this?
       } else if (y >= 375 && y < 385) {
 
         this.inDialog = true
-        this.openDialog({name: 'broken down fan', description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!'})
+        this.openDialog({name: 'broken down fan',
+                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
+        yes: 'wonder if there is a tool that could fix it',
+        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'})
         // touching the fan thing!
       } else if  (y >= 295 && y < 305) {
 
         this.inDialog = true
-        this.openDialog({name: 'control panel', description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<', ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '})
+        this.openDialog({name: 'control panel',
+                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
+        yes: 'back away slowly',
+        no: 'aspire to push it one day',
+        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '})
         // by the switch 220-240 switch, 240+ the machine tubes
       } else if (y >= 250 && y < 260) {
 
         this.inDialog = true
-        this.openDialog({name: 'on top of the world', description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!'})
+        this.openDialog({name: 'on top of the world',
+                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
+        yes: 'think carefully about how to get down from here',
+        no: 'think that this game probably does not have fall damage'})
         // on top of the radio. mention the view?
       }
     }
