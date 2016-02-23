@@ -20,97 +20,6 @@ bunker.prototype = {
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
-    this.tableStuff = []
-
-    this.vendingItems = shuffle([
-      {name: 'RANDOM!',
-        descriptions: [
-          'these shiny pebbles might be worth something, or maybe it is food? A GAMBLE!',
-          'a skeleton key! that means it can open any door in the building! i wonder if there are any doors tho...',
-          'a lantern, excellent for exploring dark corridors.'],
-        sprites: ['pebbles', 'key', 'lantern'],
-        names: ['shiny pebbles', 'skeleton key', 'lantern'],
-        fx: ['drop','key','light'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['greed', 'greed', 'nature']// keys to an object of corpii for later?
-
-      },
-      {name: 'boots',
-        descriptions: [
-          'sparkly green crystals. so pretty',
-          'these blue crystals smell like sweet berries and u would like to gnaw on them vvv badly',
-          'purplish crystals, look pretty dense, probably worth something to somebody'],
-        sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal'],
-        names: ['green crystals', 'blue crystals', 'purple crystals'],
-        fx: ['greenspeed','flashy','kick'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
-
-      },
-      {name: 'foods',
-        descriptions: ['a delicious cold beer. yr a robot so i am not sure what will happen if you pour this all over yourself.... be careful!',
-        'delicious bread. you can maybe hang slices of bread on the wall like art?',
-        'some sort of leg to an animal. poor thing. you will honor the life of this magnificient creature by wielding this bone as a crude bludgeon in your quest for justice'],
-        sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick'],
-        names: ['strong ale', 'bread loaf', 'animal leg'],
-        fx: ['faded','breadart','chickenattack'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
-      },
-      {name: 'MAGICAL ITEMS',
-        descriptions: ['a bright glowing star! good for illuminating dark spaces! or also as a party light.',
-        '"DRINK FROM THIS CHALICE, AND U SHALL ATTAIN ALL KNOWLEDGE" is what it says underneath the microwave safe notice',
-        'this orb is mysterious and probably powerful. or at least u could throw it at something'],
-        names: ['star of glowingness', 'chalice of knowledge', 'orb of mystery'],
-        sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel'],
-        fx: ['light','know','drop'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['nature', 'greed', 'fight']// keys to an object of corpii for later?
-      },
-      {name: 'shrooms',
-        descriptions: ['looks like the sort of mushroom that you get on pizzas. mmmm. pizza. yes you totally can probably eat this',
-        'this one looks...intriguing. it has like, this kind of aura going on, you know? but the aura is also menacing?',
-        'this mushroom is literally oozing out what appears to be blood, and when you put your ear close to it a faint grinding and gnashing sound can be heard.'],
-        sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed'],
-        names: ['brown mushroom', 'purple mushroom', 'red mushroom'],
-        fx: ['hp25','transformtrip','transformevil'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
-      },
-      {name: 'big sodas',
-        descriptions: ['this soda is blue, and it looks just like the ocean under the moon','this soda is green, which is the same as the emotion that i get from you','this soda is red, which is the color of your heart which you should give to me or else forget about it'],
-        sprites: ['RobeB', 'RobeG', 'RobeR'],
-        names: ['blue soda', 'green soda', 'red soda'],
-        fx: ['hp25','$10','hp25'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
-      },
-      {name: 'swords',
-        descriptions: ['this sword appears to be constantly on fire, which is itself pretty frigging sweet, but on top of that free heater for life? KA CHING',
-        'erm, this sword is pretty gross and just keeps leaking this slime everywhere, it kind of has the consistency of gak? do you remember gak? *googles to see if they still make gak*',
-        'this sword casts a shadow upon everything near it and appears to be sucking in all the light in the room. it appears quite powerful but may also control your soul if you wield it?'],
-        sprites: ['Sword1', 'Sword2', 'Sword3'],
-        names: ['fire sword', 'goo sword', 'sword of all-consuming darkness'],
-        fx: ['fireslash','gooslash','darkslash'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
-      },
-      {name: 'potions',
-        descriptions: ['a green potion, the color of MORE MONEY! or is nature?',
-        'a red potion, the color of your blood and the blood of your enemies!',
-        'a yellow potion, the color of, um, piss? pee pee. number 1. *giggles*'],
-        sprites: ['VialG', 'VialR', 'VialY'],
-        names: ['green potion', 'red potion', 'yellow potion'],
-        fx: ['makeTree','makeBloodSculpture','makeGold'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['nature', 'fight', 'greed']// keys to an object of corpii for later?
-      },
-      {name: 'books',
-      descriptions: ['a training manual! you have been looking everywhere for this!',
-       'mixology handbook, hmm might help to pass the time',
-       'a filthy, bloody note. intriguing.'],
-      sprites: ['', '', ''],
-      names: ['training manual', 'mixology book', 'bloody note (folded)'],
-      extended: ['it reads "WHEN ALARM BLARES LOUDLY WITH NO END IN SIGHT, PRESS THE BUTTON"',
-      'if you drink a bunch of stuff from the vending machine during the same day, weird stuff might happen!',
-      'it is dirty, covered in blood, wrinkled up, and might have been bitten? you are pretty sure that it faintly reads "ABSOLUTELY DO NOT PUSH THE BUTTON"'],
-      fx: ['read', 'read', 'read'],
-      seed: ['greed', 'fight', 'nature']}
-    ])
-
-
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
     var top = this.game.add.tileSprite(0, 0, 640, 150, 'walllll');
@@ -667,7 +576,7 @@ bunker.prototype = {
   },
   buyThing: function (menu) {
     console.log("WHOOOA")
-    var item = this.vendingItems.pop()
+    var item = this.game.vendingItems.pop()
     var newMoneyFlow = dec('wallet', 5)
     this.walletDisplay.setText(newMoneyFlow + '$')
     // display them and stuffzzz.
@@ -1047,21 +956,3 @@ bunker.prototype = {
 module.exports = bunker
 
 
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
