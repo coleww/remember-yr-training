@@ -366,12 +366,22 @@ candle1.scale.x *= -1; // wtf is this?
     var that = this
     var items = []
     var inv = get('inventory')
+    var bonus = 0
+    var x = 0
     inv.forEach(function (opt, i) {
-      var staticy = that.game.add.sprite(75 + i * 180, 325, opt.sprite);
-      staticy.scale.setTo(4)
-      var descrip = that.game.add.text(75 + i * 180, 466, opt.name, { fontSize: '15px', fill: '#FFF', wordWrap: true, wordWrapWidth: 150  });
+        if (i == 4) {
+            bonus += 150
+            x = 0
+        }
+        if (i == 8) {
+            bonus += 150
+            x = 0
+        }
+      var staticy = that.game.add.sprite(75 + x * 125, 325 + bonus, opt.sprite);
+      staticy.scale.setTo(3.5)
+      var descrip = that.game.add.text(75 + x * 125, 325 + bonus, opt.name, { fontSize: '20px', fill: '#3F3', wordWrap: true, wordWrapWidth: 120  });
       staticy.inputEnabled = true
-
+      x++
       items.push(staticy)
       items.push(descrip)
 

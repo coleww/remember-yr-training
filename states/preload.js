@@ -104,7 +104,7 @@ preload.prototype = {
     game.load.image("blankpaper", "assets/sprites/PaperDecoration_Blank.png")
     game.load.image("paper3", "assets/sprites/SinglePage.png")
 
-    game.load.image("battery", "assets/sprites/icon-power.png")
+    game.load.image("battery", "assets/sprites/vending/icon-power.png")
     game.load.image('ground', 'assets/sprites/gbground.png');
     game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);
     game.load.image('platform', 'assets/sprites/gbplat.png');
