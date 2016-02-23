@@ -7,6 +7,7 @@
 - MOVE all the openDialog items to the errm um DAY SWITCHY thing. for the infos. 
 
 
+ADD POSTER FX
 
 
 RATHER THAN 

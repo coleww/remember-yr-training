@@ -97,6 +97,17 @@ bunker.prototype = {
         fx: ['makeTree','makeBloodSculpture','makeGold'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'fight', 'greed']// keys to an object of corpii for later?
       },
+      {name: 'books',
+      descriptions: ['a training manual! you have been looking everywhere for this!',
+       'mixology handbook, hmm might help to pass the time',
+       'a filthy, bloody note. intriguing.'],
+      sprites: ['', '', ''],
+      names: ['training manual', 'mixology book', 'bloody note (folded)'],
+      extended: ['it reads "WHEN ALARM BLARES LOUDLY WITH NO END IN SIGHT, PRESS THE BUTTON"',
+      'if you drink a bunch of stuff from the vending machine during the same day, weird stuff might happen!',
+      'it is dirty, covered in blood, wrinkled up, and might have been bitten? you are pretty sure that it faintly reads "ABSOLUTELY DO NOT PUSH THE BUTTON"'],
+      fx: ['read', 'read', 'read'],
+      seed: ['greed', 'fight', 'nature']}
     ])
 
 
@@ -236,14 +247,26 @@ bunker.prototype = {
 
     var candle = this.game.add.sprite(this.game.world.width / 2 - 40, this.game.world.height - 330, 'candle');
 
+
+    // "paintings"
     var art1 = this.game.add.sprite(10, 170, 'wallArt1');
     art1.scale.setTo(2)
     var art2 = this.game.add.sprite(500, 490, 'wallArt2');
     art2.scale.setTo(2)
-    var art3 = this.game.add.sprite(550, 200, 'wallArt4');
-    art3.scale.setTo(2)
-    var art4 = this.game.add.sprite(75, 510, 'wallArt5');
-    art4.scale.setTo(2)
+    // candelebras
+        var candle1 = this.game.add.sprite(50, 240, 'wallArt3');
+    candle1.scale.setTo(2)
+    candle1.anchor.setTo(.5,.5);
+
+    candle1.scale.x *= -1; // wtf is this?
+    var candle2 = this.game.add.sprite(510, 505, 'wallArt3');
+    candle2.scale.setTo(2)
+
+    // posters
+    var art3 = this.game.add.sprite(425, 615, 'wallArt4');
+    art3.scale.setTo(1.5)
+    var art4 = this.game.add.sprite(100, 615, 'wallArt5');
+    art4.scale.setTo(1.5)
 
 
 
@@ -255,13 +278,8 @@ bunker.prototype = {
 
 
 
-    var candle1 = this.game.add.sprite(50, 240, 'wallArt3');
-    candle1.scale.setTo(2)
-    candle1.anchor.setTo(.5,.5);
 
-candle1.scale.x *= -1; // wtf is this?
-    var candle2 = this.game.add.sprite(510, 505, 'wallArt3');
-    candle2.scale.setTo(2)
+
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)

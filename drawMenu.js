@@ -19,6 +19,11 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
       var instruct = game.add.text(50, 220, obj.name, { fontSize: '30px', fill: '#111' , wordWrap: true, wordWrapWidth: 550 });
       var descrip = game.add.text(50, 420, obj.description, { fontSize: '25px', fill: '#111', wordWrap: true, wordWrapWidth: 450  });
   //REFACTOR THISSSSSSSSSSS
+  var sevenup
+  if (obj.sprite) {
+    sevenup = game.add.sprite(50, 300, obj.sprite)
+    sevenup.scale.setTo(2.5)
+  }
       var yay  = game.add.text(50, 670, obj.yes, { fontSize: '20px', fill: '#08D', wordWrap: true, wordWrapWidth: game.world.width / 3 });
       yay.inputEnabled = true;
       var nay
@@ -29,6 +34,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
           instruct.destroy()
           descrip.destroy()
           yay.destroy()
+          if (obj.sprite) sevenup.destroy()
           if (obj.no) nay.destroy()
           yesCB(menmen, obj)
       }, this);
@@ -43,6 +49,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
             descrip.destroy()
             yay.destroy()
             nay.destroy()
+            if (obj.sprite) sevenup.destroy()
             menmen.destroy()
             noCB(obj)
 
