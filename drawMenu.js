@@ -16,7 +16,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
         menmen = bg
       }
 
-      var instruct = game.add.text(50, 220, obj.name, { fontSize: '30px', fill: '#111' });
+      var instruct = game.add.text(50, 220, obj.name, { fontSize: '30px', fill: '#111' , wordWrap: true, wordWrapWidth: 550 });
       var descrip = game.add.text(50, 420, obj.description, { fontSize: '25px', fill: '#111', wordWrap: true, wordWrapWidth: 450  });
   //REFACTOR THISSSSSSSSSSS
       var yay  = game.add.text(50, 670, obj.yes, { fontSize: '20px', fill: '#08D', wordWrap: true, wordWrapWidth: game.world.width / 3 });

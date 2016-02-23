@@ -116,6 +116,7 @@ preload.prototype = {
     set('seeds', [])
     set('currentDay', 0)
     set('wallet', 25)
+    set('health', 100)
 
   },
   create: function(){

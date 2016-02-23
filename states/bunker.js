@@ -9,9 +9,9 @@ function pick (arr) {
   return arr[~~(Math.random() * arr.length)]
 }
 
-
+var makeASong = require('../makeASong')
 var poetryGen = require('../poet')
-
+var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
 
@@ -332,12 +332,50 @@ candle1.scale.x *= -1; // wtf is this?
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.startDay()
   },
-  redrawMenu: function () {
+  openWallet: function () {
+    // INSPECTING YR WALLET
+    // BASED on yr twine choices and how much u got, will say smth
+    var wallet = get('wallet')
+    var align = get('alignment')
 
+    drawMenu(this.game, 'parch', makeAnticapitalistTract(wallet, align),
+                 function (men, obj) {
+                    men.destroy()
+                    that.inDialog = false
+                 })
+
+  },
+  openHealth: function () {
+    // based on yr health level, will sing a song with matching markov sentiment
+    var song = makeASong(get('health'))
+
+    drawMenu(this.game, 'parch', song,
+                 function (men, obj) {
+                    men.destroy()
+                    that.inDialog = false
+                 })
+  },
+  openInventory: function () {
+    // open a dialog, draw out inventory stuff w/ sprites AND ummm like if they are useable?
+  },
+  redrawMenu: function () {
+    var that = this
   var wallet = this.game.add.sprite(150, 20, 'wallet');
+  wallet.inputEnabled = true
+  wallet.events.onInputDown.add(function () {
+    that.openWallet()
+  })
   wallet.scale.setTo(1.5)
   var hp = this.game.add.sprite(16, 25, 'hp');
+  hp.inputEnabled = true
+  hp.events.onInputDown.add(function () {
+    that.openHealth()
+  })
   var bag = this.game.add.sprite(16, 60, 'bag');
+  bag.inputEnabled = true
+  bag.events.onInputDown.add(function () {
+    that.openInventory()
+  })
 
   bag.scale.setTo(0.75)
     this.hpDisplay = this.game.add.text(50, 25, '100/100', { fontSize: '22px', fill: '#FFF' });
