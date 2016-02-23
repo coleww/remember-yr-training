@@ -537,17 +537,19 @@ candle1.scale.x *= -1; // wtf is this?
                  })
 
     } else {
+        drawMenu(this.game, menmen, {
+                    name: 'VEND-O-3000',
+                 description: 'YOU AINT GOT ENOUGH CASH! GET A JOB! oh wait, this is yr job, when do u get paid? hmmmm',
+                 yes: 'ugh i hate capitalism',
+                 no: 'i deserve this'},
+                 function (men, obj) {
+                    men.destroy()
+                    that.inDialog = false
+                 }, function (obj) {
+                    that.inDialog = false
+                 })
 
-      var ok  = this.game.add.text(150, 370, 'YOU AINT GOT ENOUGH CASH! GET A JOB! oh wait, this is yr job, when do u get paid? hmmmm', { fontSize: '40px', fill: '#08D' });
-      ok.inputEnabled = true
-      ok.events.onInputDown.add(function (clicky) {
-        instruct.destroy()
-        ok.destroy()
-        menmen.destroy()
-      })
     }
-    // this.game.world.bringToTop(yay)
-    // this.game.world.bringToTop(nay)
   },
   buyThing: function (menu) {
     console.log("WHOOOA")
@@ -635,6 +637,8 @@ candle1.scale.x *= -1; // wtf is this?
     var that = this
     var quit = that.game.add.text(175, 135, 'quit', { fontSize: '20px', fill: '#08D' })
     var save = that.game.add.text(250, 135, 'save', { fontSize: '20px', fill: '#08D' })
+
+
 
 
     save.inputEnabled = true;

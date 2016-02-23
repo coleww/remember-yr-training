@@ -10,7 +10,6 @@ titleScreen.prototype = {
     document.body.style.background = "#"+titleBG.tint.toString(16)
     var title = game.add.image(game.width / 2, 210, "title")
     title.anchor.set(0.5)
-    game.add.bitmapText(game.width / 2, 480 , "font", "=^.^=", 48).anchor.x = 0.5
 
 
     // PUT CONTROLS DESCIRPTION HERE-ISH?

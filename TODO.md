@@ -15,5 +15,5 @@
 
 http://phaser.io/tutorials/creating-custom-phaser-builds
 custom phaser build. exclude: 
-text retrofont net sound debug ninja p2 tilemaps
+bitmaptext retrofont net sound debug ninja p2 tilemaps
 compress images, convert everything to png, scale down huge stuff

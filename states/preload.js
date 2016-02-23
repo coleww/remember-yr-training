@@ -110,7 +110,6 @@ preload.prototype = {
     game.load.spritesheet('dude', 'assets/sprites/protocoldroid2.png', 32, 48);
 
 
-    game.load.bitmapFont("font", "assets/fonts/font.png", "assets/fonts/font.fnt")
 
     // TODO: check if the player has a saved game
     set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', fx: 'gameOver1'}])
