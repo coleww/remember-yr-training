@@ -246,8 +246,13 @@ bunker.prototype = {
 
 
 
-    var books = this.game.add.sprite(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
+    var books = this.platforms.create(this.game.world.width / 2 - 152, this.game.world.height - 332, 'books');
     books.scale.setTo(2)
+    books.body.immovable = true
+    books.body.setSize(30, 1, 0, 20)
+
+
+
     var candle1 = this.game.add.sprite(90, 365, 'wallArt3');
     candle1.scale.setTo(2)
     candle1.anchor.setTo(.5,.5);
