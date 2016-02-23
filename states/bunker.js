@@ -251,7 +251,7 @@ bunker.prototype = {
     // "paintings"
     var art1 = this.game.add.sprite(10, 170, 'wallArt1');
     art1.scale.setTo(2)
-    var art2 = this.game.add.sprite(500, 490, 'wallArt2');
+    var art2 = this.game.add.sprite(465, 185, 'wallArt2');
     art2.scale.setTo(2)
     // candelebras
         var candle1 = this.game.add.sprite(50, 240, 'wallArt3');
@@ -259,7 +259,7 @@ bunker.prototype = {
     candle1.anchor.setTo(.5,.5);
 
     candle1.scale.x *= -1; // wtf is this?
-    var candle2 = this.game.add.sprite(510, 505, 'wallArt3');
+    var candle2 = this.game.add.sprite(475, 200, 'wallArt3');
     candle2.scale.setTo(2)
 
     // posters
@@ -861,7 +861,7 @@ bunker.prototype = {
         description: 'you wonder what it is inside of there...',
         yes: 'guess "batteries"',
         no: 'guess "internet"'}
-        this.game.tableStuff[1] =  {name: 'Math Textbook',
+        this.wallgame.tableStuff[1] =  {name: 'Math Textbook',
         description: 'this would make an excellent doorstop...ugh it won\'t fit in yr pocket',
         yes: 'kiss the book gently',
         no: 'gnaw on the leather cover for the protein'}
