@@ -19,6 +19,8 @@
 - TAKE DAMAGE if yr in the air for too long? or jump from the radio? isJumping, maxHeight, etc.
 
 
+WALK ALONG THE TABLE! place things cleverly in front of or behind u
+
 ['greed', 'nature', 'fight']
 // if player overwhelmingly picks one alignment, different ending? ALSO if player fails to escape
 3 + 1 + 1

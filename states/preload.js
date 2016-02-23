@@ -119,6 +119,7 @@ preload.prototype = {
     set('wallet', 25)
     set('health', 100)
     set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
+    set('gameOver', false)
 
   },
   create: function(){

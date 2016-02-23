@@ -384,7 +384,7 @@ candle1.scale.x *= -1; // wtf is this?
             // urggggh just put a gigantic case switch here for the few things that have fx?
             that.inDialog = false
             title.destroy()
-            useThing(obj, menu) // this will deal with the FX of whatever
+            that.useThing(obj, menu) // this will deal with the FX of whatever
         }, function (thing) {
             that.inDialog = false
             title.destroy()
@@ -487,9 +487,10 @@ candle1.scale.x *= -1; // wtf is this?
     // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
   },
   useThing: function (thing, menmen) {
-    switch(thing) {
-        case '':
-            // stuff
+    switch(thing.fx) {
+        case 'gameOver1':
+            set('gameOver', 1)
+            this.game.state.start("GameOverScreen")
             break;
         case '':
             // stuff

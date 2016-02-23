@@ -14,7 +14,8 @@ var gameOverScreen = function(game){
 gameOverScreen.prototype = {
   create: function(){
     // SEE IF THE PLAYER HAS DATA? FOR WHICH TYPE OF ENDING?
-    var titleBG = this.game.add.tileSprite(0, 0, game.width, game.height, "backsplash")
+    console.log('yo')
+    var titleBG = this.game.add.tileSprite(0, 0, this.game.width, this.game.height, "backsplash")
     titleBG.tint = 7557180
 
 
