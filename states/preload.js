@@ -121,6 +121,74 @@ preload.prototype = {
     set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
     set('gameOver', false)
 
+
+
+
+
+
+
+
+
+
+
+
+    game.computerStuff = [
+            {name: 'on top of the world',
+                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
+        yes: 'think carefully about how to get down from here',
+        no: 'think that this game probably does not have fall damage'},
+        {name: 'control panel',
+                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
+        yes: 'back away slowly',
+        no: 'aspire to push it one day',
+        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
+        {name: 'a huge computer machine',
+                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
+        yes: 'think about the cooling system',
+        no: 'try kicking it'},
+        {name: 'broken down fan',
+                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
+        yes: 'wonder if there is a tool that could fix it',
+        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!', ifPunch: {description: 'purring like a kitten', yes: 'yes it is, i did that, me. err, you. whomever, comrade.'}}
+
+        ]
+      game.tableStuff = [
+        {name: 'Some book about stuff',
+        description: 'yr pretty sure there is a PDF of it in yr memory banks somewhere *yawn*',
+        yes: 'read it already', no: 'could not put it down! a real page turner, 5 stars'},
+        {name: 'sad old mug',
+        description: 'seems to contain...coffee? it is particularly sad looking, you think about smashing it',
+        yes: 'remember drinking from it and decide to save the memories',
+        no: 'take pity on the sad ceramic and resolve to find some super glue'},
+        {name: 'a shelf of books',
+                            description: 'wow there are some really good books here, unfortunately none of them are your training manual which u forgot :<',
+        yes: 'struggle to remember your training',
+        no: 'DGAF about the training you are here to party'},
+        {name: 'Health Poster',
+            description: 'a poster detailing the virtues of tofu in regards to your health. it seems a suspiciously bulgy',
+            yes: 'tear that wall down!',
+            no: 'respect the art...for now',
+            fx: 'destroyWallArt1',
+            item: {
+                name: 'tofu dish',
+                description: 'will replenish your health! and maybe more!',
+                fx: 'hp25$10',
+                yes: 'eat that thing',
+                no: 'um it is jiggling a lil ~too~ weirdly for me'}},
+        {name: 'Strength Poster',
+            description: 'a poster detailing the virtues of tofu as it relates to getting hella swole and punching bad people. the poster itself seems suspiciously well built...',
+            yes: 'grab that thing,take it down,HOOOOO RAHHHHHH',
+            no: 'respect the art...for now',
+            fx: 'destroyWallArt2',
+            item: {
+                name: 'tofu energy drink',
+                description: 'the label is just a bunch of screaming in all caps',
+                fx: 'canpunch',
+                yes: 'chug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chug',
+                no: 'i will pass'}}
+
+      ]
+
   },
   create: function(){
     this.game.state.start("Bunker")

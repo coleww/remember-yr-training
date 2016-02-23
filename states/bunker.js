@@ -459,11 +459,16 @@ bunker.prototype = {
     drawMenu(this.game, 'parch', thing, function (menu, obj) {
         // urggggh just put a gigantic case switch here for the few things that have fx?
         that.inDialog = false
-        menu.destroy()
         if (thing.yes !== 'ok') {
             thing.description = thing.description + ' you ' + thing.yes
             thing.yes = 'ok'
             thing.no = ''
+        }
+        if (thing.fx) {
+            useThing(menu, thing)
+        } else {
+
+            menu.destroy()
         }
     }, function (thing) {
         that.inDialog = false
@@ -840,112 +845,43 @@ bunker.prototype = {
 
     this.hasWrittenAPoemToday = false
     var day = get('currentDay')
-    if (day == 2) {
-        this.computerStuff = [
-            {name: 'on top of the world',
-                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
-        yes: 'think carefully about how to get down from here',
-        no: 'think that this game probably does not have fall damage'},
-        {name: 'control panel',
-                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
-        yes: 'back away slowly',
-        no: 'aspire to push it one day',
-        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
-        {name: 'a huge computer machine',
-                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
-        yes: 'think about the cooling system',
-        no: 'try kicking it'},
-        {name: 'broken down fan',
-                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
-        yes: 'wonder if there is a tool that could fix it',
-        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'}
-        ]
-      this.tableStuff = [
-        {name: 'Some book about stuff',
-        description: 'yr pretty sure there is a PDF of it in yr memory banks somewhere *yawn*',
-        yes: 'read it already', no: 'could not put it down! a real page turner, 5 stars'},
-        {name: 'sad old mug',
-        description: 'seems to contain...coffee? it is particularly sad looking, you think about smashing it',
-        yes: 'remember drinking from it and decide to save the memories',
-        no: 'take pity on the sad ceramic and resolve to find some super glue'},
-        {name: 'a shelf of books',
-                            description: 'wow there are some really good books here, unfortunately none of them are your training manual which u forgot :<',
-        yes: 'struggle to remember your training',
-        no: 'DGAF about the training you are here to party'}
-      ]
+
+
+      if (day == 2) {
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
       book1.scale.setTo(0.5)
       var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
       mug.scale.setTo(0.75)
       var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
-    } else if (day == 3) {
-        this.computerStuff = [
-                 {name: 'on top of the world',
-                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
-        yes: 'think carefully about how to get down from here',
-        no: 'think that this game probably does not have fall damage'},
-        {name: 'control panel',
-                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
-        yes: 'back away slowly',
-        no: 'aspire to push it one day',
-        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
-        {name: 'a huge computer machine',
-                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
-        yes: 'think about the cooling system',
-        no: 'try kicking it'},
-        {name: 'broken down fan',
-                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
-        yes: 'wonder if there is a tool that could fix it',
-        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'}
 
-        ]
-      this.tableStuff = [
-        {name: 'a jug of unknown fluid',
+
+    } else if (day == 3) {
+
+      this.game.tableStuff[0] =  {name: 'a jug of unknown fluid',
         description: 'you wonder what it is inside of there...',
         yes: 'guess "batteries"',
-        no: 'guess "internet"'},
-        {name: 'Math Textbook',
+        no: 'guess "internet"'}
+        this.game.tableStuff[1] =  {name: 'Math Textbook',
         description: 'this would make an excellent doorstop...ugh it won\'t fit in yr pocket',
         yes: 'kiss the book gently',
         no: 'gnaw on the leather cover for the protein'}
-      ]
+
       var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
       jug.scale.setTo(0.5)
       var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
       book2.scale.setTo(0.5)
       var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
     } else {
-        this.computerStuff = [
-                  {name: 'on top of the world',
-                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
-        yes: 'think carefully about how to get down from here',
-        no: 'think that this game probably does not have fall damage'},
-        {name: 'control panel',
-                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
-        yes: 'back away slowly',
-        no: 'aspire to push it one day',
-        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
-        {name: 'a huge computer machine',
-                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
-        yes: 'think about the cooling system',
-        no: 'try kicking it'},
-        {name: 'broken down fan',
-                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
-        yes: 'wonder if there is a tool that could fix it',
-        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'}
 
-        ]
-      this.tableStuff = [
-        {name: 'some papers',
+      this.game.tableStuff[0] = {name: 'some papers',
         description: 'you are an excellent doodler. yr art should be on walls everywhere',
         yes: 'reflect on the glory of your works',
-        no: 'humbly sink into a depressive impostor syndrome'},
-        {name: 'empty pizza box',
+        no: 'humbly sink into a depressive impostor syndrome'}
+
+        this.game.tableStuff[1] = {name: 'empty pizza box',
         description: 'you miss the pizza dearly :~~~~(',
         yes: 'accept the absence and move on',
         no: 'continue to mourn the loss'}
-
-      ]
       var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
       var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
       pizza.scale.setTo(0.75)
@@ -984,6 +920,18 @@ bunker.prototype = {
               console.log('touching the vend')
               this.inDialog = true
               this.vend()
+          } else if (x >= 80 && x < 130) {
+            // BOOKSHELF!
+            console.log('touching the L poster')
+              this.inDialog = true
+            this.openDialog(this.tableStuff[3])
+
+          }else if (x >= 150 && x < 200) {
+            // BOOKSHELF!
+            console.log('touching the books')
+              this.inDialog = true
+            this.openDialog(this.tableStuff[2])
+
           } else if (x >= 210 && x < 245) {
               // left desk item
               console.log('touching the lefty')
@@ -1001,13 +949,11 @@ bunker.prototype = {
 
               this.inDialog = true
               this.openDialog(this.tableStuff[1])
-          } else if (x >= 150 && x < 200) {
-            // BOOKSHELF!
-            console.log('touching the books')
-              this.inDialog = true
-            this.openDialog(this.tableStuff[2])
-
-          } else if (x >= 520 && x < 570) {
+          }  else if (x >= 420 && x < 450) {
+            console.log('touching the R poster')
+            this.inDialog = true
+            this.openDialog(this.tableStuff[4])
+          }else if (x >= 520 && x < 570) {
             console.log('touching the bed')
             this.inDialog = true
             this.maybeGoToSleep()
@@ -1071,6 +1017,7 @@ bunker.prototype = {
         this.player.animations.stop();
         this.player.frame = 12
         this.player.body.velocity.x = 0
+        console.log(this.player.x, this.player.y)
         this.interactIfTouchingThing(this.player.x, this.player.y)
     } else {
       var goingUp = !this.player.body.velocity.x
