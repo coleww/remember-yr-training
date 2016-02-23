@@ -376,7 +376,6 @@ candle1.scale.x *= -1; // wtf is this?
   },
   maybeGoToSleep: function () {
     if (this.hasWrittenAPoemToday) {
-        //REFACTOR THISSSSSSSSSSS
         var that = this
         drawMenu(this.game, 'parch',
                  {name: 'GO TO SLEEP?',
@@ -498,6 +497,7 @@ candle1.scale.x *= -1; // wtf is this?
             break;
 
     }
+
     var whatHappened  = this.game.add.text(150, 570, thing.used, { fontSize: '40px', fill: '#FFF' });
     var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#08D' });
     confirm.inputEnabled = true;
@@ -525,34 +525,17 @@ candle1.scale.x *= -1; // wtf is this?
   vend: function () {
     var menmen = this.drawMenuBox('menu') // or 'parch'
 
-
-    var instruct = this.game.add.text(50, 220, 'INSERT $5?', { fontSize: '60px', fill: '#FFF' });
+    var that = this
     var cash
     if ((cash = get('wallet')) >= 5) {
-      var yay  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#08D'});
-      var nay  = this.game.add.text(150, 450, 'NAHHHHHHH.', { fontSize: '40px', fill: '#08D'});
-      yay.inputEnabled = true;
-      nay.inputEnabled = true
-      var that = this
-      //REFACTOR THISSSSSSSSSSS
-      yay.events.onInputDown.add(function  (thing) {
-        // RUN THE STUFF!
-        set('wallet', cash - 5)
-        this.walletDisplay.setText(cash - 5 + '$')
-        instruct.destroy()
-        yay.destroy()
-        nay.destroy()
-        that.buyThing(menmen)
-      }, this);
-      nay.events.onInputDown.add(function  (thing) {
+        drawMenu(this.game, menmen, {name: 'VEND-O-3000', description: 'INSERT $5?', yes: 'YAY', no: 'NAY'},
+                 function (men, obj) {
+                    that.buyThing(men)
+                    that.inDialog = false
+                 }, function (obj) {
+                    that.inDialog = false
+                 })
 
-        instruct.destroy()
-        yay.destroy()
-        nay.destroy()
-        menmen.destroy()
-        that.inDialog = false
-
-      }, this);
     } else {
 
       var ok  = this.game.add.text(150, 370, 'YOU AINT GOT ENOUGH CASH! GET A JOB! oh wait, this is yr job, when do u get paid? hmmmm', { fontSize: '40px', fill: '#08D' });
