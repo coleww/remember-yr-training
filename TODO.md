@@ -11,6 +11,15 @@
 
 RATHER THAN 
 
+BRING the posters down close and make them interactable
+
+
+user will have +/- from interacting with items
+as well as more greed/fight/nature from the vending machine
+
+alignment => type/color of jetpack? ending?
++/- determines whether there are enemies on the way out? how hard it is?
+
 
 
 http://phaser.io/tutorials/creating-custom-phaser-builds
