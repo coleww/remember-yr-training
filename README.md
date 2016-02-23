@@ -40,6 +40,7 @@ ASSETS:
  
 http://untamed.wild-refuge.net/rmxpresources.php?characters
 http://pousse.rapiere.free.fr/tome/
+http://opengameart.org/content/farming-tool-icons
 http://opengameart.org/content/objects-0
 http://opengameart.org/content/animated-particle-effects-2
 http://opengameart.org/content/bomb-explosion-animation

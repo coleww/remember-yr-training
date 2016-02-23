@@ -324,18 +324,28 @@ candle1.scale.x *= -1; // wtf is this?
     this.startDay()
   },
   redrawMenu: function () {
-    this.hpDisplay = this.game.add.text(16, 25, 'hp: 100/100', { fontSize: '22px', fill: '#FFF' });
-    this.inventoryDisplay = this.game.add.text(16, 50, 'inventory:' + get('inventory').map(function (item) {
-        return item.name
-    }).join(', '), { fontSize: '22px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
 
-    this.walletDisplay = this.game.add.text(150, 25, get('wallet') + '$', { fontSize: '22px', fill: '#FFF' });
+  var wallet = this.game.add.sprite(150, 20, 'wallet');
+  wallet.scale.setTo(1.5)
+  var hp = this.game.add.sprite(16, 25, 'hp');
+  var bag = this.game.add.sprite(16, 60, 'bag');
+
+  bag.scale.setTo(0.75)
+    this.hpDisplay = this.game.add.text(50, 25, '100/100', { fontSize: '22px', fill: '#FFF' });
+    this.inventoryDisplay = this.game.add.text(65, 65, '' + get('inventory').map(function (item) {
+        return item.name
+    }).join(', '), { fontSize: '16px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
+
+    this.walletDisplay = this.game.add.text(200, 25, get('wallet'), { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
   },
   redrawInventory: function () {
     this.inventoryDisplay.setText('inventory:' + get('inventory').map(function (item) {
         return item.name
     }).join(', '))
+  },
+  openInventoryDialog: function () {
+
   },
   openDialog: function (thing) {
     var menmen = this.drawMenuBox('parch') // or 'parch'

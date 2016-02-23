@@ -95,6 +95,11 @@ preload.prototype = {
     game.load.image("pizza", "assets/sprites/pizza.png")
     game.load.image("papert", "assets/sprites/papertowlrolll.png")
 
+
+    game.load.image("hp", "assets/sprites/hp.png")
+    game.load.image("wallet", "assets/sprites/wallet.png")
+    game.load.image("bag", "assets/sprites/bag.png")
+
     game.load.image("linedpaper", "assets/sprites/PaperDecoration_Lined.png")
     game.load.image("blankpaper", "assets/sprites/PaperDecoration_Blank.png")
     game.load.image("paper3", "assets/sprites/SinglePage.png")

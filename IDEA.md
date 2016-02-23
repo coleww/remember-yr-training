@@ -87,7 +87,13 @@ BOX => TREE => DEAD TREE => ???
 
 
 
+WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
 
+click yr health: says something based on yr health level
+seeds markov with song lyrics based on sentiment analysis
+YR FEELING GREAT AND SING A TUNE!
+
+(is there a robot voice?)
 
 
 
@@ -98,7 +104,7 @@ DONT ALLOW MOBILE (until controls are fixed)
 
 
 
-
+move candles under iso paintings
 
 
 
