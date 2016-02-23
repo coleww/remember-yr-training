@@ -362,17 +362,17 @@ candle1.scale.x *= -1; // wtf is this?
         // urggggh just put a gigantic case switch here for the few things that have fx?
         that.inDialog = false
         menu.destroy()
-        if (obj.yes !== 'ok') {
-            obj.description = obj.description + ' you ' + obj.yes
-            obj.yes = 'ok'
-            obj.no = ''
+        if (thing.yes !== 'ok') {
+            thing.description = thing.description + ' you ' + thing.yes
+            thing.yes = 'ok'
+            thing.no = ''
         }
-    }, function (obj) {
+    }, function (thing) {
         that.inDialog = false
-        if (obj.yes !== 'ok') {
-            obj.description = obj.description + ' you ' + obj.no
-            obj.yes = 'ok'
-            obj.no = ''
+        if (thing.yes !== 'ok') {
+            thing.description = thing.description + ' you ' + thing.no
+            thing.yes = 'ok'
+            thing.no = ''
         }
 
     })
@@ -581,6 +581,7 @@ candle1.scale.x *= -1; // wtf is this?
         set(get('seeds').push(item.seed[i]))
         that.redrawInventory()
         items.forEach(function (it){ it.destroy()})
+        that.game.musician.playFX('twinkleshort')
         menu.destroy()
         title.destroy()
         that.inDialog = false
@@ -738,7 +739,26 @@ candle1.scale.x *= -1; // wtf is this?
 
     this.hasWrittenAPoemToday = false
     var day = get('currentDay')
-    if (day == 1) {
+    if (day == 2) {
+        this.computerStuff = [
+            {name: 'on top of the world',
+                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
+        yes: 'think carefully about how to get down from here',
+        no: 'think that this game probably does not have fall damage'},
+        {name: 'control panel',
+                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
+        yes: 'back away slowly',
+        no: 'aspire to push it one day',
+        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
+        {name: 'a huge computer machine',
+                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
+        yes: 'think about the cooling system',
+        no: 'try kicking it'},
+        {name: 'broken down fan',
+                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
+        yes: 'wonder if there is a tool that could fix it',
+        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'}
+        ]
       this.tableStuff = [
         {name: 'Some book about stuff',
         description: 'yr pretty sure there is a PDF of it in yr memory banks somewhere *yawn*',
@@ -746,14 +766,38 @@ candle1.scale.x *= -1; // wtf is this?
         {name: 'sad old mug',
         description: 'seems to contain...coffee? it is particularly sad looking, you think about smashing it',
         yes: 'remember drinking from it and decide to save the memories',
-        no: 'take pity on the sad ceramic and resolve to find some super glue'}
+        no: 'take pity on the sad ceramic and resolve to find some super glue'},
+        {name: 'a shelf of books',
+                            description: 'wow there are some really good books here, unfortunately none of them are your training manual which u forgot :<',
+        yes: 'struggle to remember your training',
+        no: 'DGAF about the training you are here to party'}
       ]
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
       book1.scale.setTo(0.5)
       var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
       mug.scale.setTo(0.75)
       var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
-    } else if (day == 2) {
+    } else if (day == 3) {
+        this.computerStuff = [
+                 {name: 'on top of the world',
+                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
+        yes: 'think carefully about how to get down from here',
+        no: 'think that this game probably does not have fall damage'},
+        {name: 'control panel',
+                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
+        yes: 'back away slowly',
+        no: 'aspire to push it one day',
+        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
+        {name: 'a huge computer machine',
+                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
+        yes: 'think about the cooling system',
+        no: 'try kicking it'},
+        {name: 'broken down fan',
+                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
+        yes: 'wonder if there is a tool that could fix it',
+        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'}
+
+        ]
       this.tableStuff = [
         {name: 'a jug of unknown fluid',
         description: 'you wonder what it is inside of there...',
@@ -770,6 +814,26 @@ candle1.scale.x *= -1; // wtf is this?
       book2.scale.setTo(0.5)
       var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
     } else {
+        this.computerStuff = [
+                  {name: 'on top of the world',
+                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
+        yes: 'think carefully about how to get down from here',
+        no: 'think that this game probably does not have fall damage'},
+        {name: 'control panel',
+                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
+        yes: 'back away slowly',
+        no: 'aspire to push it one day',
+        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
+        {name: 'a huge computer machine',
+                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
+        yes: 'think about the cooling system',
+        no: 'try kicking it'},
+        {name: 'broken down fan',
+                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
+        yes: 'wonder if there is a tool that could fix it',
+        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'}
+
+        ]
       this.tableStuff = [
         {name: 'some papers',
         description: 'you are an excellent doodler. yr art should be on walls everywhere',
@@ -840,10 +904,7 @@ candle1.scale.x *= -1; // wtf is this?
             // BOOKSHELF!
             console.log('touching the books')
               this.inDialog = true
-            this.openDialog({name: 'a shelf of books',
-                            description: 'wow there are some really good books here, unfortunately none of them are your training manual which u forgot :<',
-        yes: 'struggle to remember your training',
-        no: 'DGAF about the training you are here to party'})
+            this.openDialog(this.tableStuff[2])
 
           } else if (x >= 520 && x < 570) {
             console.log('touching the bed')
@@ -854,10 +915,7 @@ candle1.scale.x *= -1; // wtf is this?
         // if (x >= 150 && x < 200) {
             console.log('touching the computer')
               this.inDialog = true
-            this.openDialog({name: 'a huge computer machine',
-                            description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
-        yes: 'think about the cooling system',
-        no: 'try kicking it'})
+            this.openDialog(this.computerStuff[2])
 
             // main platformish?
             // kick thing? OK U NEED AN ITEM TO DO THAT?
@@ -865,27 +923,17 @@ candle1.scale.x *= -1; // wtf is this?
       } else if (y >= 375 && y < 385) {
 
         this.inDialog = true
-        this.openDialog({name: 'broken down fan',
-                        description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
-        yes: 'wonder if there is a tool that could fix it',
-        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!'})
+        this.openDialog(this.computerStuff[3])
         // touching the fan thing!
       } else if  (y >= 295 && y < 305) {
 
         this.inDialog = true
-        this.openDialog({name: 'control panel',
-                        description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
-        yes: 'back away slowly',
-        no: 'aspire to push it one day',
-        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '})
+        this.openDialog(this.computerStuff[1])
         // by the switch 220-240 switch, 240+ the machine tubes
       } else if (y >= 250 && y < 260) {
 
         this.inDialog = true
-        this.openDialog({name: 'on top of the world',
-                        description: 'wow, what a view from up here. I can almost touch the sky! i think? no, that is just the ceiling. better be careful hopping down tho!',
-        yes: 'think carefully about how to get down from here',
-        no: 'think that this game probably does not have fall damage'})
+        this.openDialog(this.computerStuff[0])
         // on top of the radio. mention the view?
       }
     }
