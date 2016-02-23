@@ -156,7 +156,7 @@ bunker.prototype = {
     radio.scale.setTo(0.45, 0.78)
     radio.body.setSize(93, 50, 5, 25)
     radio.body.immovable = true
-
+//
     var fan = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fan');
     fan.scale.setTo(0.5, 0.5)
 
@@ -386,6 +386,7 @@ candle1.scale.x *= -1; // wtf is this?
                      function (menu) {
                         menu.destroy()
                         that.inDialog = false
+                        that.game.musician.fadeOut()
                         that.game.state.start("DaySwitch")
                     }, function () {
 
@@ -876,7 +877,7 @@ candle1.scale.x *= -1; // wtf is this?
   update: function () {
     // console.log(this.game.input.x,
     // this.game.input.y)
-
+    this.game.musician.updateComputerNoise(this.game, this.player.x, this.player.y)
     this.game.physics.arcade.collide(this.player, this.platforms);
 
     if (this.cursors.left.isDown) {

@@ -20,6 +20,7 @@
     "Phaser": "global:Phaser"
   },
   "devDependencies": {
+    "@coleww/openmusic-sample-player": "^1.0.2",
     "a-d-s-r": "^1.0.2",
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",

@@ -10,12 +10,12 @@ module.exports = function (ac) {
   var sparkles = require("sparkle-motion")(ac)
 
 
-  snare.connect(mainVolume)
-  tom.connect(mainVolume)
-  kick.connect(mainVolume)
-  hat.connect(mainVolume)
-  wBass.connect(mainVolume)
-  bBass.connect(mainVolume)
-  piano.connect(mainVolume)
-  sparkles.connect(mainVolume)
+  // snare.connect(mainVolume)
+  // tom.connect(mainVolume)
+  // kick.connect(mainVolume)
+  // hat.connect(mainVolume)
+  // wBass.connect(mainVolume)
+  // bBass.connect(mainVolume)
+  // piano.connect(mainVolume)
+  // sparkles.connect(mainVolume)
 }

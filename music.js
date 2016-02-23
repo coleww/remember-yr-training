@@ -40,6 +40,6 @@ module.exports = function () {
     },
     setMusicVolume: function (val) {
 
-    }
+    }, updateComputerNoise: function (g,x,y) {foley.updateComputerNoise(g, x, y)}
   }
 }

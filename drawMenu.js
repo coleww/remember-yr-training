@@ -24,6 +24,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
       var nay
       var that = this
       yay.events.onInputDown.add(function  (thing) {
+        game.musician.playFX('selecto')
           // RUN THE STUFF!
           instruct.destroy()
           descrip.destroy()
@@ -36,6 +37,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
 
         nay.inputEnabled = true
         nay.events.onInputDown.add(function  (thing) {
+          game.musician.playFX('thuddy')
 
             instruct.destroy()
             descrip.destroy()

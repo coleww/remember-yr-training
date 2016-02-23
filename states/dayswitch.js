@@ -14,6 +14,7 @@ DaySwitch.prototype = {
   preload: function(){
   },
   create: function(){
+
     var bg = this.game.add.sprite(0, 0, 'black');
     bg.scale.setTo(5, 7)
     var day = get('currentDay')
@@ -33,6 +34,9 @@ DaySwitch.prototype = {
     yay.inputEnabled = true;
     yay.underline = true
     var that = this
+    this.game.musician.fadeIn()
+    // ANNOYING
+    // this.game.musician.playFX('alclock')
     yay.events.onInputDown.add(function  (thing) {
         // RUN THE STUFF!
         instruct.destroy()
