@@ -5,6 +5,10 @@ var drawMenu = require('../drawMenu')
 var bunker = function (game) {
   this.game = this.game
 }
+function pick (arr) {
+  return arr[~~(Math.random() * arr.length)]
+}
+
 
 var poetryGen = require('../poet')
 
@@ -605,6 +609,11 @@ candle1.scale.x *= -1; // wtf is this?
       that.currentOptions.forEach(function (opt) {
           opt.destroy()
       })
+      if (thing.text == 'linebreak') {
+        that.game.musician.playFX('selecto')
+      } else {
+        that.game.musician.playFX(pick(['russel1', 'russel2', 'russel3']))
+    }
       console.log(thing.text)
       this.runPoem(thing.text)
     }
@@ -614,6 +623,7 @@ candle1.scale.x *= -1; // wtf is this?
     this.currentOptions = []
     // var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
     // poetryBG.scale.setTo(30, 25)
+    this.game.musician.playFX('twinklelong')
     var bookAnim = this.game.add.sprite(-30, -250, 'sweetbook');
     bookAnim.scale.setTo(27, 35)
     bookAnim.animations.add('blocky', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], false)
@@ -630,6 +640,7 @@ candle1.scale.x *= -1; // wtf is this?
 
   },
   writeThatStinkingPoem: function (bookThingy) {
+
     var instructions = this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
 
     this.poem = poetryGen()
@@ -658,6 +669,7 @@ candle1.scale.x *= -1; // wtf is this?
       that.player.x = 240
       that.player.scale.setTo(1.5,1)
       that.inDialog = false
+      that.game.musician.playFX('crumple')
     }, this);
 
     save.events.onInputDown.add(function () {
@@ -681,6 +693,7 @@ candle1.scale.x *= -1; // wtf is this?
       that.player.scale.setTo(1.5,1)
       that.hasWrittenAPoemToday = true
       that.inDialog = false
+      that.game.musician.playFX('twinkleshort')
     }, this);
   },
 
