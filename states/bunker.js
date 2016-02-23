@@ -253,12 +253,12 @@ bunker.prototype = {
 
 
 
-    var candle1 = this.game.add.sprite(90, 365, 'wallArt3');
+    var candle1 = this.game.add.sprite(50, 240, 'wallArt3');
     candle1.scale.setTo(2)
     candle1.anchor.setTo(.5,.5);
 
 candle1.scale.x *= -1; // wtf is this?
-    var candle2 = this.game.add.sprite(505, 350, 'wallArt3');
+    var candle2 = this.game.add.sprite(510, 505, 'wallArt3');
     candle2.scale.setTo(2)
     var ground = this.platforms.create(0, this.game.world.height - 240, 'ground');
 
