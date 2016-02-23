@@ -375,47 +375,34 @@ candle1.scale.x *= -1; // wtf is this?
     // IF it's the chest/vending machine, defer to those
   },
   maybeGoToSleep: function () {
-    var men = this.drawMenuBox('parch')
-    men.scale.setTo(1, 1.5)
     if (this.hasWrittenAPoemToday) {
         //REFACTOR THISSSSSSSSSSS
-        var instruct = this.game.add.text(50, 220, 'GO TO SLEEP?', { fontSize: '30px', fill: '#FFF' });
-        var yay  = this.game.add.text(150, 570, 'use it!!!', { fontSize: '40px', fill: '#08D' });
-        var nay  = this.game.add.text(350, 550, 'um, no thanks.', { fontSize: '40px', fill: '#08D' });
-        yay.inputEnabled = true;
-        nay.inputEnabled = true
         var that = this
-        yay.events.onInputDown.add(function  (thing) {
-            // RUN THE STUFF!
-            instruct.destroy()
-            yay.destroy()
-            nay.destroy()
+        drawMenu(this.game, 'parch',
+                 {name: 'GO TO SLEEP?',
+                    description: 'is it sleepy time?',
+                    yes: 'PLZ',
+                    no: 'i must work'
+                },
+                     function (menu) {
+                        menu.destroy()
+                        that.inDialog = false
+                        that.game.state.start("DaySwitch")
+                    }, function () {
 
-            that.inDialog = false
-            that.game.state.start("DaySwitch")
-
-        }, this);
-        nay.events.onInputDown.add(function  (thing) {
-
-            instruct.destroy()
-            yay.destroy()
-            nay.destroy()
-            men.destroy()
-            that.inDialog = false
-
-        }, this);
+                        that.inDialog = false
+                    })
     } else {
-        //REFACTOR THISSSSSSSSSSS
-        var confirm  = this.game.add.text(50, 220, 'you are not very tired right now, maybe write some poems to relax?', { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
-        confirm.inputEnabled = true;
         var that = this
-        confirm.events.onInputDown.add(function  (thing) {
-            // RUN THE STUFF!
-            this.inDialog = false
-            men.destroy()
-            instruct.destroy()
-            confirm.destroy()
-        }, this);
+        drawMenu(this.game, 'parch',
+                 {name: 'CRYOBED',
+                    description: 'you are not very tired right now, maybe write some poems to relax?',
+                    yes: 'ok'
+                },
+                     function (menu) {
+                        menu.destroy()
+                        that.inDialog = false
+                    })
     }
 
     // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
