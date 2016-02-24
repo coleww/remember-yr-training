@@ -1,5 +1,3 @@
-- MAKE first game over screen from total shut down
-- TRACK deaths and poems written, etc.
 - add music (make npm module for sequencer?)
 - TRACK TWINE THING ON ALL DIALOGS AND SUCH maybe have different items do different stuff? OH this could be another twine thing?
 
