@@ -380,7 +380,7 @@ bunker.prototype = {
             }
         }
         if (thing.fx) {
-            useThing(menu, thing)
+            that.useThing(menu, thing)
         } else {
 
             menu.destroy()
@@ -850,19 +850,19 @@ bunker.prototype = {
             // BOOKSHELF!
             console.log('touching the L poster')
               this.inDialog = true
-            this.openDialog(this.tableStuff[3])
+            this.openDialog(this.game.tableStuff[3])
 
           }else if (x >= 150 && x < 200) {
             // BOOKSHELF!
             console.log('touching the books')
               this.inDialog = true
-            this.openDialog(this.tableStuff[2])
+            this.openDialog(this.game.tableStuff[2])
 
           } else if (x >= 210 && x < 245) {
               // left desk item
               console.log('touching the lefty')
               this.inDialog = true
-              this.openDialog(this.tableStuff[0])
+              this.openDialog(this.game.tableStuff[0])
 
           } else if (x >= 250 && x < 275) {
 
@@ -874,11 +874,11 @@ bunker.prototype = {
               console.log('touching the righty')
 
               this.inDialog = true
-              this.openDialog(this.tableStuff[1])
+              this.openDialog(this.game.tableStuff[1])
           }  else if (x >= 420 && x < 450) {
             console.log('touching the R poster')
             this.inDialog = true
-            this.openDialog(this.tableStuff[4])
+            this.openDialog(this.game.tableStuff[4])
           }else if (x >= 520 && x < 570) {
             console.log('touching the bed')
             this.inDialog = true
@@ -888,7 +888,7 @@ bunker.prototype = {
         // if (x >= 150 && x < 200) {
             console.log('touching the computer')
               this.inDialog = true
-            this.openDialog(this.computerStuff[2])
+            this.openDialog(this.game.computerStuff[2])
 
             // main platformish?
             // kick thing? OK U NEED AN ITEM TO DO THAT?
@@ -896,17 +896,17 @@ bunker.prototype = {
       } else if (y >= 375 && y < 385) {
 
         this.inDialog = true
-        this.openDialog(this.computerStuff[3])
+        this.openDialog(this.game.computerStuff[3])
         // touching the fan thing!
       } else if  (y >= 295 && y < 305) {
 
         this.inDialog = true
-        this.openDialog(this.computerStuff[1])
+        this.openDialog(this.game.computerStuff[1])
         // by the switch 220-240 switch, 240+ the machine tubes
       } else if (y >= 250 && y < 260) {
 
         this.inDialog = true
-        this.openDialog(this.computerStuff[0])
+        this.openDialog(this.game.computerStuff[0])
         // on top of the radio. mention the view?
       }
     }
