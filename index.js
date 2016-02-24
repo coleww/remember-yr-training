@@ -6,7 +6,7 @@ var Bunker = require('./states/bunker')
 var Silo = require('./states/silo')
 var Outside = require('./states/outside')
 var gameOverScreen = require('./states/game_over')
-
+var reset = require('./states/reset')
 window.onload = function() {
   var width = 640
   var height = 960
@@ -27,5 +27,6 @@ window.onload = function() {
   game.state.add("Silo", Silo)
   game.state.add("Outside", Outside)
   game.state.add("GameOverScreen", gameOverScreen)
+  game.state.add("Reset", reset)
   game.state.start("Boot")
 }

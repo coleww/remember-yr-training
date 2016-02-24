@@ -28,6 +28,7 @@
     "dj-snazzy-snare": "^1.0.0",
     "fast-ish-markov": "^1.0.1",
     "int2freq": "^1.0.1",
+    "livereloadify": "^2.0.0",
     "load-sample-2-buff": "^1.0.1",
     "pie-ano": "^1.1.0",
     "really-hi-hat": "^1.0.0",

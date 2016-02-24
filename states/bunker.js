@@ -20,6 +20,7 @@ bunker.prototype = {
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
+
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
     var top = this.game.add.tileSprite(0, 0, 640, 150, 'walllll');

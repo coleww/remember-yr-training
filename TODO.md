@@ -1,12 +1,25 @@
+- MAKE first game over screen from total shut down
+- TRACK deaths and poems written, etc.
+- add music (make npm module for sequencer?)
+- TRACK TWINE THING ON ALL DIALOGS AND SUCH maybe have different items do different stuff? OH this could be another twine thing?
+
+
+- SOMEWHERE IN THE EARLY SETUP: set all the localstore variabls in preload, 
+but check to see if they have even played yet,
+ and if its a saved game or a fresh playthru!
+
+
+
+
 - add sound fx
 - robot web audio voice thing?
-- add music (make npm module for sequencer?)
+
 - save system? localStorage? fine. later.
 - electron app? ooooo. later.
 - enable wasd
-- maybe have different items do different stuff? OH this could be another twine thing?
-- kick the computer to make it stop buzzing
-- (drink potions or we) unleash the dragon, it bloodily smooshes u. can either destroy bunker & die or write poems and then fly home (from drinking th ebeer and touching the computer early?)
+
+- kick the computer to make it stfigureop buzzing. ALSO  figure out the panner node thing
+- (drink potions or we) unleash the dragon, it bloodily smooshes u. can either destroy bunker & die or write poems and then fly home (from drinking th ebeer and touching the computer early?) GAMEOVER2
 - when bunker starts breaking down, make the screen shake/flash red? (probably change a global translate/rotate a bunch)
 - the fan. make some joke about it? get an item? (KICK IT!)
 - ADD PUNCTUATION TO THE POETRY
@@ -19,6 +32,26 @@
 - BOX => TREE => DEAD TREE => ???
 - WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
 - DONT ALLOW MOBILE (until controls are fixed)
+
+
+
+
+
+
+
+
+
+
+
+- MOVEMENT: click on/near the hero to use things, click above hero to leap in that direction, click horizontally to walk around
+
+
+
+
+
+
+
+
 
 
 http://phaser.io/tutorials/creating-custom-phaser-builds
