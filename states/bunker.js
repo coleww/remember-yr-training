@@ -409,6 +409,7 @@ bunker.prototype = {
                         menu.destroy()
                         that.inDialog = false
                         that.game.musician.fadeOut()
+                        inc('currentDay')
                         that.game.state.start("DaySwitch")
                     }, function () {
 
@@ -771,7 +772,7 @@ bunker.prototype = {
         description: 'you wonder what it is inside of there...',
         yes: 'guess "batteries"',
         no: 'guess "internet"'}
-        this.wallgame.tableStuff[1] =  {name: 'Math Textbook',
+        this.game.tableStuff[1] =  {name: 'Math Textbook',
         description: 'this would make an excellent doorstop...ugh it won\'t fit in yr pocket',
         yes: 'kiss the book gently',
         no: 'gnaw on the leather cover for the protein'}

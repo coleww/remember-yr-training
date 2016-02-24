@@ -26,16 +26,16 @@ Reset.prototype = {
 
 
 
+    // gather all the poem and twine data for this playthrough? and then deletes it.
+    //
+    var poems = []
+    for (var i = 0; i < get('poemCount'); i++) {
+      var poem = get('poem' + i)
+      poems.push(poem)
+    }
 
-
-
-
-
-
-
-
-
-
+    set('play' + playCount, {name: title, poems: poems, alignment: get('alignment')})
+    set('currentDay', 0)
     this.game.state.start("TitleScreen")
   }
 }

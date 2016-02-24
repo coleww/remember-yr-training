@@ -113,17 +113,26 @@ preload.prototype = {
 
 
     // TODO: check if the player has a saved game
-    set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
-    set('seeds', [])
-    set('currentDay', 0)
-    set('wallet', 25)
-    set('health', 100)
-    set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
-    set('gameOver', false)
 
+    var itIsTheVeryFirstTime = true
+    var itIsANewGame = true
 
+    if (itIsTheVeryFirstTime) {
+        set('playCount', 0)
+    }
 
-
+    if (itIsANewGame) {
+        set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
+        set('seeds', [])
+        set('currentDay', 0)
+        set('wallet', 25)
+        set('health', 100)
+        set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
+        set('gameOver', false)
+        set('poemCount', 0)
+    } else {
+        // it is a saved game...do nothing?
+    }
 
 
 
@@ -279,7 +288,7 @@ preload.prototype = {
 
   },
   create: function(){
-    this.game.state.start("Bunker")
+    this.game.state.start("TitleScreen")
   }
 }
 module.exports = preload

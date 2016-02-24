@@ -1,7 +1,7 @@
 var db = require('../db')
 var get = db.get
 var set = db.set
-
+var inc = db.inc
 // construct markov poet barrier maker thing based on their choices or lack thereof
 // save which lines they touch
 // make enemies? explosions? slowly rising fire?
@@ -43,8 +43,9 @@ DaySwitch.prototype = {
         descrip.destroy()
         yay.destroy()
         bg.destroy()
-        set('currentDay', ++day)
-        if (day == 1) {
+
+        if (day == 0) {
+            inc('currentDay')
            that.game.state.start("DaySwitch")
         } else {
             that.game.state.start("Bunker")
