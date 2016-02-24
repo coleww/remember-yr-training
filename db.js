@@ -3,7 +3,9 @@ function get (key) {
 }
 
 function set (key, object) {
-  localStorage.setItem('ryt-' + key, JSON.stringify(object))
+  var stringCheese = JSON.stringify(object)
+  if (stringCheese.length > 5242878) alert('something truly awful has happened')
+  localStorage.setItem('ryt-' + key, stringCheese)
 }
 
 function inc (key, amt) {
@@ -15,7 +17,9 @@ function dec (key, amt) {
 }
 
 function mathIt (key, amt) {
-  var newVal = get(key) + amt
+  var oldVal = get(key)
+  if (typeof oldVal !== 'number') alert('u tried to __crement ' + oldVal + ' but it wasnt having it')
+  var newVal = oldVal + amt
   set(key, newVal)
   return newVal
 }

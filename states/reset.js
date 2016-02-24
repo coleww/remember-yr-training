@@ -24,6 +24,19 @@ Reset.prototype = {
 
     var title = playCount + ': ' + reason + ' at ' + gameDay + time
 
+
+
+
+
+
+
+
+
+
+
+
+
+    this.game.state.start("TitleScreen")
   }
 }
 
