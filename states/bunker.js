@@ -1006,6 +1006,7 @@ bunker.prototype = {
 
     //  Allow the this.player to jump if they are touching the ground.
     if (this.cursors.up.isDown && this.player.body.touching.down) {
+        this.game.musician.playFX('pew')
       this.player.body.velocity.y = -350;
     }
   }
