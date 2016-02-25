@@ -153,7 +153,7 @@ bunker.prototype = {
     tippyTop.body.setSize(1000, 1, 0, 0)
     tippyTop.body.immovable = true
 
-    var chair = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'chair');
+    var chair = this.game.add.sprite(this.game.world.width / 2 + 30 , this.game.world.height - 305, 'chair');
     chair.scale.setTo(5)
 
 
@@ -166,6 +166,7 @@ bunker.prototype = {
     table.scale.setTo(2, 1.5)
     table.body.immovable = true
     table.body.setSize(60, 1, 0, 15)
+    this.world.bringToTop(table)
 
     var candle = this.game.add.sprite(this.game.world.width / 2 - 40, this.game.world.height - 330, 'candle');
 
