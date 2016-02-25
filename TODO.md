@@ -9,7 +9,7 @@
 - save system? localStorage? fine. later.
 - TAKE DAMAGE if yr in the air for too long? or jump from the radio? isJumping, maxHeight, etc.
 - MAYBE put gifs on the sides and change them? hrmmm. or just tiled metal textures i guess yeah
-
+- npm run build: copy everything into the_game?
 ------CUTE--_DETAILS------------------
 - kick the computer to make it stfigureop buzzing. ALSO  figure out the panner node thing
 - (drink potions or we) unleash the dragon, it bloodily smooshes u. can either destroy bunker & die or write poems and then fly home (from drinking th ebeer and touching the computer early?) GAMEOVER2

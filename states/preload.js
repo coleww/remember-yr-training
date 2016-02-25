@@ -122,6 +122,8 @@ preload.prototype = {
     }
 
     if (itIsANewGame) {
+        set('wall1', true)
+        set('wall2', true)
         set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
         set('seeds', [])
         set('currentDay', 0)
@@ -178,6 +180,7 @@ preload.prototype = {
             yes: 'tear that wall down!',
             no: 'respect the art...for now',
             fx: 'destroyWallArt1',
+            used: 'you found a tasty tofu treat!',
             item: {
                 name: 'tofu dish',
                 description: 'will replenish your health! and maybe more!',
@@ -189,6 +192,7 @@ preload.prototype = {
             yes: 'grab that thing,take it down,HOOOOO RAHHHHHH',
             no: 'respect the art...for now',
             fx: 'destroyWallArt2',
+            used: 'you found a tasty tofu treat!',
             item: {
                 name: 'tofu energy drink',
                 description: 'the label is just a bunch of screaming in all caps',

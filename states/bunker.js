@@ -3,6 +3,8 @@ var get = db.get
 var set = db.set
 var dec = db.dec
 var inc = db.inc
+var push = db.push
+var remove = db.remove
 var drawMenu = require('../drawMenu')
 var bunker = function (game) {
   this.game = this.game
@@ -16,7 +18,8 @@ var poetryGen = require('../poet')
 var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
-
+    this.wall1 = get('wall1')
+    this.wall2 = get('wall2')
     this.inDialog = false
     console.log("WE IN THE BUNKER")
 
@@ -173,11 +176,16 @@ bunker.prototype = {
     candle2.scale.setTo(2)
 
     // posters
-    var art3 = this.game.add.sprite(425, 615, 'wallArt4');
-    art3.scale.setTo(1.5)
-    var art4 = this.game.add.sprite(100, 615, 'wallArt5');
-    art4.scale.setTo(1.5)
-
+    if (this.wall2) {
+        var art3 = this.game.add.sprite(425, 615, 'wallArt4');
+        art3.scale.setTo(1.5)
+        this.wallart2 = art3
+    }
+    if (this.wall1) {
+        var art4 = this.game.add.sprite(100, 615, 'wallArt5');
+        art4.scale.setTo(1.5)
+        this.wallart1 = art4
+    }
 
 
 
@@ -380,7 +388,7 @@ bunker.prototype = {
             }
         }
         if (thing.fx) {
-            that.useThing(menu, thing)
+            that.useThing(obj, menu)
         } else {
 
             menu.destroy()
@@ -447,11 +455,17 @@ bunker.prototype = {
             set('gameOver', 1)
             this.game.state.start("GameOverScreen")
             break;
-        case '':
+        case 'destroyWallArt1':
             // stuff
+            set('wall1', false)
+            this.wallart1.destroy()
+            this.wall1 = false
             break;
-        case '':
+        case 'destroyWallArt2':
             // stuff
+            set('wall2', false)
+            this.wallart2.destroy()
+            this.wall2 = false
             break;
         case '':
             // stuff
@@ -534,22 +548,26 @@ bunker.prototype = {
 
     }
 
-    var whatHappened  = this.game.add.text(150, 570, thing.used, { fontSize: '40px', fill: '#FFF' });
-    var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '40px', fill: '#08D' });
+    var whatHappened  = this.game.add.text(150, 570, thing.used, { fontSize: '20px', fill: '#FFF' });
+    var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '20px', fill: '#08D' });
     confirm.inputEnabled = true;
     var that = this
     //REFACTOR THISSSSSSSSSSS
-    confirm.events.onInputDown.add(function  (thing) {
+    confirm.events.onInputDown.add(function  (thin) {
         // RUN THE STUFF!
+        console.log(thing)
         this.inDialog = false
+        if (thing.item) {
+            console.log('PUSHING')
+            push('inventory', thing.item)
+            that.redrawInventory()
+        }
         menmen.destroy()
         whatHappened.destroy()
         confirm.destroy()
     }, this);
     if (thing.oneTimeUse) {
-        var inventory = get('inventory')
-        var i = inventory.indexOf(thing)
-        set('inventory', inventory.splice(i, 1))
+        remove('inventory', thing)
     }
 
   },
@@ -846,7 +864,7 @@ bunker.prototype = {
               console.log('touching the vend')
               this.inDialog = true
               this.vend()
-          } else if (x >= 80 && x < 130) {
+          } else if (x >= 80 && x < 130 && this.wall1) {
             // BOOKSHELF!
             console.log('touching the L poster')
               this.inDialog = true
@@ -875,7 +893,7 @@ bunker.prototype = {
 
               this.inDialog = true
               this.openDialog(this.game.tableStuff[1])
-          }  else if (x >= 420 && x < 450) {
+          }  else if (x >= 420 && x < 450 && this.wall2) {
             console.log('touching the R poster')
             this.inDialog = true
             this.openDialog(this.game.tableStuff[4])

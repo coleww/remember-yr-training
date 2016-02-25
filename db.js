@@ -24,11 +24,25 @@ function mathIt (key, amt) {
   return newVal
 }
 
+function push (key, el) {
+  var arr = get(key)
+  arr.push(el)
+  set(key, arr)
+}
+
+function remove (key, el) {
+  var arr = get(key)
+  var i = arr.indexOf(el)
+  set(key, arr.splice(i, 1))
+}
+
 module.exports = {
   get: get,
   set: set,
   inc: inc,
-  dec: dec
+  dec: dec,
+  push: push,
+  remove: remove
 }
 
 // lol can save poems in a linked list w/arbitrary keys pointing back to the first which is always called "firstPoem"sdgsdgsdg
