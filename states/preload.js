@@ -92,6 +92,7 @@ preload.prototype = {
     game.load.image("book2", "assets/sprites/Book2.png")
     game.load.image("mug", "assets/sprites/mug.png")
     game.load.image("jug", "assets/sprites/jug.png")
+    game.load.image("paw", "assets/sprites/paw.png")
     game.load.image("pizza", "assets/sprites/pizza.png")
     game.load.image("papert", "assets/sprites/papertowlrolll.png")
 

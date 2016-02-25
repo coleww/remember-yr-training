@@ -1,12 +1,12 @@
 -------------PRIORITIES--------------------
 - wake up/sleep animation sequence
 - add music (make npm module for sequencer?)
-- ADD PUNCTUATION TO THE POETRY
-- robot web audio voice thing?
-- save system? localStorage? fine. later.
+- pause/save system? localStorage? fine. later.
 - TAKE DAMAGE if yr in the air for too long? or jump from the radio? isJumping, maxHeight, etc.
 - MAYBE put gifs on the sides and change them? hrmmm. or just tiled metal textures i guess yeah
 - npm run build: copy everything into the_game?
+
+
 ------CUTE--_DETAILS------------------
 - kick the computer to make it stfigureop buzzing. ALSO  figure out the panner node thing
 - (drink potions or we) unleash the dragon, it bloodily smooshes u. can either destroy bunker & die or write poems and then fly home (from drinking th ebeer and touching the computer early?) GAMEOVER2
@@ -17,7 +17,7 @@
 - BOX => TREE => DEAD TREE => ???
 - WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
 - for battery unplug ending, making the world go all "turn off a televison set"-like?
-
+- robot web audio voice thing? mebbe for reciting yr poems?
 
 ----------MOBILE?---------DISTRO?
 - DONT ALLOW MOBILE (until controls are fixed)

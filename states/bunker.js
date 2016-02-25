@@ -349,8 +349,42 @@ bunker.prototype = {
       }, that)
     })
   },
+  pauseGame: function () {
+    console.log('meow')
+    this.game.paused = !this.game.paused
+    this.inDialog = true
+    drawMenu(this.game, 'menu',
+                 {name: 'PAWS\'d',
+                    description: 'quit game?',
+                    yes: 'PLZ',
+                    no: 'keep playing'
+                },
+                     function (menu) {
+                        menu.destroy()
+                        that.game.paused = false
+                        that.inDialog = false
+                        that.game.state.start('titleScreen')
+                    }, function () {
+                        that.game.paused = false
+                        that.inDialog = false
+                    })
+    // draw a save/close menu
+  },
+  saveGame: function () {
+    // is there anything to even do here? it basically auto-saves actually
+  },
   redrawMenu: function () {
     var that = this
+
+    var pawsButton = this.game.add.sprite(500, 20, 'paw');
+  pawsButton.inputEnabled = true
+  pawsButton.events.onInputDown.add(function () {
+    // that.openpawsButton()
+    that.pauseGame()
+  })
+  pawsButton.scale.setTo(1.5)
+
+
   var wallet = this.game.add.sprite(150, 20, 'wallet');
   wallet.inputEnabled = true
   wallet.events.onInputDown.add(function () {
