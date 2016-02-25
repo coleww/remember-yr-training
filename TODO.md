@@ -1,7 +1,5 @@
 -------------PRIORITIES--------------------
-- "take down" the posters
 - wake up/sleep animation sequence
-- WALK ALONG THE TABLE! place things cleverly in front of or behind u, fix placement of the cryobed
 - add music (make npm module for sequencer?)
 - add sound fx
 - ADD PUNCTUATION TO THE POETRY

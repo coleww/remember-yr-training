@@ -155,8 +155,17 @@ bunker.prototype = {
 
     var chair = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'chair');
     chair.scale.setTo(5)
-    var table = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
+
+
+
+
+
+
+
+    var table = this.platforms.create(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
     table.scale.setTo(2, 1.5)
+    table.body.immovable = true
+    table.body.setSize(60, 1, 0, 15)
 
     var candle = this.game.add.sprite(this.game.world.width / 2 - 40, this.game.world.height - 330, 'candle');
 
@@ -778,7 +787,7 @@ bunker.prototype = {
 
 
 
-
+    this.game.world.bringToTop(this.player)
 
 
 
@@ -797,7 +806,10 @@ bunker.prototype = {
       var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
       mug.scale.setTo(0.75)
       var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
+          this.game.world.bringToTop(this.player)
+      this.game.world.bringToTop(mug)
 
+      // this.game.world.bringToTop(book1)
 
     } else if (day == 3) {
 
@@ -815,6 +827,11 @@ bunker.prototype = {
       var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
       book2.scale.setTo(0.5)
       var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
+    this.game.world.bringToTop(this.player)
+      this.game.world.bringToTop(jug)
+
+      // this.game.world.bringToTop(book2)
+
     } else {
 
       this.game.tableStuff[0] = {name: 'some papers',
@@ -826,10 +843,15 @@ bunker.prototype = {
         description: 'you miss the pizza dearly :~~~~(',
         yes: 'accept the absence and move on',
         no: 'continue to mourn the loss'}
-      var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 325, 'papert');
+      var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 315, 'papert');
       var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
       pizza.scale.setTo(0.75)
       var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
+
+      this.game.world.bringToTop(this.player)
+      this.game.world.bringToTop(pizza)
+
+      this.game.world.bringToTop(papert)
     }
     // this.game.world.bringToTop(this.platforms)
 
@@ -849,7 +871,7 @@ bunker.prototype = {
 
 
       // OHHH MAYBE DROP THE PLAYER IN HERE?
-      that.game.world.bringToTop(that.player)
+
     }, this)
 
   },
