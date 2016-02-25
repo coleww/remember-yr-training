@@ -1,7 +1,6 @@
 -------------PRIORITIES--------------------
 - wake up/sleep animation sequence
 - add music (make npm module for sequencer?)
-- add sound fx
 - ADD PUNCTUATION TO THE POETRY
 - robot web audio voice thing?
 - save system? localStorage? fine. later.
@@ -28,7 +27,10 @@
 
 
 
-
+-----------------------CLEANUPS--------------
+- add MOAR sound fx
+- compress all assets? hella lo-fi?
+- pick color palette, do it by hand? HOW TO (um just steal one from smth? maybe trnsfrmrs?)
 
 
 

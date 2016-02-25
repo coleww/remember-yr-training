@@ -660,16 +660,28 @@ bunker.prototype = {
       this.poem += ' ' + (next == 'linebreak' ? '\n' : next)
     }
     this.poemDisplay.setText(this.poem)
-    var words = this.poem.split(' ')
+    var words = this.poem.replace(/[^a-zA-Z0-9 ]/g, '').replace(/(^\s+|\s+$)/g, '').replace(/\s+/g, ' ').split(' ')
+    console.log(words)
     if (next == 'linebreak') words = []
     console.log('NEXTS', [words[words.length - 2], words[words.length - 1]].join(' '))
-    var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')), 'linebreak']
+    var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
+    poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
+    poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
+    'linebreak','(', ')', '[', ']', '!', '?', '.', ':', ';', '~', '/', '\\']
     var that = this
+    var acc = 0
     nexts.forEach(function (opt, i) {
-      var option = that.game.add.text(155 + i * 100, that.poemDisplay.bottom + 25 + i * 33, opt, { fontSize: '20px', fill: '#03F' })
+
+      if (i % 4 == 0){
+        acc = 0
+      }
+      var size = 20
+      if (opt.length == 1) {size = 40}
+      var option = that.game.add.text(75 + acc * 100, that.poemDisplay.bottom + 25 + i * 23, opt, { fontSize: size + 'px', fill: '#03F' })
       option.inputEnabled = true;
       option.events.onInputDown.add(select, that);
       that.currentOptions.push(option)
+      acc++
     })
     function select (thing) {
       that.currentOptions.forEach(function (opt) {
@@ -710,7 +722,7 @@ bunker.prototype = {
     var instructions = this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
 
     this.poem = poetryGen()
-    this.poemDisplay = this.game.add.text(155, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })
+    this.poemDisplay = this.game.add.text(55, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })
     this.runPoem()
     var that = this
     var quit = that.game.add.text(175, 135, 'quit', { fontSize: '20px', fill: '#08D' })
@@ -899,13 +911,13 @@ bunker.prototype = {
               this.inDialog = true
             this.openDialog(this.game.tableStuff[2])
 
-          } else if (x >= 210 && x < 245) {
+          } else if (x >= 210 && x < 235) {
               // left desk item
               console.log('touching the lefty')
               this.inDialog = true
               this.openDialog(this.game.tableStuff[0])
 
-          } else if (x >= 250 && x < 275) {
+          } else if (x >= 240 && x < 275) {
 
             console.log('touching the desk')
               this.inDialog = true
