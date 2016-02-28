@@ -351,21 +351,19 @@ bunker.prototype = {
   },
   pauseGame: function () {
     console.log('meow')
-    this.game.paused = !this.game.paused
     this.inDialog = true
+    var that = this
     drawMenu(this.game, 'menu',
                  {name: 'PAWS\'d',
                     description: 'quit game?',
-                    yes: 'PLZ',
+                    yes: 'PLZZZZZZZZZZZ',
                     no: 'keep playing'
                 },
                      function (menu) {
                         menu.destroy()
-                        that.game.paused = false
                         that.inDialog = false
                         that.game.state.start('titleScreen')
                     }, function () {
-                        that.game.paused = false
                         that.inDialog = false
                     })
     // draw a save/close menu
@@ -380,7 +378,7 @@ bunker.prototype = {
   pawsButton.inputEnabled = true
   pawsButton.events.onInputDown.add(function () {
     // that.openpawsButton()
-    that.pauseGame()
+    if (!that.game.paused) that.pauseGame()
   })
   pawsButton.scale.setTo(1.5)
 

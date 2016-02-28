@@ -10,7 +10,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
         if (bg == 'parch') {
           menmen.scale.setTo(1, 1.5)
         } else {
-          menuBox.scale.setTo(3.75, 5)
+          menmen.scale.setTo(3.75, 5)
         }
       } else {
         menmen = bg
