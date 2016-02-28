@@ -18,6 +18,7 @@ var poetryGen = require('../poet')
 var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
+    this.game.musician.start()
     this.wall1 = get('wall1')
     this.wall2 = get('wall2')
     this.inDialog = false
