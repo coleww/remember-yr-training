@@ -1,13 +1,11 @@
 -------------PRIORITIES--------------------
-- wake up/sleep animation sequence
 - add music (make npm module for sequencer?)
-- pause/save system? localStorage? fine. later.
-- TAKE DAMAGE if yr in the air for too long? or jump from the radio? isJumping, maxHeight, etc.
-- MAYBE put gifs on the sides and change them? hrmmm. or just tiled metal textures i guess yeah
-- npm run build: copy everything into the_game?
-
+- write all the object FX
+- program in the alarm/explosion sequence
 
 ------CUTE--_DETAILS------------------
+- TAKE DAMAGE if yr in the air for too long? or jump from the radio? isJumping, maxHeight, etc.
+- wake up/sleep animation sequence
 - kick the computer to make it stfigureop buzzing. ALSO  figure out the panner node thing
 - (drink potions or we) unleash the dragon, it bloodily smooshes u. can either destroy bunker & die or write poems and then fly home (from drinking th ebeer and touching the computer early?) GAMEOVER2
 - when bunker starts breaking down, make the screen shake/flash red? (probably change a global translate/rotate a bunch)
@@ -28,6 +26,8 @@
 
 
 -----------------------CLEANUPS--------------
+- MAYBE put gifs on the sides and change them? hrmmm. or just tiled metal textures i guess yeah
+- npm run build: copy everything into the_game?
 - add MOAR sound fx
 - compress all assets? hella lo-fi?
 - pick color palette, do it by hand? HOW TO (um just steal one from smth? maybe trnsfrmrs?)
