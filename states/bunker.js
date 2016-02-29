@@ -999,11 +999,35 @@ bunker.prototype = {
 
     // figure these out once object positions are set in stone
   },
+  checkForDeath: function () {
+    if (get('health') <= 0) {
+        set('gameOver', 420)
+        this.game.state.start("GameOverScreen")
+    }
+  },
   update: function () {
     // console.log(this.game.input.x,
     // this.game.input.y)
     this.game.musician.updateComputerNoise(this.game, this.player.x, this.player.y)
     this.game.physics.arcade.collide(this.player, this.platforms);
+
+
+
+    if (this.player.body.touching.down) {
+        if (this.willTakeFallDamage && this.player.y > 580) {
+            this.hpDisplay.setText(dec('health', 15) + '/100')
+            // this.game.tint
+            this.game.musician.playFX('crunch')
+            this.checkForDeath()
+        }
+        this.willTakeFallDamage = false
+    } else if (this.player.x < 311 && this.player.y < 400) {
+        this.willTakeFallDamage = true
+    }
+
+
+
+
 
     if (this.cursors.left.isDown) {
         //  Move to the left
@@ -1052,7 +1076,8 @@ bunker.prototype = {
     //  Allow the this.player to jump if they are touching the ground.
     if (this.cursors.up.isDown && this.player.body.touching.down) {
         this.game.musician.playFX('pew')
-      this.player.body.velocity.y = -350;
+      this.player.body.velocity.y = -340;
+
     }
   }
 }

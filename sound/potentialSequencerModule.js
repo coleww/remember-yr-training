@@ -6,6 +6,10 @@ function roll (prob) {
   return Math.random() < prob
 }
 
+// ADD
+// - modulus
+// - randos? flipsies?
+
 module.exports = function (currentSong) {
   var song = currentSong
   var interval, nextSong
@@ -19,7 +23,7 @@ module.exports = function (currentSong) {
           if (pattern.currentTick == pattern.probs[pattern.currentVersion].length - 1) {
             pattern.currentTick = 0
             pattern.currentVersion = pick(pattern.nexts[pattern.currentVersion])
-            console.log('WEEEE', pattern.currentVersion)
+            // console.log('WEEEE', pattern.currentVersion)
             if (instrument.lead) {
               song.current = pick(song.nexts[song.current])
               if (!song.current) alert('it is over')

@@ -7,6 +7,13 @@ var endings = {
     description: 'you unplugged your own battery pack. good job. by the time your successor arrives to relieve you, the rust will have taken over and a small family of rodents will have made a nest in yr belly. you are cast into a junkyard. years later an artist will find your rotting hulk and incorporate into an assemblage piece. they say their work is at the intersection of technology and absence, but the critics panned the work you now live in as "banksy-esque"' ,
     name: 'EVERYTHING GOES DARK AND SILENT...',
     song: 'dead'
+  },
+  gameOver420: {
+    sprite: 'ghost',
+    scale: [5, 7],
+    description: 'you have taken fatal damage, which is an incredible feat in a game that does not even really have enemies or obstacles of any sort. Congratulations!' ,
+    name: 'YOU WAKE UP, FEELING FLOATY AND INCORPOREAL, AND GAZE DOWN AT YR LIFELESS BODY',
+    song: 'dead'
   }
 }
 
@@ -29,7 +36,7 @@ gameOverScreen.prototype = {
     var ending = endings['gameOver' + get('gameOver')]
     var bg = this.game.add.sprite(0, 0, ending.sprite);
     bg.scale.setTo(ending.scale[0], ending.scale[1])
-    var whatHappened  = this.game.add.text(50, 150, ending.name, { fontSize: '25px', fill: '#900' });
+    var whatHappened  = this.game.add.text(50, 150, ending.name, { fontSize: '25px', fill: '#900', wordWrap: true, wordWrapWidth: 300  });
     var confirm  = this.game.add.text(50, 270, ending.description, { fontSize: '20px', fill: '#08D', wordWrap: true, wordWrapWidth: 500 });
     confirm.inputEnabled = true;
     var that = this

@@ -5,7 +5,7 @@ var SamplePlayer = require('@coleww/openmusic-sample-player')
 module.exports = function (ac, mainVol) {
   var samplers = {}
   var samples = [
-    'alclock', 'countdown', 'crumple', 'explosion',
+    'alclock', 'countdown', 'crumple', 'explosion', 'crunch',
     'horribletone', 'missilelaunch', 'modem', 'noise',
     'pew', 'pow', 'russel1', 'russel2', 'russel3', 'selecto',
     'thuddy', 'twinklelong', 'twinkleshort', 'WAHHHHH', 'windloop', 'wobbly', 'woosh'
