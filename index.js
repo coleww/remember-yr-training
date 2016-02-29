@@ -17,7 +17,7 @@ window.onload = function() {
   Phaser.Time.desiredFps = 30
   var game = new Phaser.Game(width, height, Phaser.AUTO, "")
   game.musician = require('./music')()
-  game.musician.start()
+  game.musician.start('title')
 
   // game.add.plugin(Phaser.Plugin.Debug);
   game.state.add("Boot", boot)

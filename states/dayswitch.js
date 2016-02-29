@@ -14,7 +14,7 @@ DaySwitch.prototype = {
   preload: function(){
   },
   create: function(){
-
+    this.game.musician.change('daySwitch')
     var bg = this.game.add.sprite(0, 0, 'black');
     bg.scale.setTo(5, 7)
     var day = get('currentDay')

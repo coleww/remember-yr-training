@@ -1,15 +1,52 @@
 var adsr = require("a-d-s-r")
-var seq = require('./sound/sequencer')
 var fx = require('./sound/fx')
 // var // REQUIRE ALL OF THE STUFF IN /songs
+var merge = require('merge')
+
+var songs = {
+  bunker: require('./songs/bunker'),
+  title: require('./songs/title'),
+  daySwitch: require('./songs/daySwitch'),
+  happyEnding: require('./songs/happyEnding'),
+  sadEnding: require('./songs/sadEnding'),
+  secretEnding: require('./songs/secretEnding'),
+  silo: require('./songs/silo'),
+  vending: require('./songs/vending'),
+  poetry: require('./songs/poetry')
+}
+
+var int2freq = require('int2freq')
+var seqy = require('./sound/potentialSequencerModule')
 
 module.exports = function () {
   var ac = new (AudioContext || webkitAudioContext)()
   var mainVolume = ac.createGain()
-  var sequencer = seq(ac, mainVolume)
+  var sequencer = seqy(songs.title)
   var foley = fx(ac, mainVolume)
   mainVolume.connect(ac.destination)
 
+  var insts = {
+    snare: require("dj-snazzy-snare")(ac),
+    tom: require("tom-from-space")(ac),
+    kick: require("touch-down-dance")(ac),
+    hat: require("really-hi-hat")(ac),
+    wBass: require("warlock-bass")(ac),
+    bBass: require("bubble-bass")(ac),
+    piano: require("pie-ano")(ac),
+    sparkles: require("sparkle-motion")(ac)
+  }
+Object.keys(insts).forEach(function(ik) {
+      insts[ik].connect(mainVolume)
+    })
+
+  Object.keys(songs).forEach(function(sk) {
+    Object.keys(songs[sk].instruments).forEach(function(ik) {
+        songs[sk].instruments[ik].play = function (arg) {
+          if (songs[sk].instruments[ik].melodic) insts[ik].update(merge({freq: int2freq(arg, songs[sk].key)}, songs[sk].instruments[ik].config || {}), ac.currentTime)
+          insts[ik].start(ac.currentTime)
+        }
+    })
+  })
 
   return {
     playFX: function (fx) {
@@ -29,7 +66,7 @@ module.exports = function () {
       sequencer.stop()
     },
     change: function (newPattern) {
-      sequencer.updateNext(newPattern)
+      sequencer.update(songs[newPattern])
     },
     setMainVolume: function (val) {
 
