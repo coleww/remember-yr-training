@@ -8,13 +8,27 @@ var endings = {
     name: 'EVERYTHING GOES DARK AND SILENT...',
     song: 'dead'
   },
-  gameOver420: {
+  gameOver3: {
     sprite: 'ghost',
     scale: [5, 7],
     description: 'you have taken fatal damage, which is an incredible feat in a game that does not even really have enemies or obstacles of any sort. Congratulations!' ,
     name: 'YOU WAKE UP, FEELING FLOATY AND INCORPOREAL, AND GAZE DOWN AT YR LIFELESS BODY',
     song: 'dead'
-  }
+  },
+  gameOver451: {
+    sprite: 'fire',
+    scale: [5, 7],
+    description: 'you transformed into the fire lord Rayon, but did not have the force of will to control your powers and ended up destroying the station and trapping yourself under miles of rock. as an immortal pseudo-god, you lay immovable and trapped here until nuclear war destroys the earth and you are free to return to your home on the sun. in the meantime you have this song stuck in yr head:',
+    name: 'X_X TOTAL BURNINATION X_X',
+    song: 'circus'
+  },
+  gameOver420: {
+    sprite: 'psychedelic',
+    scale: [5, 7],
+    description: 'you transform into a shimmering power goddess, but also lose grip on reality. where you even playing a game? is any of this real?',
+    name: 'X_X WHOA, JUST LIKE, WHOA X_X',
+    song: 'phish'
+    }
 }
 
 var gameOverScreen = function(game){

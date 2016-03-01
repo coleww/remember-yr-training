@@ -1,6 +1,18 @@
 -------------PRIORITIES--------------------
 - write all the object FX
 - program in the alarm/explosion sequence
+- MAKE music demo randomize key/scale/bpm.
+
+
+IF FADED: u can kick the fan to fix it but take damage
+u can also eat the tofu power up
+
+
+
+
+
+
+
 
 ------CUTE--_DETAILS------------------
 - TAKE DAMAGE if yr in the air for too long? or jump from the radio? isJumping, maxHeight, etc.

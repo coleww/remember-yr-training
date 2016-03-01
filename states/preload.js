@@ -18,6 +18,10 @@ preload.prototype = {
     game.load.image("backsplash", "assets/sprites/backsplash.png")
     game.load.image("tunnelbg", "assets/sprites/tunnelbg.png")
     game.load.image("wall", "assets/sprites/wall.png")
+    game.load.spritesheet("boss", "assets/sprites/boss.png", 96, 96)
+    game.load.spritesheet("trippyb", "assets/sprites/trippyb.png", 96, 96)
+    game.load.image("bloodsculpt", "assets/sprites/bloodsculpt.png")
+    game.load.image("breaded", "assets/sprites/breaded.png")
     game.load.image("ship", "assets/sprites/ship.png")
     game.load.image("smoke", "assets/sprites/smoke.png")
     game.load.image("barrier", "assets/sprites/barrier.png")
@@ -110,6 +114,8 @@ preload.prototype = {
     game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);
     game.load.image('platform', 'assets/sprites/gbplat.png');
     game.load.spritesheet('dude', 'assets/sprites/protocoldroid2.png', 32, 48);
+    game.load.spritesheet('bluedude', 'assets/sprites/bluedroid2.png', 32, 48);
+    game.load.spritesheet('greendude', 'assets/sprites/greendroid2.png', 32, 48);
 
 
 
@@ -153,7 +159,10 @@ preload.prototype = {
                         description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
         yes: 'back away slowly',
         no: 'aspire to push it one day',
-        ifFaded: 'you are feeling bold, courageous, and decisive. push the button? '},
+        ifFadedYes: 'you are feeling bold, courageous, and decisive. push the button? ',
+        ifFadedNo: 'hell no',
+        ifFadedFX: 'drunkescape'
+    },
         {name: 'a huge computer machine',
                             description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
         yes: 'think about the cooling system',

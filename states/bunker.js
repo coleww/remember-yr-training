@@ -18,12 +18,14 @@ var poetryGen = require('../poet')
 var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
+    var that = this
+
     this.game.musician.change('bunker')
     this.wall1 = get('wall1')
     this.wall2 = get('wall2')
     this.inDialog = false
     console.log("WE IN THE BUNKER")
-
+    this.speediness = 1
 
     this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
@@ -253,8 +255,11 @@ bunker.prototype = {
 
     this.bed = this.game.add.sprite(this.game.world.width - 100, this.game.world.height - 305, 'cryobed');
     this.bed.frame = 1
-
-
+// , [500, 650], [450, 500]
+    ;[[94, 665], [245, 615], [350, 620]].forEach(function (coords) {
+                var bread = that.game.add.sprite(coords[0], coords[1], 'breaded');
+                bread.scale.setTo(0.35)
+            })
 
     // var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
 
@@ -511,40 +516,58 @@ bunker.prototype = {
             this.wall2 = false
             break;
         case 'hp25':
-            // stuff
+            this.hpDisplay.setText(inc('health', 25) + '/100')
             break;
         case 'hp50':
-            // stuff
+            this.hpDisplay.setText(inc('health', 50) + '/100')
             break;
         case 'canpunch':
-            // stuff
+            this.canPunch = true
             break;
         case 'drop':
             // stuff
+            // ...????? maybe misguided
             break;
         case 'key':
             // stuff
+            // needs a door?
             break;
         case 'light':
             // stuff
             break;
         case 'greenspeed':
-            // stuff
+            this.player.loadTexture('greendude', 0);
+            this.speediness = 2
             break;
         case 'flashy':
+            this.player.loadTexture('bluedude', 0);
             // stuff
             break;
         case '$10':
             // stuff
+            this.walletDisplay.setText(inc('wallet', 10) + '$')
             break;
         case '$25':
             // stuff
+            this.walletDisplay.setText(inc('wallet', 25) + '$')
             break;
         case 'faded':
             // stuff
+            this.isFaded = true
+            this.computerStuff[1].oldyes =  this.computerStuff[1].yes
+            this.computerStuff[1].oldno =  this.computerStuff[1].no
+            this.computerStuff[1].yes =  this.computerStuff[1].ifFadedYes
+            this.computerStuff[1].no =  this.computerStuff[1].ifFadedNo
+            this.computerStuff[1].fx =  this.computerStuff[1].ifFadedFX
             break;
         case 'breadart':
             // stuff
+
+            [[50, 100], [100, 100], [150, 100], [200, 100], [250, 100]].forEach(function (coords) {
+                var bread = this.game.add.sprite(coords[0], coords[1], 'breaded');
+                bread.scale.setTo(2)
+            })
+
             break;
         case 'chickenattack':
             // stuff
@@ -556,9 +579,16 @@ bunker.prototype = {
             // stuff
             break;
         case 'transformtrip':
+            this.player.loadTexture('trippyb', 0);
+            // open iframes of other games?
+            set('gameOver', 420)
+            //
             // stuff
             break;
         case 'transformevil':
+            this.player.loadTexture('boss', 0);
+            // player should begin spewing fire everywhere and slowly taking damage
+            set('gameOver', 451)
             // stuff
             break;
         case 'fireslash':
@@ -824,8 +854,13 @@ bunker.prototype = {
   startDay: function () {
 
 
+    if (this.isFaded) {
+        this.computerStuff[1].yes =  this.computerStuff[1].oldyes
+        this.computerStuff[1].no =  this.computerStuff[1].oldno
+        this.computerStuff[1].fx = null
 
-
+        this.isFaded = false
+    }
     // have player emerge from bed?
     // open the bed door?
 
@@ -1004,7 +1039,7 @@ bunker.prototype = {
   },
   checkForDeath: function () {
     if (get('health') <= 0) {
-        set('gameOver', 420)
+        set('gameOver', 3)
         this.game.state.start("GameOverScreen")
     }
   },
@@ -1034,7 +1069,7 @@ bunker.prototype = {
 
     if (this.cursors.left.isDown) {
         //  Move to the left
-        this.player.body.velocity.x = -150;
+        this.player.body.velocity.x = -150 * this.speediness;
         if (this.player.body.touching.down) {
           this.player.animations.play('left');
         } else {
@@ -1043,7 +1078,7 @@ bunker.prototype = {
         }
     } else if (this.cursors.right.isDown) {
         //  Move to the right
-        this.player.body.velocity.x = 150;
+        this.player.body.velocity.x = 150 * this.speediness;
         if (this.player.body.touching.down) {
           this.player.animations.play('right');
         } else {
