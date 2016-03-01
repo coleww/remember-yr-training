@@ -1,5 +1,4 @@
 -------------PRIORITIES--------------------
-- add music (make npm module for sequencer?)
 - write all the object FX
 - program in the alarm/explosion sequence
 

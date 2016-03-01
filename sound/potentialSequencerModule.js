@@ -31,12 +31,10 @@ module.exports = function (currentSong) {
           if (pattern.currentTick == pattern.probs[pattern.currentVersion].length) {
             pattern.currentTick = 0
             pattern.currentVersion = pick(pattern.nexts[pattern.currentVersion])
-            // console.log('WEEEE', pattern.currentVersion)
             if (instrument.lead) {
-              // if (nextSong) song = nextSong, nextSong = null
+              if (nextSong) song = nextSong, nextSong = null
               song.current = pick(song.nexts[song.current])
               if (!song.current) alert('it is over')
-              // console.log('SWITCHY', song.current)
             }
           }
         })
@@ -45,13 +43,8 @@ module.exports = function (currentSong) {
     stop: function () {
       clearInterval(interval)
     },
-    update: function (theNextSong) {
-      // the loop function should check for new songData when it hits an end of measure? eh
-      song = theNextSong
+    update: function (theNextSong, wait) {
+      wait ? song = theNextSong : nextSong = theNextSong
     }
   }
 }
-
-// the play function on each instrument should take a params thing and play stuff in response.
-// it deals with translating the integer to the whatever
-// song ex.
