@@ -184,8 +184,8 @@ preload.prototype = {
             used: 'you found a tasty tofu treat!',
             item: {
                 name: 'tofu dish',
-                description: 'will replenish your health! and maybe more!',
-                fx: 'hp25$10',
+                description: 'will replenish your health!',
+                fx: 'hp50',
                 yes: 'eat that thing',
                 no: 'um it is jiggling a lil ~too~ weirdly for me'}},
         {name: 'Strength Poster',
@@ -222,7 +222,7 @@ preload.prototype = {
           'purplish crystals, look pretty dense, probably worth something to somebody'],
         sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal'],
         names: ['green crystals', 'blue crystals', 'purple crystals'],
-        fx: ['greenspeed','flashy','kick'],// what happens when the thing is used, run thru huge switch statement o_o
+        fx: ['greenspeed','flashy','$25'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
 
       },

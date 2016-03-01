@@ -510,73 +510,76 @@ bunker.prototype = {
             this.wallart2.destroy()
             this.wall2 = false
             break;
-        case '':
+        case 'hp25':
             // stuff
             break;
-        case '':
+        case 'hp50':
             // stuff
             break;
-        case '':
+        case 'canpunch':
             // stuff
             break;
-        case '':
+        case 'drop':
             // stuff
             break;
-        case '':
+        case 'key':
             // stuff
             break;
-        case '':
+        case 'light':
             // stuff
             break;
-        case '':
+        case 'greenspeed':
             // stuff
             break;
-        case '':
+        case 'flashy':
             // stuff
             break;
-        case '':
+        case '$10':
             // stuff
             break;
-        case '':
+        case '$25':
             // stuff
             break;
-        case '':
+        case 'faded':
             // stuff
             break;
-        case '':
+        case 'breadart':
             // stuff
             break;
-        case '':
+        case 'chickenattack':
             // stuff
             break;
-        case '':
+        case 'light':
             // stuff
             break;
-        case '':
+        case 'know':
             // stuff
             break;
-        case '':
+        case 'transformtrip':
             // stuff
             break;
-        case '':
+        case 'transformevil':
             // stuff
             break;
-        case '':
+        case 'fireslash':
             // stuff
             break;
-        case '':
+        case 'gooslash':
             // stuff
             break;
-        case '':
+        case 'darkslash':
             // stuff
             break;
-        case '':
+        case 'makeTree':
             // stuff
             break;
-        case '':
+        case 'makeBloodSculpture':
             // stuff
             break;
-        case '':
+        case 'makeGold':
+            // stuff
+            break;
+        case 'read':
             // stuff
             break;
         case '':
@@ -591,8 +594,8 @@ bunker.prototype = {
 
     }
 
-    var whatHappened  = this.game.add.text(150, 570, thing.used, { fontSize: '20px', fill: '#FFF' });
-    var confirm  = this.game.add.text(150, 370, 'YAYYYYY!!!', { fontSize: '20px', fill: '#08D' });
+    var whatHappened  = this.game.add.text(150, 370, thing.used, { fontSize: '20px', fill: '#FFF' });
+    var confirm  = this.game.add.text(150, 570, 'YAYYYYY!!!', { fontSize: '20px', fill: '#08D' });
     confirm.inputEnabled = true;
     var that = this
     //REFACTOR THISSSSSSSSSSS
