@@ -293,7 +293,8 @@ preload.prototype = {
 
   },
   create: function(){
-    this.game.state.start("TitleScreen")
+    this.game.musician.fadeIn()
+    this.game.state.start("Bunker")
     // this.game.state.start("DaySwitch")
   }
 }

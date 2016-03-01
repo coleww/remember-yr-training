@@ -199,9 +199,9 @@
         decay: 0.051,
         sustain: 0.0753,
         release: 0.0515,
-        peak: 0.75,
-        mid: 0.3,
-        end: 0.21
+        peak: 0.375,
+        mid: 0.23,
+        end: 0.121
       },
       melodic: true,
       patterns: {
@@ -250,7 +250,7 @@
       }
     },
     piano: {
-      config: {attack: 0.3, decay: 0.1, sustain: 0.3, release: 0.5, peak: 0.5, mid: 0.3, end: 0.00000001},
+      config: {attack: 0.3, decay: 0.1, sustain: 0.3, release: 0.5, peak: 0.35, mid: 0.13, end: 0.00000001},
       lead: true,
       melodic: true,
       patterns: {
@@ -304,9 +304,9 @@
         decay: 0.3131,
         sustain: 0.3,
         release: 0.315,
-        peak: 0.5765,
-        mid: 0.343,
-        end: 0.13
+        peak: 0.35765,
+        mid: 0.2343,
+        end: 0.013
       },
       melodic: true,
       patterns: {
@@ -360,8 +360,8 @@
         decay: 0.121,
         sustain: 0.13,
         release: 0.1215,
-        peak: 0.375,
-        mid: 0.253,
+        peak: 0.2375,
+        mid: 0.1253,
         end: 0.01
       },
       melodic: true,
@@ -420,6 +420,6 @@
   bpm: 560,
   key: {
     tonic: "A3",
-    scale: "pentMaj"
+    scale: "minor"
   }
 }
