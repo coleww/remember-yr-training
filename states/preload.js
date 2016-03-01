@@ -213,17 +213,6 @@ preload.prototype = {
       ]
 
       game.vendingItems = shuffle([
-      {name: 'RANDOM!',
-        descriptions: [
-          'these shiny pebbles might be worth something, or maybe it is food? A GAMBLE!',
-          'a skeleton key! that means it can open any door in the building! i wonder if there are any doors tho...',
-          'a lantern, excellent for exploring dark corridors.'],
-        sprites: ['pebbles', 'key', 'lantern'],
-        names: ['shiny pebbles', 'skeleton key', 'lantern'],
-        fx: ['drop','key','light'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['greed', 'greed', 'nature']// keys to an object of corpii for later?
-
-      },
       {name: 'boots',
         descriptions: [
           'sparkly green crystals. so pretty',
@@ -231,6 +220,7 @@ preload.prototype = {
           'purplish crystals, look pretty dense, probably worth something to somebody'],
         sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal'],
         names: ['green crystals', 'blue crystals', 'purple crystals'],
+        oneTime: [true, true, true],
         fx: ['greenspeed','flashy','$25'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
 
@@ -241,17 +231,9 @@ preload.prototype = {
         'some sort of leg to an animal. poor thing. you will honor the life of this magnificient creature by wielding this bone as a crude bludgeon in your quest for justice'],
         sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick'],
         names: ['strong ale', 'bread loaf', 'animal leg'],
+        oneTime: [true, true, false],
         fx: ['faded','breadart','chickenattack'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
-      },
-      {name: 'MAGICAL ITEMS',
-        descriptions: ['a bright glowing star! good for illuminating dark spaces! or also as a party light.',
-        '"DRINK FROM THIS CHALICE, AND U SHALL ATTAIN ALL KNOWLEDGE" is what it says underneath the microwave safe notice',
-        'this orb is mysterious and probably powerful. or at least u could throw it at something'],
-        names: ['star of glowingness', 'chalice of knowledge', 'orb of mystery'],
-        sprites: ['GlovesGold', 'GlovesLeather', 'GlovesSteel'],
-        fx: ['light','know','drop'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['nature', 'greed', 'fight']// keys to an object of corpii for later?
       },
       {name: 'shrooms',
         descriptions: ['looks like the sort of mushroom that you get on pizzas. mmmm. pizza. yes you totally can probably eat this',
@@ -259,6 +241,7 @@ preload.prototype = {
         'this mushroom is literally oozing out what appears to be blood, and when you put your ear close to it a faint grinding and gnashing sound can be heard.'],
         sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed'],
         names: ['brown mushroom', 'purple mushroom', 'red mushroom'],
+        oneTime: [true, true, true],
         fx: ['hp25','transformtrip','transformevil'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
       },
@@ -266,6 +249,7 @@ preload.prototype = {
         descriptions: ['this soda is blue, and it looks just like the ocean under the moon','this soda is green, which is the same as the emotion that i get from you','this soda is red, which is the color of your heart which you should give to me or else forget about it'],
         sprites: ['RobeB', 'RobeG', 'RobeR'],
         names: ['blue soda', 'green soda', 'red soda'],
+        oneTime: [true, true, true],
         fx: ['hp25','$10','hp25'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
       },
@@ -274,6 +258,7 @@ preload.prototype = {
         'erm, this sword is pretty gross and just keeps leaking this slime everywhere, it kind of has the consistency of gak? do you remember gak? *googles to see if they still make gak*',
         'this sword casts a shadow upon everything near it and appears to be sucking in all the light in the room. it appears quite powerful but may also control your soul if you wield it?'],
         sprites: ['Sword1', 'Sword2', 'Sword3'],
+        oneTime: [false, false, false],
         names: ['fire sword', 'goo sword', 'sword of all-consuming darkness'],
         fx: ['fireslash','gooslash','darkslash'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
@@ -283,18 +268,20 @@ preload.prototype = {
         'a red potion, the color of your blood and the blood of your enemies!',
         'a yellow potion, the color of, um, piss? pee pee. number 1. *giggles*'],
         sprites: ['VialG', 'VialR', 'VialY'],
+        oneTime: [true, true, true],
         names: ['green potion', 'red potion', 'yellow potion'],
         fx: ['makeTree','makeBloodSculpture','makeGold'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'fight', 'greed']// keys to an object of corpii for later?
       },
       {name: 'books',
+    oneTime: [false, false, false],
       descriptions: ['a training manual! you have been looking everywhere for this!',
-       'mixology handbook, hmm might help to pass the time',
+       '""HOW TO WRITE GOOD POEMS"", hmm might help to pass the time',
        'a filthy, bloody note. intriguing.'],
       sprites: ['', '', ''],
       names: ['training manual', 'mixology book', 'bloody note (folded)'],
       extended: ['it reads "WHEN ALARM BLARES LOUDLY WITH NO END IN SIGHT, PRESS THE BUTTON"',
-      'if you drink a bunch of stuff from the vending machine during the same day, weird stuff might happen!',
+      'HOW TO WRITE A GOOD POEM: write some words, not too many, however much is just enough. give it a title. or don\'t, whatever i\'m not your boss. share it or save it as a secret. you have written a good poem.',
       'it is dirty, covered in blood, wrinkled up, and might have been bitten? you are pretty sure that it faintly reads "ABSOLUTELY DO NOT PUSH THE BUTTON"'],
       fx: ['read', 'read', 'read'],
       seed: ['greed', 'fight', 'nature']}
@@ -303,8 +290,8 @@ preload.prototype = {
   },
   create: function(){
     this.game.musician.fadeIn()
-    // this.game.state.start("Bunker")
-    this.game.state.start("DaySwitch")
+    this.game.state.start("Bunker")
+    // this.game.state.start("TitleScreen")
   }
 }
 module.exports = preload

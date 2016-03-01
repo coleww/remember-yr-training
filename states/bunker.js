@@ -19,7 +19,7 @@ var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
     var that = this
-
+    this.fanStillBroken = true
     this.game.musician.change('bunker')
     this.wall1 = get('wall1')
     this.wall2 = get('wall2')
@@ -494,6 +494,24 @@ bunker.prototype = {
 
     // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
   },
+  hitTheFanIfYouAreThereAndYouHaventHitItYet: function (obj) {
+    var y = this.player.y
+    if (this.fanStillBroken && this.player.body.touching.down && y >= 375 && y < 385) {
+        this.fanStillBroken = false
+        this.musician.stopComputerNoise()
+        // draw
+        var that = this
+        drawMenu(this.game, 'parch',
+                 {name: 'YOU FIXED IT!',
+                    description: 'you hit the fan with your ' + obj.name + ' and that seems to fix the horrendous noise!',
+                    yes: 'why yes ofc i am tough and also strong'
+                },
+                     function (menu) {
+                        menu.destroy()
+                        that.inDialog = false
+                    })
+    }
+  },
   useThing: function (thing, menmen) {
     switch(thing.fx) {
         case 'gameOver1':
@@ -520,17 +538,12 @@ bunker.prototype = {
             break;
         case 'canpunch':
             this.canPunch = true
-            break;
-        case 'drop':
-            // stuff
-            // ...????? maybe misguided
-            break;
-        case 'key':
-            // stuff
-            // needs a door?
-            break;
-        case 'light':
-            // stuff
+            this.inventory.push({
+                name: 'your fists',
+                description: 'that tofu thing u ate has made you hecka swole and ready to fight',
+                fx: 'punchStuff',
+                oneTime: false
+            })
             break;
         case 'greenspeed':
             this.player.loadTexture('greendude', 0);
@@ -568,14 +581,13 @@ bunker.prototype = {
                 bread.scale.setTo(0.35)
             })
             break;
+        case 'punchStuff':
+            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            break;
         case 'chickenattack':
             // stuff
-            break;
-        case 'light':
-            // stuff
-            break;
-        case 'know':
-            // stuff
+            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            // IF AT THE FAN, can hit it to stop the noise?
             break;
         case 'transformtrip':
             this.player.loadTexture('trippyb', 0);
@@ -592,9 +604,13 @@ bunker.prototype = {
             break;
         case 'fireslash':
             // stuff
+            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            // IF AT THE FAN, can hit it to stop the noise?
             break;
         case 'gooslash':
             // stuff
+            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            // IF AT THE FAN, can hit it to stop the noise?
             break;
         case 'darkslash':
             // stuff
@@ -701,7 +717,7 @@ bunker.prototype = {
         al[item.seed[i]]++
         set('alignment', al)
 
-        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i]})
+        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i]})
         set('inventory', inventory)
         set(get('seeds').push(item.seed[i]))
         that.redrawInventory()

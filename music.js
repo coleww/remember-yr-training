@@ -82,6 +82,10 @@ Object.keys(insts).forEach(function(ik) {
     },
     setMusicVolume: function (val) {
 
-    }, updateComputerNoise: function (g,x,y) {foley.updateComputerNoise(g, x, y)}
+    },
+    updateComputerNoise: function (g,x,y) {foley.updateComputerNoise(g, x, y)},
+    stopComputerNoise: function (g,x,y) {
+      // foley.stopComputerNoise()
+    }
   }
 }
