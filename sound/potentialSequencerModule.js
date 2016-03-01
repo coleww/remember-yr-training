@@ -1,4 +1,5 @@
 function pick (arr) {
+  // console.log(arr)
   return arr[~~(Math.random() * arr.length)]
 }
 

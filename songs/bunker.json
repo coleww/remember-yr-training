@@ -420,6 +420,6 @@
   bpm: 560,
   key: {
     tonic: "A3",
-    scale: "pentMin"
+    scale: "pentMaj"
   }
 }
