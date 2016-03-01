@@ -4,15 +4,15 @@ var fx = require('./sound/fx')
 var merge = require('merge')
 
 var songs = {
-  bunker: require('./songs/bunker'),
-  title: require('./songs/title'),
   daySwitch: require('./songs/daySwitch'),
-  happyEnding: require('./songs/happyEnding'),
-  sadEnding: require('./songs/sadEnding'),
-  secretEnding: require('./songs/secretEnding'),
-  silo: require('./songs/silo'),
-  vending: require('./songs/vending'),
-  poetry: require('./songs/poetry')
+  // happyEnding: require('./songs/happyEnding'),
+  // sadEnding: require('./songs/sadEnding'),
+  // secretEnding: require('./songs/secretEnding'),
+  // silo: require('./songs/silo'),
+  // vending: require('./songs/vending'),
+  // poetry: require('./songs/poetry'),
+  bunker: require('./songs/bunker'),
+  title: require('./songs/title')
 }
 
 var int2freq = require('int2freq')
@@ -24,7 +24,7 @@ module.exports = function () {
   var sequencer = seqy(songs.title)
   var foley = fx(ac, mainVolume)
   mainVolume.connect(ac.destination)
-
+  mainVolume.gain.setValueAtTime(0, ac.currentTime)
   var insts = {
     snare: require("dj-snazzy-snare")(ac),
     tom: require("tom-from-space")(ac),
@@ -42,7 +42,11 @@ Object.keys(insts).forEach(function(ik) {
   Object.keys(songs).forEach(function(sk) {
     Object.keys(songs[sk].instruments).forEach(function(ik) {
         songs[sk].instruments[ik].play = function (arg) {
-          if (songs[sk].instruments[ik].melodic) insts[ik].update(merge({freq: int2freq(arg, songs[sk].key)}, songs[sk].instruments[ik].config || {}), ac.currentTime)
+          var configs = songs[sk].instruments[ik].config || {}
+          var multi = songs[sk].instruments[ik].multi || 1
+          var note = songs[sk].instruments[ik].melodic ? {freq: int2freq(arg, songs[sk].key) * multi} : {}
+
+          insts[ik].update(merge(configs, note), ac.currentTime)
           insts[ik].start(ac.currentTime)
         }
     })
@@ -53,9 +57,11 @@ Object.keys(insts).forEach(function(ik) {
       foley.play(fx)
     },
     fadeIn: function () {
+      mainVolume.gain.linearRampToValueAtTime(0.75, ac.currentTime + 12)
       // adsr(mainVolume, ac.currentTime, {attack: 0.25, decay: 0.1, sustain: 0.2, release: 0.05, peak: 0.7, mid: 0.5, end: 0.000001})
     },
     fadeOut: function () {
+      mainVolume.gain.linearRampToValueAtTime(0, ac.currentTime + 5)
       // adsr(mainVolume, ac.currentTime, {attack: 0.25, decay: 0.1, sustain: 0.2, release: 0.05, peak: 0.7, mid: 0.5, end: 0.000001})
     },
     start: function () {

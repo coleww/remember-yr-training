@@ -1,6 +1,17 @@
 {
   instruments: {
     kick: {
+      config: {
+        freq: 100,
+        endFreq: 30,
+        attack: 0.000000000000000000001,
+        decay: 0.01,
+        sustain: 0.12,
+        release: 0.13,
+        peak: 0.95,
+        mid: 0.65,
+        end: 0.000000000000000000001
+      },
       patterns: {
         verse: {
           probs: [
@@ -10,6 +21,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0, 2], [2, 2, 0]]
         },
         chorus: {
@@ -20,6 +32,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1, 2], [1, 1, 1, 0], [2, 0, 1]]
         },
         bridge: {
@@ -30,11 +43,16 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1, 2], [1, 1, 2, 0], [2, 0, 1]]
         }
       }
     },
     hat: {
+      config: {
+        peak: 0.971,
+        mid: 0.85
+      },
       patterns: {
         verse: {
           probs: [
@@ -44,6 +62,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 2, 1, 0], [2, 2, 0]]
         },
         chorus: {
@@ -54,6 +73,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [0, 1, 2], [2, 1, 1, 0]]
         },
         bridge: {
@@ -64,11 +84,29 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1, 2], [1, 1, 0, 2], [2, 2, 0, 1]]
         }
       }
     },
     snare: {
+      config: {
+        freq: 200, // for the triangle oscillator
+        noiseattack: 0.000001,
+        noisedecay: 0.000001,
+        noisesustain: 0.175,
+        noiserelease: 0.125,
+        noisepeak: 0.2123425,
+        noisemid: 0.1341215,
+        noiseend: 0.000001,
+        triattack: 0.0000001,
+        tridecay: 0.00000001,
+        trisustain: 0.1175,
+        trirelease: 0.125,
+        tripeak: 0.32487,
+        trimid: 0.21375,
+        triend: 0.000001
+      },
       patterns: {
         verse: {
           probs: [
@@ -78,6 +116,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 2, 0], [0, 1]]
         },
         chorus: {
@@ -88,6 +127,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 2, 0], [0, 1, 2]]
         },
         bridge: {
@@ -98,11 +138,24 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1, 2, 2], [1, 1, 0, 0], [2, 1]]
         }
       }
     },
     tom: {
+
+      config: {
+        freq: 250, // peak osc freq
+        endFreq: 100,
+        attack: 0.000000000000000000001,
+        decay: 0.000000000000000000001,
+        sustain: 0.12,
+        release: 0.13,
+        peak: 0.5,
+        mid: 0.35,
+        end: 0.000000000000000000001
+      },
       patterns: {
         verse: {
           probs: [
@@ -112,6 +165,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1, 0, 2], [1, 1, 1, 0, 2], [0, 1]]
         },
         chorus: {
@@ -122,6 +176,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 0, 1, 2], [0], [0]]
         },
         bridge: {
@@ -133,11 +188,21 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1, 2, 3], [0], [0], [0]]
         }
       }
     },
     wBass: {
+      config: {
+        attack: 0.0513,
+        decay: 0.051,
+        sustain: 0.0753,
+        release: 0.0515,
+        peak: 0.75,
+        mid: 0.3,
+        end: 0.21
+      },
       melodic: true,
       patterns: {
         verse: {
@@ -151,6 +216,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         chorus: {
@@ -164,6 +230,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         bridge: {
@@ -177,11 +244,13 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         }
       }
     },
     piano: {
+      config: {attack: 0.3, decay: 0.1, sustain: 0.3, release: 0.5, peak: 0.5, mid: 0.3, end: 0.00000001},
       lead: true,
       melodic: true,
       patterns: {
@@ -196,6 +265,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         chorus: {
@@ -209,6 +279,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         bridge: {
@@ -222,11 +293,21 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         }
       }
     },
     sparkles: {
+      config: {
+        attack: 0.72523,
+        decay: 0.3131,
+        sustain: 0.3,
+        release: 0.315,
+        peak: 0.5765,
+        mid: 0.343,
+        end: 0.13
+      },
       melodic: true,
       patterns: {
         verse: {
@@ -240,6 +321,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         chorus: {
@@ -253,6 +335,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         bridge: {
@@ -266,11 +349,21 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         }
       }
     },
     bBass: {
+      config: {
+        attack: 0.123,
+        decay: 0.121,
+        sustain: 0.13,
+        release: 0.1215,
+        peak: 0.375,
+        mid: 0.253,
+        end: 0.01
+      },
       melodic: true,
       patterns: {
         verse: {
@@ -284,6 +377,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         chorus: {
@@ -297,6 +391,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         },
         bridge: {
@@ -310,6 +405,7 @@
           ],
           currentVersion: 0,
           currentTick: 0,
+          mod: 4,
           nexts: [[0, 0, 1], [1, 1, 1, 0]]
         }
       }
@@ -321,7 +417,7 @@
     chorus: ["chorus", "chorus", "chorus", "bridge", "verse"],
     bridge: ["bridge", "bridge", "verse", "chorus"]
   },
-  bpm: 140,
+  bpm: 560,
   key: {
     tonic: "A3",
     scale: "pentMin"

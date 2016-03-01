@@ -11,29 +11,31 @@ function roll (prob) {
 // - randos? flipsies?
 
 module.exports = function (currentSong) {
-  var song = currentSong
-  var interval, nextSong
+  var interval, nextSong, globalTick = 0, song = currentSong
   return {
     start: function () {
+      if (interval) throw('wtf')
       interval = setInterval(function () {
+        globalTick++
         Object.keys(song.instruments).forEach(function (k) {
           var instrument = song.instruments[k]
           var pattern = instrument.patterns[song.current]
+
+          if (roll(pattern.probs[pattern.currentVersion][pattern.currentTick]) && globalTick % (pattern.mod || 1) == 0) {
+            instrument.play(pattern.notes ? pick(pattern.notes[pattern.currentVersion][pattern.currentTick]) : undefined)
+          }
           pattern.currentTick++
-          if (pattern.currentTick == pattern.probs[pattern.currentVersion].length - 1) {
+          if (pattern.currentTick == pattern.probs[pattern.currentVersion].length) {
             pattern.currentTick = 0
             pattern.currentVersion = pick(pattern.nexts[pattern.currentVersion])
             // console.log('WEEEE', pattern.currentVersion)
             if (instrument.lead) {
+              // if (nextSong) song = nextSong, nextSong = null
               song.current = pick(song.nexts[song.current])
               if (!song.current) alert('it is over')
-              console.log('SWITCHY', song.current)
+              // console.log('SWITCHY', song.current)
             }
           }
-          if (roll(pattern.probs[pattern.currentVersion][pattern.currentTick])) {
-            instrument.play(pattern.notes ? pick(pattern.notes[pattern.currentVersion][pattern.currentTick]) : undefined)
-          }
-
         })
       }, 60000.0 / song.bpm)
     },
@@ -41,8 +43,8 @@ module.exports = function (currentSong) {
       clearInterval(interval)
     },
     update: function (theNextSong) {
-      // the loop function should check for new songData when it hits an end of measure
-      nextSong = theNextSong
+      // the loop function should check for new songData when it hits an end of measure? eh
+      song = theNextSong
     }
   }
 }

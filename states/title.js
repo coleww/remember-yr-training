@@ -5,18 +5,20 @@ var titleScreen = function(game){
 titleScreen.prototype = {
   create: function(){
     var game = this.game
+    game.musician.fadeIn()
     var titleBG = game.add.tileSprite(0, 0, game.width, game.height, "backsplash")
     titleBG.tint = 7
     document.body.style.background = "#"+titleBG.tint.toString(16)
-    var title = game.add.image(game.width / 2, 210, "title")
+    var title = game.add.image(game.width / 2, 270, "title")
     title.anchor.set(0.5)
 
 
     // PUT CONTROLS DESCIRPTION HERE-ISH?
     // left/right to walk, up to jump, down to inspect. click UNDErLINED text to use
+    // var poems = game.add.text(game.width / 2, game.height - 50, "POETRY", this.startGame)
 
 
-    var playButton = game.add.button(game.width / 2, game.height - 150, "playbutton", this.startGame)
+    var playButton = game.add.button(game.width / 2, game.height - 250, "playbutton", this.startGame)
     playButton.anchor.set(0.5)
     var tween = game.add.tween(playButton).to({width: 220, height:220}, 1500, "Linear", true, 0, -1)
     tween.yoyo(true)
