@@ -303,8 +303,8 @@ preload.prototype = {
   },
   create: function(){
     this.game.musician.fadeIn()
-    this.game.state.start("Bunker")
-    // this.game.state.start("DaySwitch")
+    // this.game.state.start("Bunker")
+    this.game.state.start("DaySwitch")
   }
 }
 module.exports = preload

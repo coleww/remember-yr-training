@@ -255,11 +255,8 @@ bunker.prototype = {
 
     this.bed = this.game.add.sprite(this.game.world.width - 100, this.game.world.height - 305, 'cryobed');
     this.bed.frame = 1
-// , [500, 650], [450, 500]
-    ;[[94, 665], [245, 615], [350, 620]].forEach(function (coords) {
-                var bread = that.game.add.sprite(coords[0], coords[1], 'breaded');
-                bread.scale.setTo(0.35)
-            })
+//
+
 
     // var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
 
@@ -563,11 +560,13 @@ bunker.prototype = {
         case 'breadart':
             // stuff
 
-            [[50, 100], [100, 100], [150, 100], [200, 100], [250, 100]].forEach(function (coords) {
-                var bread = this.game.add.sprite(coords[0], coords[1], 'breaded');
-                bread.scale.setTo(2)
-            })
+            ;[[114, 685], [245, 625], [350, 620], [515, 650], [615, 630]].forEach(function (coords) {
+                var bread = that.game.add.sprite(coords[0], coords[1], 'breaded');
+                bread.anchor.setTo(0.5, 0.5);
 
+                bread.angle = ((Math.random() * 2) - 1) * ((Math.random() * 25) + 5)
+                bread.scale.setTo(0.35)
+            })
             break;
         case 'chickenattack':
             // stuff
