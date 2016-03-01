@@ -15,12 +15,12 @@ DaySwitch.prototype = {
   },
   create: function(){
 ///////////////////////////////////////////////////////////
-    // this.game.musician.change('daySwitch')
+    this.game.musician.change('daySwitch')
 
 /////////////////////////////////////////////
     // DEBUG
-    this.game.musician.change('daySwitch')
-    this.game.musician.fadeIn()
+    // this.game.musician.change('daySwitch')
+    // this.game.musician.fadeIn()
 /////////////////////////////////////////
 
 

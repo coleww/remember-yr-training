@@ -6,6 +6,7 @@ titleScreen.prototype = {
   create: function(){
     var game = this.game
     game.musician.fadeIn()
+    // game.musician.change('title')
     var titleBG = game.add.tileSprite(0, 0, game.width, game.height, "backsplash")
     titleBG.tint = 7
     document.body.style.background = "#"+titleBG.tint.toString(16)

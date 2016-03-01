@@ -21,10 +21,12 @@ module.exports = function (currentSong) {
           var instrument = song.instruments[k]
           var pattern = instrument.patterns[song.current]
 
-          if (roll(pattern.probs[pattern.currentVersion][pattern.currentTick]) && globalTick % (pattern.mod || 1) == 0) {
+          var onItsBeat = globalTick % (pattern.mod || 1) == 0
+
+          if (onItsBeat && roll(pattern.probs[pattern.currentVersion][pattern.currentTick])) {
             instrument.play(pattern.notes ? pick(pattern.notes[pattern.currentVersion][pattern.currentTick]) : undefined)
           }
-          pattern.currentTick++
+          if (onItsBeat) pattern.currentTick++
           if (pattern.currentTick == pattern.probs[pattern.currentVersion].length) {
             pattern.currentTick = 0
             pattern.currentVersion = pick(pattern.nexts[pattern.currentVersion])

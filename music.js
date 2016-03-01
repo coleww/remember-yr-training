@@ -57,7 +57,7 @@ Object.keys(insts).forEach(function(ik) {
       foley.play(fx)
     },
     fadeIn: function () {
-      mainVolume.gain.linearRampToValueAtTime(0.75, ac.currentTime + 12)
+      mainVolume.gain.linearRampToValueAtTime(0.75, ac.currentTime + 7)
       // adsr(mainVolume, ac.currentTime, {attack: 0.25, decay: 0.1, sustain: 0.2, release: 0.05, peak: 0.7, mid: 0.5, end: 0.000001})
     },
     fadeOut: function () {

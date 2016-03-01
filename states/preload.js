@@ -293,8 +293,8 @@ preload.prototype = {
 
   },
   create: function(){
-    // this.game.state.start("TitleScreen")
-    this.game.state.start("DaySwitch")
+    this.game.state.start("TitleScreen")
+    // this.game.state.start("DaySwitch")
   }
 }
 module.exports = preload
