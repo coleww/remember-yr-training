@@ -28,6 +28,13 @@ var endings = {
     description: 'you transform into a shimmering power goddess, but also lose grip on reality. where you even playing a game? is any of this real?',
     name: 'X_X WHOA, JUST LIKE, WHOA X_X',
     song: 'phish'
+    },
+  gameOver666: {
+    sprite: 'black',
+    scale: [5, 7],
+    description: 'you unleash a portal to the shadow world and are consumed by the darkness. way to go.',
+    name: '☠ X_X ☠',
+    song: 'dead'
     }
 }
 

@@ -190,11 +190,12 @@ preload.prototype = {
             yes: 'tear that wall down!',
             no: 'respect the art...for now',
             fx: 'destroyWallArt1',
-            used: 'you found a tasty tofu treat!',
+            extended: 'you found a tasty tofu treat!',
             item: {
                 name: 'tofu dish',
                 description: 'will replenish your health!',
                 fx: 'hp50',
+                extended: 'you gain 50 hp!',
                 yes: 'eat that thing',
                 no: 'um it is jiggling a lil ~too~ weirdly for me'}},
         {name: 'Strength Poster',
@@ -202,11 +203,12 @@ preload.prototype = {
             yes: 'grab that thing,take it down,HOOOOO RAHHHHHH',
             no: 'respect the art...for now',
             fx: 'destroyWallArt2',
-            used: 'you found a tasty tofu treat!',
+            extended: 'you found a tasty tofu treat!',
             item: {
                 name: 'tofu energy drink',
                 description: 'the label is just a bunch of screaming in all caps',
                 fx: 'canpunch',
+                extended: 'you gain the ability to punch things!',
                 yes: 'chug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chug',
                 no: 'i will pass'}}
 
@@ -221,6 +223,7 @@ preload.prototype = {
         sprites: ['BootsGreen', 'BootsSoft', 'BootsMetal'],
         names: ['green crystals', 'blue crystals', 'purple crystals'],
         oneTime: [true, true, true],
+        extended: ['you transform into a green speedster! like a stoner "The Flash(tm DC comic books)"!', 'you transform into a shiny blue popsicle! you find it harder to move around now', 'WHOA! just as you are about to eat the purple crystals they scream out "WHOA DON\'T EAT ME I AM A SHAPESHIFTER!" and magically transform into a pile of money. You shrug and stuff them into yr wallet. "mine now", you remark, smugly.'],
         fx: ['greenspeed','flashy','$25'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
 
@@ -232,6 +235,8 @@ preload.prototype = {
         sprites: ['FoodAle', 'FoodBread', 'FoodDrumstick'],
         names: ['strong ale', 'bread loaf', 'animal leg'],
         oneTime: [true, true, false],
+
+        extended: ['you feel pretty confident, courageous, and also woozy. very woozy', 'gosh, it really spruces up the place to have all this bread on the wall. and to think of the ants that will come to eat it soon! FRIENDS! FOR ME!', 'you lash out with the strange animal leg'],
         fx: ['faded','breadart','chickenattack'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
       },
@@ -240,8 +245,10 @@ preload.prototype = {
         'this one looks...intriguing. it has like, this kind of aura going on, you know? but the aura is also menacing?',
         'this mushroom is literally oozing out what appears to be blood, and when you put your ear close to it a faint grinding and gnashing sound can be heard.'],
         sprites: ['MushroomBrown', 'MushroomPurple', 'MushroomRed'],
+        extended: ['you gain 25 hp! delicious!', 'you transform into a trippy monster. ummmmmmmm this is probably not good', 'you transform into a fire demon. This is probably not going to end well...']
         names: ['brown mushroom', 'purple mushroom', 'red mushroom'],
         oneTime: [true, true, true],
+
         fx: ['hp25','transformtrip','transformevil'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
       },
@@ -250,6 +257,8 @@ preload.prototype = {
         sprites: ['RobeB', 'RobeG', 'RobeR'],
         names: ['blue soda', 'green soda', 'red soda'],
         oneTime: [true, true, true],
+
+        extended: ['you gain 25 hp!', 'you are so refreshed by this soda that you puke up ten bucks!', 'you gain 25 hp!'],
         fx: ['hp25','$10','hp25'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
       },
@@ -259,6 +268,8 @@ preload.prototype = {
         'this sword casts a shadow upon everything near it and appears to be sucking in all the light in the room. it appears quite powerful but may also control your soul if you wield it?'],
         sprites: ['Sword1', 'Sword2', 'Sword3'],
         oneTime: [false, false, false],
+
+        extended: ['you lash out in a burst of flames', 'you lash out in a gush of goopiness', 'you grab the sword by the handle and feel the darkness consume your soul...'],
         names: ['fire sword', 'goo sword', 'sword of all-consuming darkness'],
         fx: ['fireslash','gooslash','darkslash'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['greed', 'nature', 'fight']// keys to an object of corpii for later?
@@ -269,12 +280,15 @@ preload.prototype = {
         'a yellow potion, the color of, um, piss? pee pee. number 1. *giggles*'],
         sprites: ['VialG', 'VialR', 'VialY'],
         oneTime: [true, true, true],
+
+        extended: ['you accidentally spill the potion on the ground and a tree grows in that very spot. you have always had such a green thumb. hmmm,  good thing u did not drink that one tho O_O', 'you accidentally spill the potion on the ground which coagulates in that very spot into a bust of a werewolf that seems to be made of blood or perhaps spicy jello. good thing u did not drink that one....', 'you accidentally spill the potion on the ground and it turns into a pile of money! good thing u did not drink that one....'],
         names: ['green potion', 'red potion', 'yellow potion'],
         fx: ['makeTree','makeBloodSculpture','makeGold'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'fight', 'greed']// keys to an object of corpii for later?
       },
       {name: 'books',
     oneTime: [false, false, false],
+
       descriptions: ['a training manual! you have been looking everywhere for this!',
        '""HOW TO WRITE GOOD POEMS"", hmm might help to pass the time',
        'a filthy, bloody note. intriguing.'],
@@ -290,8 +304,9 @@ preload.prototype = {
   },
   create: function(){
     this.game.musician.fadeIn()
-    this.game.state.start("Bunker")
-    // this.game.state.start("TitleScreen")
+    // this.game.state.start("Bunker")
+    // this.game.state.start("DaySwitch")
+    this.game.state.start("TitleScreen")
   }
 }
 module.exports = preload

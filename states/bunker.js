@@ -551,6 +551,7 @@ bunker.prototype = {
             break;
         case 'flashy':
             this.player.loadTexture('bluedude', 0);
+            this.speediness = 0.5
             // stuff
             break;
         case '$10':
@@ -614,15 +615,22 @@ bunker.prototype = {
             break;
         case 'darkslash':
             // stuff
+            this.set('gameOver', 666)
+            // draw that portal sprite over you?
+            // tween it to cover the whole screen?
+            // on animation complete, move to gameOver
             break;
         case 'makeTree':
             // stuff
+            // just draw the sprite behind the character wherever they are standing
             break;
         case 'makeBloodSculpture':
             // stuff
+            // just draw the sprite behind the character wherever they are standing
             break;
         case 'makeGold':
             // stuff
+            this.walletDisplay.setText(inc('wallet', 500))
             break;
         case 'read':
             // stuff
@@ -639,8 +647,8 @@ bunker.prototype = {
 
     }
 
-    var whatHappened  = this.game.add.text(150, 370, thing.used, { fontSize: '20px', fill: '#FFF' });
-    var confirm  = this.game.add.text(150, 570, 'YAYYYYY!!!', { fontSize: '20px', fill: '#08D' });
+    var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF' });
+    var confirm  = this.game.add.text(150, 570, 'k', { fontSize: '20px', fill: '#08D' });
     confirm.inputEnabled = true;
     var that = this
     //REFACTOR THISSSSSSSSSSS
@@ -717,7 +725,7 @@ bunker.prototype = {
         al[item.seed[i]]++
         set('alignment', al)
 
-        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i]})
+        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i]})
         set('inventory', inventory)
         set(get('seeds').push(item.seed[i]))
         that.redrawInventory()
