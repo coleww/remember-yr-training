@@ -1,5 +1,5 @@
 var markov = require('fast-ish-markov')
-var instructions = require('./corpus/instructions')
+var instructions = require('./corpus/instructions').concat(require('./corpus/shit'))
 
 var shorties = instructions.filter(function (line) {
   return line.length < 140

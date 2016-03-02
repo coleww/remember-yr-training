@@ -88,8 +88,10 @@ http://opengameart.org/content/audio-knobs-button-sliders-etc
 http://opengameart.org/content/cog-sheet
 http://opengameart.org/content/cog-sheet-2
 http://opengameart.org/content/steampunk-machine-upd
+http://opengameart.org/content/fire-blast
 http://opengameart.org/content/puzze-pipe-set
 http://opengameart.org/content/wolfman-sculpt
+http://opengameart.org/content/candle-sprite
 http://opengameart.org/content/lpc-street-lamp
 http://opengameart.org/content/2d-object-pack
 http://opengameart.org/content/a-blocky-dungeon
