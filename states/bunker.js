@@ -668,6 +668,15 @@ bunker.prototype = {
     }
 
   },
+  takeDamage: function () {
+    var danagePixel = this.game.add.sprite(300,300, "damage")
+    danagePixel.anchor.set(0.5)
+    var tween = this.game.add.tween(danagePixel).to({width: 2240, height:5000}, 500, "Linear", true, 0, 0, false)
+    tween.onComplete.add(function () {
+        danagePixel.destroy()
+    }, this)
+    // tween.yoyo(true)
+  },
   drawMenuBox: function (type) {
     var menuBox = this.game.add.sprite(0, 150, type);
     menuBox.scale.setTo(3.75, 5)
@@ -1084,6 +1093,7 @@ bunker.prototype = {
             this.hpDisplay.setText(dec('health', 15) + '/100')
             // this.game.tint
             this.game.musician.playFX('crunch')
+            this.takeDamage()
             this.checkForDeath()
         }
         this.willTakeFallDamage = false

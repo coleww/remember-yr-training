@@ -1,16 +1,10 @@
 -------------PRIORITIES--------------------
-- write all the object FX
-- program in the alarm/explosion sequence
-- MAKE music demo randomize key/scale/bpm.
-
-
-IF FADED: u can kick the fan to fix it but take damage
-u can also eat the tofu power up
-
-
-
-
-
+- program in the alarm/explosion sequence// OOO YEAH
+- computer noise/kick/punch/etc. maneuvers
+- psych/fire dragon fx? how to do both in 1 thing? hrmmm just different sprite sets?
+- sword of darkness portal
+- GET book vending assets
+- program the drunk thing, let u flick the switch when yr drunk, navigate the end w/ f'd up controls (needs day 3 alarm first)
 
 
 
@@ -27,6 +21,7 @@ u can also eat the tofu power up
 - WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
 - for battery unplug ending, making the world go all "turn off a televison set"-like?
 - robot web audio voice thing? mebbe for reciting yr poems?
+- MAKE music demo randomize key/scale/bpm.// eh maybe later
 
 ----------MOBILE?---------DISTRO?
 - DONT ALLOW MOBILE (until controls are fixed)
