@@ -954,7 +954,7 @@ bunker.prototype = {
       // this.game.world.bringToTop(book2)
 
     } else {
-
+    this.itIsTheLastDay = true
       this.game.tableStuff[0] = {name: 'some papers',
         description: 'you are an excellent doodler. yr art should be on walls everywhere',
         yes: 'reflect on the glory of your works',
@@ -994,6 +994,9 @@ bunker.prototype = {
       // OHHH MAYBE DROP THE PLAYER IN HERE?
 
     }, this)
+
+
+
 
   },
 
@@ -1080,12 +1083,29 @@ bunker.prototype = {
         this.game.state.start("GameOverScreen")
     }
   },
+  soundTheAlarm: function () {
+    // UPDATE the switch item
+    // draw a bunch more stuff
+    // flash red and beep and light up the switch until player goes to it?
+    // SET game to know u got up the ladder legtimately
+  },
+  lowerTheLadder: function () {
+    // animate the sprite down
+    // set variable so that user can climb up it? or just animate that?
+  },
   update: function () {
     // console.log(this.game.input.x,
     // this.game.input.y)
     this.game.musician.updateComputerNoise(this.game, this.player.x, this.player.y)
     this.game.physics.arcade.collide(this.player, this.platforms);
 
+
+
+    if (this.itIsTheLastDay && this.hasNotGoneOffYet) {
+        this.hasNotGoneOffYet = false
+
+        // make everything explode?
+    }
 
 
     if (this.player.body.touching.down) {
