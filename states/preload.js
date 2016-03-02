@@ -127,6 +127,8 @@ preload.prototype = {
     }
 
     if (itIsANewGame) {
+
+        set('fanStillBroken', true)
         set('wall1', true)
         set('wall2', true)
         set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
@@ -193,6 +195,7 @@ preload.prototype = {
                 name: 'tofu dish',
                 description: 'will replenish your health!',
                 fx: 'hp50',
+                oneTimeUse: true,
                 extended: 'you gain 50 hp!',
                 yes: 'eat that thing',
                 no: 'um it is jiggling a lil ~too~ weirdly for me'}},
@@ -206,6 +209,7 @@ preload.prototype = {
                 name: 'tofu energy drink',
                 description: 'the label is just a bunch of screaming in all caps',
                 fx: 'canpunch',
+                oneTimeUse: true,
                 extended: 'you gain the ability to punch things!',
                 yes: 'chug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chug',
                 no: 'i will pass'}}

@@ -19,7 +19,6 @@ var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
     var that = this
-    this.fanStillBroken = true
     this.game.musician.change('bunker')
     this.wall1 = get('wall1')
     this.wall2 = get('wall2')
@@ -494,9 +493,10 @@ bunker.prototype = {
   },
   hitTheFanIfYouAreThereAndYouHaventHitItYet: function (obj) {
     var y = this.player.y
-    if (this.fanStillBroken && this.player.body.touching.down && y >= 375 && y < 385) {
-        this.fanStillBroken = false
-        this.musician.stopComputerNoise()
+    console.log('we here', y, this.player.body.touching.down )
+    if (get('fanStillBroken') && this.player.body.touching.down && y >= 375 && y < 385) {
+        set('fanStillBroken', false)
+        this.game.musician.stopComputerNoise()
         // draw
         var that = this
         drawMenu(this.game, 'parch',
@@ -536,12 +536,15 @@ bunker.prototype = {
             break;
         case 'canpunch':
             this.canPunch = true
-            this.inventory.push({
+            push('inventory', {
                 name: 'your fists',
                 description: 'that tofu thing u ate has made you hecka swole and ready to fight',
                 fx: 'punchStuff',
+                yes: 'lash out at the world',
+                no: 'right a song instead',
                 oneTime: false
             })
+            this.redrawInventory()
             break;
         case 'greenspeed':
             this.player.loadTexture('greendude', 0);
