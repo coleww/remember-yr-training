@@ -1,3 +1,4 @@
+require('./screenShake.js')
 var boot = require('./states/boot')
 var preload = require('./states/preload')
 var titleScreen = require('./states/title')
@@ -8,6 +9,7 @@ var Outside = require('./states/outside')
 var gameOverScreen = require('./states/game_over')
 var reset = require('./states/reset')
 window.onload = function() {
+  // console.log(Phaser.Plugin.ScreenShake)
   var width = 640
   var height = 960
   var windowRatio = window.innerWidth / window.innerHeight
