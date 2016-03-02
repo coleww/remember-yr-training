@@ -33,6 +33,9 @@ preload.prototype = {
     game.load.image("chute", "assets/sprites/metal_ground_2.jpg")
     game.load.image("grid", "assets/sprites/metal_grid_1.jpg")
 
+    game.load.image("tofudrink", "assets/sprites/tofudrink.png")
+    game.load.image("burger", "assets/sprites/burger.png")
+    game.load.image("fist", "assets/sprites/fist.png")
     game.load.image("parch", "assets/sprites/parchment.png")
 
     game.load.image("wallArt1", "assets/sprites/wallart/L3_WallDeco21.png")
@@ -196,6 +199,7 @@ preload.prototype = {
                 description: 'will replenish your health!',
                 fx: 'hp50',
                 oneTimeUse: true,
+                sprite: 'burger',
                 extended: 'you gain 50 hp!',
                 yes: 'eat that thing',
                 no: 'um it is jiggling a lil ~too~ weirdly for me'}},
@@ -209,6 +213,7 @@ preload.prototype = {
                 name: 'tofu energy drink',
                 description: 'the label is just a bunch of screaming in all caps',
                 fx: 'canpunch',
+                sprite: 'tofudrink',
                 oneTimeUse: true,
                 extended: 'you gain the ability to punch things!',
                 yes: 'chug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chugchug chug chug chug',
@@ -320,8 +325,8 @@ preload.prototype = {
   },
   create: function(){
     this.game.musician.fadeIn()
-    // this.game.state.start("Bunker")
-    this.game.state.start("DaySwitch")
+    this.game.state.start("Bunker")
+    // this.game.state.start("DaySwitch")
     // this.game.state.start("TitleScreen")
   }
 }

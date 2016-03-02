@@ -14,7 +14,7 @@ P.E.T. POETRY ENGINEERING TECNICHIAN
 
 
 http://opengameart.org/content/battery-power-icon
-
+http://opengameart.org/content/burger
 
 
 
@@ -70,6 +70,7 @@ http://opengameart.org/content/paper-icons
 http://opengameart.org/content/animated-display-static
 http://opengameart.org/content/various-inventory-24-pixel-icon-set
 http://opengameart.org/content/isharacomix-sprite-dump
+http://opengameart.org/content/fist-weapon-icon
 http://opengameart.org/content/vending-machine
 http://opengameart.org/content/platformer-art-more-animations-and-enemies
 http://opengameart.org/content/minimal-sidescroller-tileset

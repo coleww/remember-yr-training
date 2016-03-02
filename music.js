@@ -20,6 +20,7 @@ var seqy = require('./sound/potentialSequencerModule')
 
 module.exports = function () {
   var ac = new (AudioContext || webkitAudioContext)()
+
   var mainVolume = ac.createGain()
   var sequencer = seqy(songs.title)
   var foley = fx(ac, mainVolume)
@@ -65,7 +66,7 @@ Object.keys(insts).forEach(function(ik) {
       // adsr(mainVolume, ac.currentTime, {attack: 0.25, decay: 0.1, sustain: 0.2, release: 0.05, peak: 0.7, mid: 0.5, end: 0.000001})
     },
     start: function () {
-      sequencer.start()
+      // sequencer.start()
     },
     stop: function () {
       foley.stop()
@@ -83,9 +84,9 @@ Object.keys(insts).forEach(function(ik) {
     setMusicVolume: function (val) {
 
     },
-    updateComputerNoise: function (g,x,y) {foley.updateComputerNoise(g, x, y)},
+    updateComputerNoise: function (g,x,y, z, a) {foley.updateComputerNoise(g, x, y, z, a)},
     stopComputerNoise: function (g,x,y) {
-      // foley.stopComputerNoise()
+      foley.stopComputerNoise()
     }
   }
 }

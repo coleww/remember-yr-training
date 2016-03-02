@@ -438,6 +438,7 @@ bunker.prototype = {
 
 
     }, function (thing) {
+        thing.fx = false
         that.inDialog = false
         if (thing.yes !== 'ok') {
             thing.description = thing.description + ' you ' + thing.no
@@ -541,8 +542,9 @@ bunker.prototype = {
                 name: 'your fists',
                 description: 'that tofu thing u ate has made you hecka swole and ready to fight',
                 fx: 'punchStuff',
+                sprite: 'fist',
                 yes: 'lash out at the world',
-                no: 'right a song instead',
+                no: 'write some poetry instead',
                 oneTimeUse: false
             })
             console.log(get('inventory'))
@@ -1124,7 +1126,9 @@ bunker.prototype = {
   update: function () {
     // console.log(this.game.input.x,
     // this.game.input.y)
-    this.game.musician.updateComputerNoise(this.game, this.player.x, this.player.y)
+
+    var xDir = 0
+    var yDir = 0
     this.game.physics.arcade.collide(this.player, this.platforms);
 
 
@@ -1155,6 +1159,7 @@ bunker.prototype = {
 
     if (this.cursors.left.isDown) {
         //  Move to the left
+        xDir = -5
         this.player.body.velocity.x = -150 * this.speediness;
         if (this.player.body.touching.down) {
           this.player.animations.play('left');
@@ -1163,6 +1168,7 @@ bunker.prototype = {
           this.player.frame = [5, 7][~~(Math.random() * 2)]
         }
     } else if (this.cursors.right.isDown) {
+        xDir = 5
         //  Move to the right
         this.player.body.velocity.x = 150 * this.speediness;
         if (this.player.body.touching.down) {
@@ -1202,7 +1208,11 @@ bunker.prototype = {
         this.game.musician.playFX('pew')
       this.player.body.velocity.y = -340;
 
+
     }
+
+
+    this.game.musician.updateComputerNoise(this.game, this.player.x, this.player.y, xDir, 0)
   }
 }
 
