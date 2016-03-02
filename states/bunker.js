@@ -276,8 +276,6 @@ bunker.prototype = {
 
 
 
-
-
     // //  The score
     this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -573,6 +571,7 @@ bunker.prototype = {
             break;
         case 'breadart':
             // stuff
+            var that = this
 
             ;[[114, 685], [245, 625], [350, 620], [515, 650], [615, 630]].forEach(function (coords) {
                 var bread = that.game.add.sprite(coords[0], coords[1], 'breaded');
@@ -623,28 +622,26 @@ bunker.prototype = {
         case 'makeTree':
             // stuff
             // just draw the sprite behind the character wherever they are standing
+
+
+            var tree = that.game.add.sprite(this.player.x, this.player.y, 'tree');
+            this.game.treeCoords = [this.player.x, this.player.y]
+            tree.scale.setTo(1.2)
             break;
         case 'makeBloodSculpture':
             // stuff
             // just draw the sprite behind the character wherever they are standing
+            var bloodsculpt = that.game.add.sprite(this.player.x, this.player.y, 'bloodsculpt');
+            this.game.bloodSculptureCoords = [this.player.x, this.player.y]
+            bloodsculpt.scale.setTo(0.5)
             break;
         case 'makeGold':
             // stuff
             this.walletDisplay.setText(inc('wallet', 500))
             break;
         case 'read':
-            // stuff
+            // i think thats all?
             break;
-        case '':
-            // stuff
-            break;
-        case '':
-            // stuff
-            break;
-        case '':
-            // stuff
-            break;
-
     }
 
     var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF' });
@@ -667,6 +664,7 @@ bunker.prototype = {
     }, this);
     if (thing.oneTimeUse) {
         remove('inventory', thing)
+        that.redrawInventory()
     }
 
   },
@@ -725,7 +723,7 @@ bunker.prototype = {
         al[item.seed[i]]++
         set('alignment', al)
 
-        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i]})
+        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i], yes: item.yes[i], no: item.no[i]})
         set('inventory', inventory)
         set(get('seeds').push(item.seed[i]))
         that.redrawInventory()
@@ -875,14 +873,21 @@ bunker.prototype = {
     this.game.state.start("DaySwitch")
   },
   startDay: function () {
-
-
+    if (this.game.bloodSculptureCoords) {
+        var bloodsculpt = that.game.add.sprite(this.game.bloodSculptureCoords[0], this.game.bloodSculptureCoords[1], 'bloodsculpt');
+       bloodsculpt.scale.setTo(0.5)
+    }
     if (this.isFaded) {
         this.computerStuff[1].yes =  this.computerStuff[1].oldyes
         this.computerStuff[1].no =  this.computerStuff[1].oldno
         this.computerStuff[1].fx = null
 
         this.isFaded = false
+    }
+    if (this.game.treeCoords) {
+        var tree = that.game.add.sprite(this.game.treeCoords[0], this.game.treeCoords[1], 'tree');
+
+            tree.scale.setTo(1.2)
     }
     // have player emerge from bed?
     // open the bed door?
