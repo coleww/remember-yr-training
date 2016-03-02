@@ -34,6 +34,9 @@ preload.prototype = {
     game.load.image("grid", "assets/sprites/metal_grid_1.jpg")
 
 
+    game.load.image("portal", "assets/sprites/portal.png")
+
+
     game.load.image("rainbow1", "assets/sprites/rainbow.png")
 
     game.load.image("rainbow2", "assets/sprites/RainbowBall.png")

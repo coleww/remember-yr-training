@@ -257,11 +257,20 @@ bunker.prototype = {
 //
 
 
+
+
+
+
+
+
+
+
+// hrm, some little animation thing could be cool? would probs have to be in startDay tho?
+
     // var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
 
     // this.bed.animations.play('close', true)
     // close.loop = false
-
 
 
 
@@ -552,6 +561,18 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         }
     }, 50)
   },
+  openPortalToTheDeathPit: function () {
+    var that = this
+    this.game.musician.playFX('twinklelong')
+    this.game.musician.playFX('WAHHHHH')
+    var portal = this.game.add.sprite(this.player.x, this.player.y, 'portal');
+    portal.anchor.set(0.5)
+        var tween = this.game.add.tween(portal).to({width: 2240, height:5000}, 6500, "Linear", true, 0, 0, false)
+        tween.onComplete.add(function () {
+            portal.destroy()
+            that.game.state.start("GameOverScreen")
+        }, this)
+  },
   useThing: function (thing, menmen) {
     switch(thing.fx) {
         case 'gameOver1':
@@ -665,6 +686,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         case 'darkslash':
             // stuff
             this.set('gameOver', 666)
+            this.openPortalToTheDeathPit()
             // draw that portal sprite over you?
             // tween it to cover the whole screen?
             // on animation complete, move to gameOver
