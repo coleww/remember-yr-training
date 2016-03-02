@@ -1,7 +1,7 @@
 var db = require('../db')
 var get = db.get
 var set = db.set
-
+var features = require('features')
 var preload = function(game){
   this.game = game
 }
@@ -325,9 +325,8 @@ preload.prototype = {
   },
   create: function(){
     this.game.musician.fadeIn()
-    this.game.state.start("Bunker")
-    // this.game.state.start("DaySwitch")
-    // this.game.state.start("TitleScreen")
+    this.game.state.start(features.startState)
+
   }
 }
 module.exports = preload
