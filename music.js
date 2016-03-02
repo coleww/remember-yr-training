@@ -66,7 +66,7 @@ Object.keys(insts).forEach(function(ik) {
       // adsr(mainVolume, ac.currentTime, {attack: 0.25, decay: 0.1, sustain: 0.2, release: 0.05, peak: 0.7, mid: 0.5, end: 0.000001})
     },
     start: function () {
-      // sequencer.start()
+      sequencer.start()
     },
     stop: function () {
       foley.stop()

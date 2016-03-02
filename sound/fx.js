@@ -16,12 +16,12 @@ panner.panningModel = 'HRTF';
 panner.distanceModel = 'inverse';
 panner.refDistance = 1;
 panner.maxDistance = 1000000000;
-panner.rolloffFactor = 0.13;
+panner.rolloffFactor = 0.00513;
 panner.coneInnerAngle = 360;
-panner.coneOuterAngle = 180;
+panner.coneOuterAngle = 360;
 panner.coneOuterGain = 1;
   //
-  panner.setPosition(230, 400, 0);
+  panner.setPosition(210, 400, 0);
   var foleyVol = ac.createGain()
   var loaded = 0
   samples.forEach(function (sample) {
@@ -67,7 +67,7 @@ panner.coneOuterGain = 1;
     },
     updateComputerNoise: function (game, x, y, xDir, yDir) {
       ac.listener.setPosition(x, y, 0);
-      ac.listener.setVelocity(xDir, yDir, 0);
+      // ac.listener.setVelocity(xDir, yDir, 0);
       // console.log('dating')
     }
   }

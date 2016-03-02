@@ -652,7 +652,7 @@ bunker.prototype = {
     }
 
     var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF' });
-    var confirm  = this.game.add.text(150, 570, 'k', { fontSize: '20px', fill: '#08D' });
+    var confirm  = this.game.add.text(150, 570, 'OK COOL THANKS', { fontSize: '20px', fill: '#08D' });
     confirm.inputEnabled = true;
     var that = this
     //REFACTOR THISSSSSSSSSSS
