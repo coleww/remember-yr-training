@@ -12,7 +12,7 @@ var songs = {
   // secretEnding: require('./songs/secretEnding'),
   // silo: require('./songs/silo'),
   // vending: require('./songs/vending'),
-  // poetry: require('./songs/poetry'),
+  poetry: require('./songs/poetry'),
   bunker: require('./songs/bunker'),
   title: require('./songs/title')
 }

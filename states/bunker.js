@@ -922,6 +922,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     // var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
     // poetryBG.scale.setTo(30, 25)
     this.game.musician.playFX('twinklelong')
+    this.game.musician.change('poetry')
     var bookAnim = this.game.add.sprite(-30, -250, 'sweetbook');
     bookAnim.scale.setTo(27, 35)
     bookAnim.animations.add('blocky', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23], false)
@@ -968,6 +969,8 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
       that.player.scale.setTo(1.5,1)
       that.inDialog = false
       that.game.musician.playFX('crumple')
+
+    this.game.musician.change('bunker')
     }, this);
 
     save.events.onInputDown.add(function () {
@@ -975,7 +978,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
       var days = ['', '', '', '']
       // record the day/time the poem was written
       // THE FIRST DAY! would be hellllla far in the past tho. only see that after exiting.
-      set('poem' + c, that.poem)
+      set('poem' + c, {poem: that.poem})
       set('poemCount', ++c)
 
       bookThingy.destroy()
@@ -992,6 +995,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
       that.hasWrittenAPoemToday = true
       that.inDialog = false
       that.game.musician.playFX('twinkleshort')
+          this.game.musician.change('bunker')
     }, this);
   },
 
