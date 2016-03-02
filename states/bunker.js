@@ -274,7 +274,6 @@ bunker.prototype = {
 
 
 
-
     // //  The score
     this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -511,6 +510,48 @@ bunker.prototype = {
                     })
     }
   },
+  explodinate: function (type) {
+    var explodinations = {
+        evil: ['fireball', 'fireblast', 'flame'],
+        trippy: ['rainbow1', 'rainbow2', 'unicorn']
+    }
+
+    var sprites = explodinations[type]
+    var count = 0
+    var that = this
+    var interv = setInterval(function () {
+        count++
+        var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 3)
+        exploding.angle = (Math.random() * 360) - 180
+        if (count > 50) {
+var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 4)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+        if (count > 100) {
+var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 5)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+        if (count > 150){
+var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 6)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+        if (count > 250) {
+            var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 7)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+
+        if (count > 250) {
+            console.log('boom')
+            clearInterval(interv)
+            that.game.state.start("GameOverScreen")
+        }
+    }, 50)
+  },
   useThing: function (thing, menmen) {
     switch(thing.fx) {
         case 'gameOver1':
@@ -600,6 +641,7 @@ bunker.prototype = {
             this.player.loadTexture('trippyb', 0);
             // open iframes of other games?
             set('gameOver', 420)
+            this.explodinate('trippy')
             //
             // stuff
             break;
@@ -607,6 +649,7 @@ bunker.prototype = {
             this.player.loadTexture('boss', 0);
             // player should begin spewing fire everywhere and slowly taking damage
             set('gameOver', 451)
+            this.explodinate('evil')
             // stuff
             break;
         case 'fireslash':
@@ -651,7 +694,7 @@ bunker.prototype = {
             break;
     }
 
-    var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF' });
+    var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
     var confirm  = this.game.add.text(150, 570, 'OK COOL THANKS', { fontSize: '20px', fill: '#08D' });
     confirm.inputEnabled = true;
     var that = this
@@ -740,9 +783,10 @@ bunker.prototype = {
         var al = get('alignment')
         al[item.seed[i]]++
         set('alignment', al)
-
+        console.log('we set al, bout 2 push')
         push('inventory', {name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i], yes: item.yes[i], no: item.no[i]})
-        set(get('seeds').push(item.seed[i]))
+       console.log('we push, bout 2 set seeds')
+        push('seeds', item.seed[i])
         that.redrawInventory()
         items.forEach(function (it){ it.destroy()})
         that.game.musician.playFX('twinkleshort')

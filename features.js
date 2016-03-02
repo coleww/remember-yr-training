@@ -1,5 +1,6 @@
 module.exports = {
   playNoise: false,
   playMusic: true,
-  startState: 'bunker'
+  startState: 'Bunker',
+  currentDay: 0
 }

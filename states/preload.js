@@ -1,7 +1,7 @@
 var db = require('../db')
 var get = db.get
 var set = db.set
-var features = require('features')
+var features = require('../features')
 var preload = function(game){
   this.game = game
 }
@@ -33,6 +33,20 @@ preload.prototype = {
     game.load.image("chute", "assets/sprites/metal_ground_2.jpg")
     game.load.image("grid", "assets/sprites/metal_grid_1.jpg")
 
+
+    game.load.image("rainbow1", "assets/sprites/rainbow.png")
+
+    game.load.image("rainbow2", "assets/sprites/RainbowBall.png")
+
+    game.load.image("unicorn", "assets/sprites/Unicorn.png")
+
+
+
+
+
+
+
+
     game.load.image("tofudrink", "assets/sprites/tofudrink.png")
     game.load.image("burger", "assets/sprites/burger.png")
     game.load.image("fist", "assets/sprites/fist.png")
@@ -63,6 +77,11 @@ preload.prototype = {
 
     game.load.spritesheet("static", "assets/sprites/computer/dss.png", 64, 64)
 
+    game.load.image("fireball", "assets/sprites/plosions/fireball.png")
+
+    game.load.image("fireblast", "assets/sprites/plosions/fireblast.png")
+
+    game.load.image("flame", "assets/sprites/plosions/flame.png")
     game.load.spritesheet("sweetbook", "assets/sprites/sweetbook.png", 28, 35) // 2
     game.load.image("BootsGreen", "assets/sprites/vending/CrystalsGreen.png")
     game.load.image("BootsSoft", "assets/sprites/vending/CrystalsBlue.png")
@@ -136,7 +155,7 @@ preload.prototype = {
         set('wall2', true)
         set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
         set('seeds', [])
-        set('currentDay', 0)
+        set('currentDay', features.currentDay)
         set('wallet', 25)
         set('health', 100)
         set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})

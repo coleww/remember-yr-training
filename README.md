@@ -17,13 +17,13 @@ http://opengameart.org/content/battery-power-icon
 http://opengameart.org/content/burger
 
 
+http://opengameart.org/content/rainbow-ball
 
 
 
+http://opengameart.org/content/cute-cloud
 
-
-
-
+http://opengameart.org/content/unicorn
 
 
 

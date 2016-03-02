@@ -2,6 +2,7 @@ var loadSample2Buff = require('load-sample-2-buff')
 
 var SamplePlayer = require('@coleww/openmusic-sample-player')
 
+var features = require('../features')
 module.exports = function (ac, mainVol) {
   var samplers = {}
   var samples = [
@@ -43,7 +44,7 @@ panner.coneOuterGain = 1;
           samplers[sample].connect(foleyVol)
         }
 
-        if (sample == 'noise') samplers[sample].start(ac.currentTime)
+        if (sample == 'noise' && features.playNoise) samplers[sample].start(ac.currentTime)
     })
   })
 

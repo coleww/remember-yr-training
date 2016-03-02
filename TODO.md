@@ -1,5 +1,4 @@
 -------------PRIORITIES--------------------
-- computer noise/kick/punch/etc. maneuvers
 - psych/fire dragon fx? how to do both in 1 thing? hrmmm just different sprite sets?
 - sword of darkness portal
 - FIXXXXXX the double menu bug when punching stuff

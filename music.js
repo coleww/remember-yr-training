@@ -3,7 +3,7 @@ var fx = require('./sound/fx')
 // var // REQUIRE ALL OF THE STUFF IN /songs
 var merge = require('merge')
 
-var features = require('features')
+var features = require('./features')
 var songs = {
   daySwitch: require('./songs/daySwitch'),
   // happyEnding: require('./songs/happyEnding'),
