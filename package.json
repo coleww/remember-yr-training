@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "node test.js",
-    "build": "browserify  -g uglifyify index.js -d -o bundle.js",
-    "watch": "watchify index.js -d -o bundle.js --debug --verbose",
-    "lr": "livereloadify ."
+    "build": "browserify  -g uglifyify index.js -d -o play/bundle.js",
+    "watch": "watchify index.js -d -o play/bundle.js --debug --verbose",
+    "lr": "livereloadify ./play"
   },
   "author": "Cole Willsea <coleww@gmail.com> (http://colewillsea.com/)",
   "license": "MIT",

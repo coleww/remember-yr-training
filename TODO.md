@@ -1,5 +1,4 @@
 -------------PRIORITIES--------------------
-- psych/fire dragon fx? how to do both in 1 thing? hrmmm just different sprite sets?
 - sword of darkness portal
 - FIXXXXXX the double menu bug when punching stuff
 - probably a big if elseif at the end of useThing for whether a function takes over or it does the confirm/extended/cleanup itself
@@ -36,11 +35,10 @@
 
 -----------------------CLEANUPS--------------
 - MAYBE put gifs on the sides and change them? hrmmm. or just tiled metal textures i guess yeah
-- npm run build: copy everything into the_game?
 - add MOAR sound fx
 - compress all assets? hella lo-fi?
 - pick color palette, do it by hand? HOW TO (um just steal one from smth? maybe trnsfrmrs?)
-
+- concat/minify any extra scripts?
 
 
 
