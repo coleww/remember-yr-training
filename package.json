@@ -25,7 +25,7 @@
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
     "bubble-bass": "^1.1.0",
-    "databae": "^1.0.1",
+    "databae": "^1.0.2",
     "dj-snazzy-snare": "^1.0.0",
     "fast-ish-markov": "^1.0.1",
     "int2freq": "^1.0.1",

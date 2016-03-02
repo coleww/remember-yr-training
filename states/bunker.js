@@ -410,7 +410,7 @@ bunker.prototype = {
     // LATER: actually do this with like, erm, buttons for the items?
   },
   redrawInventory: function () {
-    this.inventoryDisplay.setText('inventory:' + get('inventory').map(function (item) {
+    this.inventoryDisplay.setText(get('inventory').map(function (item) {
         return item.name
     }).join(', '))
   },
@@ -445,7 +445,7 @@ bunker.prototype = {
             thing.no = ''
 
             var al = get('alignment')
-            al[item.seed['pos']]++
+            al[thing.seed['pos']]++
             set('alignment', al)
         }
 
@@ -536,14 +536,16 @@ bunker.prototype = {
             break;
         case 'canpunch':
             this.canPunch = true
+            console.log("TRYING 2 PUNCH STUFF?")
             push('inventory', {
                 name: 'your fists',
                 description: 'that tofu thing u ate has made you hecka swole and ready to fight',
                 fx: 'punchStuff',
                 yes: 'lash out at the world',
                 no: 'right a song instead',
-                oneTime: false
+                oneTimeUse: false
             })
+            console.log(get('inventory'))
             this.redrawInventory()
             break;
         case 'greenspeed':
@@ -666,7 +668,10 @@ bunker.prototype = {
         confirm.destroy()
     }, this);
     if (thing.oneTimeUse) {
-        remove('inventory', thing)
+        var inv = get('inventory')
+        set('inventory', inv.filter(function (it) {
+            return it.name !== thing.name
+        }))
         that.redrawInventory()
     }
 
@@ -730,13 +735,11 @@ bunker.prototype = {
       var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#FFF', wordWrap: true, wordWrapWidth: 150  });
       staticy.inputEnabled = true
       staticy.events.onInputDown.add(function () {
-        var inventory = get('inventory')
         var al = get('alignment')
         al[item.seed[i]]++
         set('alignment', al)
 
-        inventory.push({name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i], yes: item.yes[i], no: item.no[i]})
-        set('inventory', inventory)
+        push('inventory', {name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i], yes: item.yes[i], no: item.no[i]})
         set(get('seeds').push(item.seed[i]))
         that.redrawInventory()
         items.forEach(function (it){ it.destroy()})
