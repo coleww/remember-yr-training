@@ -75,6 +75,8 @@ bunker.prototype = {
     speakerR.scale.setTo(0.45, 0.78)
     speakerR.body.immovable = true
 
+    var ear = this.game.add.sprite(235, 197, "earpiece")
+    ear.scale.setTo(0.35)
 
     var buttonthing = this.platforms.create(this.game.world.width / 2 - 120, 347, 'butts');
     buttonthing.scale.setTo(0.1, 0.1)
@@ -89,8 +91,8 @@ bunker.prototype = {
     radio.body.setSize(93, 50, 5, 25)
     radio.body.immovable = true
 //
-    var fan = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fan');
-    fan.scale.setTo(0.5, 0.5)
+    this.game.the_fan = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fan');
+    this.game.the_fan.scale.setTo(0.5, 0.5)
 
     var mach = this.game.add.sprite(this.game.world.width / 2 - 90,  245, 'mach');
     mach.scale.setTo(0.4, 0.78)
@@ -103,6 +105,27 @@ bunker.prototype = {
 
     var fuse = this.game.add.sprite(this.game.world.width / 2 - 117, 246, 'fuse');
     fuse.scale.setTo(0.5, 0.75)
+
+
+
+
+
+
+
+
+
+
+
+
+    var c1 = this.game.add.sprite(205, 398, "Cog")
+    var c2 = this.game.add.sprite(245, 275, "Cog2")
+
+
+
+
+
+
+
 
     var arrows = this.game.add.sprite(205, 375, 'arrows');
     // arrows.scale.setTo(0.5, 0.5)
@@ -142,6 +165,23 @@ bunker.prototype = {
     squares.animations.play('slow');
     ticks.animations.play('slow');
     // switchy.animations.play('slow');
+
+
+
+
+    var blinky1 =  this.game.add.sprite(this.game.world.width / 2 - 56, 490, "blinky1")
+        blinky1.animations.add('slow', [0, 1], 3, true);
+
+
+
+    blinky1.animations.play('slow');
+    var blinky2 =  this.game.add.sprite(this.game.world.width / 2 - 56, 430, "blinky2")
+        blinky2.animations.add('slow', [0, 1], 1, true);
+
+
+
+    blinky1.animations.play('slow');
+    blinky2.animations.play('slow');
 
 
     var staticy = this.game.add.sprite(217, 465, 'static');
@@ -203,7 +243,6 @@ bunker.prototype = {
     books.scale.setTo(2)
     books.body.immovable = true
     books.body.setSize(30, 1, 0, 20)
-
 
 
 
@@ -286,6 +325,14 @@ bunker.prototype = {
     this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.startDay()
+  },
+
+  turnOnFan: function () {
+
+    var fanworking = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fanworking');
+    fanworking.scale.setTo(0.5, 0.5)
+    fanworking.animations.add('working', [0, 1, 2, 3, 4], 3, true);
+    fanworking.animations.play('working')
   },
   openWallet: function () {
     // INSPECTING YR WALLET
@@ -500,6 +547,7 @@ bunker.prototype = {
     // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
   },
   hitTheFanIfYouAreThereAndYouHaventHitItYet: function (obj) {
+
     var y = this.player.y
     console.log('we here', y, this.player.body.touching.down )
     if (get('fanStillBroken') && this.player.body.touching.down && y >= 375 && y < 385) {
@@ -509,10 +557,13 @@ bunker.prototype = {
         var that = this
         drawMenu(this.game, 'parch',
                  {name: 'YOU FIXED IT!',
-                    description: 'you hit the fan with your ' + obj.name + ' and that seems to fix the horrendous noise!',
+                    description: 'you hit the fan with your ' + obj.name + ' and that seems to fix the horrendous noise! what a weird fan tho it appears all extra-dimensional and stuff O_o',
                     yes: 'why yes ofc i am tough and also strong'
                 },
                      function (menu) {
+                        // THE FAN
+
+                        this.turnOnFan()
                         menu.destroy()
                         that.inDialog = false
                     })
@@ -955,6 +1006,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     this.game.state.start("DaySwitch")
   },
   startDay: function () {
+    if (!get('fanStillBroken')) this.turnOnFan()
     if (this.game.bloodSculptureCoords) {
         var bloodsculpt = that.game.add.sprite(this.game.bloodSculptureCoords[0], this.game.bloodSculptureCoords[1], 'bloodsculpt');
        bloodsculpt.scale.setTo(0.5)

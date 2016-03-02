@@ -90,6 +90,41 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("wallArt4", "assets/sprites/wallart/Scroll0023.png")
     game.load.image("wallArt5", "assets/sprites/wallart/Scroll0025.png")
 
+
+
+
+
+
+
+
+
+    game.load.spritesheet("fanworking", "assets/sprites/computer/fanworking.png", 96, 96)
+
+    game.load.spritesheet("blinky1", "assets/sprites/computer/blinky1.png", 16, 46)
+    game.load.spritesheet("blinky2", "assets/sprites/computer/blinky2.png", 16, 45)
+    game.load.image("earpiece", "assets/sprites/computer/earpiece.png")
+
+    game.load.image("Cog", "assets/sprites/computer/Cog.png")
+    game.load.image("Cog2", "assets/sprites/computer/Cog2.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     game.load.image("base", "assets/sprites/computer/container_1.png")
     game.load.image("butts", "assets/sprites/computer/misc_2.jpg")
     game.load.image("speaker", "assets/sprites/computer/obj_speaker001.png")
@@ -182,7 +217,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
     if (itIsANewGame) {
 
-        set('fanStillBroken', true)
+        set('fanStillBroken', features.fanOff)
         set('wall1', true)
         set('wall2', true)
         set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
