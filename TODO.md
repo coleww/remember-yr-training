@@ -1,12 +1,26 @@
 -------------PRIORITIES--------------------
-- sword of darkness portal
+
+
+
+
+
+
 - FIXXXXXX the double menu bug when punching stuff
 - probably a big if elseif at the end of useThing for whether a function takes over or it does the confirm/extended/cleanup itself
 - make it so if u "use" a weapon w/ no target thing it says somehing special?
 
 
+
+
+
+
 - program in the alarm/explosion sequence// OOO YEAH
 - program the drunk thing, let u flick the switch when yr drunk, navigate the end w/ f'd up controls (needs day 3 alarm first)
+
+
+
+
+
 
 
 

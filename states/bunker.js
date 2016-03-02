@@ -162,8 +162,6 @@ bunker.prototype = {
 
 
 
-
-
     var table = this.platforms.create(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
     table.scale.setTo(2, 1.5)
     table.body.immovable = true
@@ -271,6 +269,7 @@ bunker.prototype = {
 
     // this.bed.animations.play('close', true)
     // close.loop = false
+
 
 
 
@@ -570,7 +569,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         var tween = this.game.add.tween(portal).to({width: 2240, height:5000}, 6500, "Linear", true, 0, 0, false)
         tween.onComplete.add(function () {
             portal.destroy()
-            that.game.state.start("GameOverScreen")
+            that.game.state.start("DeathPit")
         }, this)
   },
   useThing: function (thing, menmen) {

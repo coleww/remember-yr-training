@@ -1,0 +1,137 @@
+{
+  instruments: {
+
+    wBass: {
+      config: {
+        attack: 0.513,
+        decay: 0.51,
+        sustain: 0.2753,
+        release: 0.2515,
+        peak: 0.2375,
+        mid: 0.123,
+        end: 0.06121
+      },
+      melodic: true,
+      multi: 0.25,
+      patterns: {
+
+        bridge: {
+
+          notes: [
+            [[0], [2, 0], [4, 5], [6, 6, 7]],
+            [[], [5, 5, 2], [4, 0], [2, 0, 6]]
+          ],
+          probs: [
+            [1, 0.25, 1, 0.25],
+            [0, 0.5, 0.25, 0.75]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 6,
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    },
+    piano: {
+      config: {attack: 0.53,
+        decay: 0.51,
+      sustain: 0.3,
+      release: 0.5,
+      peak: 0.435,
+      mid: 0.313,
+      end: 0.0751},
+      lead: true,
+      melodic: true,
+      multi: 0.5,
+      patterns: {
+
+        bridge: {
+
+          notes: [
+            [[0], [2, 0], [4, 5], [6, 6, 7]],
+            [[], [5, 5, 2], [4, 0], [2, 0, 6]]
+          ],
+          probs: [
+            [1, 0.25, 1, 0.25],
+            [0, 0.5, 0.25, 0.75]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 2,
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    },
+    sparkles: {
+      config: {
+        attack: 0.72523,
+        decay: 0.53131,
+        sustain: 0.53,
+        release: 0.5315,
+        peak: 0.235765,
+        mid: 0.12343,
+        end: 0.013
+      },
+      melodic: true,
+      multi: 0.25,
+      patterns: {
+
+        bridge: {
+
+          notes: [
+            [[0], [2, 0], [4, 5], [6, 6, 7]],
+            [[], [5, 5, 2], [4, 0], [2, 0, 6]]
+          ],
+          probs: [
+            [1, 0.25, 1, 0.25],
+            [0, 0.5, 0.25, 0.75]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 5,
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    },
+    bBass: {
+      config: {
+        attack: 0.5123,
+        decay: 0.5121,
+        sustain: 0.313,
+        release: 0.31215,
+        peak: 0.52375,
+        mid: 0.1253,
+        end: 0.01
+      },
+      melodic: true,
+      multi: 0.5,
+      patterns: {
+
+        bridge: {
+
+          notes: [
+            [[0], [2, 0], [4, 5], [6, 6, 7]],
+            [[], [5, 5, 2], [4, 0], [2, 0, 6]]
+          ],
+          probs: [
+            [1, 0.25, 1, 0.25],
+            [0, 0.5, 0.25, 0.75]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 6,
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    }
+  },
+  current: "bridge",
+  nexts: {
+    bridge: ["bridge", "bridge"]
+  },
+  bpm: 200,
+  key: {
+    tonic: "D3",
+    scale: "minor"
+  }
+}

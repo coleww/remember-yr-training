@@ -11,6 +11,35 @@ preload.prototype = {
     var loadingBar = this.add.sprite(game.width / 2, game.height / 2, "loading")
     loadingBar.anchor.setTo(0.5)
     game.load.setPreloadSprite(loadingBar)
+
+
+
+    game.load.image("crumbledplatform", "assets/sprites/deathpit/crumbledplatform.png")
+
+
+    game.load.image("body1", "assets/sprites/deathpit/body1.png")
+
+    game.load.image("body2", "assets/sprites/deathpit/body2.png")
+
+    game.load.image("web", "assets/sprites/deathpit/web.png")
+game.load.image("skull", "assets/sprites/deathpit/skull.png")
+
+
+
+
+    game.load.image("pots", "assets/sprites/deathpit/pots.png")
+
+    game.load.image("wall_2", "assets/sprites/deathpit/wall_2.jpg")
+
+
+     game.load.spritesheet("torchy", "assets/sprites/deathpit/torch.png", 32, 48)
+
+
+
+
+
+
+
     game.load.image("blank", "assets/sprites/blank.gif")
     game.load.image("damage", "assets/sprites/damage.png")
     game.load.image("black", "assets/sprites/black.jpeg")

@@ -6,6 +6,7 @@ var merge = require('merge')
 var features = require('./features')
 var songs = {
   daySwitch: require('./songs/daySwitch'),
+  deathPit: require('./songs/deathPit'),
   // happyEnding: require('./songs/happyEnding'),
   // sadEnding: require('./songs/sadEnding'),
   // secretEnding: require('./songs/secretEnding'),
@@ -48,7 +49,7 @@ Object.keys(insts).forEach(function(ik) {
           var multi = songs[sk].instruments[ik].multi || 1
           var note = songs[sk].instruments[ik].melodic ? {freq: int2freq(arg, songs[sk].key) * multi} : {}
 
-          insts[ik].update(merge(configs, note), ac.currentTime)
+          insts[ik].update(merge(note, configs), ac.currentTime)
           insts[ik].start(ac.currentTime)
         }
     })
