@@ -950,7 +950,6 @@ bunker.prototype = {
       var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
     this.game.world.bringToTop(this.player)
       this.game.world.bringToTop(jug)
-
       // this.game.world.bringToTop(book2)
 
     } else {

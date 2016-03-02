@@ -67,9 +67,6 @@ preload.prototype = {
     game.load.image("FoodAle", "assets/sprites/vending/FoodAle.png")
     game.load.image("FoodBread", "assets/sprites/vending/FoodBread.png")
     game.load.image("FoodDrumstick", "assets/sprites/vending/FoodDrumstick.png")
-    game.load.image("GlovesGold", "assets/sprites/vending/LightStar.png")
-    game.load.image("GlovesLeather", "assets/sprites/vending/LightChalice.png")
-    game.load.image("GlovesSteel", "assets/sprites/vending/LightOrb.png")
     game.load.image("MushroomBrown", "assets/sprites/vending/HB_MushroomBrownSpotted.png")
     game.load.image("MushroomPurple", "assets/sprites/vending/HB_MushroomPurple.png")
     game.load.image("MushroomRed", "assets/sprites/vending/HB_MushroomRed.png")
@@ -82,15 +79,14 @@ preload.prototype = {
     game.load.image("VialG", "assets/sprites/vending/VialGreen.png")
     game.load.image("VialR", "assets/sprites/vending/VialRed.png")
     game.load.image("VialY", "assets/sprites/vending/VialYellow.png")
-    game.load.image("pebbles", "assets/sprites/vending/Jewels.png")
-    game.load.image("key", "assets/sprites/vending/KeySkull.png")
-    game.load.image("lantern", "assets/sprites/vending/LanternBronze.png")
+    game.load.image("instructions", "assets/sprites/vending/instructions.png")
+    game.load.image("bloodnote", "assets/sprites/vending/bloodynote.png")
+    game.load.image("poemsbook", "assets/sprites/vending/how2poem.png")
     game.load.image("candle", "assets/sprites/candle.png")
     game.load.image("menu", "assets/sprites/Menu_2.png")
     game.load.image("ladder", "assets/sprites/ladder1.png")
     game.load.image("table", "assets/sprites/table.png")
     game.load.image("books", "assets/sprites/books.png")
-
     game.load.image("chair", "assets/sprites/chair.png")
     game.load.image("book1", "assets/sprites/Book.png")
     game.load.image("book2", "assets/sprites/Book2.png")
@@ -305,11 +301,11 @@ preload.prototype = {
         yes: ['read it', 'read it', 'read it'],
         no: ['save it for a rainy day', 'save it for a rainy day', 'save it for a rainy day'],
 
-      descriptions: ['a training manual! you have been looking everywhere for this!',
+      descriptions: ['yr instructions! to help you Remember Yr Training (tm)! you have been looking everywhere for this!',
        '""HOW TO WRITE GOOD POEMS"", hmm might help to pass the time',
        'a filthy, bloody note. intriguing.'],
-      sprites: ['', '', ''],
-      names: ['training manual', 'mixology book', 'bloody note (folded)'],
+      sprites: ['instructions', 'poemsbook', 'bloodnote'],
+      names: ['INSTRUCTIONS', 'poetry book', 'bloody note (folded)'],
       extended: ['it reads "WHEN ALARM BLARES LOUDLY WITH NO END IN SIGHT, PRESS THE BUTTON"',
       'HOW TO WRITE A GOOD POEM: write some words, not too many, however much is just enough. give it a title. or don\'t, whatever i\'m not your boss. share it or save it as a secret. you have written a good poem.',
       'it is dirty, covered in blood, wrinkled up, and might have been bitten? you are pretty sure that it faintly reads "ABSOLUTELY DO NOT PUSH THE BUTTON"'],
