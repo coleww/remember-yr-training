@@ -1,9 +1,11 @@
 -------------PRIORITIES--------------------
-- program in the alarm/explosion sequence// OOO YEAH
 - computer noise/kick/punch/etc. maneuvers
 - psych/fire dragon fx? how to do both in 1 thing? hrmmm just different sprite sets?
 - sword of darkness portal
 - GET book vending assets
+
+
+- program in the alarm/explosion sequence// OOO YEAH
 - program the drunk thing, let u flick the switch when yr drunk, navigate the end w/ f'd up controls (needs day 3 alarm first)
 
 

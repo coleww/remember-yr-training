@@ -79,7 +79,6 @@ http://opengameart.org/content/householdblocks
 http://opengameart.org/content/lpc-house-interior-and-decorations
 http://opengameart.org/content/game-boy-platformer-tileset
 http://opengameart.org/content/pack-of-ladders
-http://opengameart.org/content/dark-paper-pack
 http://opengameart.org/content/rpg-ui-icons-inventory-map-quests-spells-status
 http://opengameart.org/content/map
 http://opengameart.org/content/magic-cliffs-environment

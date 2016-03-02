@@ -924,7 +924,7 @@ bunker.prototype = {
       if (day == 2) {
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
       book1.scale.setTo(0.5)
-      var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 295, 'mug');
+      var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 315, 'mug');
       mug.scale.setTo(0.75)
       var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
           this.game.world.bringToTop(this.player)
@@ -943,9 +943,9 @@ bunker.prototype = {
         yes: 'kiss the book gently',
         no: 'gnaw on the leather cover for the protein'}
 
-      var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 300, 'jug');
+      var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 315, 'jug');
       jug.scale.setTo(0.5)
-      var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 305, 'book2');
+      var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 310, 'book2');
       book2.scale.setTo(0.5)
       var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
     this.game.world.bringToTop(this.player)
@@ -1083,6 +1083,19 @@ bunker.prototype = {
         this.game.state.start("GameOverScreen")
     }
   },
+
+
+
+
+
+
+
+
+
+
+
+
+
   soundTheAlarm: function () {
     // UPDATE the switch item
     // draw a bunch more stuff
@@ -1093,6 +1106,16 @@ bunker.prototype = {
     // animate the sprite down
     // set variable so that user can climb up it? or just animate that?
   },
+
+
+
+
+
+
+
+
+
+
   update: function () {
     // console.log(this.game.input.x,
     // this.game.input.y)
