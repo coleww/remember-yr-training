@@ -4,6 +4,13 @@
 ------------- OH! probably need all kinds of sprites for gameOver variations?
 
 
+POETRY IS, ONCE AGAIN, HELLA BROKEN :<
+
+
+DAYSWAP SCREEN: USE A GIF FOR EACH DAY. CAN U GIF?
+make weird spritesheet thing? hrmmmmmm.
+
+
 ---- SOUND ---
 FIX the fricking bridge to the bunker track it is still the original diddle
 MOVE the multi thing to each pattern that will be WAY WAY cooler

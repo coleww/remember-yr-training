@@ -9,28 +9,28 @@ var endings = {
     song: 'dead'
   },
   gameOver3: {
-    sprite: 'ghost',
+    sprite: 'ecto',
     scale: [5, 7],
     description: 'you have taken fatal damage, which is an incredible feat in a game that does not even really have enemies or obstacles of any sort. Congratulations!' ,
     name: 'YOU WAKE UP, FEELING FLOATY AND INCORPOREAL, AND GAZE DOWN AT YR LIFELESS BODY',
     song: 'dead'
   },
   gameOver451: {
-    sprite: 'fire',
+    sprite: 'flame',
     scale: [5, 7],
     description: 'you transformed into the fire lord Rayon, but did not have the force of will to control your powers and ended up destroying the station and trapping yourself under miles of rock. as an immortal pseudo-god, you lay immovable and trapped here until nuclear war destroys the earth and you are free to return to your home on the sun. in the meantime you have this song stuck in yr head:',
     name: 'X_X TOTAL BURNINATION X_X',
-    song: 'circus'
+    song: 'dead'
   },
   gameOver420: {
-    sprite: 'psychedelic',
+    sprite: 'son',
     scale: [5, 7],
     description: 'you transform into a shimmering power goddess, but also lose grip on reality. where you even playing a game? is any of this real?',
     name: 'X_X WHOA, JUST LIKE, WHOA X_X',
-    song: 'phish'
+    song: 'dead'
     },
   gameOver666: {
-    sprite: 'black',
+    sprite: 'portal',
     scale: [5, 7],
     description: 'you unleash a portal to the shadow world and are consumed by the darkness. way to go.',
     name: '☠ X_X ☠',
