@@ -31,8 +31,8 @@ DaySwitch.prototype = {
     var day = get('currentDay')
 
 
-    var bg = this.game.add.sprite(0, 0, 'dsbg' + (day + 1));
-    bg.scale.setTo(7, 11)
+    var bg = this.game.add.sprite(-65, -65, 'dsbg' + (day + 1));
+    bg.scale.setTo(9, 12)
 
         bg.animations.add('slow', [0, 1, 2, 3], 1, true);
 
@@ -75,17 +75,17 @@ DaySwitch.prototype = {
     }, this);
 
 
-    var bg = this.game.add.sprite(-900, -1100, 'damage');
-    bg.scale.setTo(50,58)
-    // bg.anchor.setTo(0.5, 0.5);
-    bg.alpha = 1;
+    var bigBg = this.game.add.sprite(-900, -1100, 'damage');
+    bigBg.scale.setTo(50,58)
+    // bigBg.anchor.setTo(0.5, 0.5);
+    bigBg.alpha = 1;
     var that = this
-    var t = this.game.add.tween(bg).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
+    var t = this.game.add.tween(bigBg).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
     t.onLoop.add(function () {
         console.log('looped!')
         // t.onLoopCallback(function(){console.log('Y?')})
         that.game.tweens.remove(t)
-      bg.destroy()
+      bigBg.destroy()
 
 
 

@@ -118,7 +118,7 @@ bunker.prototype = {
 
 
     var c1 = this.game.add.sprite(205, 398, "Cog")
-    var c2 = this.game.add.sprite(245, 275, "Cog2")
+    var c2 = this.game.add.sprite(265, 465, "Cog2")
 
 
 

@@ -6,8 +6,8 @@ titleScreen.prototype = {
   create: function(){
     var game = this.game
     // game.musician.change('title')
-    var titleBG = game.add.sprite(0, 0,  "dsbg0")
-    titleBG.scale.setTo(7, 11)
+    var titleBG = game.add.sprite(-65, -65,  "dsbg0")
+    titleBG.scale.setTo(9, 12)
 titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
 
 

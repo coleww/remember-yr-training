@@ -1,7 +1,7 @@
 module.exports = {
   playNoise: false,
   playMusic: true,
-  startState: 'TitleScreen',
+  startState: 'Bunker',
   currentDay: 0,
   fanOff: true
 }
