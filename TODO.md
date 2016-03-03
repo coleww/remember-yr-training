@@ -1,14 +1,6 @@
 -------------PRIORITIES--------------------
 
 
----- punching -----
-- FIXXXXXX the double menu bug when punching stuff
-- probably a big if elseif at the end of useThing for whether a function takes over or it does the confirm/extended/cleanup itself
-- make it so if u "use" a weapon w/ no target thing it says somehing special?
-
-
-
-
 ---- THE ALARM! next level stuff here -------------------
 
 - program in the alarm/explosion sequence// OOO YEAH
