@@ -14,6 +14,7 @@ DaySwitch.prototype = {
   preload: function(){
   },
   create: function(){
+
 ///////////////////////////////////////////////////////////
     this.game.musician.change('daySwitch')
 
@@ -73,6 +74,25 @@ DaySwitch.prototype = {
 
     }, this);
 
+
+    var bg = this.game.add.sprite(-900, -1100, 'damage');
+    bg.scale.setTo(50,58)
+    // bg.anchor.setTo(0.5, 0.5);
+    bg.alpha = 1;
+    var that = this
+    var t = this.game.add.tween(bg).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
+    t.onLoop.add(function () {
+        console.log('looped!')
+        // t.onLoopCallback(function(){console.log('Y?')})
+        that.game.tweens.remove(t)
+      bg.destroy()
+
+
+
+
+      // OHHH MAYBE DROP THE PLAYER IN HERE?
+
+    }, this)
 
   }
 }
