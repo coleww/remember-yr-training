@@ -1,12 +1,6 @@
 -------------PRIORITIES--------------------
 
 
-
-
----- SOUND ---
-FIX the fricking bridge to the bunker track it is still the original diddle
-
-
 ---- punching -----
 - FIXXXXXX the double menu bug when punching stuff
 - probably a big if elseif at the end of useThing for whether a function takes over or it does the confirm/extended/cleanup itself

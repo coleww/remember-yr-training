@@ -328,11 +328,11 @@ bunker.prototype = {
   },
 
   turnOnFan: function () {
-
-    var fanworking = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fanworking');
-    fanworking.scale.setTo(0.5, 0.5)
-    fanworking.animations.add('working', [0, 1, 2, 3, 4], 3, true);
-    fanworking.animations.play('working')
+    this.game.the_fan.loadTexture('fanworking')
+    // var fanworking = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fanworking');
+    this.game.the_fan.scale.setTo(0.5, 0.5)
+    this.game.the_fan.animations.add('working', [0, 1, 2, 3, 4], 3, true);
+    this.game.the_fan.animations.play('working')
   },
   openWallet: function () {
     // INSPECTING YR WALLET
@@ -546,7 +546,7 @@ bunker.prototype = {
 
     // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
   },
-  hitTheFanIfYouAreThereAndYouHaventHitItYet: function (obj) {
+  hitTheFanIfYouAreThereAndYouHaventHitItYet: function (obj, menmen) {
 
     var y = this.player.y
     console.log('we here', y, this.player.body.touching.down )
@@ -555,7 +555,7 @@ bunker.prototype = {
         this.game.musician.stopComputerNoise()
         // draw
         var that = this
-        drawMenu(this.game, 'parch',
+        drawMenu(this.game, menmen,
                  {name: 'YOU FIXED IT!',
                     description: 'you hit the fan with your ' + obj.name + ' and that seems to fix the horrendous noise! what a weird fan tho it appears all extra-dimensional and stuff O_o',
                     yes: 'why yes ofc i am tough and also strong'
@@ -563,10 +563,13 @@ bunker.prototype = {
                      function (menu) {
                         // THE FAN
 
-                        this.turnOnFan()
+                        that.turnOnFan()
                         menu.destroy()
                         that.inDialog = false
                     })
+        return false
+    } else {
+        return true
     }
   },
   explodinate: function (type) {
@@ -624,6 +627,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         }, this)
   },
   useThing: function (thing, menmen) {
+    var continueMenu = true
     switch(thing.fx) {
         case 'gameOver1':
             set('gameOver', 1)
@@ -656,6 +660,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
                 fx: 'punchStuff',
                 sprite: 'fist',
                 yes: 'lash out at the world',
+                extended: 'you punch out at the world, it is their own fault if someone happens to get in the way',
                 no: 'write some poetry instead',
                 oneTimeUse: false
             })
@@ -701,11 +706,11 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             })
             break;
         case 'punchStuff':
-            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            continueMenu = this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing, menmen)
             break;
         case 'chickenattack':
             // stuff
-            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            continueMenu = this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing, menmen)
             // IF AT THE FAN, can hit it to stop the noise?
             break;
         case 'transformtrip':
@@ -725,12 +730,12 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'fireslash':
             // stuff
-            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            continueMenu = this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing, menmen)
             // IF AT THE FAN, can hit it to stop the noise?
             break;
         case 'gooslash':
             // stuff
-            this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing)
+            continueMenu = this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing, menmen)
             // IF AT THE FAN, can hit it to stop the noise?
             break;
         case 'darkslash':
@@ -765,25 +770,30 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             // i think thats all?
             break;
     }
+    if (continueMenu) {
+        var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
+        var confirm  = this.game.add.text(150, 570, 'OK COOL THANKS', { fontSize: '20px', fill: '#08D' });
+        confirm.inputEnabled = true;
+        var that = this
+        //REFACTOR THISSSSSSSSSSS
+        confirm.events.onInputDown.add(function  (thin) {
+            // RUN THE STUFF!
+            console.log(thing)
+            this.inDialog = false
+            if (thing.item) {
+                console.log('PUSHING')
+                push('inventory', thing.item)
+                that.redrawInventory()
+            }
+            menmen.destroy()
+            whatHappened.destroy()
+            confirm.destroy()
+        }, this);
+    } else {
 
-    var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
-    var confirm  = this.game.add.text(150, 570, 'OK COOL THANKS', { fontSize: '20px', fill: '#08D' });
-    confirm.inputEnabled = true;
-    var that = this
-    //REFACTOR THISSSSSSSSSSS
-    confirm.events.onInputDown.add(function  (thin) {
-        // RUN THE STUFF!
-        console.log(thing)
-        this.inDialog = false
-        if (thing.item) {
-            console.log('PUSHING')
-            push('inventory', thing.item)
-            that.redrawInventory()
-        }
-        menmen.destroy()
-        whatHappened.destroy()
-        confirm.destroy()
-    }, this);
+            // menmen.destroy()????
+    }
+
     if (thing.oneTimeUse) {
         var inv = get('inventory')
         set('inventory', inv.filter(function (it) {
