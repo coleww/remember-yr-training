@@ -33,8 +33,8 @@ bunker.prototype = {
 
 
     // make the ladder drop down later
-    var ladder = this.game.add.sprite(this.game.world.width / 2 + 40, 250, 'ladder');
-    ladder.scale.setTo(0.15, 0.5)
+    this.ladder = this.game.add.sprite(this.game.world.width / 2 + 40, 250, 'ladder');
+    this.ladder.scale.setTo(0.15, 0.5)
 
 
 
@@ -56,9 +56,9 @@ bunker.prototype = {
 
 
 
-    var chute = this.platforms.create(this.game.world.width / 2 + 25, 150, 'chute');
-    chute.scale.setTo(0.45, 0.78)
-    chute.body.immovable = true
+    this.chute = this.platforms.create(this.game.world.width / 2 + 25, 150, 'chute');
+    this.chute.scale.setTo(0.45, 0.78)
+    this.chute.body.immovable = true
     // Here we create the ground.
 
 
@@ -300,7 +300,7 @@ bunker.prototype = {
 
 
 
-
+    this.escapeTheBunker(true)
 
 
 // hrm, some little animation thing could be cool? would probs have to be in startDay tho?
@@ -469,9 +469,10 @@ bunker.prototype = {
     }).join(', '))
   },
   escapeTheBunker: function (launced) {
-    this.game.musician.stopAlarm()
+    // TODO TURN THIS BACK ON!
+    // this.game.musician.stopAlarm()
     if (launced) {
-        this.game.musician.playFX('modem')
+        // this.game.musician.playFX('modem')
 
         this.game.musician.playFX('missilelaunch')
         // play missile launch sound
@@ -488,17 +489,16 @@ bunker.prototype = {
 
 
 
-// TODO DO THIS STUFF YEAHYEAHYEAHYEAHYEAH
 
 
-
+    this.lowerLadder = true
 
 
 // MOVE THE LADDER
-// game.physics.arcade.moveToXY(
-//     sprite,
-// x, y
-//     250 // velocity to move at
+// this.game.physics.arcade.moveToXY(
+//     this.ladder,
+// this.game.world.width / 2 + 40, 350,
+//     2500 // velocity to move at
 // )
 
 
@@ -508,7 +508,7 @@ bunker.prototype = {
     // get it's x/y
     // add this to the update loop:
     // somehow animate the dudy climbing up?
-    this.game.state.start('Silo')
+    // this.game.state.start('Silo')
 
 
 
@@ -1203,6 +1203,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   },
 
   interactIfTouchingThing: function (x, y) {
+    console.log('in fact we are here')
     if (!this.inDialog) {
        console.log(x, y, 'idk')
       if (y > 669 && y < 685) {
@@ -1274,6 +1275,16 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         this.inDialog = true
         this.openDialog(this.game.computerStuff[0])
         // on top of the radio. mention the view?
+      } else if (y > 490 && y < 500 && x > 320 && x < 360) {
+        console.log('doing this?')
+
+        this.game.world.bringToTop(this.chute)
+        this.game.world.bringToTop(this.platforms)
+        this.inDialog = true
+        // this.player.body.gravity = -1
+        this.chute.body.setSize(0,0,0, 0);
+        this.player.body.velocity.y = -1000
+        this.ascendingTheLadder = true
       }
     }
 
@@ -1298,16 +1309,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
 
 
-  soundTheAlarm: function () {
-    // UPDATE the switch item
-    // draw a bunch more stuff
-    // flash red and beep and light up the switch until player goes to it?
-    // SET game to know u got up the ladder legtimately
-  },
-  lowerTheLadder: function () {
-    // animate the sprite down
-    // set variable so that user can climb up it? or just animate that?
-  },
 
 
   setOffTheBoomBoom: function () {
@@ -1341,10 +1342,21 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
     this.game.physics.arcade.collide(this.player, this.platforms);
 
-if (!this.inDialog){
+    if (this.ascendingTheLadder) {
+        if (this.player.y < 200) this.game.state.start('Silo')
+    }
 
+if (!this.inDialog){
+    // console.log(this.player.x, this.player.y)
+    if (this.lowerLadder && this.ladder.y < 360) {
+        this.ladder.y += 0.5
+        // console.log(this.ladder.y)
+    }
     var xDir = 0
     var yDir = 0
+
+
+
 
 
 
@@ -1425,6 +1437,8 @@ if (!this.inDialog){
 
 
     }
+
+
 
 
     this.game.musician.updateComputerNoise(this.game, this.player.x, this.player.y, xDir, 0)

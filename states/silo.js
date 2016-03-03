@@ -14,6 +14,7 @@ Silo.prototype = {
   preload: function(){
   },
   create: function(){
+    alert('NEW LEVEL! YAY!')
     var launchedTheMissiles = get('launched')
 
     if (launchedTheMissiles) {
