@@ -1,12 +1,10 @@
 -------------PRIORITIES--------------------
 
 
-POETRY IS, ONCE AGAIN, HELLA BROKEN :<
 
 
 ---- SOUND ---
 FIX the fricking bridge to the bunker track it is still the original diddle
-MOVE the multi thing to each pattern that will be WAY WAY cooler
 
 
 ---- punching -----
