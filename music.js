@@ -12,6 +12,7 @@ var songs = {
   // secretEnding: require('./songs/secretEnding'),
   // silo: require('./songs/silo'),
   // vending: require('./songs/vending'),
+  tense: require('./songs/tense'),
   poetry: require('./songs/poetry'),
   bunker: require('./songs/bunker'),
   title: require('./songs/title')
@@ -86,6 +87,7 @@ Object.keys(insts).forEach(function(ik) {
     setMusicVolume: function (val) {
 
     },
+    stopAlarm: function () {foley.stopAlarmNoise()},
     updateComputerNoise: function (g,x,y, z, a) {foley.updateComputerNoise(g, x, y, z, a)},
     stopComputerNoise: function (g,x,y) {
       foley.stopComputerNoise()

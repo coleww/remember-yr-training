@@ -18,6 +18,7 @@ var poetryGen = require('../poet')
 var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
+    this.hasNotGoneOffYet = true
     var that = this
     this.game.musician.change('bunker')
     this.wall1 = get('wall1')
@@ -320,7 +321,6 @@ bunker.prototype = {
 
 
 
-
     // //  The score
     this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -468,8 +468,66 @@ bunker.prototype = {
         return item.name
     }).join(', '))
   },
+  escapeTheBunker: function (launced) {
+    this.game.musician.stopAlarm()
+    if (launced) {
+        this.game.musician.playFX('modem')
+
+        this.game.musician.playFX('missilelaunch')
+        // play missile launch sound
+        // play tense soundtrack
+    } else {
+        this.game.musician.playFX('windloop')
+        // silence everthing
+        // play nice ambient music
+    }
+
+    set('launched', launced)
+
+
+
+
+
+// TODO DO THIS STUFF YEAHYEAHYEAHYEAHYEAH
+
+
+
+
+
+// MOVE THE LADDER
+// game.physics.arcade.moveToXY(
+//     sprite,
+// x, y
+//     250 // velocity to move at
+// )
+
+
+
+
+    // somehow animate the ladder lowering?
+    // get it's x/y
+    // add this to the update loop:
+    // somehow animate the dudy climbing up?
+    this.game.state.start('Silo')
+
+
+
+
+
+
+
+    // set some game values?
+    // lower the ladder, activate an action to walk up it?
+  },
+
   openDialog: function (thing) {
     var that = this
+    if (this.isFaded) {
+        thing = thing.faded
+    } else if (!this.hasNotGoneOffYet) {
+        thing = thing.alarmed
+    }
+
     drawMenu(this.game, 'parch', thing, function (menu, obj) {
         // urggggh just put a gigantic case switch here for the few things that have fx?
         that.inDialog = false
@@ -489,6 +547,7 @@ bunker.prototype = {
 
             menu.destroy()
         }
+        if (thing.theSwitch) escapeTheBunker(true)
 
 
     }, function (thing) {
@@ -503,6 +562,7 @@ bunker.prototype = {
             al[thing.seed['pos']]++
             set('alignment', al)
         }
+        if (thing.theSwitch) escapeTheBunker(false)
 
     })
 
@@ -513,7 +573,7 @@ bunker.prototype = {
     // IF it's the chest/vending machine, defer to those
   },
   maybeGoToSleep: function () {
-    if (this.hasWrittenAPoemToday) {
+    if (this.hasWrittenAPoemToday && get('currentDay') <= 2) {
         var that = this
         drawMenu(this.game, 'parch',
                  {name: 'GO TO SLEEP?',
@@ -535,7 +595,7 @@ bunker.prototype = {
         var that = this
         drawMenu(this.game, 'parch',
                  {name: 'CRYOBED',
-                    description: 'you are not very tired right now, maybe write some poems to relax?',
+                    description: 'you are not very tired right now,' + (get('currentDay') < 3) ? ' maybe write some poems to relax?' : ' how bout u just wait to see if something happens?',
                     yes: 'ok'
                 },
                      function (menu) {
@@ -768,6 +828,10 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'read':
             // i think thats all?
+            break;
+        case 'drunkescape':
+            // continueMenu = false
+            this.escapeTheBunker(true)
             break;
     }
     if (continueMenu) {
@@ -1246,27 +1310,47 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   },
 
 
+  setOffTheBoomBoom: function () {
+    this.game.musician.playFX('alclock')
+    this.game.musician.playFX('WAHHHHH')
+    this.game.musician.change('tense')
+    var danagePixel = this.game.add.sprite(300,300, "damage")
+    danagePixel.anchor.set(0.5)
+    var that = this
+    var tween = this.game.add.tween(danagePixel).to({width: 2240, height:5000}, 250, "Linear", true, 0, 6, false)
+    tween.onComplete.add(function () {
+        danagePixel.destroy()
 
-
-
-
-
-
+        that.arrow = that.game.add.sprite(235, 250, 'arrow')
+        var tweenarrow = that.game.add.tween(that.arrow).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
+        // tween.onComplete.add(function () {
+        //     danagePixel.destroy()
+        // }, that)
+            tweenarrow.yoyo(true)
+        // arrow.scale.setTo(100)
+                // arrow.angle = 90
+        // ?
+    }, this)
+    tween.yoyo(true)
+  },
 
 
   update: function () {
     // console.log(this.game.input.x,
     // this.game.input.y)
 
-    var xDir = 0
-    var yDir = 0
     this.game.physics.arcade.collide(this.player, this.platforms);
 
+if (!this.inDialog){
+
+    var xDir = 0
+    var yDir = 0
 
 
-    if (this.itIsTheLastDay && this.hasNotGoneOffYet) {
+
+    if (this.itIsTheLastDay && this.hasNotGoneOffYet && Math.random() < 0.003) {
         this.hasNotGoneOffYet = false
-
+        this.setOffTheBoomBoom()
         // make everything explode?
     }
 
@@ -1344,6 +1428,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
 
     this.game.musician.updateComputerNoise(this.game, this.player.x, this.player.y, xDir, 0)
+}
   }
 }
 

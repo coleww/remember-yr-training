@@ -2,6 +2,6 @@ module.exports = {
   playNoise: false,
   playMusic: true,
   startState: 'Bunker',
-  currentDay: 0,
+  currentDay: 2,
   fanOff: true
 }

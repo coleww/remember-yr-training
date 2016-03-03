@@ -207,7 +207,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("linedpaper", "assets/sprites/PaperDecoration_Lined.png")
     game.load.image("blankpaper", "assets/sprites/PaperDecoration_Blank.png")
     game.load.image("paper3", "assets/sprites/SinglePage.png")
-
+   game.load.image("arrow", "assets/sprites/rodyk.png")
     game.load.image("battery", "assets/sprites/vending/icon-power.png")
     game.load.image('ground', 'assets/sprites/gbground.png');
     game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);
@@ -260,14 +260,27 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
                         description: 'there is a gigantic switch here...you probably shouldn\'t push it though because you don\'t remember yr training or what it does :<',
         yes: 'back away slowly',
         no: 'aspire to push it one day',
-        ifFadedYes: 'you are feeling bold, courageous, and decisive. push the button? ',
-        ifFadedNo: 'hell no',
-        ifFadedFX: 'drunkescape'
+        faded: {
+            name: 'SOME BUTTON',
+            description: 'yr pretty sure that pressing the button will turn on some sick dubstep so u can dance',
+            yes: 'I JUST WANNA DANCE',
+            no: 'I JUST WANT THE ROOM TO STOP SPINNING',
+            extended: 'uh oh....',
+            fx: 'drunkescape'
+        },
+
+        alarmed: {
+            name: 'LOUD ALARMS AND LIGHTS AND NOISES OMG',
+            description: 'the machine says "NUCLEAR MISSILE LAUNCH DETECTED! TO UNLEASH TACTICAL COUNTER STRIKE PLZ PRESS THE SWITCH! DO REMEMBER YR TRAINING FIRST AS TO WHETHER OR NOT U SHOULD PUSH THE BUTTON! BUT DO IT FAST THERE IS NO TIME TO WASTE!"',
+            yes: 'press it',
+            no: 'absolutely do not press it no way',
+            theSwitch: true
+        }
     },
         {name: 'a huge computer machine',
                             description: 'it is making this wretched humming noise, i wonder if there is some way to stop it?',
         yes: 'think about the cooling system',
-        no: 'try kicking it'},
+        no: 'imagine a nice slice of john cage music'},
         {name: 'broken down fan',
                         description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
         yes: 'wonder if there is a tool that could fix it',

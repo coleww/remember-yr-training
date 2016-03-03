@@ -31,7 +31,7 @@ panner.coneOuterGain = 1;
       console.log('loading')
         samplers[sample].buffer = buffer
         loaded++
-        if (['noise', 'windloop', 'horribletone'].indexOf(sample) !== -1) {
+        if (['noise', 'windloop', 'horribletone', 'WAHHHHH', 'alclock'].indexOf(sample) !== -1) {
           samplers[sample].loop = true
           //
           if (sample == 'noise') {
@@ -44,7 +44,7 @@ panner.coneOuterGain = 1;
           samplers[sample].connect(foleyVol)
         }
 
-        if (sample == 'noise' && features.playNoise) samplers[sample].start(ac.currentTime)
+        if ((sample == 'noise' || sample == 'horribletone') && features.playNoise) samplers[sample].start(ac.currentTime)
     })
   })
 
@@ -63,8 +63,13 @@ panner.coneOuterGain = 1;
     updateVolume: function (params) {
       //..
     },
+    stopAlarmNoise: function () {
+      samplers['WAHHHHH'].stop(ac.currentTime)
+      samplers['alclock'].stop(ac.currentTime)
+    },
     stopComputerNoise: function () {
       samplers['noise'].stop(ac.currentTime)
+      samplers['horribletone'].stop(ac.currentTime)
     },
     updateComputerNoise: function (game, x, y, xDir, yDir) {
       ac.listener.setPosition(x, y, 0);

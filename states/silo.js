@@ -14,7 +14,13 @@ Silo.prototype = {
   preload: function(){
   },
   create: function(){
+    var launchedTheMissiles = get('launched')
 
+    if (launchedTheMissiles) {
+      // there will be enemies and fast tense music and explosions and u will have to move fast
+    } else {
+      // there will be no enemies and u can take as long as u want and inspect hte random objects on the platforms
+    }
   }
 }
 

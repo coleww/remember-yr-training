@@ -40,8 +40,8 @@ DaySwitch.prototype = {
 
     bg.animations.play('slow');
 
-    var dates = ['DAY ONE', 'Sep. 15, \'83, midnight!', "9/23/83 04:22:37", 'September 26, 1983...']
-    var descroppies = ['HELLO\nYOU HAVE BEEN ASSIGNED TO STATION L-A-V_07\nYOU WILL PROVIDE ENGINEERING SUPPORT TO THE TECNICAL(sp?) APPARATUS CURRENTLY OPERATING ON SITE\nREMEMBER YOUR TRAINING!',
+    var dates = [null, 'DAY ONE', 'Sep. 15, \'83, midnight!', "9/23/83 04:22:37", 'September 26, 1983...']
+    var descroppies = [null, 'HELLO\nYOU HAVE BEEN ASSIGNED TO STATION L-A-V_07\nYOU WILL PROVIDE ENGINEERING SUPPORT TO THE TECNICAL(sp?) APPARATUS CURRENTLY OPERATING ON SITE\nREMEMBER YOUR TRAINING!',
     'you have lost track of the days. weeks. how long has it been? months. you could count the pages in your journal. did they say when your replacement is supposed to arrive? nothing to do but wait',
     'you awaken before sunrise (not thhat you can see the sun). you cannot recall what you did yesterday, everything blurs into a smooth surface of time space upon which you glide aimlessly.',
     'just another day, ordinary average, nothing unusual about it...']
@@ -51,7 +51,7 @@ DaySwitch.prototype = {
     var instruct = this.game.add.text(50, 220, title, { fontSize: '30px', fill: '#FFF' });
     var descrip = this.game.add.text(50, 320, descroppie, { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
 
-    var yay  = this.game.add.text(50, 690, ['I DO! i mean.. I WILL!', 'sheesh ok wow','i wonder how many days there are to this game and if anything else happens besides writing poetry and inspecting items :/', 'that is a bit alarming'][day], { fontSize: '70px', fill: '#08D', wordWrap: true, wordWrapWidth: 300 });
+    var yay  = this.game.add.text(50, 690, [null, 'I DO! i mean.. I WILL!', 'sheesh ok wow','i wonder how many days there are to this game and if anything else happens besides writing poetry and inspecting items :/', 'that is a bit alarming'][day], { fontSize: '70px', fill: '#08D', wordWrap: true, wordWrapWidth: 300 });
     yay.inputEnabled = true;
     yay.underline = true
     var that = this
