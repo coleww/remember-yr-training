@@ -74,15 +74,16 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
 
 
-    game.load.image("dsbg1", "assets/sprites/dsbg1.jpg")
+    game.load.spritesheet("dsbg0", "assets/sprites/dsbg0.png", 93, 95)
+    game.load.spritesheet("dsbg1", "assets/sprites/dsbg1.png", 93, 95)
 
 
-    game.load.image("dsbg2", "assets/sprites/dsbg2.png")
+    game.load.spritesheet("dsbg2", "assets/sprites/dsbg2.png", 93, 95)
 
 
-    game.load.image("dsbg3", "assets/sprites/dsbg3.png")
+    game.load.spritesheet("dsbg3", "assets/sprites/dsbg3.png", 93, 95)
 
-    game.load.image("dsbg4", "assets/sprites/dsbg4.png")
+    game.load.spritesheet("dsbg4", "assets/sprites/dsbg4.png", 93, 95)
 
     game.load.image("ecto", "assets/sprites/ecto.png")
     game.load.image("son", "assets/sprites/son.png")

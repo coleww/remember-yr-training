@@ -6,9 +6,13 @@ titleScreen.prototype = {
   create: function(){
     var game = this.game
     // game.musician.change('title')
-    var titleBG = game.add.tileSprite(0, 0, game.width, game.height, "backsplash")
-    titleBG.tint = 7
-    document.body.style.background = "#"+titleBG.tint.toString(16)
+    var titleBG = game.add.sprite(0, 0,  "dsbg0")
+    titleBG.scale.setTo(7, 11)
+titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
+
+
+
+    titleBG.animations.play('slow');
     var title = game.add.image(game.width / 2, 270, "title")
     title.anchor.set(0.5)
 

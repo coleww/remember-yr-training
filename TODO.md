@@ -1,8 +1,5 @@
 -------------PRIORITIES--------------------
 
------------------------ASSES AND BUTTS
-------------- OH! probably need all kinds of sprites for gameOver variations?
-
 
 POETRY IS, ONCE AGAIN, HELLA BROKEN :<
 
