@@ -265,7 +265,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
             description: 'yr pretty sure that pressing the button will turn on some sick dubstep so u can dance',
             yes: 'I JUST WANNA DANCE',
             no: 'I JUST WANT THE ROOM TO STOP SPINNING',
-            extended: 'uh oh....',
+            extended: 'uh oh....the machine says "MISSILE LAUNCH SEQUENCE INITIATED", and u smell something burning?',
             fx: 'drunkescape'
         },
 

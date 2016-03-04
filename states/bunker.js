@@ -300,7 +300,7 @@ bunker.prototype = {
 
 
 
-    this.escapeTheBunker(true)
+
 
 
 // hrm, some little animation thing could be cool? would probs have to be in startDay tho?
@@ -309,7 +309,6 @@ bunker.prototype = {
 
     // this.bed.animations.play('close', true)
     // close.loop = false
-
 
 
 
@@ -475,10 +474,17 @@ bunker.prototype = {
         // this.game.musician.playFX('modem')
 
         this.game.musician.playFX('missilelaunch')
+        this.game.add.text(5, 850, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: '20px', fill: '#F00', wordWrap: true, wordWrapWidth: '400px'})
+        setInterval(function () {
+            this.game.add.text(Math.random() * 15, 825 + Math.random() * 100, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: ~~(Math.random() * 15) + 10 + 'px', fill: '#F' + ~~(Math.random() * 10) + ~~(Math.random() * 10) })
+        }, 1000)
+
         // play missile launch sound
         // play tense soundtrack
     } else {
         this.game.musician.playFX('windloop')
+        this.game.add.text(5, 850, 'Yr p sure that was a false alarm, but maybe u should climb to the surface just to double check?', { fontSize: '20px', fill: '#0F0'})
+
         // silence everthing
         // play nice ambient music
     }
@@ -747,11 +753,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         case 'faded':
             // stuff
             this.isFaded = true
-            this.computerStuff[1].oldyes =  this.computerStuff[1].yes
-            this.computerStuff[1].oldno =  this.computerStuff[1].no
-            this.computerStuff[1].yes =  this.computerStuff[1].ifFadedYes
-            this.computerStuff[1].no =  this.computerStuff[1].ifFadedNo
-            this.computerStuff[1].fx =  this.computerStuff[1].ifFadedFX
             break;
         case 'breadart':
             // stuff
@@ -831,6 +832,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'drunkescape':
             // continueMenu = false
+            this.setOffTheBoomBoom(true)
             this.escapeTheBunker(true)
             break;
     }
@@ -1090,12 +1092,21 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
        bloodsculpt.scale.setTo(0.5)
     }
     if (this.isFaded) {
-        this.computerStuff[1].yes =  this.computerStuff[1].oldyes
-        this.computerStuff[1].no =  this.computerStuff[1].oldno
-        this.computerStuff[1].fx = null
-
         this.isFaded = false
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
     if (this.game.treeCoords) {
         var tree = that.game.add.sprite(this.game.treeCoords[0], this.game.treeCoords[1], 'tree');
 
@@ -1311,7 +1322,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
 
 
-  setOffTheBoomBoom: function () {
+  setOffTheBoomBoom: function (noarrow) {
     this.game.musician.playFX('alclock')
     this.game.musician.playFX('WAHHHHH')
     this.game.musician.change('tense')
@@ -1321,16 +1332,17 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     var tween = this.game.add.tween(danagePixel).to({width: 2240, height:5000}, 250, "Linear", true, 0, 6, false)
     tween.onComplete.add(function () {
         danagePixel.destroy()
-
-        that.arrow = that.game.add.sprite(235, 250, 'arrow')
-        var tweenarrow = that.game.add.tween(that.arrow).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
-        // tween.onComplete.add(function () {
-        //     danagePixel.destroy()
-        // }, that)
-            tweenarrow.yoyo(true)
-        // arrow.scale.setTo(100)
-                // arrow.angle = 90
-        // ?
+        if (!noarrow){
+            that.arrow = that.game.add.sprite(235, 250, 'arrow')
+            var tweenarrow = that.game.add.tween(that.arrow).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
+            // tween.onComplete.add(function () {
+            //     danagePixel.destroy()
+            // }, that)
+                tweenarrow.yoyo(true)
+            // arrow.scale.setTo(100)
+                    // arrow.angle = 90
+            // ?
+        }
     }, this)
     tween.yoyo(true)
   },
@@ -1381,30 +1393,33 @@ if (!this.inDialog){
     }
 
 
+    var fadedMulti = 1
 
 
-
-    if (this.cursors.left.isDown) {
+    if (this.cursors.left.isDown || (this.isFaded && Math.random() < 0.05)) {
         //  Move to the left
-        xDir = -5
-        this.player.body.velocity.x = -150 * this.speediness;
+        if (this.isFaded && Math.random() < 0.1) fadedMulti = ~~(Math.random() * 2) - 1
+        xDir = -5  * fadedMulti
+        if (this.isFaded && Math.random() < 0.1) fadedMulti = (Math.random() * 2) - 1
+        this.player.body.velocity.x = -150 * this.speediness * fadedMulti;
         if (this.player.body.touching.down) {
           this.player.animations.play('left');
         } else {
           this.player.animations.stop()
           this.player.frame = [5, 7][~~(Math.random() * 2)]
         }
-    } else if (this.cursors.right.isDown) {
-        xDir = 5
-        //  Move to the right
-        this.player.body.velocity.x = 150 * this.speediness;
+    } else if (this.cursors.right.isDown || (this.isFaded && Math.random() < 0.05)) {
+        if (this.isFaded && Math.random() < 0.1) fadedMulti = ~~(Math.random() * 2) - 1
+        xDir = 5  * fadedMulti
+        if (this.isFaded && Math.random() < 0.1) fadedMulti = (Math.random() * 2) - 1
+        this.player.body.velocity.x = 150 * this.speediness * fadedMulti;
         if (this.player.body.touching.down) {
           this.player.animations.play('right');
         } else {
           this.player.animations.stop()
           this.player.frame = [11, 9][~~(Math.random() * 2)]
         }
-    } else if (this.cursors.down.isDown && this.player.body.touching.down) {
+    } else if (this.cursors.down.isDown) {
         //  PLAYER IS PRESSING DOWN, TRYING TO ACTIVATE SOMETHING?
         // figure out what thing they are touching/near? and then openDialog(thatThingYouDo)
         this.player.animations.stop();

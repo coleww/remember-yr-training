@@ -1,12 +1,14 @@
--------------PRIORITIES--------------------
-
-
----- THE ALARM! next level stuff here -------------------
-
-- program in the alarm/explosion sequence// OOO YEAH
 - program the drunk thing, let u flick the switch when yr drunk, navigate the end w/ f'd up controls (needs day 3 alarm first)
 
 - lose if they take too long on the alarm
+
+
+
+SILO:
+
+generate a bunch of rando objects? (GET THE SPRITES FROM SOMEWHERES EASY)
+OH! this will be good practice for randomly generating jumpable platforms?
+needs a jetpack thing/graphic...hrmm...just dust pooting out! oh yeah!
 
 
 
