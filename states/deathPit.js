@@ -18,7 +18,7 @@ DeathPit.prototype = {
 
 
 
-
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
 
     this.speediness = 0.25
@@ -27,7 +27,7 @@ DeathPit.prototype = {
 
 
     //  We're going to be using physics, so enable the Arcade Physics system
-    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+
     //  A simple background for our this.game
 
     var blank = this.game.add.sprite(0, this.game.world.height - 230, 'black');

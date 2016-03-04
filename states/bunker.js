@@ -18,6 +18,16 @@ var poetryGen = require('../poet')
 var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
+
+
+    //  We're going to be using physics, so enable the Arcade Physics system
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
+    //  A simple background for our this.game
+
+    if (get('isTrappedInTheDeathPitForever') ){
+        this.game.state.start("DeathPit")
+    }
+
     this.hasNotGoneOffYet = true
     var that = this
     this.game.musician.change('bunker')
@@ -37,11 +47,6 @@ bunker.prototype = {
     this.ladder.scale.setTo(0.15, 0.5)
 
 
-
-
-    //  We're going to be using physics, so enable the Arcade Physics system
-    this.game.physics.startSystem(Phaser.Physics.ARCADE);
-    //  A simple background for our this.game
 
 
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
@@ -319,7 +324,6 @@ bunker.prototype = {
 
 
 
-
     // //  The score
     this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -475,8 +479,17 @@ bunker.prototype = {
 
         this.game.musician.playFX('missilelaunch')
         this.game.add.text(5, 850, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: '20px', fill: '#F00', wordWrap: true, wordWrapWidth: '400px'})
+        var counter = 0
+
+
         setInterval(function () {
+            counter++
             this.game.add.text(Math.random() * 15, 825 + Math.random() * 100, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: ~~(Math.random() * 15) + 10 + 'px', fill: '#F' + ~~(Math.random() * 10) + ~~(Math.random() * 10) })
+
+            if (counter > 60) {
+                set('gameOver', 999)
+                explodinate('evil')
+            }
         }, 1000)
 
         // play missile launch sound
@@ -491,6 +504,12 @@ bunker.prototype = {
 
     set('launched', launced)
 
+    that.arrow = that.game.add.sprite(355, 450, 'arrow')
+            var tweenarrow = that.game.add.tween(that.arrow).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
+            // tween.onComplete.add(function () {
+            //     danagePixel.destroy()
+            // }, that)
+                tweenarrow.yoyo(true)
 
 
 
@@ -801,7 +820,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'darkslash':
             // stuff
-            this.set('gameOver', 666)
+            set('isTrappedInTheDeathPitForever', true)
             this.openPortalToTheDeathPit()
             // draw that portal sprite over you?
             // tween it to cover the whole screen?
@@ -1464,3 +1483,4 @@ if (!this.inDialog){
 module.exports = bunker
 
 
+console.log(bunker.prototype)

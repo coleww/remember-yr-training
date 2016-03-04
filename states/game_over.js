@@ -29,11 +29,19 @@ var endings = {
     name: 'X_X WHOA, JUST LIKE, WHOA X_X',
     song: 'dead'
     },
-  gameOver666: {
-    sprite: 'portal',
+    // not actual a game over screen, u just get stuck in the death pit
+  // gameOver666: {
+  //   sprite: 'portal',
+  //   scale: [5, 7],
+  //   description: 'you unleash a portal to the shadow world and are consumed by the darkness. way to go.',
+  //   name: '☠ X_X ☠',
+  //   song: 'dead'
+  //   },
+  gameOver999: {
+    sprite: 'clock',
     scale: [5, 7],
-    description: 'you unleash a portal to the shadow world and are consumed by the darkness. way to go.',
-    name: '☠ X_X ☠',
+    description: 'you took too long to exit the bunker and it exploded with you in it. also by pressing the button u started a nuclear war that destroys the earth. good job destroying all the humans, comrade!',
+    name: 'FOR GREAT ROBOT JUSTICE!',
     song: 'dead'
     }
 }
