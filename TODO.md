@@ -12,11 +12,8 @@ needs a jetpack thing/graphic...hrmm...just dust pooting out! oh yeah!
 
 ------CUTE--_DETAILS------------------
 - wake up/sleep animation sequence
-- when bunker starts breaking down, make the screen shake/flash red? (probably change a global translate/rotate a bunch)
 - WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
 - for battery unplug ending, making the world go all "turn off a televison set"-like?
-- robot web audio voice thing? mebbe for reciting yr poems?
-- MAKE music demo randomize key/scale/bpm.// eh maybe later
 
 ----------MOBILE?---------DISTRO?
 - DISALLOW MOBILE. NO WAY YO. SRRY.

@@ -303,8 +303,6 @@ bunker.prototype = {
 
 
 
-this.explodinate('evil')
-
 
 
 
@@ -314,7 +312,6 @@ this.explodinate('evil')
 
     // this.bed.animations.play('close', true)
     // close.loop = false
-
 
 
 
@@ -718,12 +715,41 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             that.game.state.start("DeathPit")
         }, this)
   },
+  turnOffTV: function () {
+    console.log('aspire to figure out how to do this')
+    // var cnv = this.game.canvas
+    // var ctx = this.game.context()
+
+    // // 640 X 960
+    // var y = 0
+    // var h = 960
+    // for (var i = 0; i < 240; i++){
+    //     ctx.drawImage(cnv, 0, y + i, 640, h - i * 2)
+    // }
+    // for (var i = 0; i < 320; i++){
+    //     ctx.drawImage(cnv, 0 + i, 479, 640 - i * 2, 482)
+    // }
+
+            this.game.state.start("GameOverScreen")
+  },
   useThing: function (thing, menmen) {
     var continueMenu = true
     switch(thing.fx) {
         case 'gameOver1':
             set('gameOver', 1)
-            this.game.state.start("GameOverScreen")
+            this.turnOffTV()
+
+
+
+
+
+
+
+
+
+
+
+
             break;
         case 'destroyWallArt1':
             // stuff
