@@ -21,6 +21,7 @@ if (md.mobile()) {
 
     window.onload = function() {
       // console.log(Phaser.Plugin.ScreenShake)
+
       var width = 640
       var height = 960
       var windowRatio = window.innerWidth / window.innerHeight
@@ -30,7 +31,7 @@ if (md.mobile()) {
       Phaser.Time.desiredFps = 30
       var game = new Phaser.Game(width, height, Phaser.AUTO, "")
       game.musician = require('./music')()
-
+      console.log(game.plugins)
         game.musician.start()
 
       // game.add.plugin(Phaser.Plugin.Debug);

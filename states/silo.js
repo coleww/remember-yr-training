@@ -16,6 +16,7 @@ Silo.prototype = {
   create: function(){
     alert('NEW LEVEL! YAY!')
     var launchedTheMissiles = get('launched')
+    var isFaded = get('escapingDrunkenly')
 
     if (launchedTheMissiles) {
       // there will be enemies and fast tense music and explosions and u will have to move fast

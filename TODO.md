@@ -1,6 +1,3 @@
-- program the drunk thing, let u flick the switch when yr drunk, navigate the end w/ f'd up controls (needs day 3 alarm first)
-
-- lose if they take too long on the alarm
 
 
 

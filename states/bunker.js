@@ -18,7 +18,7 @@ var poetryGen = require('../poet')
 var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
-
+     this.game.plugins.screenShake = this.game.plugins.add(Phaser.Plugin.ScreenShake);
 
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -303,7 +303,7 @@ bunker.prototype = {
 
 
 
-
+this.explodinate('evil')
 
 
 
@@ -666,6 +666,13 @@ bunker.prototype = {
     var sprites = explodinations[type]
     var count = 0
     var that = this
+    if (type == 'trippy'){
+        this.game.plugins.screenShake.setup({ //if need to replace default plugin settings
+        shakeX: true,
+        shakeY: false
+        });
+        this.game.plugins.screenShake.shake(1000)
+    }
     var interv = setInterval(function () {
         count++
         var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
@@ -851,6 +858,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'drunkescape':
             // continueMenu = false
+            set('escapingDrunkenly', true)
             this.setOffTheBoomBoom(true)
             this.escapeTheBunker(true)
             break;
