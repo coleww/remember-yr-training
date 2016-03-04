@@ -13,7 +13,6 @@ needs a jetpack thing/graphic...hrmm...just dust pooting out! oh yeah!
 ------CUTE--_DETAILS------------------
 - wake up/sleep animation sequence
 - WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
-- for battery unplug ending, making the world go all "turn off a televison set"-like?
 
 ----------MOBILE?---------DISTRO?
 - DISALLOW MOBILE. NO WAY YO. SRRY.

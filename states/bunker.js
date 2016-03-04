@@ -37,8 +37,39 @@ bunker.prototype = {
     console.log("WE IN THE BUNKER")
     this.speediness = 1
 
-    this.game.add.tileSprite(0, 720, 640, 960, 'walll');
+
+
+
+
+
+
+
+
+
+
+
+
     this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
+
+
+
+
+
+    // The this.player and its settings
+    this.player = this.game.add.sprite(550, 900, 'dude');
+    this.player.scale.setTo(1.5,1)
+    //  We need to enable physics on the this.player
+
+
+    //  Our two animations, walking left and right.
+    this.player.animations.add('left', [4, 5, 6, 7], 10, true);
+    this.player.animations.add('right', [8, 9, 10, 11], 10, true);
+    this.player.animations.add('up', [12, 13, 14, 15], 10, true);
+    this.player.animations.add('down', [0, 1, 2, 3], 10, true);
+
+
+
+    this.game.add.tileSprite(0, 720, 640, 960, 'walll');
     var top = this.game.add.tileSprite(0, 0, 640, 150, 'walllll');
 
 
@@ -271,32 +302,10 @@ bunker.prototype = {
     vend.body.immovable = true
     vend.body.setSize(75, 75, 0, 27)
 
-    // The this.player and its settings
-    this.player = this.game.add.sprite(550, 666, 'dude');
-    this.player.scale.setTo(1.5,1)
-    //  We need to enable physics on the this.player
-    this.game.physics.arcade.enable(this.player);
-        //  This adjusts the collision body size to be a 100x50 box.
-    //  50, 25 is the X and Y offset of the newly sized box.
-
-    this.player.body.setSize(10, 43, 20, 0);
-
-    //  this.Player physics properties. Give the little guy a slight bounce.
-    this.player.body.bounce.y = 0.2;
-    this.player.body.gravity.y = 300;
-    this.player.body.collideWorldBounds = true;
-
-    //  Our two animations, walking left and right.
-    this.player.animations.add('left', [4, 5, 6, 7], 10, true);
-    this.player.animations.add('right', [8, 9, 10, 11], 10, true);
-    this.player.animations.add('up', [12, 13, 14, 15], 10, true);
-    this.player.animations.add('down', [0, 1, 2, 3], 10, true);
 
 
-
-
-    this.bed = this.game.add.sprite(this.game.world.width - 100, this.game.world.height - 305, 'cryobed');
-    this.bed.frame = 1
+    this.bed = this.game.add.sprite(this.game.world.width - 100, this.game.world.height - 303, 'cryobed');
+    this.bed.frame = 0
 //
 
 
@@ -308,16 +317,18 @@ bunker.prototype = {
 
 // hrm, some little animation thing could be cool? would probs have to be in startDay tho?
 
-    // var close = this.bed.animations.add('close', [0, 1, 2], 5500, true);
+    var close = this.bed.animations.add('close', [1, 0], 0.5, false);
 
-    // this.bed.animations.play('close', true)
+    var open = this.bed.animations.add('open', [0, 1], 0.5, false);
+
+
     // close.loop = false
 
 
 
 
 
-
+    this.inDialog = true
 
 
 
@@ -655,6 +666,7 @@ bunker.prototype = {
     }
   },
   explodinate: function (type) {
+    this.bed.frame = 2
     var explodinations = {
         evil: ['fireball', 'fireblast', 'flame'],
         trippy: ['rainbow1', 'rainbow2', 'unicorn']
@@ -1175,9 +1187,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
 
 
-    this.game.world.bringToTop(this.player)
-
-
 
 
 
@@ -1191,11 +1200,10 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
       if (day == 2) {
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
       book1.scale.setTo(0.5)
-      var mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 315, 'mug');
-      mug.scale.setTo(0.75)
+      this.mug = this.game.add.sprite(this.game.world.width / 2, this.game.world.height - 315, 'mug');
+      this.mug.scale.setTo(0.75)
       var paper = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'linedpaper');
-          this.game.world.bringToTop(this.player)
-      this.game.world.bringToTop(mug)
+
 
       // this.game.world.bringToTop(book1)
 
@@ -1210,13 +1218,12 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         yes: 'kiss the book gently',
         no: 'gnaw on the leather cover for the protein'}
 
-      var jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 315, 'jug');
-      jug.scale.setTo(0.5)
+      this.jug = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 315, 'jug');
+      this.jug.scale.setTo(0.5)
       var book2 = this.game.add.sprite(this.game.world.width / 2 , this.game.world.height - 310, 'book2');
       book2.scale.setTo(0.5)
       var paper2 = this.game.add.sprite(this.game.world.width / 2 - 50, this.game.world.height - 285, 'blankpaper');
-    this.game.world.bringToTop(this.player)
-      this.game.world.bringToTop(jug)
+
       // this.game.world.bringToTop(book2)
 
     } else {
@@ -1230,15 +1237,12 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         description: 'you miss the pizza dearly :~~~~(',
         yes: 'accept the absence and move on',
         no: 'continue to mourn the loss'}
-      var papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 315, 'papert');
-      var pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
-      pizza.scale.setTo(0.75)
+      this.papert = this.game.add.sprite(this.game.world.width / 2 - 90, this.game.world.height - 315, 'papert');
+      this.pizza = this.game.add.sprite(this.game.world.width / 2 - 20, this.game.world.height - 315, 'pizza');
+      this.pizza.scale.setTo(0.75)
       var paper3 = this.game.add.sprite(this.game.world.width / 2 - 60, this.game.world.height - 300, 'paper3');
 
-      this.game.world.bringToTop(this.player)
-      this.game.world.bringToTop(pizza)
 
-      this.game.world.bringToTop(papert)
     }
     // this.game.world.bringToTop(this.platforms)
 
@@ -1252,6 +1256,67 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         console.log('looped!')
         // t.onLoopCallback(function(){console.log('Y?')})
         that.game.tweens.remove(t)
+        that.bed.animations.play('open', true)
+
+
+        var inty = setInterval (function () {
+            that.player.y -= 10
+            if (that.player.y < 666) {
+                clearInterval(inty)
+                           that.inDialog = false
+            that.game.physics.arcade.enable(that.player);
+                //  that adjusts the collision body size to be a 100x50 box.
+            //  50, 25 is the X and Y offset of the newly sized box.
+
+            that.player.body.setSize(10, 43, 20, 0);
+
+            //  that.Player physics properties. Give the little guy a slight bounce.
+            that.player.body.bounce.y = 0.2;
+            that.player.body.gravity.y = 300;
+            that.player.body.collideWorldBounds = true;
+
+            that.game.world.bringToTop(that.player)
+              if (day == 2) {
+              that.game.world.bringToTop(that.mug)
+
+              // this.game.world.bringToTop(book1)
+
+            } else if (day == 3) {
+
+
+              that.game.world.bringToTop(that.jug)
+              // this.game.world.bringToTop(book2)
+
+            } else {
+
+              that.game.world.bringToTop(that.pizza)
+
+              that.game.world.bringToTop(that.papert)
+            }
+
+            }
+        }, 100)
+
+
+
+
+
+
+
+        // that.game.physics.arcade.moveToXY(
+        //     that.player,
+        //     that.player.x,
+        //     670,
+        //     10, // speed,
+        //     2500 // maxTimeToFinish(ms)
+        // );
+        // setTimeout(function () {
+
+        // }, 2650)
+
+
+
+        // TODO ANIMATE THE PALYER EMERGING
       bg.destroy()
 
 
