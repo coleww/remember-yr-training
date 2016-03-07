@@ -2,9 +2,17 @@
 
 
 SILO:
-- jet pack jumpy? nah just blast on up constantly?
+- format new corpuses and edit them and stuff i guess
+- MAKE BARRIERS HAVE WORDS?
+- better barrier sprites
+- draw other stuff randomly
+- more tube/silo-esque BG
+- OR PUT WORDS ON BACKGROund
+- "as u ascend the silo, reflect on yr life..."
 - platforms = barriers? just kinda swerve?
-- # of platforms dep on yr alignment?
+- #/size of platforms dep on yr alignment?
+- gameOverScreen is a quick restart.
+- keep track of how many times they try
 
 
 

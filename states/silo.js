@@ -1,22 +1,52 @@
 var db = require('../db')
 var get = db.get
 var set = db.set
-var MIN_WIDTH = 0.25
-var MAX_WIDTH = 0.666
-var NUM_PLATS = 12
 var Silo = function(game){
   this.game = game
 }
 
+var features = require('../features')
+var poe = require('../poetic_muser')
+var al = features.alignment || get('alignment')
+var THE_POET = poe(al)
+var gimmeSomeTextNowPlz = function () {
+  return THE_POET()
+}
+
+// {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0
+function getAlignment (al) {
+  var arr = [al.greed, al.fight, al.nature]
+  var i = arr.indexOf(Math.max.apply(Math, arr));
+  return ['greed', 'fight', 'nature'][i]
+}
+
+function getDir (al) {
+  return al.pos == al.neg ? 0 : (al.pos > al.neg ? 1 : -1)
+}
+var align = getAlignment(al)
+var dir = getDir(al)
+
+var stuffs = {
+  greed: [0.5, 1.5, 8, 8],
+  fight: [0.2, 0.6, 4, 4],
+  nature: [0.05, 0.4, 2, 2],
+}
+var stuff = stuffs[align]
+var MIN_WIDTH = stuff[0]
+var MAX_WIDTH = stuff[1]
+var NUM_PLATS = 8 + (~~Math.random() * stuff[2]) * dir + stuff[3]
+
+
+
+
+
+
+
 Silo.prototype = {
   create: function() {
-    var launchedTheMissiles = get('launched')
-    var isFaded = get('escapingDrunkenly')
-    if (launchedTheMissiles) {
-      // there will be enemies and fast tense music and explosions and u will have to move fast
-    } else {
-      // there will be no enemies and u can take as long as u want and inspect hte random objects on the platforms
-    }
+    this.launchedTheMissiles = get('launched')
+    this.isFaded = get('escapingDrunkenly')
+
 
     // background color
     this.stage.backgroundColor = '#6bf';
@@ -58,6 +88,7 @@ Silo.prototype = {
     this.platforms.forEachAlive( function( elem ) {
       this.platformYMin = Math.min( this.platformYMin, elem.y );
       if( elem.y > this.camera.y + this.game.height ) {
+        elem.text.destroy()
         elem.kill();
         this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.hero.y - 1000, this.rnd.integerInRange(MIN_WIDTH, MAX_WIDTH));
       }
@@ -114,7 +145,7 @@ Silo.prototype = {
     for( var i = 0; i < NUM_PLATS - 1; i++ ) {
 
       var p = this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.world.height - 500 - 100 * i, this.rnd.integerInRange(MIN_WIDTH, MAX_WIDTH) );
-      p.friendly = false
+      // p.friendly = false
     }
   },
 
@@ -125,6 +156,10 @@ Silo.prototype = {
     platform.scale.x = width;
     platform.scale.y = 0.25;
     platform.body.immovable = true;
+    var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: platform.width * 2, align: "center"};
+
+    platform.text = this.game.add.text(x, y, gimmeSomeTextNowPlz(), style);
+    // platform.text.anchor.set(0.5);
     return platform;
   },
 
@@ -154,9 +189,9 @@ Silo.prototype = {
 
   heroMove: function() {
     // handle the left and right movement of the hero
-    if( this.cursor.left.isDown ) {
+    if( this.cursor.left.isDown  || (this.isFaded && Math.random() < 0.05)) {
       this.hero.body.velocity.x = -300;
-    } else if( this.cursor.right.isDown ) {
+    } else if( this.cursor.right.isDown  || (this.isFaded && Math.random() < 0.05)) {
       this.hero.body.velocity.x = 300;
     } else {
       this.hero.body.velocity.x = 0;
@@ -164,6 +199,7 @@ Silo.prototype = {
 
     // handle hero jumping
     // HERO IS CONSTANTLY JUMPING
+    // IT IS ALL GOD
     // if( this.cursor.up.isDown && this.hero.body.touching.down ) {
       this.hero.body.velocity.y = -350;
     // }
