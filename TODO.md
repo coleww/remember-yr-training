@@ -2,11 +2,9 @@
 
 
 SILO:
-
-generate a bunch of rando objects? (GET THE SPRITES FROM SOMEWHERES EASY)
-OH! this will be good practice for randomly generating jumpable platforms?
-needs a jetpack thing/graphic...hrmm...just dust pooting out! oh yeah!
-
+- jet pack jumpy? nah just blast on up constantly?
+- platforms = barriers? just kinda swerve?
+- # of platforms dep on yr alignment?
 
 
 
