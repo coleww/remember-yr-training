@@ -19,6 +19,7 @@ preload.prototype = {
 
     game.load.image("body1", "assets/sprites/deathpit/body1.png")
 
+    game.load.image("jetpack", "assets/sprites/jetpack.png")
     game.load.image("body2", "assets/sprites/deathpit/body2.png")
 
     game.load.image("web", "assets/sprites/deathpit/web.png")

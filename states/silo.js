@@ -28,14 +28,15 @@ var align = getAlignment(al)
 var dir = getDir(al)
 
 var stuffs = {
-  greed: [0.5, 1.5, 8, 8],
-  fight: [0.2, 0.6, 4, 4],
-  nature: [0.05, 0.4, 2, 2],
+  greed: [0.5, 1.5, 12],
+  fight: [0.75, 1.25,7],
+  nature: [0.5, 1, 4],
 }
 var stuff = stuffs[align]
+console.log(stuff)
 var MIN_WIDTH = stuff[0]
 var MAX_WIDTH = stuff[1]
-var NUM_PLATS = 8 + (~~Math.random() * stuff[2]) * dir + stuff[3]
+var NUM_PLATS = stuff[2]
 
 
 
@@ -61,6 +62,8 @@ Silo.prototype = {
     // create platforms
     this.platformsCreate();
 
+    this.jetpack = this.game.add.sprite(this.world.centerX + 250, this.world.height - 86, 'jetpack');
+    this.jetpack.scale.setTo(1.5)
     // create hero
     this.heroCreate();
 
@@ -69,6 +72,28 @@ Silo.prototype = {
   },
 
   update: function() {
+
+
+
+
+
+    if (this.hero.yChange > 10000 && !this.atTheTop) {
+      this.atTheTop = true
+      // draw some sort of massive tub like entrance (upside down green pipe?)
+      // player flies in
+      // screen fades black
+      // goes to yr ending of choice
+    }
+
+
+
+
+
+
+
+
+
+    console.log(this.hero.x)
     if (this.hero.destroyed) return 'poop'
     var game = this.game
     this.platforms.forEachAlive( function( elem ) {
@@ -76,7 +101,7 @@ Silo.prototype = {
       if( elem.y > this.camera.y + this.game.height ) {
         elem.text.destroy()
         elem.kill();
-        this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.hero.y - 1000, this.rnd.integerInRange(MIN_WIDTH, MAX_WIDTH));
+        this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.hero.y - 1000, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH));
       }
     }, this );
 
@@ -150,7 +175,7 @@ Silo.prototype = {
     // create a batch of platforms that start to move up the level
     for( var i = 0; i < NUM_PLATS - 2; i++ ) {
 
-      var p = this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.world.height - 500 - 100 * i, this.rnd.integerInRange(MIN_WIDTH, MAX_WIDTH) );
+      var p = this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.world.height - 500 - 100 * i, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH) );
       // p.friendly = false
     }
 
@@ -164,17 +189,10 @@ Silo.prototype = {
 
     theGround.text = this.game.add.text(0, this.world.height - 50, "EQUIP THE JETPACK TO ESCAPE!!!", style);
     // theGround.text.anchor.set(0.5);
-    return theGround;
-  },
-
-  equipJetpack: function () {
-
-    this.hero.body.setSize(1,1,0, 0)
-    this.jetPacked = true
-    this.smokeEmitter.start(false, 1000, 40)
   },
 
   platformsCreateOne: function( x, y, width ) {
+    console.log(x, y, width)
     // this is a helper function since writing all of this out can get verbose elsewhere
     var platform = this.platforms.getFirstDead();
     platform.reset( x, y );
@@ -183,8 +201,8 @@ Silo.prototype = {
     platform.body.immovable = true;
     var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: platform.width * 2, align: "center"};
 
-    platform.text = this.game.add.text(x, y, gimmeSomeTextNowPlz(), style);
-    // platform.text.anchor.set(0.5);
+    platform.text = this.game.add.text(x + 50, y + 20, gimmeSomeTextNowPlz(), style);
+    platform.text.anchor.set(0.5);
     return platform;
   },
 
@@ -221,7 +239,8 @@ Silo.prototype = {
   heroMove: function() {
     // handle the left and right movement of the hero
       if( this.cursor.left.isDown  || (this.isFaded && Math.random() < 0.05)) {
-        this.hero.body.velocity.x = -300;
+        this.hero.body.velocity.x = -225;
+        if (this.jetPacked) this.hero.body.velocity.x = -420
         if (this.hero.body.touching.down) {
           this.hero.animations.play('left');
         } else {
@@ -229,7 +248,8 @@ Silo.prototype = {
           this.hero.frame = [5, 7][~~(Math.random() * 2)]
         }
       } else if( this.cursor.right.isDown  || (this.isFaded && Math.random() < 0.05)) {
-        this.hero.body.velocity.x = 300;
+        this.hero.body.velocity.x = 225;
+        if (this.jetpacked) this.hero.body.velocity.x = 420
         if (this.hero.body.touching.down) {
           this.hero.animations.play('right');
         } else {
@@ -238,7 +258,13 @@ Silo.prototype = {
         }
       } else if (this.cursor.down.isDown) {
         // if player is at the jetpack, do it!
-        this.jetPacked = true
+        if (!this.jetPacked && this.hero.x > 560 && this.hero.x < 620) {
+          this.jetPacked = true
+          this.jetpack.destroy()
+          this.hero.anchor.set(0.5);
+          this.hero.body.setSize(1,1,0,0)
+          this.smokeEmitter.start(false, 1000, 40)
+        }
       } else {
         var goingUp = !this.hero.body.velocity.x
         var goingRight = this.hero.body.velocity.x > 0
@@ -270,13 +296,13 @@ Silo.prototype = {
       this.hero.yChange = Math.max( this.hero.yChange, Math.abs( this.hero.y - this.hero.yOrig ) );
     }
 
-    console.log(this.hero.yChange)
+    // console.log(this.hero.yChange)
     // handle hero jumping
     // HERO IS CONSTANTLY JUMPING
     // IT IS ALL GOD
     // if( this.cursor.up.isDown && this.hero.body.touching.down ) {
-
-
+      console.log("VEL", this.hero.body.velocity.x)
+      console.log('height', this.hero.yChange)
   }
 }
 
