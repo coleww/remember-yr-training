@@ -38,6 +38,8 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
 
 
+    game.load.image("card", "assets/sprites/Cardboard.png")
+
 
 
 
