@@ -45,13 +45,23 @@ var NUM_PLATS = stuff[2]
 
 
 Silo.prototype = {
+//   modColor: function  () {
+//   console.log('um', this.theColor)
+//   this.theColor += (~~(Math.random() * 2.5) - 1)
+//   if (this.theColor < 0) this.theColor = 0
+//   if (this.theColor > 9) this.theColor = 9
+//   console.log("WTF", '#53' + this.theColor)
+//   return '#63' + this.theColor
+// },
   create: function() {
     this.launchedTheMissiles = get('launched')
     this.isFaded = get('escapingDrunkenly')
-
-
+    this.theColor = 5
+    // this.bg = this.game.add.tileSprite(0, 0, 640, 960, 'card');
+    // throw('shit')
     // background color
-    this.stage.backgroundColor = '#6bf';
+    this.stage.backgroundColor = '#C0C0C0';
+    // this.stage.alpha = 0.3
 
     this.physics.startSystem( Phaser.Physics.ARCADE );
 
@@ -74,9 +84,7 @@ Silo.prototype = {
   update: function() {
 
 
-
-
-
+    // throw('fuck')
     if (this.hero.yChange > 10000 && !this.atTheTop) {
       this.atTheTop = true
       // draw some sort of massive tub like entrance (upside down green pipe?)
@@ -93,7 +101,7 @@ Silo.prototype = {
 
 
 
-    console.log(this.hero.x)
+    // console.log(this.hero.x)
     if (this.hero.destroyed) return 'poop'
     var game = this.game
     this.platforms.forEachAlive( function( elem ) {
@@ -124,6 +132,8 @@ Silo.prototype = {
 
 
 
+
+    // this.bg.reset(0,0)
 
     var that = this
     game.physics.arcade.collide(this.hero, this.platforms, null, function(s, b){
@@ -170,7 +180,7 @@ Silo.prototype = {
     // platform basic setup
     this.platforms = this.add.group();
     this.platforms.enableBody = true;
-    this.platforms.createMultiple( NUM_PLATS, 'black' );
+    this.platforms.createMultiple( NUM_PLATS, 'xblock' );
 
     // create a batch of platforms that start to move up the level
     for( var i = 0; i < NUM_PLATS - 2; i++ ) {
@@ -179,10 +189,9 @@ Silo.prototype = {
       // p.friendly = false
     }
 
-    var theGround = this.platforms.getFirstDead();
-    theGround.reset( 0, this.world.height - 50);
-    theGround.scale.x = 20;
-    theGround.scale.y = 0.25;
+    var theGround = this.platforms.create(0, this.world.height - 50, 'bricky')
+    theGround.scale.x = 12;
+    theGround.scale.y = 1;
     theGround.friendly = true
     theGround.body.immovable = true;
     var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: theGround.width * 2, align: "center"};
@@ -196,8 +205,8 @@ Silo.prototype = {
     // this is a helper function since writing all of this out can get verbose elsewhere
     var platform = this.platforms.getFirstDead();
     platform.reset( x, y );
-    platform.scale.x = width;
-    platform.scale.y = 0.25;
+    platform.scale.x = width * 10;
+    platform.scale.y = 4;
     platform.body.immovable = true;
     var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: platform.width * 2, align: "center"};
 
@@ -288,8 +297,10 @@ Silo.prototype = {
       }
     if (this.jetPacked) {
 
-
+        if (Math.random() < 0.3) this.stage.backgroundColor += 1
+        if (this.stage.backgroundColor > 12632300) this.stage.backgroundColor -= 10
         this.hero.body.velocity.y = -350;
+      // console.log("THE BG", this.stage.backgroundColor)
       // }
 
       // track the maximum amount that the hero has travelled
@@ -301,8 +312,11 @@ Silo.prototype = {
     // HERO IS CONSTANTLY JUMPING
     // IT IS ALL GOD
     // if( this.cursor.up.isDown && this.hero.body.touching.down ) {
-      console.log("VEL", this.hero.body.velocity.x)
-      console.log('height', this.hero.yChange)
+      // console.log("VEL", this.hero.body.velocity.x)
+      // console.log('height', this.hero.yChange)
+      // console.log(modColor(this.stage.backgroundColor))
+
+
   }
 }
 
