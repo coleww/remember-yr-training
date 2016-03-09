@@ -1,11 +1,11 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
 
-a game about poems and jetpacks
+a game about poetry and jetpacks
 
-September 26, 1983
 
-P.E.T. POETRY ENGINEERING TECNICHIAN
+### THIS CODE IS A HOT MESS AND SO AM I
+
 
 
 http://opengameart.org/content/my-first-tileset-rocks

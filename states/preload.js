@@ -235,7 +235,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     }
 
     if (itIsANewGame) {
-
+        set('siloDeaths', 0)
         set('fanStillBroken', features.fanOff)
         set('wall1', true)
         set('wall2', true)

@@ -14,7 +14,10 @@ SILO:
 - gameOverScreen is a quick restart.
 - keep track of how many times they try
 
-
+ENDINGS:
+greed: you collect coins. when u get them all its like ENJOY YR RICHES, THEY ARE WORTHLESS
+fight: there are lots of enemies, u have no weapons and must avoid them. no way to advance. another end screen?
+nature: you are in a beautiful forest filled with cat sprites that talk to you
 
 
 - WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
