@@ -30,9 +30,9 @@ var align = getAlignment(al)
 var dir = getDir(al)
 
 var stuffs = {
-  greed: [0.5, 1.5, 12],
-  fight: [0.75, 1.25,7],
-  nature: [0.5, 1, 4],
+  greed: [0.5, 1.5, 8, 9000],
+  fight: [0.75, 1.25,6, 7500],
+  nature: [0.5, 1, 4, 500],
 }
 var stuff = stuffs[align]
 console.log(stuff)
@@ -40,7 +40,7 @@ var MIN_WIDTH = stuff[0]
 var MAX_WIDTH = stuff[1]
 var NUM_PLATS = stuff[2]
 
-
+var HEIGHT = stuff[3]
 
 
 
@@ -78,20 +78,45 @@ Silo.prototype = {
 
     // cursor controls
     this.cursor = this.input.keyboard.createCursorKeys();
+
   },
 
   update: function() {
 
-
     // throw('fuck')
-    if (this.hero.yChange > 5000 && !this.atTheTop) {
+    if (this.hero.yChange > HEIGHT && !this.atTheTop) {
       this.atTheTop = true
+      var bar = this.game.add.sprite(-60,-1600, 'barrel');
+      bar.scale.setTo(1.25,3.75)
+      this.world.bringToTop(bar)
+
       // draw some sort of massive tub like entrance (upside down green pipe?)
       // player flies in
       // screen fades black
       // goes to yr ending of choice
     }
+    if (this.atTheTop && this.hero.yChange > HEIGHT + 450 && !this.fadingOut) {
+      console.log("FADED")
+      this.fadingOut = true
+      this.fadeOutbg = this.game.add.sprite(0, -this.hero.yChange - 350, 'black');
+      this.fadeOutbg.scale.setTo(5, 12)
+      // this.fadeOutbg.anchor.setTo(0.5, 0.5);
+      this.fadeOutbg.alpha = 0;
+      var that = this
+      var t = this.game.add.tween(this.fadeOutbg).to( { alpha: 1 }, 3500, Phaser.Easing.Linear.None, false, 0, 1000, 1)
 
+      t.onLoop.add(function () {
+          console.log('fadelooped!')
+          // t.onLoopCallback(function(){console.log('Y?')})
+        that.game.state.start('Outside')
+      }, this)
+      t.start();
+    }
+    if (this.fadeOutbg) {
+
+      this.world.bringToTop(this.fadeOutbg)
+      this.fadeOutbg.reset(0,-this.hero.yChange - 350)
+    }
 
 
     // console.log(this.hero.x)
@@ -99,7 +124,7 @@ Silo.prototype = {
     var game = this.game
     this.platforms.forEachAlive( function( elem ) {
       this.platformYMin = Math.min( this.platformYMin, elem.y );
-      if( elem.y > this.camera.y + this.game.height ) {
+      if( elem.y > this.camera.y + this.game.height && !this.atTheTop) {
         elem.text.destroy()
         elem.kill();
         this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.hero.y - 1000, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH));
@@ -129,6 +154,7 @@ Silo.prototype = {
     // this.bg.reset(0,0)
 
     var that = this
+    if (this.hero.yChange < HEIGHT + 450) {
     game.physics.arcade.collide(this.hero, this.platforms, null, function(s, b){
       if (b.alpha == 1 && !b.friendly) {
         // var barrierTween = game.add.tween(b).to({alpha:0}, 200, Phaser.Easing.Bounce.Out, true)
@@ -159,7 +185,7 @@ Silo.prototype = {
       }
     }, this)
 
-
+    }
 
     this.heroMove();
 

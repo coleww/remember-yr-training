@@ -23,11 +23,11 @@ module.exports = function (alignment) {
 
   var m = markov(newbies.concat(longies).map(function (line) {
     return line.replace(/[^0-9A-Za-z ]/g, '').toLowerCase()
-  }).filter(function (l) {return tipots(l)}), 2)
+  }).filter(function (l) {return tipots(l)}), 1)
 
 
   return function () {
-    return m.fill(m.pick(), 5)
+    return m.fill(m.pick(), 3)
   }
 
 
