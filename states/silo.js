@@ -178,7 +178,9 @@ Silo.prototype = {
     // platform basic setup
     this.platforms = this.add.group();
     this.platforms.enableBody = true;
-    this.platforms.createMultiple( NUM_PLATS, 'xblock' );
+    var perPlats = ~~(NUM_PLATS / 2)
+    this.platforms.createMultiple( perPlats, 'xblock' );
+    this.platforms.createMultiple( perPlats, 'blocky' );
 
     // create a batch of platforms that start to move up the level
     for( var i = 0; i < NUM_PLATS - 2; i++ ) {
@@ -202,14 +204,16 @@ Silo.prototype = {
     console.log(x, y, width)
     // this is a helper function since writing all of this out can get verbose elsewhere
     var platform = this.platforms.getFirstDead();
-    platform.reset( x, y );
-    platform.scale.x = width * 10;
-    platform.scale.y = 4;
-    platform.body.immovable = true;
-    var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: platform.width * 2, align: "center"};
+    if (platform) {
+      platform.reset( x, y );
+      platform.scale.x = width * 10;
+      platform.scale.y = 4;
+      platform.body.immovable = true;
+      var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: platform.width * 2, align: "center"};
 
-    platform.text = this.game.add.text(x + 50, y + 20, gimmeSomeTextNowPlz(), style);
-    platform.text.anchor.set(0.5);
+      platform.text = this.game.add.text(x + 50, y + 20, gimmeSomeTextNowPlz(), style);
+      platform.text.anchor.set(0.5);
+    }
     return platform;
   },
 
