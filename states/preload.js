@@ -205,6 +205,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("jug", "assets/sprites/jug.png")
     game.load.image("paw", "assets/sprites/paw.png")
     game.load.image("bricky", "assets/sprites/birck.png")
+    game.load.image("silowall", "assets/sprites/blocks1.jpg")
     game.load.image("pizza", "assets/sprites/pizza.png")
     game.load.image("papert", "assets/sprites/papertowlrolll.png")
 

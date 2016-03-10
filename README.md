@@ -15,7 +15,7 @@ http://opengameart.org/content/filthy-ectoplasm
 
 http://opengameart.org/content/battery-power-icon
 http://opengameart.org/content/burger
-
+http://opengameart.org/content/wall-of-large-bricks
 
 http://opengameart.org/content/rainbow-ball
 http://opengameart.org/content/spaceship-1

@@ -57,11 +57,8 @@ Silo.prototype = {
     this.launchedTheMissiles = get('launched')
     this.isFaded = get('escapingDrunkenly')
     this.theColor = 5
-    // this.bg = this.game.add.tileSprite(0, 0, 640, 960, 'card');
-    // throw('shit')
-    // background color
-    this.stage.backgroundColor = '#C0C0C0';
-    // this.stage.alpha = 0.3
+    this.bg = this.game.add.tileSprite(0, 0, 640, 1550, 'silowall');
+
 
     this.physics.startSystem( Phaser.Physics.ARCADE );
 
@@ -138,7 +135,7 @@ Silo.prototype = {
     var that = this
     game.physics.arcade.collide(this.hero, this.platforms, null, function(s, b){
       if (b.alpha == 1 && !b.friendly) {
-        var barrierTween = game.add.tween(b).to({alpha:0}, 200, Phaser.Easing.Bounce.Out, true)
+        // var barrierTween = game.add.tween(b).to({alpha:0}, 200, Phaser.Easing.Bounce.Out, true)
         // // destroyed ship thing!
         if (!b.friendly) {
           that.hero.destroyed = true
@@ -170,6 +167,7 @@ Silo.prototype = {
 
     this.heroMove();
 
+      this.bg.reset(0, -this.hero.yChange - 350)
     // for each plat form, find out which is the highest
     // if one goes below the camera view, then create a new one at a distance from the highest one
     // these are pooled so they are very performant
@@ -296,25 +294,9 @@ Silo.prototype = {
         this.hero.body.velocity.y = -340;
       }
     if (this.jetPacked) {
-
-        if (Math.random() < 0.3) this.stage.backgroundColor += 1
-        if (this.stage.backgroundColor > 12632300) this.stage.backgroundColor -= 10
         this.hero.body.velocity.y = -350;
-      // console.log("THE BG", this.stage.backgroundColor)
-      // }
-
-      // track the maximum amount that the hero has travelled
       this.hero.yChange = Math.max( this.hero.yChange, Math.abs( this.hero.y - this.hero.yOrig ) );
     }
-
-    // console.log(this.hero.yChange)
-    // handle hero jumping
-    // HERO IS CONSTANTLY JUMPING
-    // IT IS ALL GOD
-    // if( this.cursor.up.isDown && this.hero.body.touching.down ) {
-      // console.log("VEL", this.hero.body.velocity.x)
-      // console.log('height', this.hero.yChange)
-      // console.log(modColor(this.stage.backgroundColor))
 
 
   }
