@@ -2,15 +2,7 @@
 
 
 SILO:
-- format new corpuses and edit them and stuff i guess
-- MAKE BARRIERS HAVE WORDS?
-- draw other stuff randomly???
-- "as u ascend the silo, reflect on yr life..."
-- platforms = barriers? just kinda swerve?
-- #/size of platforms dep on yr alignment?
-- gameOverScreen is a quick restart.
-- keep track of how many times they try
-- tube thing fade out ending
+
 
 ENDINGS:
 greed: you collect coins. when u get them all its like ENJOY YR RICHES, THEY ARE WORTHLESS (theres that into to phaser tutorial that should work?)

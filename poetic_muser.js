@@ -27,7 +27,7 @@ module.exports = function (alignment) {
 
 
   return function () {
-    return m.fill(m.pick(), 3 + ~~(Math.random() * 7))
+    return m.fill(m.pick(), 3 + ~~(Math.random() * 3))
   }
 
 

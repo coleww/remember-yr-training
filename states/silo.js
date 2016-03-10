@@ -30,9 +30,9 @@ var align = getAlignment(al)
 var dir = getDir(al)
 
 var stuffs = {
-  greed: [1.5, 2, 8, 9000, 5],
-  fight: [1.25, 1.75,6, 7500, 3],
-  nature: [1, 1.5, 4, 5000, 2],
+  greed: [1.5, 2, 8, 9000, 6],
+  fight: [1.25, 1.75,6, 7500, 4],
+  nature: [1, 1.5, 4, 6000, 2],
 }
 var stuff = stuffs[align]
 console.log(stuff)
@@ -55,6 +55,11 @@ Silo.prototype = {
 //   return '#63' + this.theColor
 // },
   create: function() {
+    if (this.jetPacked) {
+      this.jetPacked = false
+        this.game.state.restart()
+    }
+
     this.launchedTheMissiles = get('launched')
     this.isFaded = get('escapingDrunkenly')
     this.theColor = 5
@@ -107,7 +112,7 @@ Silo.prototype = {
       t.onLoop.add(function () {
           console.log('fadelooped!')
           // t.onLoopCallback(function(){console.log('Y?')})
-        that.game.state.start('Outside')
+          that.game.state.start('Outside')
       }, this)
       t.start();
     }
@@ -155,6 +160,7 @@ Silo.prototype = {
     var that = this
     if (this.hero.yChange < HEIGHT + 450) {
     game.physics.arcade.collide(this.hero, this.platforms, null, function(s, b){
+
       if (b.alpha == 1 && !b.friendly) {
         // var barrierTween = game.add.tween(b).to({alpha:0}, 200, Phaser.Easing.Bounce.Out, true)
         // // destroyed ship thing!
@@ -205,8 +211,8 @@ Silo.prototype = {
     // create a batch of platforms that start to move up the level
     for( var i = 0; i < NUM_PLATS - 2; i++ ) {
 
-      var p = this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 150 ), this.world.height - 500 - 100 * i, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH) );
-      // p.friendly = false
+      var p = this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 150 ), 0 - 500 - 100 * i, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH) );
+      p.friendly = false
     }
 
     var theGround = this.platforms.create(0, this.world.height - 50, 'bricky')
@@ -225,14 +231,14 @@ Silo.prototype = {
     // this is a helper function since writing all of this out can get verbose elsewhere
     var platform = this.platforms.getFirstDead();
     if (platform) {
-      platform.scale.x = width * 10;
-      platform.scale.y = HEIGHTHHHHHH * ~~(Math.random() * 3) + 4;
 
       platform.reset( x, y );
       platform.body.immovable = true;
+
+      platform.scale.setTo(width * 10, HEIGHTHHHHHH * ~~(Math.random() * 3) + 6)
       var style = { font: "20px " + "Comic Sans MS", fill: "#111", wordWrap: true, wordWrapWidth: platform.width / 2, align: "justified"};
 
-      platform.text = this.game.add.text(x + 75, y + 35, gimmeSomeTextNowPlz(), style);
+      platform.text = this.game.add.text(x + 95, y + 50, gimmeSomeTextNowPlz(), style);
       platform.text.anchor.set(0.5);
     }
     return platform;
@@ -281,7 +287,7 @@ Silo.prototype = {
         }
       } else if( this.cursor.right.isDown  || (this.isFaded && Math.random() < 0.05)) {
         this.hero.body.velocity.x = 225;
-        if (this.jetpacked) this.hero.body.velocity.x = 420
+        if (this.jetPacked) this.hero.body.velocity.x = 420
         if (this.hero.body.touching.down) {
           this.hero.animations.play('right');
         } else {
@@ -293,12 +299,21 @@ Silo.prototype = {
         if (!this.jetPacked && this.hero.x > 560 && this.hero.x < 620) {
           var style = { font: "50px IMPACT", fill: "#0000000", wordWrap: true, wordWrapWidth: 320, align: "center"};
 
-          this.game.add.text(160, 0, "AS YOU ASCEND THE SILO, U REFLECT ON YR LIFE AND YR PAST DEEDS", style);
+          this.game.add.text(160, HEIGHT - 5000, "AS YOU ASCEND THE SILO, U REFLECT ON YR LIFE AND YR PAST DEEDS,", style);
+          this.game.add.text(160, HEIGHT - 4000, "THE TIME YOU SPENT INSIDE THIS BUNKER, WHAT YOU HAVE DONE, WHAT ITEMS YOU HAVE USED, WHAT POEMS YOU HAVE WRITTEN", style);
+          this.game.add.text(160, HEIGHT - 3000, "HOW YOU HAVE RESPONDED TO THE WORLD AROUND YOU. ALL OF THESE THINGS WILL AFFECT YOUR PROGRESS FORWARD. SUCH IS LIFE, THAT WE ARE DETERMINED BY OUR PAST", style);
+          this.game.add.text(160, HEIGHT - 2000, "KARL MARX ONCE WROTE THAT THE DEAD HAUNT US IN THE FORM OF A SORT OF CRYSTALLIZED LABOR VALUE THAT HAS BEEN EXTRACTED AND TRANSFORMED INTO THE MEANS OF PRODUCTION WHICH DOMINATE US TO THIS DAY.", style);
+          this.game.add.text(160, HEIGHT - 1000, "WHEN YOU REACH THE OUTSIDE WORLD, YOU SHOULD TRY TO DO SOMETHING ABOUT THAT I GUESS...", style);
+
+
+
+
           this.jetPacked = true
           this.jetpack.destroy()
           this.hero.anchor.set(0.5);
-          this.hero.body.setSize(1,1,0,0)
+          // this.hero.body.setSize(1,1,0,0)
           this.smokeEmitter.start(false, 1000, 40)
+          // this.world.bringToTop(this.platforms)
         }
       } else {
         var goingUp = !this.hero.body.velocity.x

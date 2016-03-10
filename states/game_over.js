@@ -107,7 +107,8 @@ gameOverScreen.prototype = {
         bg.destroy()
         whatHappened.destroy()
         confirm.destroy()
-        that.game.state.start(ending.next || "Reset")// this will save the data to a thing
+        that.game.state.start(ending.next || "Reset", false, true)// this will save the data to a thing
+
     }, this);
 
   }
