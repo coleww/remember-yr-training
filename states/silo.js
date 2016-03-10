@@ -238,7 +238,7 @@ Silo.prototype = {
       platform.scale.setTo(width * 10, HEIGHTHHHHHH * ~~(Math.random() * 3) + 6)
       var style = { font: "20px " + "Comic Sans MS", fill: "#111", wordWrap: true, wordWrapWidth: platform.width / 2, align: "justified"};
 
-      platform.text = this.game.add.text(x + 95, y + 50, gimmeSomeTextNowPlz(), style);
+      platform.text = this.game.add.text(x + 95, y + 65, gimmeSomeTextNowPlz(), style);
       platform.text.anchor.set(0.5);
     }
     return platform;
@@ -278,7 +278,7 @@ Silo.prototype = {
     // handle the left and right movement of the hero
       if( this.cursor.left.isDown  || (this.isFaded && Math.random() < 0.05)) {
         this.hero.body.velocity.x = -225;
-        if (this.jetPacked) this.hero.body.velocity.x = -420
+        if (this.jetPacked) this.hero.body.velocity.x = -275
         if (this.hero.body.touching.down) {
           this.hero.animations.play('left');
         } else {
@@ -287,7 +287,7 @@ Silo.prototype = {
         }
       } else if( this.cursor.right.isDown  || (this.isFaded && Math.random() < 0.05)) {
         this.hero.body.velocity.x = 225;
-        if (this.jetPacked) this.hero.body.velocity.x = 420
+        if (this.jetPacked) this.hero.body.velocity.x = 275
         if (this.hero.body.touching.down) {
           this.hero.animations.play('right');
         } else {
@@ -297,21 +297,13 @@ Silo.prototype = {
       } else if (this.cursor.down.isDown) {
         // if player is at the jetpack, do it!
         if (!this.jetPacked && this.hero.x > 560 && this.hero.x < 620) {
-          var style = { font: "50px IMPACT", fill: "#0000000", wordWrap: true, wordWrapWidth: 320, align: "center"};
-
-          this.game.add.text(160, HEIGHT - 5000, "AS YOU ASCEND THE SILO, U REFLECT ON YR LIFE AND YR PAST DEEDS,", style);
-          this.game.add.text(160, HEIGHT - 4000, "THE TIME YOU SPENT INSIDE THIS BUNKER, WHAT YOU HAVE DONE, WHAT ITEMS YOU HAVE USED, WHAT POEMS YOU HAVE WRITTEN", style);
-          this.game.add.text(160, HEIGHT - 3000, "HOW YOU HAVE RESPONDED TO THE WORLD AROUND YOU. ALL OF THESE THINGS WILL AFFECT YOUR PROGRESS FORWARD. SUCH IS LIFE, THAT WE ARE DETERMINED BY OUR PAST", style);
-          this.game.add.text(160, HEIGHT - 2000, "KARL MARX ONCE WROTE THAT THE DEAD HAUNT US IN THE FORM OF A SORT OF CRYSTALLIZED LABOR VALUE THAT HAS BEEN EXTRACTED AND TRANSFORMED INTO THE MEANS OF PRODUCTION WHICH DOMINATE US TO THIS DAY.", style);
-          this.game.add.text(160, HEIGHT - 1000, "WHEN YOU REACH THE OUTSIDE WORLD, YOU SHOULD TRY TO DO SOMETHING ABOUT THAT I GUESS...", style);
-
 
 
 
           this.jetPacked = true
           this.jetpack.destroy()
           this.hero.anchor.set(0.5);
-          // this.hero.body.setSize(1,1,0,0)
+          this.hero.body.setSize(this.hero.body.width / 3,this.hero.body.height,0,0)
           this.smokeEmitter.start(false, 1000, 40)
           // this.world.bringToTop(this.platforms)
         }
