@@ -30,18 +30,17 @@ var align = getAlignment(al)
 var dir = getDir(al)
 
 var stuffs = {
-  greed: [0.5, 1.5, 8, 9000],
-  fight: [0.75, 1.25,6, 7500],
-  nature: [0.5, 1, 4, 500],
+  greed: [1.5, 2, 8, 9000, 5],
+  fight: [1.25, 1.75,6, 7500, 3],
+  nature: [1, 1.5, 4, 5000, 2],
 }
 var stuff = stuffs[align]
 console.log(stuff)
 var MIN_WIDTH = stuff[0]
 var MAX_WIDTH = stuff[1]
 var NUM_PLATS = stuff[2]
-
 var HEIGHT = stuff[3]
-
+var HEIGHTHHHHHH = stuff[4]
 
 
 
@@ -86,7 +85,7 @@ Silo.prototype = {
     // throw('fuck')
     if (this.hero.yChange > HEIGHT && !this.atTheTop) {
       this.atTheTop = true
-      var bar = this.game.add.sprite(-60,-1600, 'barrel');
+      var bar = this.game.add.sprite(-60, -1100 - HEIGHT, 'barrel');
       bar.scale.setTo(1.25,3.75)
       this.world.bringToTop(bar)
 
@@ -127,7 +126,7 @@ Silo.prototype = {
       if( elem.y > this.camera.y + this.game.height && !this.atTheTop) {
         elem.text.destroy()
         elem.kill();
-        this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.hero.y - 1000, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH));
+        this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 150 ), this.hero.y - 1000, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH));
       }
     }, this );
 
@@ -201,13 +200,12 @@ Silo.prototype = {
     this.platforms = this.add.group();
     this.platforms.enableBody = true;
     var perPlats = ~~(NUM_PLATS / 2)
-    this.platforms.createMultiple( perPlats, 'xblock' );
-    this.platforms.createMultiple( perPlats, 'blocky' );
+    this.platforms.createMultiple( NUM_PLATS, 'blocky' );
 
     // create a batch of platforms that start to move up the level
     for( var i = 0; i < NUM_PLATS - 2; i++ ) {
 
-      var p = this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 50 ), this.world.height - 500 - 100 * i, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH) );
+      var p = this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 150 ), this.world.height - 500 - 100 * i, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH) );
       // p.friendly = false
     }
 
@@ -216,9 +214,9 @@ Silo.prototype = {
     theGround.scale.y = 1;
     theGround.friendly = true
     theGround.body.immovable = true;
-    var style = { font: "40px IMPACT", fill: "#0000000", wordWrap: true, wordWrapWidth: theGround.width * 2, align: "center"};
+    var style = { font: "30px IMPACT", fill: "#0000000", wordWrap: true, wordWrapWidth: theGround.width * 2, align: "center"};
 
-    theGround.text = this.game.add.text(0, this.world.height - 50, "EQUIP THE JETPACK TO ESCAPE!!! (avoid the boxes obvz", style);
+    theGround.text = this.game.add.text(0, this.world.height - 50, "EQUIP JETPACK 2 ESCAPE!!! (avoid the boxes obvz)", style);
     // theGround.text.anchor.set(0.5);
   },
 
@@ -227,14 +225,14 @@ Silo.prototype = {
     // this is a helper function since writing all of this out can get verbose elsewhere
     var platform = this.platforms.getFirstDead();
     if (platform) {
-      platform.reset( x, y );
       platform.scale.x = width * 10;
-      platform.scale.y = 4;
-      platform.body.immovable = true;
-      var fonts = ['Arial', 'Tahoma', 'Verdana', "Comic Sans MS", "Lucida Sans Unicode"]
-      var style = { font: this.rnd.integerInRange( 20, 25 ) + "px " + fonts[~~(Math.random() * fonts.length)], fill: "#FFF", wordWrap: true, wordWrapWidth: platform.width , align: "center"};
+      platform.scale.y = HEIGHTHHHHHH * ~~(Math.random() * 3) + 4;
 
-      platform.text = this.game.add.text(x + 50, y + 20, gimmeSomeTextNowPlz(), style);
+      platform.reset( x, y );
+      platform.body.immovable = true;
+      var style = { font: "20px " + "Comic Sans MS", fill: "#111", wordWrap: true, wordWrapWidth: platform.width / 2, align: "justified"};
+
+      platform.text = this.game.add.text(x + 75, y + 35, gimmeSomeTextNowPlz(), style);
       platform.text.anchor.set(0.5);
     }
     return platform;

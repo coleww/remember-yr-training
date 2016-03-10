@@ -96,8 +96,6 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("blocky", "assets/sprites/silo/blocky.png")
     game.load.image("barrel", "assets/sprites/silo/bar.png")
 
-    game.load.image("vertbeam", "assets/sprites/silo/vertbeam.png")
-    game.load.image("xblock", "assets/sprites/silo/xblock.png")
 
 
 
