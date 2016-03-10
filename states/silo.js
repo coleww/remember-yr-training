@@ -6,6 +6,8 @@ var Silo = function(game){
   this.game = game
 }
 
+var randoColor = require('randomcolor')
+
 var features = require('../features')
 var poe = require('../poetic_muser')
 var al = features.alignment || get('alignment')
@@ -58,7 +60,7 @@ Silo.prototype = {
     this.isFaded = get('escapingDrunkenly')
     this.theColor = 5
     this.bg = this.game.add.tileSprite(0, 0, 640, 1550, 'silowall');
-
+    this.bg.scale.y = 100
 
     this.physics.startSystem( Phaser.Physics.ARCADE );
 
@@ -82,19 +84,13 @@ Silo.prototype = {
 
 
     // throw('fuck')
-    if (this.hero.yChange > 10000 && !this.atTheTop) {
+    if (this.hero.yChange > 5000 && !this.atTheTop) {
       this.atTheTop = true
       // draw some sort of massive tub like entrance (upside down green pipe?)
       // player flies in
       // screen fades black
       // goes to yr ending of choice
     }
-
-
-
-
-
-
 
 
 
@@ -128,7 +124,7 @@ Silo.prototype = {
     // this.physics.arcade.collide( this.hero, this.platforms );
 
 
-
+    if (this.jetPacked) this.bg.scale.y = this.bg.scale.y * 1.01
 
     // this.bg.reset(0,0)
 
@@ -194,9 +190,9 @@ Silo.prototype = {
     theGround.scale.y = 1;
     theGround.friendly = true
     theGround.body.immovable = true;
-    var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: theGround.width * 2, align: "center"};
+    var style = { font: "40px IMPACT", fill: "#0000000", wordWrap: true, wordWrapWidth: theGround.width * 2, align: "center"};
 
-    theGround.text = this.game.add.text(0, this.world.height - 50, "EQUIP THE JETPACK TO ESCAPE!!!", style);
+    theGround.text = this.game.add.text(0, this.world.height - 50, "EQUIP THE JETPACK TO ESCAPE!!! (avoid the boxes obvz", style);
     // theGround.text.anchor.set(0.5);
   },
 
@@ -209,7 +205,8 @@ Silo.prototype = {
       platform.scale.x = width * 10;
       platform.scale.y = 4;
       platform.body.immovable = true;
-      var style = { font: "32px Arial", fill: "#ff0044", wordWrap: true, wordWrapWidth: platform.width * 2, align: "center"};
+      var fonts = ['Arial', 'Tahoma', 'Verdana', "Comic Sans MS", "Lucida Sans Unicode"]
+      var style = { font: this.rnd.integerInRange( 20, 25 ) + "px " + fonts[~~(Math.random() * fonts.length)], fill: "#FFF", wordWrap: true, wordWrapWidth: platform.width , align: "center"};
 
       platform.text = this.game.add.text(x + 50, y + 20, gimmeSomeTextNowPlz(), style);
       platform.text.anchor.set(0.5);
@@ -256,7 +253,7 @@ Silo.prototype = {
           this.hero.animations.play('left');
         } else {
           this.hero.animations.stop()
-          this.hero.frame = [5, 7][~~(Math.random() * 2)]
+          this.hero.frame = 5
         }
       } else if( this.cursor.right.isDown  || (this.isFaded && Math.random() < 0.05)) {
         this.hero.body.velocity.x = 225;
@@ -265,11 +262,14 @@ Silo.prototype = {
           this.hero.animations.play('right');
         } else {
           this.hero.animations.stop()
-          this.hero.frame = [11, 9][~~(Math.random() * 2)]
+          this.hero.frame = 11
         }
       } else if (this.cursor.down.isDown) {
         // if player is at the jetpack, do it!
         if (!this.jetPacked && this.hero.x > 560 && this.hero.x < 620) {
+          var style = { font: "50px IMPACT", fill: "#0000000", wordWrap: true, wordWrapWidth: 320, align: "center"};
+
+          this.game.add.text(160, 0, "AS YOU ASCEND THE SILO, U REFLECT ON YR LIFE AND YR PAST DEEDS", style);
           this.jetPacked = true
           this.jetpack.destroy()
           this.hero.anchor.set(0.5);
@@ -298,7 +298,7 @@ Silo.prototype = {
         this.hero.body.velocity.y = -340;
       }
     if (this.jetPacked) {
-        this.hero.body.velocity.y = -350;
+        this.hero.body.velocity.y = -250;
       this.hero.yChange = Math.max( this.hero.yChange, Math.abs( this.hero.y - this.hero.yOrig ) );
     }
 
