@@ -1,4 +1,4 @@
-
+ENABLE jumping up through ~some~ things? HOW TO DO THAT?!?!?!?!?
 
 
 
@@ -10,7 +10,9 @@ point to bed, poems, vend, machine, explain each, how to itneract.
 
 
 
-
+MAYBE: if u don't push the button, u get 1 of the four finale platforms
+if u do push the button: u see the city exploding
+both lead to a credits?
 
 
 

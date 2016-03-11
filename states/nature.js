@@ -25,19 +25,39 @@ Outside.prototype = {
     this.game.musician.change('outside')
 
 
-    var sky = this.game.add.sprite(0, 0, 'redmtn');
-    sky.scale.setTo(2.5, 7)
+    var sky = this.game.add.sprite(0, 0, 'nattysky');
+    sky.scale.setTo(1.75, 3.5)
+
+        var clouds = this.game.add.sprite(0, 330, 'nattyclouds');
+    clouds.scale.setTo(1.3, 2)
+    clouds.alpha = 0.6
+
+
 
     //  We're going to be using physics, so enable the Arcade Physics system
 
     //  A simple background for our this.game
 
 
-    this.player = this.game.add.sprite(300, 600, 'dude');
+        var light = this.game.add.sprite(0, 0, 'nattylight');
+    light.scale.setTo(3, 2)
+    light.alpha = 0.3
+
+            var duo = this.game.add.sprite(215, 360, 'nattyduo');
+    duo.scale.setTo(1.5, 2.5)
+    duo.alpha = 0.6
+
+
+
+    var c1 = this.game.add.sprite(325, 365, 'barry')
+    c1.scale.setTo(5)
+    c1.angle = 90//?????
+        var c2 = this.game.add.sprite(440, 365, 'barry')
+    c2.scale.setTo(5)
+    c2.angle = 90//?????
+    this.player = this.game.add.sprite(50, 900, 'dude');
 
           this.player.scale.setTo(1.5,1)
-
-
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
     this.platforms = this.game.add.group();
 
@@ -46,13 +66,70 @@ Outside.prototype = {
 
 
 
-    var p = this.game.add.sprite(170, 566, 'pumpkin')
-    p.scale.setTo(0.5)
+    // var p = this.game.add.sprite(170, 566, 'pumpkin')
+    // p.scale.setTo(0.5)
 
-    var ground = this.platforms.create(125, this.game.world.height - 340, 'crumbledplatform');
+            var fg = this.game.add.sprite(0, 0, 'nattyfg');
+    // fg.scale.setTo(1, 2)
+    fg.alpha = 1
+
+    // var p = this.game.add.sprite(170, 566, 'pumpkin')
+    // p.scale.setTo(0.5)
+
+
+
+    // var p = this.game.add.sprite(170, 566, 'pumpkin')
+    // p.scale.setTo(0.5)
+
+
+
+    // var p = this.game.add.sprite(170, 566, 'pumpkin')
+    // p.scale.setTo(0.5)
+
+
+
+// "nattysky"
+// "nattygrass"
+// "nattymtn"
+// "nattyclouds"
+// "nattybgrounds"
+// "WeirdTree"
+// "WaterFountain"
+// "treeee"
+// "tinytree"
+// "spooky_trees"
+// "nothertree"
+// "lilgrass"
+// "grass"
+// "flower"
+// "dirt"
+// "bigtree"
+// "anotherbigtreee"
+// "spinning_banana"
+// "horse"
+// "cow"
+// "drag"
+// "kiwi"
+// "owl"
+// "penguin"
+// "catone"
+// "rabbit"
+// "spritesheet"
+// "cattwo"
+// "fanworking"
+
+
+
+
+
+
+
+
+
+    var ground = this.platforms.create(0, this.game.world.height - 200, 'dirt');
 
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
-    ground.scale.setTo(6, 2);
+    ground.scale.setTo(13.5, 6);
 
     //  This stops it from falling away when you jump on it
     ground.body.immovable = true;
@@ -60,26 +137,60 @@ Outside.prototype = {
     this.game.world.bringToTop(ground)
 
 
-    var tube = this.platforms.create(300, this.game.world.height - 420, 'pipe');
+    var tube = this.platforms.create(50, this.game.world.height - 280, 'pipe');
     tube.body.immovable = true
 
 
-    var sike1 = this.platforms.create(53, this.game.world.height - 500, 'crumbledplatform');
+    var sike1 = this.platforms.create(203, this.game.world.height - 488, 'nattygrass');
 
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
-    sike1.scale.setTo(2, 0.75);
-
+    sike1.scale.setTo(1, 0.75);
+sike1.body.setSize(365  , 5, 0, 150)
 sike1.body.immovable = true
-      var sike2 = this.platforms.create(423, this.game.world.height - 500, 'crumbledplatform');
+
+
+    var c1 = this.game.add.sprite(270, 640, 'barry')
+    c1.scale.setTo(5)
+    c1.angle = 90//?????
+        var c2 = this.game.add.sprite(510, 640, 'barry')
+    c2.scale.setTo(5)
+    c2.angle = 90//?????
+
+
+    var c1 = this.game.add.sprite(290, 495, 'barry')
+    c1.scale.setTo(5)
+    c1.angle = 90//?????
+        var c2 = this.game.add.sprite(545, 495, 'barry')
+    c2.scale.setTo(5)
+    c2.angle = 90//?????
+
+
+
+
+      var sike2 = this.platforms.create(243, this.game.world.height - 548, 'nattybgrounds');
 sike2.body.immovable = true
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
-    sike2.scale.setTo(2, 0.75);
+    sike2.scale.setTo(0.5, 0.75);
+sike2.body.setSize(495, 5, 25, 75)
 
-      var sike3 = this.platforms.create(185, this.game.world.height - 650, 'crumbledplatform');
+
+
+
+
+
+
+
+
+
+
+
+
+
+      var sike3 = this.platforms.create(255, this.game.world.height - 635, 'nattymtn');
 sike3.body.immovable = true
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
-    sike3.scale.setTo(3.333, 0.25);
-
+    sike3.scale.setTo(1, 0.25);
+sike3.body.setSize(275, 5, 0, 37)
 
 
 
@@ -98,7 +209,7 @@ sike3.body.immovable = true
     this.cursors = this.game.input.keyboard.createCursorKeys();
     // this.inDialog = false
     this.makeCoins()
-    this.scoreText = this.game.add.text(16, 16, 'murders: 0', { fontSize: '32px', fill: '#000' });
+    this.scoreText = this.game.add.text(16, 16, 'friends: 0', { fontSize: '32px', fill: '#000' });
 
 
     var that = this
@@ -155,28 +266,25 @@ sike3.body.immovable = true
       if (!coin.collected) {
     this.game.musician.playFX(['punch', 'punchtoo'][~~(Math.random() * 2)])
         coin.collected = true
-          if (this.mockingText) this.mockingText.destroy()
-          var tween = this.game.add.tween(coin.scale).to({x:0}, 150).start();
-          this.game.add.tween(coin).to({y:50}, 150).start();
-          tween.onComplete.add(function () {
-            coin.kill();
-          }, this);
+          if (this.cuteText) this.cuteText.destroy()
+            // TODO MAKE THESE CUTER!
+            this.cuteText = this.game.add.text(50, 56, [
+            'ARE YOU HEARTLESS? HAVE U NO COMPASSION?!?!',
+            'WHEN WILL YR TYRANNY OF BLOOD END?',
+            'WHY GLOB? WHY?'][~~(Math.random() * 3)],
+            { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '500px' });
+
 
 
           //  Add and update the score
           this.score += 1;
-          this.scoreText.text = 'murders: ' + this.score;
-          if (this.score % 5 == 0) {
-    this.game.musician.playFX('screamy')
-            this.makeCoins()
-            this.mockingText = this.game.add.text(50, 56, ['ARE YOU HEARTLESS? HAVE U NO COMPASSION?!?!', 'WHEN WILL YR TYRANNY OF BLOOD END?', 'WHY GLOB? WHY?'][~~(Math.random() * 3)], { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '500px' });
-            // write text to the screen about how this is futile
-          }
+          this.scoreText.text = 'friends: ' + this.score;
+
       }
 
     },
     makeCoins: function () {
-      // play a sound like murders dumping!
+      // play a sound like friends dumping!
 
       //  We will enable physics for any coin that is created in this group
       this.coins.enableBody = true;
@@ -225,30 +333,6 @@ sike3.body.immovable = true
         c.x += (Math.random() * 4) - 2
       })
       if (!this.inDialog){
-                        if (!this.ended && this.player.y > 600 ) {
-                          //
-                          this.ended = true
-                          var bg = this.game.add.sprite(0, 0, 'black');
-                          bg.scale.setTo(5, 7)
-                          // bg.anchor.setTo(0.5, 0.5);
-                          bg.alpha = 0;
-                          var that = this
-                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
-                          t.onLoop.add(function () {
-                              console.log('looped!')
-                              // t.onLoopCallback(function(){console.log('Y?')})
-                              that.game.tweens.remove(t)
-
-                            bg.destroy()
-                            that.game.state.start('ending')
-
-                            // OHHH MAYBE DROP THE PLAYER IN HERE?
-
-                          }, this)
-                          // OH! THIS IS HOW U GET TO THE CREDITS!
-                          // u fell off the dang thing
-                          // TODO: what happen if u fall off the thing?
-                        }
 
 
 
@@ -303,7 +387,7 @@ sike3.body.immovable = true
                         //  Allow the this.player to jump if they are touching the ground.
                         if (this.cursors.up.isDown && this.player.body.touching.down) {
                             this.game.musician.playFX('pew')
-                          this.player.body.velocity.y = -340;
+                          this.player.body.velocity.y = -640;
 
 
                         }

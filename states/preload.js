@@ -133,33 +133,44 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("wallArt5", "assets/sprites/wallart/Scroll0025.png")
 
 
+    game.load.image("barry", "assets/sprites/barry.png")
+
     game.load.image("nattysky", "assets/sprites/bgs/nattysky.png")
     game.load.image("nattygrass", "assets/sprites/bgs/nattygrass.png")
     game.load.image("nattymtn", "assets/sprites/bgs/nattymtn.png")
     game.load.image("nattyclouds", "assets/sprites/bgs/nattyclouds.png")
     game.load.image("nattybgrounds", "assets/sprites/bgs/nattybgrounds.png")
+    game.load.image("nattyduo", "assets/sprites/bgs/nattyduo.png")
+    game.load.image("nattylight", "assets/sprites/bgs/nattylight.png")
+    game.load.image("nattyfg", "assets/sprites/bgs/nattyfg.png")
     game.load.image("WeirdTree", "assets/sprites/bgs/WeirdTree.png")
     game.load.image("WaterFountain", "assets/sprites/bgs/WaterFountain.png")
     game.load.image("treeee", "assets/sprites/bgs/treeee.png")
     game.load.image("tinytree", "assets/sprites/bgs/tinytree.png")
-
     game.load.image("spooky_trees", "assets/sprites/bgs/spooky_trees.png")
     game.load.image("nothertree", "assets/sprites/bgs/nothertree.png")
     game.load.image("lilgrass", "assets/sprites/bgs/lilgrass.png")
     game.load.image("grass", "assets/sprites/bgs/grass.png")
-
     game.load.image("flower", "assets/sprites/bgs/flower.png")
     game.load.image("dirt", "assets/sprites/bgs/dirt.png")
     game.load.image("bigtree", "assets/sprites/bgs/bigtree.png")
     game.load.image("anotherbigtreee", "assets/sprites/bgs/anotherbigtreee.png")
-
-
     game.load.spritesheet("spinning_banana", "assets/sprites/animals/spinning_banana.png", 50, 25)
+    // game.load.spritesheet("horse", "assets/sprites/animals/horse.png", 50, 25)
+    game.load.image("cow", "assets/sprites/animals/cow.png")
+    game.load.image("drag", "assets/sprites/animals/drag.png")
+    // game.load.spritesheet("kiwi", "assets/sprites/animals/kiwix2.gif", 50, 25)
+    // game.load.spritesheet("owl", "assets/sprites/animals/spinning_banana.png", 50, 25)
+    game.load.image("penguin", "assets/sprites/animals/penguin_pixeled.png")
+    // game.load.spritesheet("catone", "assets/sprites/animals/catspritesx2.gif", 50, 25)
+    // game.load.spritesheet("rabbit", "assets/sprites/animals/rabbit_walk.png", 50, 25)
+    // game.load.spritesheet("spritesheet", "assets/sprites/animals/spritesheet.png", 50, 25)
+    // game.load.spritesheet("cattwo", "assets/sprites/animals/spinning_banana.png", 50, 25)
+    // game.load.spritesheet("fanworking", "assets/sprites/computer/fanworking.png", 96, 96)
 
 
 
 
-    game.load.spritesheet("fanworking", "assets/sprites/computer/fanworking.png", 96, 96)
 
     game.load.spritesheet("blinky1", "assets/sprites/computer/blinky1.png", 16, 46)
     game.load.spritesheet("blinky2", "assets/sprites/computer/blinky2.png", 16, 45)
