@@ -185,7 +185,7 @@ sike3.body.immovable = true
       for (var i = 0; i < 12; i++)
       {
           //  Create a coin inside of the 'coins' group
-          var coin = this.coins.create(i * 70, 0, 'friend');
+          var coin = this.coins.create(i * 50 + ~~(Math.random() * 40), 0, 'friend');
 
           //  Let gravity do its thing
           coin.body.gravity.y = 300;
