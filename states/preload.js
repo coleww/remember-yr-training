@@ -134,6 +134,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
 
     game.load.image("barry", "assets/sprites/barry.png")
+    game.load.image("nattymtns", "assets/sprites/bgs/nattymtns.png")
 
     game.load.image("nattysky", "assets/sprites/bgs/nattysky.png")
     game.load.image("nattygrass", "assets/sprites/bgs/nattygrass.png")

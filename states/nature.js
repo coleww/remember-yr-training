@@ -33,6 +33,9 @@ Outside.prototype = {
     clouds.alpha = 0.6
 
 
+        var mtns = this.game.add.sprite(0, 250, 'nattymtns');
+    mtns.scale.setTo(1.3, 3.2)
+    mtns.alpha = 0.5
 
     //  We're going to be using physics, so enable the Arcade Physics system
 
