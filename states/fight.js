@@ -26,7 +26,7 @@ Outside.prototype = {
 
 
     var sky = this.game.add.sprite(0, 0, 'redmtn');
-    sky.scale.setTo(2.25, 7)
+    sky.scale.setTo(2.5, 7)
 
     //  We're going to be using physics, so enable the Arcade Physics system
 
@@ -233,7 +233,7 @@ sike3.body.immovable = true
                           // bg.anchor.setTo(0.5, 0.5);
                           bg.alpha = 0;
                           var that = this
-                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 1050, Phaser.Easing.Linear.None, false, 0, 800, 1).start();
+                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
                           t.onLoop.add(function () {
                               console.log('looped!')
                               // t.onLoopCallback(function(){console.log('Y?')})
