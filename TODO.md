@@ -9,7 +9,8 @@ SHRINK THE GOURD AND WEEDBAG SPRITES! SO TEY FIT IN THE FIALOG THING!
 
 WRITE 1 song for outsde and just fux with it 3 times
 
-
+dollah bill platforms for greed?
+knife platforms for fight?
 
 
 CREDITS:

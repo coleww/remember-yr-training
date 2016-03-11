@@ -12,7 +12,16 @@ http://opengameart.org/content/rainbow-ball
 http://opengameart.org/content/spaceship-1
 http://opengameart.org/content/arrow
 http://opengameart.org/content/cute-sprite
+http://opengameart.org/content/spinning-banana
+http://opengameart.org/content/cat-sprites
+http://opengameart.org/content/kiwi-sprites
 https://www.freesound.org/people/DigitalDominic/sounds/175385/
+http://opengameart.org/content/deer
+http://opengameart.org/content/german-shepherd-0
+http://opengameart.org/content/blue-babydragon
+http://opengameart.org/content/little-penguin
+http://opengameart.org/content/characters-the-woods
+http://opengameart.org/content/fierce-almost-war-horse
 https://www.freesound.org/people/thefsoundman/sounds/118513/
 https://www.freesound.org/people/Benboncan/sounds/167563/
 https://www.freesound.org/people/Ekokubza123/sounds/104183/
