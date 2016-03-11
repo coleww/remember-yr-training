@@ -25,8 +25,8 @@ Outside.prototype = {
     this.game.musician.change('outside')
 
 
-    var sky = this.game.add.sprite(0, 0, 'bluesky');
-    sky.scale.setTo(2, 5)
+    var sky = this.game.add.sprite(0, 0, 'redmtn');
+    sky.scale.setTo(2.25, 7)
 
     //  We're going to be using physics, so enable the Arcade Physics system
 
@@ -46,8 +46,8 @@ Outside.prototype = {
 
 
 
-    this.game.add.sprite(170, 566, 'weedbag')
-
+    var p = this.game.add.sprite(170, 566, 'pumpkin')
+    p.scale.setTo(0.5)
 
     var ground = this.platforms.create(125, this.game.world.height - 340, 'crumbledplatform');
 
@@ -98,7 +98,7 @@ sike3.body.immovable = true
     this.cursors = this.game.input.keyboard.createCursorKeys();
     // this.inDialog = false
     this.makeCoins()
-    this.scoreText = this.game.add.text(16, 16, 'MONEY: 0', { fontSize: '32px', fill: '#000' });
+    this.scoreText = this.game.add.text(16, 16, 'murders: 0', { fontSize: '32px', fill: '#000' });
 
 
     var that = this
@@ -153,9 +153,7 @@ sike3.body.immovable = true
         // Removes the coin from the screen
       // PLAY A SOUND TOO!
       if (!coin.collected) {
-    this.game.musician.playFX('kaching')
-        coin.animations.stop('spinny')
-        coin.frame = 0
+    this.game.musician.playFX(['punch', 'punchtoo'][~~(Math.random() * 2)])
         coin.collected = true
           if (this.mockingText) this.mockingText.destroy()
           var tween = this.game.add.tween(coin.scale).to({x:0}, 150).start();
@@ -166,19 +164,19 @@ sike3.body.immovable = true
 
 
           //  Add and update the score
-          this.score += 10;
-          this.scoreText.text = 'MONEY: ' + this.score;
-          if (this.score % 70 == 0) {
-    this.game.musician.playFX('cackle')
+          this.score += 1;
+          this.scoreText.text = 'murders: ' + this.score;
+          if (this.score % 5 == 0) {
+    this.game.musician.playFX('screamy')
             this.makeCoins()
-            this.mockingText = this.game.add.text(50, 56, ['HAHAHAHA GREEDY HUMAN ENJOY YR RICHES!', 'WHAT U GONNA DO WITH ALL THAT MONEY?', 'THIS IS WHAT YOU GET FOR BEING GREEDY '][~~(Math.random() * 3)], { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '500px' });
+            this.mockingText = this.game.add.text(50, 56, ['ARE YOU HEARTLESS? HAVE U NO COMPASSION?!?!', 'WHEN WILL YR TYRANNY OF BLOOD END?', 'WHY GLOB? WHY?'][~~(Math.random() * 3)], { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '500px' });
             // write text to the screen about how this is futile
           }
       }
 
     },
     makeCoins: function () {
-      // play a sound like money dumping!
+      // play a sound like murders dumping!
 
       //  We will enable physics for any coin that is created in this group
       this.coins.enableBody = true;
@@ -187,9 +185,8 @@ sike3.body.immovable = true
       for (var i = 0; i < 12; i++)
       {
           //  Create a coin inside of the 'coins' group
-          var coin = this.coins.create(i * 70, 0, 'the_coin_spinny');
-          coin.animations.add('spinny')
-          coin.animations.play('spinny', 12, true)
+          var coin = this.coins.create(i * 70, 0, 'friend');
+
           //  Let gravity do its thing
           coin.body.gravity.y = 300;
 
@@ -212,7 +209,7 @@ sike3.body.immovable = true
     interactIfTouchingThing: function () {
       if (!this.inDialog && this.player.x > 120 && this.player.x < 215) {
           this.inDialog = true
-            this.openDialog({name: 'bag of mysterious herbs', description: 'o_o O_o o_0 o_o ._. the herbs tell you to quit yr job and take a leap. i think u should listen.', sprite: 'weedbag', yes: 'nice'})
+            this.openDialog({name: 'a large gourd', description: 'o_o O_o o_0 o_o ._. the gourd tell you to take a vow of pacifism and a leap of faith. i think u should listen.', sprite: 'pumpkin', yes: 'nice'})
 
       }
 
@@ -223,9 +220,31 @@ sike3.body.immovable = true
                       this.game.physics.arcade.collide(this.coins, this.platforms);
                       this.game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
 
+
+      this.coins.forEach(function (c) {
+        c.x += (Math.random() * 4) - 2
+      })
       if (!this.inDialog){
-                        if (this.player.y > 600 ) {
+                        if (!this.ended && this.player.y > 600 ) {
                           //
+                          this.ended = true
+                          var bg = this.game.add.sprite(0, 0, 'black');
+                          bg.scale.setTo(5, 7)
+                          // bg.anchor.setTo(0.5, 0.5);
+                          bg.alpha = 0;
+                          var that = this
+                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 1050, Phaser.Easing.Linear.None, false, 0, 800, 1).start();
+                          t.onLoop.add(function () {
+                              console.log('looped!')
+                              // t.onLoopCallback(function(){console.log('Y?')})
+                              that.game.tweens.remove(t)
+
+                            bg.destroy()
+                            that.game.state.start('ending')
+
+                            // OHHH MAYBE DROP THE PLAYER IN HERE?
+
+                          }, this)
                           // OH! THIS IS HOW U GET TO THE CREDITS!
                           // u fell off the dang thing
                           // TODO: what happen if u fall off the thing?

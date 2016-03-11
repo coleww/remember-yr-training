@@ -189,7 +189,7 @@ sike3.body.immovable = true
           //  Create a coin inside of the 'coins' group
           var coin = this.coins.create(i * 70, 0, 'the_coin_spinny');
           coin.animations.add('spinny')
-          coin.animations.play('spinny', 12, true)
+          coin.animations.play('spinny', 3, true)
           //  Let gravity do its thing
           coin.body.gravity.y = 300;
 
@@ -226,6 +226,23 @@ sike3.body.immovable = true
       if (!this.inDialog){
                         if (this.player.y > 600 ) {
                           //
+                          var bg = this.game.add.sprite(0, 0, 'black');
+                          bg.scale.setTo(5, 7)
+                          // bg.anchor.setTo(0.5, 0.5);
+                          bg.alpha = 1;
+                          var that = this
+                          var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 1000, 1).start();
+                          t.onLoop.add(function () {
+                              console.log('looped!')
+                              // t.onLoopCallback(function(){console.log('Y?')})
+                              that.game.tweens.remove(t)
+
+                            bg.destroy()
+                            that.game.state.start('ending')
+
+                            // OHHH MAYBE DROP THE PLAYER IN HERE?
+
+                          }, this)
                           // OH! THIS IS HOW U GET TO THE CREDITS!
                           // u fell off the dang thing
                           // TODO: what happen if u fall off the thing?

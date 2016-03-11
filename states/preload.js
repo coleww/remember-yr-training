@@ -167,7 +167,10 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
     game.load.image("weedbag", "assets/sprites/weedbag.png")
 
+    game.load.image("redmtn", "assets/sprites/bgs/redmtn.png")
 
+    game.load.image("pumpkin", "assets/sprites/pumpkin.png")
+    game.load.image("friend", "assets/sprites/friend.png")
     game.load.image("base", "assets/sprites/computer/container_1.png")
     game.load.image("butts", "assets/sprites/computer/misc_2.jpg")
     game.load.image("speaker", "assets/sprites/computer/obj_speaker001.png")

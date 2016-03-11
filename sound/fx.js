@@ -10,6 +10,7 @@ module.exports = function (ac, mainVol) {
     'cackle', 'punch', 'punchtoo', 'wooshair', 'giggle', 'kaching',
     'horribletone', 'missilelaunch', 'modem', 'noise',
     'pew', 'pow', 'russel1', 'russel2', 'russel3', 'selecto', 'slowpew',
+    'screamy',
     'thuddy', 'twinklelong', 'twinkleshort', 'WAHHHHH', 'windloop', 'wobbly', 'woosh'
   ]
 

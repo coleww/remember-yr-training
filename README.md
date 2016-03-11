@@ -11,6 +11,8 @@ http://opengameart.org/content/wall-of-large-bricks
 http://opengameart.org/content/rainbow-ball
 http://opengameart.org/content/spaceship-1
 http://opengameart.org/content/arrow
+http://opengameart.org/content/cute-sprite
+https://www.freesound.org/people/DigitalDominic/sounds/175385/
 https://www.freesound.org/people/thefsoundman/sounds/118513/
 https://www.freesound.org/people/Benboncan/sounds/167563/
 https://www.freesound.org/people/Ekokubza123/sounds/104183/
