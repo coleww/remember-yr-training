@@ -7,6 +7,12 @@ need a simple "close inventory button"
 SHRINK THE GOURD AND WEEDBAG SPRITES! SO TEY FIT IN THE FIALOG THING!
 
 
+MODERN_DOOR_OPENING SPIRTE: somewhere? hrmmm
+box: um, hrm.
+ECTO SPRITE: when where why would a ghost appear? maybe death pit? hrmmm. OH neutral? idk
+COMPUTER: still sprites to add or delete
+BGS: major deletey cleanup needed
+
 WRITE 1 song for outsde and just fux with it 3 times
 
 dollah bill platforms for greed?

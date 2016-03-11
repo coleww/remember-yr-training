@@ -189,9 +189,10 @@ sike3.body.immovable = true
 
           //  Let gravity do its thing
           coin.body.gravity.y = 300;
-
+          var tween = this.game.add.tween(coin).to({width: 30 + ~~(Math.random() * 15), height:30 + ~~(Math.random() * 15)}, 750 + ~~(Math.random() * 750), "Linear", true, 0, -1)
+    tween.yoyo(true)
           //  This just gives each coin a slightly random bounce value
-          coin.body.bounce.y = Math.random() * 0.2;
+          coin.body.bounce.y = Math.random() * 0.4;
       }
     },
 
@@ -222,7 +223,7 @@ sike3.body.immovable = true
 
 
       this.coins.forEach(function (c) {
-        c.x += (Math.random() * 4) - 2
+        if (Math.random() < 0.6) c.body.velocity.x += (Math.random() * 2) - 1
       })
       if (!this.inDialog){
                         if (!this.ended && this.player.y > 600 ) {
