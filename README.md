@@ -1,43 +1,31 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
-
 a game about poetry and jetpacks
-
-
 ### THIS CODE IS A HOT MESS AND SO AM I
 http://www.lessmilk.com/game-design-1/
-
-
 http://opengameart.org/content/my-first-tileset-rocks
-
-
 http://opengameart.org/content/filthy-ectoplasm
-
 http://opengameart.org/content/battery-power-icon
 http://opengameart.org/content/burger
 http://opengameart.org/content/wall-of-large-bricks
-
 http://opengameart.org/content/rainbow-ball
 http://opengameart.org/content/spaceship-1
 http://opengameart.org/content/arrow
-
+https://www.freesound.org/people/thefsoundman/sounds/118513/
+https://www.freesound.org/people/Benboncan/sounds/167563/
+https://www.freesound.org/people/Ekokubza123/sounds/104183/
+https://www.freesound.org/people/thefsoundman/sounds/118513/
+https://www.freesound.org/people/Reitanna/sounds/252218/
 http://opengameart.org/content/cute-cloud
-
 http://opengameart.org/content/unicorn
-
 http://opengameart.org/content/weird-alien-textures
-
 IS BASICALLY A BUNCH OF CODE HACKED FROM:
 http://phaser.io/tutorials/making-your-first-phaser-game
 https://gumroad.com/a/333067379
 http://codepen.io/jackrugile/pen/fqHtn
 http://phaser.io/examples
-
-
-
 ASSETS:
 (not everything on this list ended up being used, but hopefully everything I used is on this list!)
- 
 http://untamed.wild-refuge.net/rmxpresources.php?characters
 http://pousse.rapiere.free.fr/tome/
 http://opengameart.org/content/farming-tool-icons
@@ -118,15 +106,11 @@ https://www.freesound.org/people/visions68/sounds/279013/
 https://www.freesound.org/people/visions68/sounds/279013/
 https://www.freesound.org/people/guitarguy1985/sounds/52780/
 https://www.freesound.org/people/chipfork/sounds/73226/
-
 https://www.freesound.org/people/bubaproducer/sounds/151022/
-
 https://www.freesound.org/people/jmayoff/sounds/253446/
 https://www.freesound.org/people/mparsons99/sounds/89493/
-
+https://www.freesound.org/people/Robinhood76/sounds/333489/
 https://www.freesound.org/people/jobro/sounds/35684/
-
-
+https://www.freesound.org/people/The%20Baron/sounds/98384/
 https://www.freesound.org/people/randa1/sounds/177239/
-
 https://www.freesound.org/people/marcuslee/sounds/42106/

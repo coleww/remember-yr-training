@@ -151,6 +151,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
 
 
+    game.load.image("pipe", "assets/sprites/bgs/pipe-top.png")
 
 
 
@@ -164,6 +165,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
 
 
+    game.load.image("weedbag", "assets/sprites/weedbag.png")
 
 
     game.load.image("base", "assets/sprites/computer/container_1.png")

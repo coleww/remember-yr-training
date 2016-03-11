@@ -7,6 +7,7 @@ module.exports = function (ac, mainVol) {
   var samplers = {}
   var samples = [
     'alclock', 'countdown', 'crumple', 'explosion', 'crunch',
+    'cackle', 'punch', 'punchtoo', 'wooshair', 'giggle', 'kaching',
     'horribletone', 'missilelaunch', 'modem', 'noise',
     'pew', 'pow', 'russel1', 'russel2', 'russel3', 'selecto', 'slowpew',
     'thuddy', 'twinklelong', 'twinkleshort', 'WAHHHHH', 'windloop', 'wobbly', 'woosh'

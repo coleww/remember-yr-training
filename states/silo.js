@@ -20,7 +20,10 @@ var gimmeSomeTextNowPlz = function () {
 function getAlignment (al) {
   var arr = [al.greed, al.fight, al.nature]
   var i = arr.indexOf(Math.max.apply(Math, arr));
-  return ['greed', 'fight', 'nature'][i]
+  var conflicted = arr.filter(function (el, i, a) {
+    return a.indexOf(el) == i
+  }).length !== 3
+  return conflicted ? 'conflicted' : ['greed', 'fight', 'nature'][i]
 }
 
 function getDir (al) {
@@ -31,8 +34,9 @@ var dir = getDir(al)
 
 var stuffs = {
   greed: [1.5, 2, 8, 9000, 6],
-  fight: [1.25, 1.75,6, 7500, 4],
+  fight: [1.25, 1.75,6, 7000, 4],
   nature: [1, 1.5, 4, 6000, 2],
+  conflicted: [1, 2, 5, 7500, 3]
 }
 var stuff = stuffs[align]
 console.log(stuff)
@@ -112,7 +116,8 @@ Silo.prototype = {
       t.onLoop.add(function () {
           console.log('fadelooped!')
           // t.onLoopCallback(function(){console.log('Y?')})
-          that.game.state.start('Outside')
+
+          that.game.state.start(align)
       }, this)
       t.start();
     }

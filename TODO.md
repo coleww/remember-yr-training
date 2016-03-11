@@ -2,9 +2,17 @@
 wtf is going on with the bloodnote?
 some weirdness with the inventory menu not clearing? or reloading? loading twice? maybe indialoging? OH 
 need a simple "close inventory button"
+\
 
-OUTSIDE
-greed: at sound fx, add the tube, add ending
+
+WRITE 1 song for outsde and just fux with it 3 times
+
+
+
+
+CREDITS:
+is just the player falling forever? 
+u can destroy the text?
 
 ENDINGS:
 greed: you collect coins. when u get them all its like ENJOY YR RICHES, THEY ARE WORTHLESS (theres that into to phaser tutorial that should work?)
