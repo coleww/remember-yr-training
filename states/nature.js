@@ -45,8 +45,11 @@ Outside.prototype = {
 
             var duo = this.game.add.sprite(215, 360, 'nattyduo');
     duo.scale.setTo(1.5, 2.5)
-    duo.alpha = 0.6
+    duo.alpha = 0.9
 
+            var fg = this.game.add.sprite(0, 0, 'nattyfg');
+    fg.scale.setTo(1.2, 4.8)
+    fg.alpha = 0.8
 
 
     var c1 = this.game.add.sprite(325, 365, 'barry')
@@ -69,9 +72,6 @@ Outside.prototype = {
     // var p = this.game.add.sprite(170, 566, 'pumpkin')
     // p.scale.setTo(0.5)
 
-            var fg = this.game.add.sprite(0, 0, 'nattyfg');
-    // fg.scale.setTo(1, 2)
-    fg.alpha = 1
 
     // var p = this.game.add.sprite(170, 566, 'pumpkin')
     // p.scale.setTo(0.5)
