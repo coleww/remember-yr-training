@@ -70,8 +70,8 @@ Outside.prototype = {
 
 sike1.body.immovable = true
 // here
-var tree = this.game.add.sprite(465, this.game.world.height - 245, 'spooky_trees');
-tree.scale.setTo(1.5, 1)
+var tree = this.game.add.sprite(455, this.game.world.height - 245, 'spooky_trees');
+tree.scale.setTo(1.35, 1)
 
 
 
@@ -116,7 +116,7 @@ this.nana.enableBody = true
 
           //  that.Player physics properties. Give the little guy a slight bounce.
           that.player.body.bounce.y = 0.2;
-          that.player.body.gravity.y = 300;
+          that.player.body.gravity.y = 100;
           that.player.body.collideWorldBounds = false;
 
           //  Our two animations, walking left and right.
@@ -151,15 +151,24 @@ this.nana.enableBody = true
                       this.game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
 
       if (!this.inDialog){
+
+          if (!this.jumped && this.player.y > 500 ) {
+            this.jumped = true
+                              this.game.add.text(50, 56, 'YOU FLOAT OFF LIKE A SHOPPING BAG CAUGHT IN A BREEZE', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+}
+
                         if (!this.ended && this.player.y > 700 ) {
-                          //
+                          //        this.game.add.text(50, 56, 'YOU FLOAT OFF LIKE A SHOPPING BAG CAUGHT IN A BREEZE', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300px' });
+
+
+
                           this.ended = true
                           var bg = this.game.add.sprite(0, 0, 'black');
                           bg.scale.setTo(5, 7)
                           // bg.anchor.setTo(0.5, 0.5);
                           bg.alpha = 0;
                           var that = this
-                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
+                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 1500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
                           t.onLoop.add(function () {
                               console.log('looped!')
                               // t.onLoopCallback(function(){console.log('Y?')})
