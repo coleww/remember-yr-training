@@ -14,6 +14,25 @@ preload.prototype = {
 
 
 
+
+
+
+    game.load.image("bluesky", "assets/sprites/bgs/mrsbluesky.png")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     game.load.image("crumbledplatform", "assets/sprites/deathpit/crumbledplatform.png")
 
 
@@ -35,6 +54,8 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
      game.load.spritesheet("torchy", "assets/sprites/deathpit/torch.png", 32, 48)
 
+
+     game.load.spritesheet("the_coin_spinny", "assets/sprites/coin_sheet.png", 40.333333333333336, 42)
 
 
 

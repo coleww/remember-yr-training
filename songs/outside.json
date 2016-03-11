@@ -1,0 +1,175 @@
+{
+  instruments: {
+    hat: {
+      config: {
+        peak: 0.971,
+        mid: 0.85
+      },
+      patterns: {
+        verse: {
+          probs: [
+            [1, 1, 0]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 4,
+          nexts: [[0, 0]]
+        }
+      }
+    },
+    snare: {
+      config: {
+        freq: 100, // for the triangle oscillator
+        noiseattack: 0.000001,
+        noisedecay: 0.000001,
+        noisesustain: 0.175,
+        noiserelease: 0.125,
+        noisepeak: 0.32123425,
+        noisemid: 0.1341215,
+        noiseend: 0.000001,
+        triattack: 0.0000001,
+        tridecay: 0.00000001,
+        trisustain: 0.1175,
+        trirelease: 0.125,
+        tripeak: 0.1232487,
+        trimid: 0.121375,
+        triend: 0.000001
+      },
+      patterns: {
+        verse: {
+          probs: [
+            [0, 0, 1]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 4,
+          nexts: [[0, 0]]
+        }
+      }
+    },
+    piano: {
+      config: {
+        attack: 0.3,
+        decay: 0.1,
+        sustain: 0.3,
+        release: 0.5,
+        peak: 0.345,
+        mid: 0.23,
+        end: 0.051},
+      lead: true,
+      melodic: true,
+      patterns: {
+        verse: {
+          notes: [
+            [[0, -2, -4], [0], [9, 11, 13], [-4, -6, 8], [0], [9, 11, 13], [-4, -2, 0], [0], [9, 11, 13], [-8, -6, -4], [0], [9, 11, 13]],
+            [[9, 11, 13], [0, 6, -6], [0], [9, 11, 13], [0, -6, -6], [0], [9, 11, 13], [0, -6, -6], [0], [9, 11, 13], [0, 6, -6], [0] ]
+          ],
+          probs: [
+            [1, 0, 0.3, 1, 0, 0.3, 1, 0, 0.3, 1, 0, 0.3],
+            [0.3, 1, 0, 0.3, 1, 0, 0.3, 1, 0, 0.3, 1, 0]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 4,
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    },
+    sparkles: {
+      config: {
+        attack: 0.272523,
+        decay: 0.13131,
+        sustain: 0.3,
+        release: 0.315,
+        peak: 0.35765,
+        mid: 0.2343,
+        end: 0.0513
+      },
+      melodic: true,
+      patterns: {
+        verse: {
+          notes: [
+            [[6,0, 4], [6, 0, 4], [-6, -8], [6,0, 4], [6, 0, 4], [-6, -8]],
+            [[0, -6],  [0, -6], [4, 8], [0, -6], [0, -6], [4, 8]]
+          ],
+          probs: [
+            [0.25, 0.25, 0.25, 0, 0.25, 0.25],
+            [1, 0.5, 1, 0.3, 1, 0.5, 1, 0.3]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 4,
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    },
+    bBass: {
+      multi: 4,
+      config: {
+        attack: 0.013,
+        decay: 0.1,
+        sustain: 0.013,
+        release: 0.015,
+        peak: 0.1345,
+        mid: 0.123,
+        end: 0.051},
+      melodic: true,
+      patterns: {
+        verse: {
+          notes: [
+            [[0, -2, -4], [0], [9, 11, 13], [-4, -6, 8], [0], [9, 11, 13], [-4, -2, 0], [0], [9, 11, 13], [-8, -6, -4], [0], [9, 11, 13]],
+            [[9, 11, 13], [0, 6, -6], [0], [9, 11, 13], [0, -6, -6], [0], [9, 11, 13], [0, -6, -6], [0], [9, 11, 13], [0, 6, -6], [0] ]
+          ],
+          probs: [
+            [1, 0, 0.3, 1, 0, 0.3, 1, 0, 0.3, 1, 0, 0.3],
+            [0.3, 1, 0, 0.3, 1, 0, 0.3, 1, 0, 0.3, 1, 0]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 6,
+          multi: 8,
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    },
+    wBass: {
+      multi: 4,
+      config: {
+        attack: 0.01272523,
+        decay: 0.013131,
+        sustain: 0.013,
+        release: 0.1315,
+        peak: 0.135765,
+        mid: 0.12343,
+        end: 0.013
+      },
+      melodic: true,
+      patterns: {
+        verse: {
+          notes: [
+            [[6,0, 4], [6, 0, 4], [-6, -8], [6,0, 4], [6, 0, 4], [-6, -8]],
+            [[0, -6],  [0, -6], [4, 8], [0, -6], [0, -6], [4, 8]]
+          ],
+          probs: [
+            [0.25, 0.25, 0.25, 0, 0.25, 0.25, 0.25, 0.3],
+            [1, 0.5, 1, 0.3, 1, 0.5, 1, 0.3]
+          ],
+          currentVersion: 0,
+          currentTick: 0,
+          mod: 6,
+
+          nexts: [[0, 0, 1], [1, 1, 1, 0]]
+        }
+      }
+    }
+  },
+  current: "verse",
+  nexts: {
+    verse: ["verse"]
+  },
+  bpm: 420,
+  key: {
+    tonic: "D4",
+    scale: "pentMin"
+  }
+}

@@ -3,14 +3,17 @@ wtf is going on with the bloodnote?
 some weirdness with the inventory menu not clearing? or reloading? loading twice? maybe indialoging? OH 
 need a simple "close inventory button"
 
-SILO:
-
+OUTSIDE
+greed: at sound fx, add the tube, add ending
 
 ENDINGS:
 greed: you collect coins. when u get them all its like ENJOY YR RICHES, THEY ARE WORTHLESS (theres that into to phaser tutorial that should work?)
 fight: there are lots of enemies, they are cute, if u touch them they die (just like, random walkers, check for collissions, find cute spritesheets?)
 nature: you are in a beautiful forest filled with cat sprites that talk to you
+neutral: ....if yr in balance or smth. normal ending with the rockets or not?
 
+
+CREDITS FOR "TRUE" ENDINGS
 
 - WIZARD RUNS WHEN U FIRST LOAD! OVERLAYS STUFF U CLICK TO DISMISS
 
