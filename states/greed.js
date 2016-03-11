@@ -224,14 +224,15 @@ sike3.body.immovable = true
                       this.game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
 
       if (!this.inDialog){
-                        if (this.player.y > 600 ) {
+                        if (!this.ended && this.player.y > 600 ) {
                           //
+                          this.ended = true
                           var bg = this.game.add.sprite(0, 0, 'black');
                           bg.scale.setTo(5, 7)
                           // bg.anchor.setTo(0.5, 0.5);
-                          bg.alpha = 1;
+                          bg.alpha = 0;
                           var that = this
-                          var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 1000, 1).start();
+                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
                           t.onLoop.add(function () {
                               console.log('looped!')
                               // t.onLoopCallback(function(){console.log('Y?')})
