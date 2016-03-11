@@ -12,21 +12,23 @@ var bunker = function (game) {
 function pick (arr) {
   return arr[~~(Math.random() * arr.length)]
 }
-
+var feature = require('../features')
 var makeASong = require('../makeASong')
 var poetryGen = require('../poet')
 var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
+    if (get('fanStillBroken') && feature.playNoise) {
+        this.game.musician.startComputerNoise()
+    }
      this.game.plugins.screenShake = this.game.plugins.add(Phaser.Plugin.ScreenShake);
 
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our this.game
 
-    if (get('isTrappedInTheDeathPitForever') ){
-        this.game.state.start("DeathPit")
-    }
+
+
 
     this.hasNotGoneOffYet = true
     var that = this
@@ -617,6 +619,7 @@ bunker.prototype = {
                      function (menu) {
                         menu.destroy()
                         that.inDialog = false
+                        that.game.musician.stopComputerNoise()
                         that.game.musician.fadeOut()
                         inc('currentDay')
                         that.game.state.start("DaySwitch")
@@ -876,14 +879,14 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             // just draw the sprite behind the character wherever they are standing
 
 
-            var tree = that.game.add.sprite(this.player.x, this.player.y, 'tree');
+            var tree = this.game.add.sprite(this.player.x, this.player.y, 'tree');
             this.game.treeCoords = [this.player.x, this.player.y]
             tree.scale.setTo(1.2)
             break;
         case 'makeBloodSculpture':
             // stuff
             // just draw the sprite behind the character wherever they are standing
-            var bloodsculpt = that.game.add.sprite(this.player.x, this.player.y, 'bloodsculpt');
+            var bloodsculpt = this.game.add.sprite(this.player.x, this.player.y, 'bloodsculpt');
             this.game.bloodSculptureCoords = [this.player.x, this.player.y]
             bloodsculpt.scale.setTo(0.5)
             break;
@@ -892,7 +895,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             this.walletDisplay.setText(inc('wallet', 500))
             break;
         case 'read':
-            // i think thats all?
+            // i think thiss all?
             break;
         case 'drunkescape':
             // continueMenu = false

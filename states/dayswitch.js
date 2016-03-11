@@ -48,10 +48,22 @@ DaySwitch.prototype = {
 
     var title = dates[day]
     var descroppie = descroppies[day]
+// TODO: REMOVE THIS
+    if (get('isTrappedInTheDeathPitForever') ){
+        title = 'AGONY AND PAIN'
+        descroppie = 'you are trapped in the death pit forever, remember? how could you ever forget?!?!?!'
+        this.game.state.start("DeathPit")
+    }
+
+
+    var confirmotron = [null, 'I DO! i mean.. I WILL!', 'sheesh ok wow','i wonder how many days there are to this game and if anything else happens besides writing poetry and inspecting items :/', 'that is a bit alarming'][day]
+    if (get('isTrappedInTheDeathPitForever')) confirmotron = 'i suffer'
+
+
     var instruct = this.game.add.text(50, 220, title, { fontSize: '30px', fill: '#FFF' });
     var descrip = this.game.add.text(50, 320, descroppie, { fontSize: '30px', fill: '#FFF', wordWrap: true, wordWrapWidth: 450  });
 
-    var yay  = this.game.add.text(50, 690, [null, 'I DO! i mean.. I WILL!', 'sheesh ok wow','i wonder how many days there are to this game and if anything else happens besides writing poetry and inspecting items :/', 'that is a bit alarming'][day], { fontSize: '70px', fill: '#08D', wordWrap: true, wordWrapWidth: 300 });
+    var yay  = this.game.add.text(50, 690, confirmotron, { fontSize: '70px', fill: '#08D', wordWrap: true, wordWrapWidth: 300 });
     yay.inputEnabled = true;
     yay.underline = true
     var that = this
@@ -65,7 +77,13 @@ DaySwitch.prototype = {
         yay.destroy()
         bg.destroy()
 
-        if (day == 0) {
+
+
+
+
+    if (get('isTrappedInTheDeathPitForever') ){
+        this.game.state.start("DeathPit")
+    } else if (day == 1) {
             inc('currentDay')
            that.game.state.start("DaySwitch")
         } else {

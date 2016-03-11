@@ -166,10 +166,10 @@ sike2.body.immovable = true
     this.player.body.collideWorldBounds = true;
 
     //  Our two animations, walking left and right.
-    this.player.animations.add('left', [4, 5, 6, 7], 3, true);
-    this.player.animations.add('right', [8, 9, 10, 11], 3, true);
-    this.player.animations.add('up', [12, 13, 14, 15], 3, true);
-    this.player.animations.add('down', [0, 1, 2, 3], 3, true);
+    this.player.animations.add('left', [4, 5, 6, 7], 1, true);
+    this.player.animations.add('right', [8, 9, 10, 11], 1, true);
+    this.player.animations.add('up', [12, 13, 14, 15], 1, true);
+    this.player.animations.add('down', [0, 1, 2, 3], 1, true);
 
 
     this.cursors = this.game.input.keyboard.createCursorKeys();
@@ -212,7 +212,7 @@ sike2.body.immovable = true
             this.player.animations.play('left');
           } else {
             this.player.animations.stop()
-            this.player.frame = [5, 7][~~(Math.random() * 2)]
+            if (Math.random() < 0.1) this.player.frame = [5, 7][~~(Math.random() * 2)]
           }
       } else if (this.cursors.right.isDown) {
           xDir = 5
@@ -222,7 +222,7 @@ sike2.body.immovable = true
             this.player.animations.play('right');
           } else {
             this.player.animations.stop()
-            this.player.frame = [11, 9][~~(Math.random() * 2)]
+            if (Math.random() < 0.1) this.player.frame = [11, 9][~~(Math.random() * 2)]
           }
       } else if (this.cursors.down.isDown && this.player.body.touching.down) {
           //  PLAYER IS PRESSING DOWN, TRYING TO ACTIVATE SOMETHING?

@@ -1,5 +1,7 @@
 
-
+wtf is going on with the bloodnote?
+some weirdness with the inventory menu not clearing? or reloading? loading twice? maybe indialoging? OH 
+need a simple "close inventory button"
 
 SILO:
 
@@ -20,7 +22,7 @@ nature: you are in a beautiful forest filled with cat sprites that talk to you
 - compress all assets? hella lo-fi?
 - pick color palette, do it by hand? HOW TO (um just steal one from smth? maybe trnsfrmrs?)
 - concat/minify any extra scripts?
-
+- VOLUME CONTROLS? SETTINGS?
 
 http://phaser.io/tutorials/creating-custom-phaser-builds
 custom phaser build. exclude: 

@@ -91,6 +91,9 @@ Object.keys(insts).forEach(function(ik) {
     updateComputerNoise: function (g,x,y, z, a) {foley.updateComputerNoise(g, x, y, z, a)},
     stopComputerNoise: function (g,x,y) {
       foley.stopComputerNoise()
+    },
+    startComputerNoise: function (g,x,y) {
+      foley.startComputerNoise()
     }
   }
 }

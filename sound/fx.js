@@ -44,7 +44,7 @@ panner.coneOuterGain = 1;
           samplers[sample].connect(foleyVol)
         }
 
-        if ((sample == 'noise' || sample == 'horribletone') && features.playNoise) samplers[sample].start(ac.currentTime)
+
     })
   })
 
@@ -62,6 +62,12 @@ panner.coneOuterGain = 1;
     },
     updateVolume: function (params) {
       //..
+    },
+    startComputerNoise: function () {
+      if (features.playNoise) {
+        samplers['horribletone'].start(ac.currentTime)
+        samplers['noise'].start(ac.currentTime)
+      }
     },
     stopAlarmNoise: function () {
       samplers['WAHHHHH'].stop(ac.currentTime)

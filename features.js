@@ -1,8 +1,9 @@
 module.exports = {
-  playNoise: false,
-  playMusic: false,
-  startState: 'Silo',
-  currentDay: 2,
+  playNoise: true,
+  playMusic: true,
+  startState: 'TitleScreen',
+  currentDay: 1,
   fanOff: true,
-  alignment: {fight: 0, greed: 0, nature: 10, pos: 0, neg: -1}
+  deathPitActive: true,
+  alignment: {fight: 0, greed: 0, nature: 0, pos: 0, neg: 0}
 }
