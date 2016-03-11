@@ -1,4 +1,20 @@
 
+
+
+
+
+WIZARD TUTORIAL:
+point to bed, poems, vend, machine, explain each, how to itneract.
+
+
+
+
+
+
+
+
+
+
 wtf is going on with the bloodnote?
 some weirdness with the inventory menu not clearing? or reloading? loading twice? maybe indialoging? OH 
 need a simple "close inventory button"
@@ -7,7 +23,7 @@ need a simple "close inventory button"
 SHRINK THE GOURD AND WEEDBAG SPRITES! SO TEY FIT IN THE FIALOG THING!
 
 ENSURE THAT THE SPEED/SLOW POTION TRANSFORMS LAST THROUGH THE ENTIRE GAME!
-
+as u ascend the silo, a robot voice reads yr poetry
 MODERN_DOOR_OPENING SPIRTE: somewhere? hrmmm
 box: um, hrm.
 ECTO SPRITE: when where why would a ghost appear? maybe death pit? hrmmm. OH neutral? idk
