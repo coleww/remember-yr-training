@@ -9,7 +9,9 @@
 
 // draw the city skyline, etc.
 // if they flick the switch, everything explodes, gj end of world
-
+function pick (arr) {
+  return arr[~~(Math.random() * arr.length)]
+}
 var db = require('../db')
 var get = db.get
 var set = db.set
@@ -41,11 +43,46 @@ Outside.prototype = {
     sky.scale.setTo(2.5, 7)
  var bldng = this.game.add.sprite(0, 0, 'bldng');
     bldng.scale.setTo(3.5, 7)
+
+
+
+
+
+
+
+
+
+
     //  We're going to be using physics, so enable the Arcade Physics system
         var clouds = this.game.add.sprite(0, 600, 'nattyclouds');
     clouds.scale.setTo(1.3, 2)
     // clouds.alpha = 0.9
     //  A simple background for our this.game
+
+
+
+
+    var nuke = this.game.add.sprite(-90, -200, 'nuke');
+    nuke.scale.setTo(0.665, 1)
+    nuke.alpha = 0
+    var that = this
+    var done = false
+    setTimeout(function () {
+      var intybro = that.explodinate()
+      setInterval(function () {
+       if (nuke.alpha < 1) {
+          nuke.alpha += 0.04
+          that.world.bringToTop(nuke)
+        } else if (!done) {
+          done = true
+          setTimeout(function () {
+            clearInterval(intybro)
+            that.game.state.start('ending')
+          }, 5000)
+        }
+      }, 500)
+    }, 2000)
+
 
 
     this.player = this.game.add.sprite(20, 700, 'dude');
@@ -96,7 +133,7 @@ Outside.prototype = {
 
 
 
-      if (that.player.y <= 430) {
+      if (that.player.y <= 600) {
         clearInterval(inty)
         that.inDialog = false
           //  We need to enable physics on the that.player
@@ -136,7 +173,51 @@ Outside.prototype = {
 
     },
 
+explodinate: function () {
+    var explodinations = {
+        evil: ['fireball', 'fireblast', 'flame'],
+        trippy: ['rainbow1', 'rainbow2', 'unicorn']
+    }
 
+    var sprites = explodinations['evil']
+    var count = 0
+    var that = this
+    // if (type == 'trippy'){
+        // this.game.plugins.screenShake.setup({ //if need to replace default plugin settings
+        // shakeX: true,
+        // shakeY: false
+        // });
+        // this.game.plugins.screenShake.shake(1000)
+    // }
+    var interv = setInterval(function () {
+        count++
+        var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 3)
+        exploding.angle = (Math.random() * 360) - 180
+        if (count > 50) {
+var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 4)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+        if (count > 100) {
+var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 5)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+        if (count > 150){
+var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 6)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+        if (count > 250) {
+            var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
+        exploding.scale.setTo(Math.random() * 7)
+        exploding.angle = (Math.random() * 360) - 180
+        }
+
+    }, 50)
+return interv
+  },
     update: function () {
               this.game.physics.arcade.collide(this.player, this.platforms);
                       this.game.physics.arcade.collide(this.nana, this.platforms);

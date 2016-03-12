@@ -224,6 +224,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
     game.load.image("fireball", "assets/sprites/plosions/fireball.png")
 
+    game.load.image("nuke", "assets/sprites/Castle_Romeo.jpg")
     game.load.image("fireblast", "assets/sprites/plosions/fireblast.png")
 
     game.load.image("flame", "assets/sprites/plosions/flame.png")

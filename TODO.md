@@ -3,7 +3,7 @@ the 360 face demo
 yeah
 
 
-
+USE plosions/Fire.png for something IT IS LIT!
 
 WHEN U GET TO YR FINAL STAGE, TELL SOME STORY OR SMTH?
 
