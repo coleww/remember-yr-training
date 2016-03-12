@@ -6,18 +6,50 @@ var inc = db.inc
 var push = db.push
 var remove = db.remove
 var drawMenu = require('../drawMenu')
+var rc = require('randomcolor')
 var friends = [
-{x: 600, y: 300, sprite: "spinning_banana", scale: [1,1], animated: true},
-{x: 150, y: 300, sprite: "horse", scale: [1,2], animated: true},
-{x: 325, y: 300, sprite: "cow", scale: [3,3]},
-{x: 425, y: 300, sprite: "drag", scale: [1,1]},
-{x: 500, y: 500, sprite: "kiwi", scale: [1,1], animated: true},
-{x: 300, y: 500, sprite: "owl", scale: [5,5], animated: true},
-{x: 500, y: 400, sprite: "penguin", scale: [1,1]},
-{x: 300, y: 400, sprite: "catone", scale: [1,1], animated: true},
-{x: 500, y: 600, sprite: "rabbit", scale: [6,5], animated: true},
-{x: 300, y: 600, sprite: "spritesheet", scale: [2,1], animated: true}
+{sprite: "spinning_banana", scale: [1,1], animated: true, name: 'nana'},
+{sprite: "horse", scale: [1,1.5], animated: true, name: 'horse_ebooks'},
+{sprite: "cow", scale: [3,3], name: 'cow'},
+{sprite: "drag", scale: [1,1], name: 'dragon bb'},
+{sprite: "kiwi", scale: [1,1], animated: true, name: 'kiwi fren'},
+{sprite: "owl", scale: [5,5], animated: true, name: 'The Lavender Owl'},
+{sprite: "penguin", scale: [1,1], name: 'pingu'},
+{sprite: "catone", scale: [1,1], animated: true, name: '=^.^='},
+{sprite: "rabbit", scale: [6,5], animated: true, name: 'brrrrrrrrrrr'},
+{sprite: "spritesheet", scale: [1,1], animated: true, name: 'interdimensional pupper'}
 ]
+var poss = [
+{x: 600, y: 300},
+{x: 150, y: 300},
+{x: 325, y: 300},
+{x: 425, y: 300},
+{x: 500, y: 500},
+{x: 300, y: 500},
+{x: 500, y: 400},
+{x: 300, y: 400},
+{x: 500, y: 600},
+{x: 300, y: 600}
+
+]
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 var Outside = function(game){
   this.game = game
 }
@@ -209,14 +241,14 @@ sike3.body.checkCollision.down = false;
     var e = this.game.add.sprite(270, 566, 'grass')
     e.scale.setTo(7, 2)
 
-    var f = this.game.add.sprite(270, 166, 'flower')
-    f.scale.setTo(1)
-
-    var f2 = this.game.add.sprite(170, 166, 'flower')
-    f2.scale.setTo(1)
     var g = this.game.add.sprite(270, 266, 'nothertree')
     g.scale.setTo(1)
 
+    var f = this.game.add.sprite(250, 294, 'flower')
+    f.scale.setTo(2)
+
+    var f2 = this.game.add.sprite(370, 265, 'flower')
+    f2.scale.setTo(3)
 
 
     // The this.player and its settings
@@ -282,21 +314,51 @@ sike3.body.checkCollision.down = false;
         // Removes the coin from the screen
       // PLAY A SOUND TOO!
       if (!coin.collected) {
-    this.game.musician.playFX(['punch', 'punchtoo'][~~(Math.random() * 2)])
+    this.game.musician.playFX('giggle')
         coin.collected = true
-          if (this.cuteText) this.cuteText.destroy()
+        setTimeout(function () {
+          coin.collected = false
+        }, 2000)
             // TODO MAKE THESE CUTER!
-            this.cuteText = this.game.add.text(50, 56, [
-            'ARE YOU HEARTLESS? HAVE U NO COMPASSION?!?!',
-            'WHEN WILL YR TYRANNY OF BLOOD END?',
-            'WHY GLOB? WHY?'][~~(Math.random() * 3)],
-            { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '500px' });
+        this.game.add.text(Math.random() * this.game.world.width / 1.3, Math.random() * this.game.world.height / 1.3, [
+        'HI FRIEND!',
+        'YR AWESOME!'][~~(Math.random() * 3)],
+        { fontSize: '32px', fill: rc(), font: 'Impact', wordWrap: true, wordWrapWidth: '500px' });
 
 
 
           //  Add and update the score
           this.score += 1;
           this.scoreText.text = 'friends: ' + this.score;
+          if (this.score % 10 == 0) this.makeCoins()
+
+
+          if (!this.ended && this.score % 200 == 0) {
+
+              //
+              this.ended = true
+              var bg = this.game.add.sprite(0, 0, 'black');
+              bg.scale.setTo(5, 7)
+              // bg.anchor.setTo(0.5, 0.5);
+              bg.alpha = 0;
+              var that = this
+              var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
+              t.onLoop.add(function () {
+                  console.log('looped!')
+                  // t.onLoopCallback(function(){console.log('Y?')})
+                  that.game.tweens.remove(t)
+
+                bg.destroy()
+                that.game.state.start('ending')
+
+                // OHHH MAYBE DROP THE PLAYER IN HERE?
+
+              }, this)
+              // OH! THIS IS HOW U GET TO THE CREDITS!
+              // u fell off the dang thing
+              // TODO: what happen if u fall off the thing?
+            }
+          }
 
       }
 
@@ -309,7 +371,7 @@ sike3.body.checkCollision.down = false;
 
 
 
-
+      friends = shuffle(friends)
 
 
 
@@ -317,7 +379,7 @@ sike3.body.checkCollision.down = false;
       for (var i = 0; i < 10; i++) {
           //  Create a coin inside of the 'coins' group
           // MAKE ROWS OF COINS SUCH THAT THEY ARE ON EACH PLATFORMS!
-          var coin = this.coins.create(friends[i].x, friends[i].y, friends[i].sprite);
+          var coin = this.coins.create(poss[i].x + 50 * (~~(Math.random() * 2) - 1), poss[i].y + 50 * (~~(Math.random() * 2) - 1), friends[i].sprite);
           if (friends[i].animated) {
             coin.animations.add('DANCE')
             coin.animations.play('DANCE', 1 + ~~(Math.random() * 2), true)
@@ -327,7 +389,7 @@ sike3.body.checkCollision.down = false;
           coin.anchor.setTo(.5,.5)
           coin.scale.setTo(friends[i].scale[0], friends[i].scale[1])
           var tween = this.game.add.tween(coin).to({x: coin.x + 50 * (~~(Math.random() * 2) - 1)}, 750 + ~~(Math.random() * 750), "Linear", true, 0, -1)
-    tween.yoyo(true)
+          tween.yoyo(true)
 
 
 
