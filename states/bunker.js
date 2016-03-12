@@ -233,6 +233,7 @@ bunker.prototype = {
     tippyTop.scale.setTo(0.05, 0.1)
     tippyTop.body.setSize(1000, 1, 0, 0)
     tippyTop.body.immovable = true
+    tippyTop.body.checkCollision.down = false;
 
     var chair = this.game.add.sprite(this.game.world.width / 2 + 30 , this.game.world.height - 305, 'chair');
     chair.scale.setTo(5)
@@ -244,6 +245,7 @@ bunker.prototype = {
     var table = this.platforms.create(this.game.world.width / 2 - 90, this.game.world.height - 310, 'table');
     table.scale.setTo(2, 1.5)
     table.body.immovable = true
+    table.body.checkCollision.down = false;
     table.body.setSize(60, 1, 0, 15)
     this.world.bringToTop(table)
 
@@ -282,7 +284,7 @@ bunker.prototype = {
     books.scale.setTo(2)
     books.body.immovable = true
     books.body.setSize(30, 1, 0, 20)
-
+    books.body.checkCollision.down = false;
 
 
 
