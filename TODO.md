@@ -1,3 +1,16 @@
+UNRELATED: setup cole.money, website, etc. whatever idk
+the 360 face demo
+yeah
+
+
+
+
+
+
+
+
+
+
 ENABLE jumping up through ~some~ things? HOW TO DO THAT?!?!?!?!?
 
 

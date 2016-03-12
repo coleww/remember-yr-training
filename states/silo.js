@@ -20,9 +20,8 @@ var gimmeSomeTextNowPlz = function () {
 function getAlignment (al) {
   var arr = [al.greed, al.fight, al.nature]
   var i = arr.indexOf(Math.max.apply(Math, arr));
-  var conflicted = arr.filter(function (el, i, a) {
-    return a.indexOf(el) == i
-  }).length !== 3
+  var firstHighest = arr[i]
+  var conflicted = arr.lastIndexOf(firstHighest) !== i
   return conflicted ? 'conflicted' : ['greed', 'fight', 'nature'][i]
 }
 
