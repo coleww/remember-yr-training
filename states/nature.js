@@ -357,7 +357,7 @@ sike3.body.checkCollision.down = false;
               // OH! THIS IS HOW U GET TO THE CREDITS!
               // u fell off the dang thing
               // TODO: what happen if u fall off the thing?
-            }
+
           }
 
       }
