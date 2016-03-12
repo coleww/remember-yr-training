@@ -6,7 +6,18 @@ var inc = db.inc
 var push = db.push
 var remove = db.remove
 var drawMenu = require('../drawMenu')
-
+var friends = [
+{x: 600, y: 300, sprite: "spinning_banana", scale: [1,1], animated: true},
+{x: 150, y: 300, sprite: "horse", scale: [1,2], animated: true},
+{x: 325, y: 300, sprite: "cow", scale: [3,3]},
+{x: 425, y: 300, sprite: "drag", scale: [1,1]},
+{x: 500, y: 500, sprite: "kiwi", scale: [1,1], animated: true},
+{x: 300, y: 500, sprite: "owl", scale: [5,5], animated: true},
+{x: 500, y: 400, sprite: "penguin", scale: [1,1]},
+{x: 300, y: 400, sprite: "catone", scale: [1,1], animated: true},
+{x: 500, y: 600, sprite: "rabbit", scale: [6,5], animated: true},
+{x: 300, y: 600, sprite: "spritesheet", scale: [2,1], animated: true}
+]
 var Outside = function(game){
   this.game = game
 }
@@ -61,7 +72,7 @@ Outside.prototype = {
         var c2 = this.game.add.sprite(440, 365, 'barry')
     c2.scale.setTo(5)
     c2.angle = 90//?????
-    this.player = this.game.add.sprite(50, 900, 'dude');
+    this.player = this.game.add.sprite(10, 900, 'dude');
 
 
 
@@ -93,31 +104,6 @@ Outside.prototype = {
 
 
 
-// ""
-// ""
-// ""
-// ""
-// ""
-// ""
-// ""
-// ""
-// ""
-// "bigtree"
-// ""
-// "spinning_banana"
-// "horse"
-// "cow"
-// "drag"
-// "kiwi"
-// "owl"
-// "penguin"
-// "catone"
-// "rabbit"
-// "spritesheet"
-// "cattwo"
-// "fanworking"
-
-
 
 
 
@@ -136,7 +122,7 @@ Outside.prototype = {
     this.game.world.bringToTop(ground)
 
 
-    var tube = this.platforms.create(50, this.game.world.height - 280, 'pipe');
+    var tube = this.platforms.create(10, this.game.world.height - 280, 'pipe');
     tube.body.immovable = true
 
 
@@ -146,6 +132,7 @@ Outside.prototype = {
     sike1.scale.setTo(1, 0.75);
 sike1.body.setSize(365  , 5, 0, 150)
 sike1.body.immovable = true
+sike1.body.checkCollision.down = false;
 
 
     var c1 = this.game.add.sprite(255, 640, 'barry')
@@ -172,7 +159,7 @@ sike2.body.immovable = true
     sike2.scale.setTo(0.5, 0.75);
 sike2.body.setSize(495, 5, 25, 75)
 
-
+sike2.body.checkCollision.down = false;
 
 
 
@@ -191,7 +178,7 @@ sike3.body.immovable = true
     sike3.scale.setTo(1, 0.25);
 sike3.body.setSize(275, 5, 0, 37)
 
-
+sike3.body.checkCollision.down = false;
 
 
 
@@ -320,18 +307,33 @@ sike3.body.setSize(275, 5, 0, 37)
       //  We will enable physics for any coin that is created in this group
       this.coins.enableBody = true;
 
-      //  Here we'll create 12 of them evenly spaced apart
-      // for (var i = 0; i < 12; i++)
-      // {
-      //     //  Create a coin inside of the 'coins' group
-      //     var coin = this.coins.create(i * 70, 0, 'friend');
 
-      //     //  Let gravity do its thing
-      //     coin.body.gravity.y = 300;
 
-      //     //  This just gives each coin a slightly random bounce value
-      //     coin.body.bounce.y = Math.random() * 0.2;
-      // }
+
+
+
+
+
+      for (var i = 0; i < 10; i++) {
+          //  Create a coin inside of the 'coins' group
+          // MAKE ROWS OF COINS SUCH THAT THEY ARE ON EACH PLATFORMS!
+          var coin = this.coins.create(friends[i].x, friends[i].y, friends[i].sprite);
+          if (friends[i].animated) {
+            coin.animations.add('DANCE')
+            coin.animations.play('DANCE', 1 + ~~(Math.random() * 2), true)
+          }
+          //  Let gravity do its thing
+          coin.body.gravity.y = 300;
+          coin.anchor.setTo(.5,.5)
+          coin.scale.setTo(friends[i].scale[0], friends[i].scale[1])
+          var tween = this.game.add.tween(coin).to({x: coin.x + 50 * (~~(Math.random() * 2) - 1)}, 750 + ~~(Math.random() * 750), "Linear", true, 0, -1)
+    tween.yoyo(true)
+
+
+
+          //  This just gives each coin a slightly random bounce value
+          coin.body.bounce.y = Math.random() * 0.2;
+      }
     },
 
     openDialog: function (thing) {
@@ -361,7 +363,7 @@ sike3.body.setSize(275, 5, 0, 37)
 
 
       this.coins.forEach(function (c) {
-        c.x += (Math.random() * 4) - 2
+        if (Math.random() < 0.01) c.scale.x *= -1
       })
       if (!this.inDialog){
 

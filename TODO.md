@@ -11,8 +11,7 @@ yeah
 
 
 
-ENABLE jumping up through ~some~ things? HOW TO DO THAT?!?!?!?!?
-
+WHY DOES THE ALARM KEEP GOING OFF?
 
 
 
