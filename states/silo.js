@@ -117,7 +117,7 @@ Silo.prototype = {
           console.log('fadelooped!')
           // t.onLoopCallback(function(){console.log('Y?')})
 
-          that.game.state.start(align)
+          that.game.state.start(that.launchedTheMissiles ? 'explosion' : align)
       }, this)
       t.start();
     }

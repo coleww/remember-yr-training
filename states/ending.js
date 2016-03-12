@@ -11,9 +11,6 @@ ending.prototype = {
 
 
 
-
-
-
     console.log("THE END")
 
 

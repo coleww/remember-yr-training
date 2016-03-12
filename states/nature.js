@@ -63,6 +63,26 @@ Outside.prototype = {
     c2.angle = 90//?????
     this.player = this.game.add.sprite(50, 900, 'dude');
 
+
+
+
+
+
+
+    var a = this.game.add.sprite(280, 300, 'WeirdTree')
+    a.scale.setTo(0.125)
+
+
+
+    var b = this.game.add.sprite(330, 395, 'WaterFountain')
+    b.scale.setTo(0.75, 1.1)
+
+
+
+
+
+
+
           this.player.scale.setTo(1.5,1)
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
     this.platforms = this.game.add.group();
@@ -72,42 +92,18 @@ Outside.prototype = {
 
 
 
-    // var p = this.game.add.sprite(170, 566, 'pumpkin')
-    // p.scale.setTo(0.5)
 
-
-    // var p = this.game.add.sprite(170, 566, 'pumpkin')
-    // p.scale.setTo(0.5)
-
-
-
-    // var p = this.game.add.sprite(170, 566, 'pumpkin')
-    // p.scale.setTo(0.5)
-
-
-
-    // var p = this.game.add.sprite(170, 566, 'pumpkin')
-    // p.scale.setTo(0.5)
-
-
-
-// "nattysky"
-// "nattygrass"
-// "nattymtn"
-// "nattyclouds"
-// "nattybgrounds"
-// "WeirdTree"
-// "WaterFountain"
-// "treeee"
-// "tinytree"
-// "spooky_trees"
-// "nothertree"
-// "lilgrass"
-// "grass"
-// "flower"
-// "dirt"
+// ""
+// ""
+// ""
+// ""
+// ""
+// ""
+// ""
+// ""
+// ""
 // "bigtree"
-// "anotherbigtreee"
+// ""
 // "spinning_banana"
 // "horse"
 // "cow"
@@ -152,7 +148,7 @@ sike1.body.setSize(365  , 5, 0, 150)
 sike1.body.immovable = true
 
 
-    var c1 = this.game.add.sprite(270, 640, 'barry')
+    var c1 = this.game.add.sprite(255, 640, 'barry')
     c1.scale.setTo(5)
     c1.angle = 90//?????
         var c2 = this.game.add.sprite(510, 640, 'barry')
@@ -204,6 +200,38 @@ sike3.body.setSize(275, 5, 0, 37)
 
 
 
+
+
+
+
+
+
+    var c = this.game.add.sprite(170, 640, 'treeee')
+    c.scale.setTo(1, 1.15)
+
+
+
+
+
+    var d = this.game.add.sprite(170, 466, 'tinytree')
+    d.scale.setTo(4)
+
+
+
+
+    var e = this.game.add.sprite(270, 566, 'grass')
+    e.scale.setTo(7, 2)
+
+    var f = this.game.add.sprite(270, 166, 'flower')
+    f.scale.setTo(1)
+
+    var f2 = this.game.add.sprite(170, 166, 'flower')
+    f2.scale.setTo(1)
+    var g = this.game.add.sprite(270, 266, 'nothertree')
+    g.scale.setTo(1)
+
+
+
     // The this.player and its settings
 
 
@@ -223,7 +251,7 @@ sike3.body.setSize(275, 5, 0, 37)
 
 
 
-      if (that.player.y <= 430) {
+      if (that.player.y <= 530) {
         clearInterval(inty)
         that.inDialog = false
           //  We need to enable physics on the that.player
@@ -293,17 +321,17 @@ sike3.body.setSize(275, 5, 0, 37)
       this.coins.enableBody = true;
 
       //  Here we'll create 12 of them evenly spaced apart
-      for (var i = 0; i < 12; i++)
-      {
-          //  Create a coin inside of the 'coins' group
-          var coin = this.coins.create(i * 70, 0, 'friend');
+      // for (var i = 0; i < 12; i++)
+      // {
+      //     //  Create a coin inside of the 'coins' group
+      //     var coin = this.coins.create(i * 70, 0, 'friend');
 
-          //  Let gravity do its thing
-          coin.body.gravity.y = 300;
+      //     //  Let gravity do its thing
+      //     coin.body.gravity.y = 300;
 
-          //  This just gives each coin a slightly random bounce value
-          coin.body.bounce.y = Math.random() * 0.2;
-      }
+      //     //  This just gives each coin a slightly random bounce value
+      //     coin.body.bounce.y = Math.random() * 0.2;
+      // }
     },
 
     openDialog: function (thing) {
