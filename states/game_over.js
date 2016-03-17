@@ -1,4 +1,6 @@
-var get = require('../db').get
+var db = require('../db')
+var get = db.get
+var set = db.set
 var TIME_LEFT = 5
 var endings = {
   gameOver1: {
@@ -12,7 +14,7 @@ var endings = {
     sprite: 'ecto',
     scale: [5, 7],
     description: 'you have taken fatal damage, which is an incredible feat in a game that does not even really have enemies or obstacles of any sort. Congratulations!' ,
-    name: 'YOU WAKE UP, FEELING FLOATY AND INCORPOREAL, AND GAZE DOWN AT YR LIFELESS BODY',
+    name: 'YOU WAKE UP, FLOATING, AND GAZE DOWN AT YR LIFELESS BODY',
     song: 'dead'
   },
   gameOver451: {
@@ -108,7 +110,18 @@ gameOverScreen.prototype = {
         whatHappened.destroy()
         confirm.destroy()
         that.game.state.start(ending.next || "Reset", false, true)// this will save the data to a thing
-
+        set('siloDeaths', 0)
+        set('fanStillBroken', features.fanOff)
+        set('wall1', true)
+        set('wall2', true)
+        set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
+        set('seeds', [])
+        set('currentDay', features.currentDay)
+        set('wallet', 25)
+        set('health', 100)
+        set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
+        set('gameOver', false)
+        set('poemCount', 0)
     }, this);
 
   }

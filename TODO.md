@@ -13,7 +13,6 @@ UGH REVISE _ALLLLLL_ THE TEXT
 
 
 
-WHY DOES THE ALARM KEEP GOING OFF?
 
 
 
@@ -24,14 +23,8 @@ point to bed, poems, vend, machine, explain each, how to itneract.
 
 
 
-MAYBE: if u don't push the button, u get 1 of the four finale platforms
-if u do push the button: u see the city exploding
-both lead to a credits?
 
 
-
-
-wtf is going on with the bloodnote?
 some weirdness with the inventory menu not clearing? or reloading? loading twice? maybe indialoging? OH 
 need a simple "close inventory button"
 \

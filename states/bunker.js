@@ -377,12 +377,25 @@ bunker.prototype = {
 
     var that = this
     var menmen = this.drawMenuBox('menu')
-    var title = this.game.add.text(50, 220, 'YOUR BACKPACK', { fontSize: '60px', fill: '#FFF' });
+    var title = this.game.add.text(50, 220, 'YR BACKPACK', { fontSize: '50px', fill: '#FFF' });
     var that = this
     var items = []
     var inv = get('inventory')
     var bonus = 0
-    var x = 0
+        var x = 0
+    var closey = that.game.add.text(500, 220, 'X', { fontSize: '40px', fill: '#3F3', wordWrap: true, wordWrapWidth: 120  });
+    closey.inputEnabled = true
+    items.push(closey)
+
+
+    closey.events.onInputDown.add(function () {
+      items.forEach(function (it){ it.destroy()})
+      menmen.destroy()
+      title.destroy()
+      that.game.musician.playFX('twinkleshort')
+      that.inDialog = false
+    }, that)
+
     inv.forEach(function (opt, i) {
         if (i == 4) {
             bonus += 150
@@ -444,32 +457,41 @@ bunker.prototype = {
     var that = this
 
     var pawsButton = this.game.add.sprite(500, 20, 'paw');
-  pawsButton.inputEnabled = true
-  pawsButton.events.onInputDown.add(function () {
+    pawsButton.inputEnabled = true
+    pawsButton.events.onInputDown.add(function () {
     // that.openpawsButton()
-    if (!that.game.paused) that.pauseGame()
-  })
-  pawsButton.scale.setTo(1.5)
+
+        that.inDialog = true
+        if (!that.game.paused) {
+            that.pauseGame()
+            that.inDialog = !that.inDialog
+        }
+    })
+    pawsButton.scale.setTo(1.5)
 
 
-  var wallet = this.game.add.sprite(150, 20, 'wallet');
-  wallet.inputEnabled = true
-  wallet.events.onInputDown.add(function () {
-    that.openWallet()
-  })
-  wallet.scale.setTo(1.5)
-  var hp = this.game.add.sprite(16, 25, 'hp');
-  hp.inputEnabled = true
-  hp.events.onInputDown.add(function () {
-    that.openHealth()
-  })
-  var bag = this.game.add.sprite(16, 60, 'bag');
-  bag.inputEnabled = true
-  bag.events.onInputDown.add(function () {
-    that.openInventory()
-  })
+    var wallet = this.game.add.sprite(150, 20, 'wallet');
+    wallet.inputEnabled = true
+    wallet.events.onInputDown.add(function () {
+        that.inDialog = true
+        that.openWallet()
+    })
+    wallet.scale.setTo(1.5)
+    var hp = this.game.add.sprite(16, 25, 'hp');
+    hp.inputEnabled = true
+    hp.events.onInputDown.add(function () {
+        that.inDialog = true
+        that.openHealth()
+    })
+    var bag = this.game.add.sprite(16, 60, 'bag');
+    bag.inputEnabled = true
+    bag.events.onInputDown.add(function () {
+        if (!that.inDialog) that.openInventory()
 
-  bag.scale.setTo(0.75)
+        that.inDialog = true
+    })
+
+    bag.scale.setTo(0.75)
     this.hpDisplay = this.game.add.text(50, 25, get('health') + '/100', { fontSize: '22px', fill: '#FFF' });
     this.inventoryDisplay = this.game.add.text(65, 65, '' + get('inventory').map(function (item) {
         return item.name
@@ -915,7 +937,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         confirm.events.onInputDown.add(function  (thin) {
             // RUN THE STUFF!
             console.log(thing)
-            this.inDialog = false
+            that.inDialog = false
             if (thing.item) {
                 console.log('PUSHING')
                 push('inventory', thing.item)
@@ -926,7 +948,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             confirm.destroy()
         }, this);
     } else {
-
+        that.inDialog = false
             // menmen.destroy()????
     }
 
