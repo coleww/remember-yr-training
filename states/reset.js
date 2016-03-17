@@ -35,7 +35,7 @@ Reset.prototype = {
     }
 
     set('play' + playCount, {name: title, poems: poems, alignment: get('alignment')})
-    set('currentDay', 0)
+    set('currentDay', 1)
     this.game.state.start("TitleScreen")
   }
 }

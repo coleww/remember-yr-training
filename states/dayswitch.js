@@ -81,9 +81,9 @@ DaySwitch.prototype = {
 
 
 
-    if (get('isTrappedInTheDeathPitForever') ){
-        that.game.state.start("DeathPit")
-    } else if (day == 1) {
+        if (get('isTrappedInTheDeathPitForever') ){
+            that.game.state.start("DeathPit")
+        } else if (day == 1) {
             inc('currentDay')
            that.game.state.start("DaySwitch")
         } else {

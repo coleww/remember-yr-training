@@ -1,6 +1,7 @@
 var db = require('../db')
 var get = db.get
 var set = db.set
+var features = require('../features')
 var TIME_LEFT = 5
 var endings = {
   gameOver1: {
