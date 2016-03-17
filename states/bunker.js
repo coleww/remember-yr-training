@@ -508,6 +508,7 @@ bunker.prototype = {
   escapeTheBunker: function (launced) {
     // TODO TURN THIS BACK ON!
     // this.game.musician.stopAlarm()
+    this.isEscaping = true
     if (launced) {
         // this.game.musician.playFX('modem')
 
@@ -1432,7 +1433,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         this.inDialog = true
         this.openDialog(this.game.computerStuff[0])
         // on top of the radio. mention the view?
-      } else if (y > 490 && y < 500 && x > 320 && x < 360) {
+      } else if (this.isEscaping && y > 490 && y < 500 && x > 320 && x < 360) {
         console.log('doing this?')
 
         this.game.world.bringToTop(this.chute)
