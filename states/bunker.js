@@ -1200,7 +1200,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
     this.hasWrittenAPoemToday = false
     var day = get('currentDay')
-
+    console.log(day)
 
       if (day == 2) {
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
@@ -1249,6 +1249,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
 
     }
+    console.log(this.itIsTheLastDay)
     // this.game.world.bringToTop(this.platforms)
 
     var bg = this.game.add.sprite(0, 0, 'black');
@@ -1495,7 +1496,7 @@ if (!this.inDialog){
 
 
 
-    if (this.itIsTheLastDay && this.hasNotGoneOffYet && Math.random() < 0.003) {
+    if (!this.inDialog && this.itIsTheLastDay && this.hasNotGoneOffYet && Math.random() < 0.003) {
         this.hasNotGoneOffYet = false
         this.setOffTheBoomBoom()
         // make everything explode?

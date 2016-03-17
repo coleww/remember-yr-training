@@ -17,7 +17,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
       }
 
       var instruct = game.add.text(50, 220, obj.name, { fontSize: '30px', fill: '#111' , wordWrap: true, wordWrapWidth: 550 });
-      var descrip = game.add.text(50, 420, obj.description, { fontSize: '25px', fill: '#111', wordWrap: true, wordWrapWidth: 450  });
+      var descrip = game.add.text(50, 420, obj.description, { fontSize: '25px', fill: '#111', wordWrap: true, wordWrapWidth: 400  });
   //REFACTOR THISSSSSSSSSSS
   var sevenup
   if (obj.sprite) {
