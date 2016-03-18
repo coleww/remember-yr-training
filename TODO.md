@@ -16,3 +16,4 @@ CREDITS: IT IS THE SILO IN REVERSE, U R JUST FALLING. is just the player falling
 - VOLUME CONTROLS? SETTINGS?
 http://phaser.io/tutorials/creating-custom-phaser-builds custom phaser build. exclude: bitmaptext retrofont net sound debug ninja p2 tilemaps
 compress images, convert everything to png, scale down huge stuff
+WHAT THE HELL HAPPENED ON A NEUTRAL SILO?

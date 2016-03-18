@@ -63,14 +63,14 @@ Outside.prototype = {
     tube.body.immovable = true
 
 
-    var sike1 = this.platforms.create(453, this.game.world.height - 200, 'crumbledplatform');
+    var sike1 = this.platforms.create(453, this.game.world.height - 500, 'crumbledplatform');
 
     //  Scale it to fit the width of the this.game (the original sprite is 400x32 in size)
     sike1.scale.setTo(2, 0.75);
 
 sike1.body.immovable = true
 // here
-var tree = this.game.add.sprite(455, this.game.world.height - 245, 'spooky_trees');
+var tree = this.game.add.sprite(455, this.game.world.height - 545, 'spooky_trees');
 tree.scale.setTo(1.35, 1)
 
 
@@ -82,7 +82,7 @@ this.nana.enableBody = true
     this.nana.animations.add('spinny')
           this.nana.animations.play('spinny', 3, true)
           //  Let gravity do its thing
-          this.nana.body.gravity.y = 300;
+          this.nana.body.gravity.y = 30;
 
           //  This just gives each this.nana a slightly random bounce value
           this.nana.body.bounce.y = Math.random() * 0.5 + 0.5;
@@ -238,7 +238,7 @@ this.nana.enableBody = true
                         //  Allow the this.player to jump if they are touching the ground.
                         if (this.cursors.up.isDown && this.player.body.touching.down) {
                             this.game.musician.playFX('slowpew')
-                          this.player.body.velocity.y = -140;
+                          this.player.body.velocity.y = -50;
 
 
                         }

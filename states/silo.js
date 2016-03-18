@@ -9,12 +9,8 @@ var Silo = function(game){
 var randoColor = require('randomcolor')
 
 var features = require('../features')
-var poe = require('../poetic_muser')
 var al = features.alignment || get('alignment')
-var THE_POET = poe(al)
-var gimmeSomeTextNowPlz = function () {
-  return THE_POET()
-}
+
 
 // {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0
 function getAlignment (al) {
@@ -32,10 +28,10 @@ var align = getAlignment(al)
 var dir = getDir(al)
 
 var stuffs = {
-  greed: [1.5, 2, 8, 9000, 6],
-  fight: [1.25, 1.75,6, 7000, 4],
-  nature: [1, 1.5, 4, 6000, 2],
-  conflicted: [1, 2, 5, 7500, 3]
+  greed: [1.5, 1.75, 5, 9000, 6],
+  fight: [1.25, 1.5,4, 7000, 4],
+  nature: [1, 1.25, 2, 6000, 2],
+  conflicted: [1, 1.75, 3, 7500, 3]
 }
 var stuff = stuffs[align]
 console.log(stuff)
@@ -133,7 +129,6 @@ Silo.prototype = {
     this.platforms.forEachAlive( function( elem ) {
       this.platformYMin = Math.min( this.platformYMin, elem.y );
       if( elem.y > this.camera.y + this.game.height && !this.atTheTop) {
-        elem.text.destroy()
         elem.kill();
         this.platformsCreateOne( this.rnd.integerInRange( 0, this.world.width - 150 ), this.hero.y - 1000, this.rnd.realInRange(MIN_WIDTH, MAX_WIDTH));
       }
@@ -242,8 +237,6 @@ Silo.prototype = {
       platform.scale.setTo(width * 10, HEIGHTHHHHHH * ~~(Math.random() * 3) + 6)
       var style = { font: "20px " + "Comic Sans MS", fill: "#111", wordWrap: true, wordWrapWidth: platform.width / 2, align: "justified"};
 
-      platform.text = this.game.add.text(x + 95, y + 65, gimmeSomeTextNowPlz(), style);
-      platform.text.anchor.set(0.5);
     }
     return platform;
   },
