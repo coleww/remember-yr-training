@@ -338,6 +338,7 @@ bunker.prototype = {
     this.redrawMenu()
     this.cursors = this.game.input.keyboard.createCursorKeys();
     this.startDay()
+    this.runTheWizard()
   },
 
   turnOnFan: function () {
@@ -583,9 +584,9 @@ bunker.prototype = {
     } else {
         var that = this
         drawMenu(this.game, 'parch',
-                 {name: 'CRYOBED',
-                    description: 'you are not very tired right now',
-                    yes: 'ok'
+                 {name: 'CRY-O-BED',
+                    description: 'you are not very tired right now bc u r a robot and robots do not get sleepy',
+                    yes: 'oh, um...ok'
                 },
                      function (menu) {
                         menu.destroy()
@@ -907,6 +908,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   vend: function () {
     var menmen = this.drawMenuBox('menu') // or 'parch'
 
+    if (this.arrowvend) this.arrowvend.destroy()
     var that = this
     var cash
     if ((cash = get('wallet')) >= 5) {
@@ -1017,6 +1019,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
   },
   writeAPoem: function () {
+    if (this.arrowpo) this.arrowpo.destroy()
     this.currentOptions = []
     // var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
     // poetryBG.scale.setTo(30, 25)
@@ -1110,10 +1113,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   },
   startDay: function () {
     if (!get('fanStillBroken')) this.turnOnFan()
-    if (this.game.bloodSculptureCoords) {
-        var bloodsculpt = that.game.add.sprite(this.game.bloodSculptureCoords[0], this.game.bloodSculptureCoords[1], 'bloodsculpt');
-       bloodsculpt.scale.setTo(0.5)
-    }
+
     if (this.isFaded) {
         this.isFaded = false
     }
@@ -1121,20 +1121,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
 
 
-
-
-
-
-
-
-
-
-
-    if (this.game.treeCoords) {
-        var tree = that.game.add.sprite(this.game.treeCoords[0], this.game.treeCoords[1], 'tree');
-
-            tree.scale.setTo(1.2)
-    }
     // have player emerge from bed?
     // open the bed door?
 
@@ -1392,10 +1378,19 @@ this.itIsTheLastDay = true
     // bed
 
 
+this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down to inspect objects. try to remember yr training by writing poetry or engaging in some light capitalism.', { fontSize: '18px', fill: '#000', wordWrap: true, wordWrapWidth: 200 });
 
-    var arrow1 = that.game.add.sprite(235, 250, 'arrow')
-    var tweenarrow = that.game.add.tween(arrow1).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
-    tweenarrow.yoyo(true)
+
+
+    this.arrowpo = this.game.add.sprite(265, 595, 'arrow')
+    var tweenarrowpo = this.game.add.tween(this.arrowpo).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
+    tweenarrowpo.yoyo(true)
+
+    this.arrowvend = this.game.add.sprite(20, 540, 'arrow')
+    var tweenarrowvend = this.game.add.tween(this.arrowvend).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
+    tweenarrowvend.yoyo(true)
+
+
   },
 
 
@@ -1481,6 +1476,7 @@ if (!this.inDialog){
 
 
     if (this.cursors.left.isDown || (this.isFaded && Math.random() < 0.05)) {
+        if (this.wizard) this.wizard.destroy()
         //  Move to the left
         if (this.isFaded && Math.random() < 0.1) fadedMulti = ~~(Math.random() * 2) - 1
         xDir = -5  * fadedMulti
@@ -1493,6 +1489,7 @@ if (!this.inDialog){
           this.player.frame = [5, 7][~~(Math.random() * 2)]
         }
     } else if (this.cursors.right.isDown || (this.isFaded && Math.random() < 0.05)) {
+        if (this.wizard) this.wizard.destroy()
         if (this.isFaded && Math.random() < 0.1) fadedMulti = ~~(Math.random() * 2) - 1
         xDir = 5  * fadedMulti
         if (this.isFaded && Math.random() < 0.1) fadedMulti = (Math.random() * 2) - 1
@@ -1531,6 +1528,7 @@ if (!this.inDialog){
 
     //  Allow the this.player to jump if they are touching the ground.
     if (this.cursors.up.isDown && this.player.body.touching.down) {
+        if (this.wizard) this.wizard.destroy()
         this.game.musician.playFX('pew')
       this.player.body.velocity.y = -340;
 
