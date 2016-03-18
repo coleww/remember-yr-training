@@ -1,4 +1,4 @@
-require('./screenShake.js')
+
 var boot = require('./states/boot')
 var preload = require('./states/preload')
 var titleScreen = require('./states/title')

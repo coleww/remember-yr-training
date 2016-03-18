@@ -13,15 +13,13 @@ function pick (arr) {
   return arr[~~(Math.random() * arr.length)]
 }
 var feature = require('../features')
-var makeASong = require('../makeASong')
 var poetryGen = require('../poet')
-var makeAnticapitalistTract = require('../makeAnticapitalistTract')
 bunker.prototype = {
   create: function () {
+    this.counter = 0
     if (get('fanStillBroken') && feature.playNoise) {
         this.game.musician.startComputerNoise()
     }
-     this.game.plugins.screenShake = this.game.plugins.add(Phaser.Plugin.ScreenShake);
 
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -349,29 +347,6 @@ bunker.prototype = {
     this.game.the_fan.animations.add('working', [0, 1, 2, 3, 4], 3, true);
     this.game.the_fan.animations.play('working')
   },
-  openWallet: function () {
-    // INSPECTING YR WALLET
-    // BASED on yr twine choices and how much u got, will say smth
-    var wallet = get('wallet')
-    var align = get('alignment')
-
-    drawMenu(this.game, 'parch', makeAnticapitalistTract(wallet, align),
-                 function (men, obj) {
-                    men.destroy()
-                    that.inDialog = false
-                 })
-
-  },
-  openHealth: function () {
-    // based on yr health level, will sing a song with matching markov sentiment
-    var song = makeASong(get('health'))
-
-    drawMenu(this.game, 'parch', song,
-                 function (men, obj) {
-                    men.destroy()
-                    that.inDialog = false
-                 })
-  },
   openInventory: function () {
     // open a dialog, draw out inventory stuff w/ sprites AND ummm like if they are useable?
 
@@ -431,58 +406,11 @@ bunker.prototype = {
       }, that)
     })
   },
-  pauseGame: function () {
-    console.log('meow')
-    this.inDialog = true
-    var that = this
-    drawMenu(this.game, 'menu',
-                 {name: 'PAWS\'d',
-                    description: 'quit game?',
-                    yes: 'PLZZZZZZZZZZZ',
-                    no: 'keep playing'
-                },
-                     function (menu) {
-                        menu.destroy()
-                        that.inDialog = false
-                        that.game.state.start('titleScreen')
-                    }, function () {
-                        that.inDialog = false
-                    })
-    // draw a save/close menu
-  },
-  saveGame: function () {
-    // is there anything to even do here? it basically auto-saves actually
-  },
   redrawMenu: function () {
     var that = this
-
-    var pawsButton = this.game.add.sprite(500, 20, 'paw');
-    pawsButton.inputEnabled = true
-    pawsButton.events.onInputDown.add(function () {
-    // that.openpawsButton()
-
-        that.inDialog = true
-        if (!that.game.paused) {
-            that.pauseGame()
-            that.inDialog = !that.inDialog
-        }
-    })
-    pawsButton.scale.setTo(1.5)
-
-
     var wallet = this.game.add.sprite(150, 20, 'wallet');
-    wallet.inputEnabled = true
-    wallet.events.onInputDown.add(function () {
-        that.inDialog = true
-        that.openWallet()
-    })
     wallet.scale.setTo(1.5)
     var hp = this.game.add.sprite(16, 25, 'hp');
-    hp.inputEnabled = true
-    hp.events.onInputDown.add(function () {
-        that.inDialog = true
-        that.openHealth()
-    })
     var bag = this.game.add.sprite(16, 60, 'bag');
     bag.inputEnabled = true
     bag.events.onInputDown.add(function () {
@@ -633,7 +561,7 @@ bunker.prototype = {
     // IF it's the chest/vending machine, defer to those
   },
   maybeGoToSleep: function () {
-    if (this.hasWrittenAPoemToday && get('currentDay') <= 2) {
+    if (false && this.hasWrittenAPoemToday && get('currentDay') <= 2) {
         var that = this
         drawMenu(this.game, 'parch',
                  {name: 'GO TO SLEEP?',
@@ -656,7 +584,7 @@ bunker.prototype = {
         var that = this
         drawMenu(this.game, 'parch',
                  {name: 'CRYOBED',
-                    description: 'you are not very tired right now,' + (get('currentDay') < 3) ? ' maybe write some poems to relax?' : ' how bout u just wait to see if something happens?',
+                    description: 'you are not very tired right now',
                     yes: 'ok'
                 },
                      function (menu) {
@@ -1007,8 +935,10 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   },
   buyThing: function (menu) {
     console.log("WHOOOA")
+
     var item = this.game.vendingItems.pop()
     var newMoneyFlow = dec('wallet', 5)
+    this.hasBoughtStuff = true
     this.walletDisplay.setText(newMoneyFlow + '$')
     // display them and stuffzzz.
     // add the click buttons too
@@ -1219,10 +1149,10 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
 
 
-
+this.itIsTheLastDay = true
 
     this.hasWrittenAPoemToday = false
-    var day = get('currentDay')
+    var day = pick([2, 3, 4])
     console.log(day)
 
       if (day == 2) {
@@ -1255,7 +1185,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
       // this.game.world.bringToTop(book2)
 
     } else {
-    this.itIsTheLastDay = true
+
       this.game.tableStuff[0] = {name: 'some papers',
         description: 'you are an excellent doodler. yr art should be on walls everywhere',
         yes: 'reflect on the glory of your works',
@@ -1455,7 +1385,18 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     }
   },
 
+  runTheWizard: function () {
+    // vending
+    // poems
+    // inventory, etc.
+    // bed
 
+
+
+    var arrow1 = that.game.add.sprite(235, 250, 'arrow')
+    var tweenarrow = that.game.add.tween(arrow1).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
+    tweenarrow.yoyo(true)
+  },
 
 
 
@@ -1515,11 +1456,7 @@ if (!this.inDialog){
     var yDir = 0
 
 
-
-
-
-
-    if (!this.inDialog && this.itIsTheLastDay && this.hasNotGoneOffYet && Math.random() < 0.003) {
+    if (this.counter++ > 7500 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasNotGoneOffYet && Math.random() < 0.003) {
         this.hasNotGoneOffYet = false
         this.setOffTheBoomBoom()
         // make everything explode?

@@ -98,7 +98,7 @@ DaySwitch.prototype = {
     // bigBg.anchor.setTo(0.5, 0.5);
     bigBg.alpha = 1;
     var that = this
-    var t = this.game.add.tween(bigBg).to( { alpha: 0 }, 900, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
+    var t = this.game.add.tween(bigBg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
     t.onLoop.add(function () {
         console.log('looped!')
         // t.onLoopCallback(function(){console.log('Y?')})
