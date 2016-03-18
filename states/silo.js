@@ -58,7 +58,7 @@ Silo.prototype = {
       this.jetPacked = false
         this.game.state.restart()
     }
-
+    this.speediness = 1
     this.launchedTheMissiles = get('launched')
     this.isFaded = get('escapingDrunkenly')
     this.theColor = 5
@@ -242,8 +242,17 @@ Silo.prototype = {
   },
 
   heroCreate: function() {
-    // basic hero setup
-    this.hero = this.game.add.sprite( this.world.centerX, this.world.height - 76, 'dude' );
+    // basic hero setup.
+    var sprite = 'dude'
+    if (get('fast')) {
+      sprite = 'greendude'
+      this.speediness = 2
+    }
+    if (get('slow')) {
+      sprite = 'bluedude'
+      this.speediness = 0.5
+    }
+    this.hero = this.game.add.sprite( this.world.centerX, this.world.height - 76, sprite);
     this.hero.anchor.set( 0.5 );
     // track where the hero started and how much the distance has changed from that point
     this.hero.yOrig = this.hero.y;
@@ -274,7 +283,7 @@ Silo.prototype = {
   heroMove: function() {
     // handle the left and right movement of the hero
       if( this.cursor.left.isDown  || (this.isFaded && Math.random() < 0.05)) {
-        this.hero.body.velocity.x = -225;
+        this.hero.body.velocity.x = -225 * this.speediness;
         if (this.jetPacked) this.hero.body.velocity.x = -275
         if (this.hero.body.touching.down) {
           this.hero.animations.play('left');
@@ -283,7 +292,7 @@ Silo.prototype = {
           this.hero.frame = 5
         }
       } else if( this.cursor.right.isDown  || (this.isFaded && Math.random() < 0.05)) {
-        this.hero.body.velocity.x = 225;
+        this.hero.body.velocity.x = 225 * this.speediness;
         if (this.jetPacked) this.hero.body.velocity.x = 275
         if (this.hero.body.touching.down) {
           this.hero.animations.play('right');

@@ -756,10 +756,12 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'greenspeed':
             this.player.loadTexture('greendude', 0);
+            set('fast')
             this.speediness = 2
             break;
         case 'flashy':
             this.player.loadTexture('bluedude', 0);
+            set('slow')
             this.speediness = 0.5
             // stuff
             break;
