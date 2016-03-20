@@ -123,9 +123,9 @@ bunker.prototype = {
     tv.scale.setTo(0.4, 0.4)
     tv.body.immovable = true
 
-    var radio = this.platforms.create(this.game.world.width / 2 - 125, 272, 'radio');
+    var radio = this.platforms.create(this.game.world.width / 2 - 127, 272, 'radio');
     radio.scale.setTo(0.45, 0.78)
-    radio.body.setSize(93, 50, 5, 25)
+    radio.body.setSize(96, 50, 5, 25)
     radio.body.immovable = true
 //
     this.game.the_fan = this.game.add.sprite(this.game.world.width / 2 - 158, 380, 'fan');
@@ -1388,7 +1388,7 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
     var tweenarrowpo = this.game.add.tween(this.arrowpo).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
     tweenarrowpo.yoyo(true)
 
-    this.arrowvend = this.game.add.sprite(20, 540, 'arrow')
+    this.arrowvend = this.game.add.sprite(60, 600, 'arrow')
     var tweenarrowvend = this.game.add.tween(this.arrowvend).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
     tweenarrowvend.yoyo(true)
 
