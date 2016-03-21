@@ -9,11 +9,9 @@ var Ending = function(game){
 var randoColor = require('randomcolor')
 
 var features = require('../features')
-var poe = require('../poetic_muser')
 var al = features.alignment || get('alignment')
-var THE_POET = poe(al)
 var gimmeSomeTextNowPlz = function () {
-  return THE_POET()
+  return ''
 }
 
 // {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0

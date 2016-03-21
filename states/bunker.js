@@ -26,7 +26,7 @@ bunker.prototype = {
     //  A simple background for our this.game
 
 
-
+    this.hasJustGottenFirstThing = true
 
     this.hasNotGoneOffYet = true
     var that = this
@@ -351,8 +351,10 @@ bunker.prototype = {
     // open a dialog, draw out inventory stuff w/ sprites AND ummm like if they are useable?
 
     var that = this
+    if (that.arrowinv) that.arrowinv.destroy()
+    if (that.invtext) that.invtext.destroy()
     var menmen = this.drawMenuBox('menu')
-    var title = this.game.add.text(50, 220, 'YR BACKPACK', { fontSize: '50px', fill: '#FFF' });
+    var title = this.game.add.text(50, 220, 'YR BACKPACK', { fontSize: '50px', fill: '#000' });
     var that = this
     var items = []
     var inv = get('inventory')
@@ -382,7 +384,7 @@ bunker.prototype = {
         }
       var staticy = that.game.add.sprite(75 + x * 125, 325 + bonus, opt.sprite);
       staticy.scale.setTo(3.5)
-      var descrip = that.game.add.text(75 + x * 125, 325 + bonus, opt.name, { fontSize: '20px', fill: '#3F3', wordWrap: true, wordWrapWidth: 120  });
+      var descrip = that.game.add.text(75 + x * 125, 325 + bonus, opt.name, { fontSize: '23px', fill: '#3F3', wordWrap: true, wordWrapWidth: 120  });
       staticy.inputEnabled = true
       x++
       items.push(staticy)
@@ -392,7 +394,7 @@ bunker.prototype = {
       staticy.events.onInputDown.add(function () {
         items.forEach(function (it){ it.destroy()})
         that.game.musician.playFX('twinkleshort')
-        title.setText(opt.name)
+        title.destroy()
         drawMenu(that.game, menmen, opt, function (menu, obj) {
             // urggggh just put a gigantic case switch here for the few things that have fx?
             that.inDialog = false
@@ -421,9 +423,20 @@ bunker.prototype = {
 
     bag.scale.setTo(0.75)
     this.hpDisplay = this.game.add.text(50, 25, get('health') + '/100', { fontSize: '22px', fill: '#FFF' });
+
+
     this.inventoryDisplay = this.game.add.text(65, 65, '' + get('inventory').map(function (item) {
         return item.name
     }).join(', '), { fontSize: '16px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
+
+    this.inventoryDisplay.inputEnabled = true
+    this.inventoryDisplay.events.onInputDown.add(function () {
+        if (!that.inDialog) that.openInventory()
+
+        that.inDialog = true
+    })
+
+
 
     this.walletDisplay = this.game.add.text(200, 25, get('wallet') + '$', { fontSize: '22px', fill: '#FFF' });
     // LATER: actually do this with like, erm, buttons for the items?
@@ -750,12 +763,12 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'greenspeed':
             this.player.loadTexture('greendude', 0);
-            set('fast')
+            set('fast', true)
             this.speediness = 2
             break;
         case 'flashy':
             this.player.loadTexture('bluedude', 0);
-            set('slow')
+            set('slow', true)
             this.speediness = 0.5
             // stuff
             break;
@@ -782,6 +795,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
                 bread.angle = ((Math.random() * 2) - 1) * ((Math.random() * 25) + 5)
                 bread.scale.setTo(0.35)
             })
+            this.world.bringToTop(menmen)
             break;
         case 'punchStuff':
             continueMenu = this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing, menmen)
@@ -832,6 +846,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             var tree = this.game.add.sprite(this.player.x, this.player.y, 'tree');
             this.game.treeCoords = [this.player.x, this.player.y]
             tree.scale.setTo(1.2)
+            this.world.bringToTop(menmen)
             break;
         case 'makeBloodSculpture':
             // stuff
@@ -839,6 +854,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             var bloodsculpt = this.game.add.sprite(this.player.x, this.player.y, 'bloodsculpt');
             this.game.bloodSculptureCoords = [this.player.x, this.player.y]
             bloodsculpt.scale.setTo(0.5)
+            this.world.bringToTop(menmen)
             break;
         case 'makeGold':
             // stuff
@@ -855,7 +871,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
     }
     if (continueMenu) {
-        var whatHappened  = this.game.add.text(150, 370, thing.extended, { fontSize: '20px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
+        var whatHappened  = this.game.add.text(50, 370, thing.extended, { fontSize: '20px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
         var confirm  = this.game.add.text(150, 570, 'OK COOL THANKS', { fontSize: '20px', fill: '#08D' });
         confirm.inputEnabled = true;
         var that = this
@@ -864,6 +880,8 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             // RUN THE STUFF!
             that.inDialog = false
             if (thing.item) {
+                if (that.hasJustGottenFirstThing) that.addInventoryArrow()
+                that.hasJustGottenFirstThing = false
                 push('inventory', thing.item)
                 that.redrawInventory()
             }
@@ -937,13 +955,13 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     this.walletDisplay.setText(newMoneyFlow + '$')
     // display them and stuffzzz.
     // add the click buttons too
-    var title = this.game.add.text(50, 220, item.name, { fontSize: '60px', fill: '#FFF' });
+    var title = this.game.add.text(50, 220, item.name, { fontSize: '60px', fill: '#000' });
     var that = this
     var items = []
     item.sprites.forEach(function (opt, i) {
       var staticy = that.game.add.sprite(75 + i * 180, 325, opt);
       staticy.scale.setTo(4)
-      var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#FFF', wordWrap: true, wordWrapWidth: 150  });
+      var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#000', wordWrap: true, wordWrapWidth: 150  });
       staticy.inputEnabled = true
       staticy.events.onInputDown.add(function () {
         var al = get('alignment')
@@ -951,6 +969,8 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         set('alignment', al)
         push('inventory', {name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i], yes: item.yes[i], no: item.no[i]})
         push('seeds', item.seed[i])
+        if (that.hasJustGottenFirstThing) that.addInventoryArrow()
+        that.hasJustGottenFirstThing = false
         that.redrawInventory()
         items.forEach(function (it){ it.destroy()})
         that.game.musician.playFX('twinkleshort')
@@ -1364,7 +1384,7 @@ this.itIsTheLastDay = true
     // bed
 
 
-this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down to inspect objects. try to remember yr training by writing poetry or engaging in some light capitalism.', { fontSize: '18px', fill: '#000', wordWrap: true, wordWrapWidth: 200 });
+this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down to inspect objects.', { fontSize: '20px', fill: '#111', wordWrap: true, wordWrapWidth: 200 });
 
 
 
@@ -1376,7 +1396,6 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
     var tweenarrowvend = this.game.add.tween(this.arrowvend).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
     tweenarrowvend.yoyo(true)
 
-
   },
 
 
@@ -1385,7 +1404,14 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
 
 
 
+  addInventoryArrow: function () {
+    this.invtext = this.game.add.text(200, 50, 'click on yr bag to open inventory.', { fontSize: '20px', fill: '#EEE', wordWrap: true, wordWrapWidth: 200 });
 
+    this.arrowinv = this.game.add.sprite(210, 60, 'arrow')
+    this.arrowinv.angle = 90
+    var tweenarrowinv = this.game.add.tween(this.arrowinv).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
+    tweenarrowinv.yoyo(true)
+  },
 
 
 
