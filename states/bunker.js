@@ -34,7 +34,6 @@ bunker.prototype = {
     this.wall1 = get('wall1')
     this.wall2 = get('wall2')
     this.inDialog = false
-    console.log("WE IN THE BUNKER")
     this.speediness = 1
 
 
@@ -599,7 +598,6 @@ bunker.prototype = {
   hitTheFanIfYouAreThereAndYouHaventHitItYet: function (obj, menmen) {
 
     var y = this.player.y
-    console.log('we here', y, this.player.body.touching.down )
     if (get('fanStillBroken') && this.player.body.touching.down && y >= 375 && y < 385) {
         set('fanStillBroken', false)
         this.game.musician.stopComputerNoise()
@@ -666,7 +664,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         }
 
         if (count > 250) {
-            console.log('boom')
             clearInterval(interv)
             that.game.state.start("GameOverScreen")
         }
@@ -685,7 +682,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         }, this)
   },
   turnOffTV: function () {
-    console.log('aspire to figure out how to do this')
     // var cnv = this.game.canvas
     // var ctx = this.game.context()
 
@@ -740,7 +736,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'canpunch':
             this.canPunch = true
-            console.log("TRYING 2 PUNCH STUFF?")
             push('inventory', {
                 name: 'your fists',
                 description: 'that tofu thing u ate has made you hecka swole and ready to fight',
@@ -751,7 +746,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
                 no: 'write some poetry instead',
                 oneTimeUse: false
             })
-            console.log(get('inventory'))
             this.redrawInventory()
             break;
         case 'greenspeed':
@@ -868,10 +862,8 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         //REFACTOR THISSSSSSSSSSS
         confirm.events.onInputDown.add(function  (thin) {
             // RUN THE STUFF!
-            console.log(thing)
             that.inDialog = false
             if (thing.item) {
-                console.log('PUSHING')
                 push('inventory', thing.item)
                 that.redrawInventory()
             }
@@ -938,7 +930,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     }
   },
   buyThing: function (menu) {
-    console.log("WHOOOA")
 
     var item = this.game.vendingItems.pop()
     var newMoneyFlow = dec('wallet', 5)
@@ -958,9 +949,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         var al = get('alignment')
         al[item.seed[i]]++
         set('alignment', al)
-        console.log('we set al, bout 2 push')
         push('inventory', {name: item.names[i], description: item.descriptions[i], sprite: opt, fx: item.fx[i], oneTimeUse: item.oneTime[i], extended: item.extended[i], yes: item.yes[i], no: item.no[i]})
-       console.log('we push, bout 2 set seeds')
         push('seeds', item.seed[i])
         that.redrawInventory()
         items.forEach(function (it){ it.destroy()})
@@ -984,13 +973,25 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     }
     this.poemDisplay.setText(this.poem)
     var words = this.poem.replace(/[^a-zA-Z0-9 ]/g, '').replace(/(^\s+|\s+$)/g, '').replace(/\s+/g, ' ').split(' ')
-    console.log(words)
     if (next == 'linebreak') words = []
-    console.log('NEXTS', [words[words.length - 2], words[words.length - 1]].join(' '))
     var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
     poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
-    poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
-    'linebreak','(', ')', '[', ']', '!', '?', '.', ':', ';', '~', '/', '\\']
+    poetryGen([words[words.length - 2], words[words.length - 1]].join(' '))].filter(function (m,i,a) {
+        return a.indexOf(m) == i
+    })
+
+    while (nexts.length < 3) {
+        nexts.push(poetryGen())
+    }
+
+
+    var punct = ['linebreak','(', ')', '[', ']', '!', '?', '.', ':', ';', '~', '/', '\\']
+
+    nexts = nexts.concat(punct)
+
+
+
+
     var that = this
     var acc = 0
     nexts.forEach(function (opt, i) {
@@ -1015,7 +1016,6 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
       } else {
         that.game.musician.playFX(pick(['russel1', 'russel2', 'russel3']))
     }
-      console.log(thing.text)
       this.runPoem(thing.text)
     }
 
@@ -1141,7 +1141,6 @@ this.itIsTheLastDay = true
 
     this.hasWrittenAPoemToday = false
     var day = pick([2, 3, 4])
-    console.log(day)
 
       if (day == 2) {
       var book1 = this.game.add.sprite(this.game.world.width / 2 - 80, this.game.world.height - 310, 'book1');
@@ -1190,7 +1189,6 @@ this.itIsTheLastDay = true
 
 
     }
-    console.log(this.itIsTheLastDay)
     // this.game.world.bringToTop(this.platforms)
 
     var bg = this.game.add.sprite(0, 0, 'black');
@@ -1200,8 +1198,6 @@ this.itIsTheLastDay = true
     var that = this
     var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 1000, 1).start();
     t.onLoop.add(function () {
-        console.log('looped!')
-        // t.onLoopCallback(function(){console.log('Y?')})
         that.game.tweens.remove(t)
         that.bed.animations.play('open', true)
 
@@ -1279,57 +1275,46 @@ this.itIsTheLastDay = true
   },
 
   interactIfTouchingThing: function (x, y) {
-    console.log('in fact we are here')
     if (!this.inDialog) {
-       console.log(x, y, 'idk')
       if (y > 669 && y < 685) {
           // TOUCHING THE GROUND!!!!!
           if (x >= 45 && x < 50) {
               // vending machine
-              console.log('touching the vend')
               this.inDialog = true
               this.vend()
           } else if (x >= 80 && x < 130 && this.wall1) {
             // BOOKSHELF!
-            console.log('touching the L poster')
               this.inDialog = true
             this.openDialog(this.game.tableStuff[3])
 
           }else if (x >= 150 && x < 200) {
             // BOOKSHELF!
-            console.log('touching the books')
               this.inDialog = true
             this.openDialog(this.game.tableStuff[2])
 
           } else if (x >= 210 && x < 235) {
               // left desk item
-              console.log('touching the lefty')
               this.inDialog = true
               this.openDialog(this.game.tableStuff[0])
 
           } else if (x >= 240 && x < 275) {
 
-            console.log('touching the desk')
               this.inDialog = true
             this.writeAPoem()
           } else if (x >= 280 && x < 320) {
               // right desk item
-              console.log('touching the righty')
 
               this.inDialog = true
               this.openDialog(this.game.tableStuff[1])
           }  else if (x >= 420 && x < 450 && this.wall2) {
-            console.log('touching the R poster')
             this.inDialog = true
             this.openDialog(this.game.tableStuff[4])
           }else if (x >= 520 && x < 570) {
-            console.log('touching the bed')
             this.inDialog = true
             this.maybeGoToSleep()
           }
       } else if ((y >= 400 && y < 405)) {
         // if (x >= 150 && x < 200) {
-            console.log('touching the computer')
               this.inDialog = true
             this.openDialog(this.game.computerStuff[2])
 
@@ -1352,7 +1337,6 @@ this.itIsTheLastDay = true
         this.openDialog(this.game.computerStuff[0])
         // on top of the radio. mention the view?
       } else if (this.isEscaping && y > 490 && y < 500 && x > 320 && x < 360) {
-        console.log('doing this?')
 
         this.game.world.bringToTop(this.chute)
         this.game.world.bringToTop(this.platforms)
@@ -1434,7 +1418,6 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
 
 
   update: function () {
-    // console.log(this.game.input.x,
     // this.game.input.y)
 
     this.game.physics.arcade.collide(this.player, this.platforms);
@@ -1444,10 +1427,8 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
     }
 
 if (!this.inDialog){
-    // console.log(this.player.x, this.player.y)
     if (this.lowerLadder && this.ladder.y < 360) {
         this.ladder.y += 0.5
-        // console.log(this.ladder.y)
     }
     var xDir = 0
     var yDir = 0
@@ -1508,7 +1489,6 @@ if (!this.inDialog){
         this.player.animations.stop();
         this.player.frame = 12
         this.player.body.velocity.x = 0
-        console.log(this.player.x, this.player.y)
         this.interactIfTouchingThing(this.player.x, this.player.y)
     } else {
       var goingUp = !this.player.body.velocity.x
@@ -1548,4 +1528,3 @@ if (!this.inDialog){
 module.exports = bunker
 
 
-console.log(bunker.prototype)
