@@ -1041,7 +1041,10 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
   },
   writeAPoem: function () {
-    if (this.arrowpo) this.arrowpo.destroy()
+    if (this.arrowpo) {
+        this.arrowpo.destroy()
+        this.isTheFirstPoem = true
+    }
     this.currentOptions = []
     // var poetryBG = this.game.add.sprite(-160, 60, 'paper3')
     // poetryBG.scale.setTo(30, 25)
@@ -1064,7 +1067,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   },
   writeThatStinkingPoem: function (bookThingy) {
 
-    var instructions = this.game.add.text(155, 175, 'WRITE A POEM', { fontSize: '30px', fill: '#000'});
+    var instructions = this.game.add.text(155, 175, 'CLICK WORDS 2 WRITE A POEM', { fontSize: '30px', fill: '#000'});
 
     this.poem = poetryGen()
     this.poemDisplay = this.game.add.text(55, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })

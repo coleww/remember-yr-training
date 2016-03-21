@@ -1,5 +1,3 @@
-AFTER U BUY SMTH, ARROW ON THE INVENTORY
-FURST POEM RUN THRU: EXPLAIN
 play through and fix all boring/broken text. make it mo legible.
 A BOX FILLED WITH OLD POEMS ON THE TITLESCREEN IF U GOT POEMS WRITTEN!
 WRITE 1 song for outsde and just fux with it 3 times(are other songs repeats? ned endings)
