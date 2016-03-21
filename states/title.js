@@ -1,7 +1,7 @@
 var titleScreen = function(game){
   this.game = game
 }
-
+var get = require('databae').get
 titleScreen.prototype = {
   create: function(){
     var game = this.game
@@ -22,15 +22,35 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
     // var poems = game.add.text(game.width / 2, game.height - 50, "POETRY", this.startGame)
 
 
-    var playButton = game.add.button(game.width / 2, game.height - 250, "playbutton", this.startGame)
+    var playButton = game.add.button(game.width / 2, game.height - 370, "playbutton", this.startGame)
     playButton.anchor.set(0.5)
-    var tween = game.add.tween(playButton).to({width: 220, height:220}, 1500, "Linear", true, 0, -1)
-    tween.yoyo(true)
+
+    console.log(get('poemCount'))
+    if (get('poemCount')) {
+        var poemButton = game.add.button(game.width / 2, game.height - 200, "boxen", this.showPoems)
+        poemButton.anchor.set(0.5)
+        poemButton.scale.setTo(3)
+
+
+
+
+
+
+
+    }
     // PROBABLY a continue button i guess?
     // ALSO a screen to see yr saved poems? BUT ONLY if u beat the game already!
   },
   startGame: function(){
     this.game.state.start("DaySwitch")
+  },
+  showPoems: function(){
+    this.game.state.start("chapbook")
+    var poems = []
+    for (var i = 0; i < get('poemCount'); i++) {
+      var poem = get('poem' + i)
+      poems.push(poem)
+    }
   }
 }
 module.exports = titleScreen

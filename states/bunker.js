@@ -413,7 +413,7 @@ bunker.prototype = {
     var wallet = this.game.add.sprite(150, 20, 'wallet');
     wallet.scale.setTo(1.5)
     var hp = this.game.add.sprite(16, 25, 'hp');
-    var bag = this.game.add.sprite(16, 60, 'bag');
+    var bag = this.game.add.buttons(16, 60, 'bag');
     bag.inputEnabled = true
     bag.events.onInputDown.add(function () {
         if (!that.inDialog) that.openInventory()

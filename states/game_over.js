@@ -122,7 +122,6 @@ gameOverScreen.prototype = {
         set('health', 100)
         set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
         set('gameOver', false)
-        set('poemCount', 0)
     }, this);
 
   }

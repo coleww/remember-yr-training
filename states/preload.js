@@ -37,6 +37,7 @@ preload.prototype = {
 
 
     game.load.image("body1", "assets/sprites/deathpit/body1.png")
+    game.load.image("boxen", "assets/sprites/box.png")
 
     game.load.image("jetpack", "assets/sprites/jetpack.png")
     game.load.image("body2", "assets/sprites/deathpit/body2.png")
@@ -289,11 +290,12 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
     // TODO: check if the player has a saved game
 
-    var itIsTheVeryFirstTime = true
+    var itIsTheVeryFirstTime = !get('playCount')
     var itIsANewGame = true
 
     if (itIsTheVeryFirstTime) {
-        set('playCount', 0)
+        set('playCount', 1)
+        set('poemCount', 0)
     }
 
     if (itIsANewGame) {
@@ -308,7 +310,6 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
         set('health', 100)
         set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
         set('gameOver', false)
-        set('poemCount', 0)
     } else {
         // it is a saved game...do nothing?
     }
