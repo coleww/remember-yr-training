@@ -413,7 +413,7 @@ bunker.prototype = {
     var wallet = this.game.add.sprite(150, 20, 'wallet');
     wallet.scale.setTo(1.5)
     var hp = this.game.add.sprite(16, 25, 'hp');
-    var bag = this.game.add.buttons(16, 60, 'bag');
+    var bag = this.game.add.button(16, 60, 'bag');
     bag.inputEnabled = true
     bag.events.onInputDown.add(function () {
         if (!that.inDialog) that.openInventory()
@@ -994,9 +994,9 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     this.poemDisplay.setText(this.poem)
     var words = this.poem.replace(/[^a-zA-Z0-9 ]/g, '').replace(/(^\s+|\s+$)/g, '').replace(/\s+/g, ' ').split(' ')
     if (next == 'linebreak') words = []
-    var nexts = [poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
-    poetryGen([words[words.length - 2], words[words.length - 1]].join(' ')),
-    poetryGen([words[words.length - 2], words[words.length - 1]].join(' '))].filter(function (m,i,a) {
+    var nexts = [poetryGen(words[words.length - 1]),
+    poetryGen(words[words.length - 1]),
+    poetryGen(words[words.length - 1])].filter(function (m,i,a) {
         return a.indexOf(m) == i
     })
 
@@ -1067,9 +1067,13 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   },
   writeThatStinkingPoem: function (bookThingy) {
 
-    var instructions = this.game.add.text(155, 175, 'CLICK WORDS 2 WRITE A POEM', { fontSize: '30px', fill: '#000'});
+    var instructions = this.game.add.text(175, 175, 'CLICK TEH BLUE WORDS 2 WRITE A POEM', { fontSize: '20px', fill: '#700'});
+
+
+
 
     this.poem = poetryGen()
+
     this.poemDisplay = this.game.add.text(55, 250, this.poem, { fontSize: '15px', fill: '#000', align: 'left', wordWrap: true, wordWrapWidth: 450  })
     this.runPoem()
     var that = this

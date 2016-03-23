@@ -36,9 +36,9 @@ m.load(require('./theMarkov'))
 module.exports = function (start) {
   if (start == undefined || !start.replace(/\s/g, '')) {
     // pick a rando start
-    return m.fill(m.pick(), 2)
+    return m.fill(m.pick(), 1)
   } else {
-    var words = m.fill(start, 3).split(' ')
+    var words = m.fill(start, 2).split(' ')
     return words[words.length - 1]
   }
 }

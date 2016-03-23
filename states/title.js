@@ -27,7 +27,7 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
 
     console.log(get('poemCount'))
     if (get('poemCount')) {
-        var poemButton = game.add.button(game.width / 2, game.height - 200, "boxen", this.showPoems)
+        var poemButton = game.add.button(game.width / 2, game.height - 150, "boxen", this.showPoems)
         poemButton.anchor.set(0.5)
         poemButton.scale.setTo(3)
 
@@ -51,6 +51,9 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
       var poem = get('poem' + i)
       poems.push(poem)
     }
+
+
+    // argggggh this is gonna be such a pain to build... :<
   }
 }
 module.exports = titleScreen
