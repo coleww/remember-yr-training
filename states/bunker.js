@@ -652,7 +652,7 @@ var that = this
                         set('gameOver', 505)
                         that.turnOnFan()
                         menu.destroy()
-                        that.explodinate()
+                        that.explodinate('evil')
                         that.inDialog = false
                     })
 
@@ -682,7 +682,7 @@ var that = this
 
 
 
-        return true
+        return false
     }
   },
   explodinate: function (type) {
@@ -906,7 +906,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case 'makeGold':
             // stuff
-            this.walletDisplay.setText(inc('wallet', 500))
+            this.walletDisplay.setText(inc('wallet', 500) + '$')
             break;
         case 'read':
             // i think thiss all?
@@ -1610,7 +1610,7 @@ if (!this.inDialog){
     if (this.cursors.up.isDown && this.player.body.touching.down) {
         if (this.wizard) this.wizard.destroy()
         this.game.musician.playFX('pew')
-      this.player.body.velocity.y = -340;
+      this.player.body.velocity.y = -200 - (140 * this.speediness);
 
 
     }

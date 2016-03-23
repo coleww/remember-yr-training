@@ -358,7 +358,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
         {name: 'broken down fan',
                         description: 'gosh it would be nice if this thing worked...it would be vvvvvvvvvvvvvv bad if this machine overheated!',
         yes: 'wonder if there is a tool that could fix it',
-        no: 'wonder if there is a tool that would let you record the sweet noises it will probably make when it explodes and takes you with it!', ifPunch: {description: 'purring like a kitten', yes: 'yes it is, i did that, me. err, you. whomever, comrade.'}}
+        no: 'wonder if u can record the sweet noises it will probably make when it explodes!', ifPunch: {description: 'purring like a kitten', yes: 'yes it is, i did that, me. err, you. whomever, comrade.'}}
 
         ]
       game.tableStuff = [
