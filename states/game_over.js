@@ -33,13 +33,13 @@ var endings = {
     song: 'dead'
     },
     // not actual a game over screen, u just get stuck in the death pit
-  // gameOver666: {
-  //   sprite: 'portal',
-  //   scale: [5, 7],
-  //   description: 'you unleash a portal to the shadow world and are consumed by the darkness. way to go.',
-  //   name: '☠ X_X ☠',
-  //   song: 'dead'
-  //   },
+  gameOver505: {
+    sprite: 'the_fan',
+    scale: [5, 7],
+    description: 'the cooling system for this station was powered by a black hole, which you unleashed, consuming the entirety of existence. GOOD JOB, BUDDY.',
+    name: '☠ X_X ☠',
+    song: 'dead'
+    },
   gameOver50: {
     sprite: 'goodjob',
     scale: [5, 7],

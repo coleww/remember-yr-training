@@ -33,7 +33,7 @@ panner.coneOuterGain = 1;
       console.log('loading')
         samplers[sample].buffer = buffer
         loaded++
-        if (['noise', 'windloop', 'horribletone', 'WAHHHHH', 'alclock'].indexOf(sample) !== -1) {
+        if (['noise', 'windloop', 'horribletone'].indexOf(sample) !== -1) {
           samplers[sample].loop = true
           //
           if (sample == 'noise') {

@@ -382,7 +382,7 @@ bunker.prototype = {
             bonus += 150
             x = 0
         }
-      var staticy = that.game.add.sprite(75 + x * 125, 325 + bonus, opt.sprite);
+      var staticy = that.game.add.button(75 + x * 125, 325 + bonus, opt.sprite);
       staticy.scale.setTo(3.5)
       var descrip = that.game.add.text(75 + x * 125, 325 + bonus, opt.name, { fontSize: '23px', fill: '#3F3', wordWrap: true, wordWrapWidth: 120  });
       staticy.inputEnabled = true
@@ -457,14 +457,15 @@ bunker.prototype = {
         this.game.add.text(5, 850, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: '20px', fill: '#F00', wordWrap: true, wordWrapWidth: '400px'})
         var counter = 0
 
-
+        var that = this
+        var over = false
         setInterval(function () {
             counter++
-            this.game.add.text(Math.random() * 15, 825 + Math.random() * 100, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: ~~(Math.random() * 15) + 10 + 'px', fill: '#F' + ~~(Math.random() * 10) + ~~(Math.random() * 10) })
 
-            if (counter > 60) {
+            if (counter > 60 && !that.ascendingTheLadder && !over) {
+                over = true
                 set('gameOver', 999)
-                explodinate('evil')
+                that.explodinate('evil')
             }
         }, 1000)
 
@@ -479,7 +480,7 @@ bunker.prototype = {
     }
 
     set('launched', launced)
-
+    var that = this
     that.arrow = that.game.add.sprite(355, 450, 'arrow')
             var tweenarrow = that.game.add.tween(that.arrow).to({width: 30, height:75}, 250, "Linear", true, 0, -1, true)
             // tween.onComplete.add(function () {
@@ -614,6 +615,14 @@ bunker.prototype = {
     if (get('fanStillBroken') && this.player.body.touching.down && y >= 375 && y < 385) {
         set('fanStillBroken', false)
         this.game.musician.stopComputerNoise()
+
+
+        this.game.computerStuff[3] = {name: 'a supra-dimensional fan',
+                        description: 'it seems to be powered by an unknown and frightening energy source. maybe u should just let it do its job now that u fixed it ok',
+        yes: 'ok',
+        no: 'no i want to hit it again'}
+
+
         // draw
         var that = this
         drawMenu(this.game, menmen,
@@ -630,6 +639,49 @@ bunker.prototype = {
                     })
         return false
     } else {
+        // OH THIS SHOULD EXPLODINATE!
+
+var that = this
+        drawMenu(this.game, menmen,
+                 {name: 'YOU DESTROYED IT!',
+                    description: 'you hit the fan AGAIN with your ' + obj.name + ', despite being warned about it, and you rupture the ultra-dimensional power source. Great job.',
+                    yes: 'i am a nihilist who revels in the destruction of all existence, yes thanks'
+                },
+                     function (menu) {
+                        // THE FAN
+                        set('gameOver', 505)
+                        that.turnOnFan()
+                        menu.destroy()
+                        that.explodinate()
+                        that.inDialog = false
+                    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         return true
     }
   },
@@ -643,13 +695,7 @@ bunker.prototype = {
     var sprites = explodinations[type]
     var count = 0
     var that = this
-    if (type == 'trippy'){
-        this.game.plugins.screenShake.setup({ //if need to replace default plugin settings
-        shakeX: true,
-        shakeY: false
-        });
-        this.game.plugins.screenShake.shake(1000)
-    }
+
     var interv = setInterval(function () {
         count++
         var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Math.random() * that.game.world.height, pick(sprites));
@@ -712,6 +758,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   },
   useThing: function (thing, menmen) {
     var continueMenu = true
+    var explodeIt
     switch(thing.fx) {
         case 'gameOver1':
             set('gameOver', 1)
@@ -774,11 +821,11 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
         case '$10':
             // stuff
-            this.walletDisplay.setText(inc('wallet', 10) + '$')
+            this.walletDisplay.setText(inc('wallet', 5) + '$')
             break;
         case '$25':
             // stuff
-            this.walletDisplay.setText(inc('wallet', 25) + '$')
+            this.walletDisplay.setText(inc('wallet', 5) + '$')
             break;
         case 'faded':
             // stuff
@@ -809,7 +856,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             this.player.loadTexture('trippyb', 0);
             // open iframes of other games?
             set('gameOver', 420)
-            this.explodinate('trippy')
+            explodeIt = 'trippy'
             //
             // stuff
             break;
@@ -817,7 +864,8 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             this.player.loadTexture('boss', 0);
             // player should begin spewing fire everywhere and slowly taking damage
             set('gameOver', 451)
-            this.explodinate('evil')
+
+            explodeIt = 'evil'
             // stuff
             break;
         case 'fireslash':
@@ -871,7 +919,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             break;
     }
     if (continueMenu) {
-        var whatHappened  = this.game.add.text(50, 370, thing.extended, { fontSize: '20px', fill: '#FFF', wordWrap: true, wordWrapWidth: 500 });
+        var whatHappened  = this.game.add.text(50, 370, thing.extended, { fontSize: '20px', fill: '#000', wordWrap: true, wordWrapWidth: 500 });
         var confirm  = this.game.add.text(150, 570, 'OK COOL THANKS', { fontSize: '20px', fill: '#08D' });
         confirm.inputEnabled = true;
         var that = this
@@ -884,6 +932,10 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
                 that.hasJustGottenFirstThing = false
                 push('inventory', thing.item)
                 that.redrawInventory()
+            }
+            if (explodeIt) {
+
+                this.explodinate(explodeIt)
             }
             menmen.destroy()
             whatHappened.destroy()
@@ -923,7 +975,20 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     if (this.arrowvend) this.arrowvend.destroy()
     var that = this
     var cash
-    if ((cash = get('wallet')) >= 5) {
+    if (!this.game.vendingItems.length) {
+        drawMenu(this.game, menmen, {
+                    name: 'VEND-O-3000',
+                 description: 'SOLD OUT! YOU HAVE CONSUMED EVERYTHING THERE IS TO CONSUME GOOD JOB',
+                 yes: 'nice',
+                 no: 'wowwwwww'},
+                 function (men, obj) {
+                    men.destroy()
+                    that.inDialog = false
+                 }, function (obj) {
+                    that.inDialog = false
+                 })
+
+    } else if ((cash = get('wallet')) >= 5) {
         drawMenu(this.game, menmen, {name: 'VEND-O-3000', description: 'INSERT $5?', yes: 'YAY', no: 'NAY'},
                  function (men, obj) {
                     that.buyThing(men)
@@ -959,7 +1024,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     var that = this
     var items = []
     item.sprites.forEach(function (opt, i) {
-      var staticy = that.game.add.sprite(75 + i * 180, 325, opt);
+      var staticy = that.game.add.button(75 + i * 180, 325, opt);
       staticy.scale.setTo(4)
       var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#000', wordWrap: true, wordWrapWidth: 150  });
       staticy.inputEnabled = true

@@ -85,9 +85,6 @@ Outside.prototype = {
 
 
 
-    this.player = this.game.add.sprite(20, 700, 'dude');
-
-          this.player.scale.setTo(1.5,1)
 
 
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
@@ -117,6 +114,9 @@ Outside.prototype = {
 
 
 
+    this.player = this.game.add.sprite(20, 700, 'dude');
+
+          this.player.scale.setTo(1.5,1)
 
 
 
