@@ -99,7 +99,7 @@ bunker.prototype = {
 
 
     var voltagebox = this.platforms.create(this.game.world.width / 2 - 120, 445, 'base');
-    voltagebox.scale.setTo(0.1, 0.1)
+    // voltagebox.scale.setTo(0.1, 0.1)
     voltagebox.body.immovable = true
 
 
@@ -115,7 +115,6 @@ bunker.prototype = {
     ear.scale.setTo(0.35)
 
     var buttonthing = this.platforms.create(this.game.world.width / 2 - 120, 347, 'butts');
-    buttonthing.scale.setTo(0.1, 0.1)
     buttonthing.body.immovable = true
 
     var tv = this.platforms.create(this.game.world.width / 2 - 153, 425, 'tv');

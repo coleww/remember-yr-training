@@ -60,7 +60,6 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
 
 
-    game.load.image("card", "assets/sprites/Cardboard.png")
 
 
 
@@ -114,10 +113,6 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("ecto", "assets/sprites/ecto.png")
     game.load.image("son", "assets/sprites/son.png")
 
-
-
-    game.load.image("blocky", "assets/sprites/silo/blocky.png")
-    game.load.image("barrel", "assets/sprites/silo/bar.png")
 
 
 
