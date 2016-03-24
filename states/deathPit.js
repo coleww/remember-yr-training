@@ -17,6 +17,7 @@ DeathPit.prototype = {
 
 
 
+    document.body.style.backgroundImage = "url('assets/sprites/metal_ground_2.jpg')"
 
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 

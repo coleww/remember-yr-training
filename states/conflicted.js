@@ -14,11 +14,11 @@ Outside.prototype = {
   preload: function(){
   },
   create: function(){
+    console.log('um wat')
 
-
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
     this.score = 0
     this.inDialog = true
-    this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
 
     this.speediness = 0.25
@@ -32,11 +32,7 @@ Outside.prototype = {
 
     //  A simple background for our this.game
 
-
-    this.player = this.game.add.sprite(120, 600, 'dude');
-
-          this.player.scale.setTo(1.5,1)
-
+console.log('making plats')
 
     //  The this.platforms group contains the ground and the 2 ledges we can jump on
     this.platforms = this.game.add.group();
@@ -56,7 +52,6 @@ Outside.prototype = {
     //  This stops it from falling away when you jump on it
     ground.body.immovable = true;
 
-    this.game.world.bringToTop(ground)
 
 
     var tube = this.platforms.create(120, this.game.world.height - 420, 'pipe');
@@ -70,6 +65,8 @@ Outside.prototype = {
 
 sike1.body.immovable = true
 // here
+
+console.log('made them plats')
 var tree = this.game.add.sprite(455, this.game.world.height - 545, 'spooky_trees');
 tree.scale.setTo(1.35, 1)
 
@@ -96,6 +93,10 @@ this.nana.enableBody = true
 
 
 
+    this.player = this.game.add.sprite(120, 600, 'dude');
+
+          this.player.scale.setTo(1.5,1)
+          this.game.world.bringToTop(this.platforms)
     var that = this
     this.game.musician.playFX('wooshair')
     // PLAY A WHOOOSH SOUND HERE!?
@@ -105,6 +106,7 @@ this.nana.enableBody = true
 
 
       if (that.player.y <= 430) {
+        console.log("BOP")
         clearInterval(inty)
         that.inDialog = false
           //  We need to enable physics on the that.player

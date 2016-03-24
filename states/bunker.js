@@ -1520,8 +1520,25 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
 
     this.game.physics.arcade.collide(this.player, this.platforms);
 
-    if (this.ascendingTheLadder) {
-        if (this.player.y < 200) this.game.state.start('Silo')
+    if (this.ascendingTheLadder && !this.isDone) {
+        if (this.player.y < 200 && !this.isDone) {
+            this.isDone = true
+            var al = features.alignment || get('alignment')
+
+
+            // {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0
+            function getAlignment (al) {
+              var arr = [al.greed, al.fight, al.nature]
+              var i = arr.indexOf(Math.max.apply(Math, arr));
+              var firstHighest = arr[i]
+              var conflicted = arr.lastIndexOf(firstHighest) !== i
+              return conflicted ? 'conflicted' : ['greed', 'fight', 'nature'][i]
+            }
+
+            var align = getAlignment(al)
+
+            this.game.state.start(this.launchedTheMissiles ? 'explosion' : align)
+        }
     }
 
 if (!this.inDialog){
