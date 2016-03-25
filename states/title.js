@@ -45,7 +45,6 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
     this.game.state.start("DaySwitch")
   },
   showPoems: function(){
-    this.game.state.start("chapbook")
     var poems = []
     for (var i = 0; i < get('poemCount'); i++) {
       var poem = get('poem' + i)
@@ -53,7 +52,31 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
     }
 
 
+  var html = '<html><head></head><body><pre>' + poems.map(function (poem) {
+    console.log(poem)
+    return poem.poem.split('\n').map(function (line) {
+      return line.split('\s').map(function (word) {
+        return word + gimme((Math.random() < 0.1 ? 12 : 5), ' ')
+      }).join(' ') + gimme(5, '\n')
+    }).join('\n')
+  }).join('\n\n\n') +'</pre></body></html>';
+  var uri = "data:text/html," + encodeURIComponent(html);
+  var newWindow = window.open(uri);
+
+
     // argggggh this is gonna be such a pain to build... :<
   }
 }
 module.exports = titleScreen
+
+
+
+
+function gimme (n, e) {
+  var x = ~~(Math.random() * n)
+  var y = ''
+  for (var i = 0; i < x; i++) {
+    y += e
+  }
+  return y
+}

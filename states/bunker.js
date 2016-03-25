@@ -1522,7 +1522,7 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
     if (this.ascendingTheLadder && !this.isDone) {
         if (this.player.y < 200 && !this.isDone) {
             this.isDone = true
-            var al = features.alignment || get('alignment')
+            var al = feature.alignment || get('alignment')
 
 
             // {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0

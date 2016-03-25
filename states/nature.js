@@ -112,11 +112,6 @@ Outside.prototype = {
 
 
 
-    var a = this.game.add.sprite(280, 300, 'WeirdTree')
-    a.scale.setTo(0.125)
-
-
-
     var b = this.game.add.sprite(330, 395, 'WaterFountain')
     b.scale.setTo(0.75, 1.1)
 
