@@ -1405,8 +1405,9 @@ this.itIsTheLastDay = true
     // bg.anchor.setTo(0.5, 0.5);
     bg.alpha = 1;
     var that = this
-    var t = this.game.add.tween(bg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 1000, 1).start();
-    t.onLoop.add(function () {
+    var t = this.game.add.tween(bg).to( { alpha: 0 }, 2500, "Linear", true, 0, 0, false).start();
+    t.onComplete.add(function () {
+        console.log('nope?')
         that.game.tweens.remove(t)
         that.bed.animations.play('open', true)
 
@@ -1634,7 +1635,6 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
 
   update: function () {
     // this.game.input.y)
-
     this.game.physics.arcade.collide(this.player, this.platforms);
 
     if (this.ascendingTheLadder && !this.isDone) {
