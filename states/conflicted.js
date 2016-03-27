@@ -20,7 +20,7 @@ Outside.prototype = {
     this.score = 0
     this.inDialog = true
 
-
+document.body.style.backgroundImage = "url('assets/sprites/background_32.png')"
     this.speediness = 0.25
     this.game.musician.change('outside')
 

@@ -59,6 +59,8 @@ Outside.prototype = {
   create: function(){
 
 
+document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
+
     this.score = 0
     this.inDialog = true
     this.game.physics.startSystem(Phaser.Physics.ARCADE);

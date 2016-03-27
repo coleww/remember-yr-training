@@ -22,6 +22,7 @@ Ending.prototype = {
     //     this.game.state.restart()
     // }
 
+document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
     // this.launchedTheMissiles = get('launched')
     // this.isFaded = get('escapingDrunkenly')
     // this.theColor = 5

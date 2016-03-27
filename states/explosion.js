@@ -39,6 +39,7 @@ Outside.prototype = {
     this.game.musician.change('outside')
 
 
+document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
     var sky = this.game.add.sprite(0, 0, 'redmtn');
     sky.scale.setTo(2.5, 7)
  var bldng = this.game.add.sprite(0, 0, 'bldng');

@@ -523,9 +523,9 @@ bunker.prototype = {
 
   openDialog: function (thing) {
     var that = this
-    if (this.isFaded) {
+    if (this.isFaded && thing.faded) {
         thing = thing.faded
-    } else if (!this.hasNotGoneOffYet) {
+    } else if (!this.hasNotGoneOffYet && thing.alarmed) {
         thing = thing.alarmed
     }
 
@@ -548,8 +548,10 @@ bunker.prototype = {
 
             menu.destroy()
         }
-        if (thing.theSwitch) escapeTheBunker(true)
-
+        if (thing.theSwitch) {
+            this.launchedTheMissiles = true
+            escapeTheBunker(true)
+        }
 
     }, function (thing) {
         thing.fx = false
@@ -563,8 +565,9 @@ bunker.prototype = {
             al[thing.seed['pos']]++
             set('alignment', al)
         }
-        if (thing.theSwitch) escapeTheBunker(false)
-
+        if (thing.theSwitch) {
+            escapeTheBunker(false)
+        }
     })
 
 
@@ -913,6 +916,8 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         case 'drunkescape':
             // continueMenu = false
             set('escapingDrunkenly', true)
+            set('launchedTheMissiles', true)
+            this.launchedTheMissiles = true
             this.setOffTheBoomBoom(true)
             this.escapeTheBunker(true)
             break;
