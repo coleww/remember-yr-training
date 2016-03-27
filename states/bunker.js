@@ -21,7 +21,7 @@ bunker.prototype = {
         this.game.musician.startComputerNoise()
     }
     this.stuffDone = 0
-
+    this.poemCount = 0
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
     //  A simple background for our this.game
@@ -349,7 +349,7 @@ bunker.prototype = {
   },
   openInventory: function () {
     // open a dialog, draw out inventory stuff w/ sprites AND ummm like if they are useable?
-
+    this.hasUsedSomething = true
     var that = this
     if (that.arrowinv) that.arrowinv.destroy()
     if (that.invtext) that.invtext.destroy()
@@ -449,6 +449,7 @@ bunker.prototype = {
   escapeTheBunker: function (launced) {
     // TODO TURN THIS BACK ON!
     // this.game.musician.stopAlarm()
+    if (this.arrow) this.arrow.destroy()
     this.isEscaping = true
     if (launced) {
         // this.game.musician.playFX('modem')
@@ -538,9 +539,9 @@ bunker.prototype = {
             thing.description = thing.description + ' you ' + thing.yes
             thing.yes = 'ok'
             thing.no = ''
-            if (thing.no) {
+            if (thing.no && thing.seed) {
                 var al = get('alignment')
-                al[item.seed['neg']]++
+                al[thing.seed['neg']]++
                 set('alignment', al)
             }
         }
@@ -563,9 +564,11 @@ bunker.prototype = {
             thing.yes = 'ok'
             thing.no = ''
 
-            var al = get('alignment')
-            al[thing.seed['pos']]++
-            set('alignment', al)
+            if (thing.seed){
+                var al = get('alignment')
+                al[thing.seed['pos']]++
+                set('alignment', al)
+            }
         }
         if (thing.theSwitch) {
             that.escapeTheBunker(false)
@@ -626,7 +629,8 @@ bunker.prototype = {
         yes: 'ok',
         no: 'no i want to hit it again'}
 
-
+        this.game.computerStuff[2].description = 'this computer is huge and confusing and you cannot quite remember what it does'
+        this.game.computerStuff[2].yes = 'ok that sounds safe'
         // draw
         var that = this
         drawMenu(this.game, menmen,
@@ -642,7 +646,7 @@ bunker.prototype = {
                         that.inDialog = false
                     })
         return false
-    } else {
+    } else if (this.player.body.touching.down && y >= 375 && y < 385) {
         // OH THIS SHOULD EXPLODINATE!
 
 var that = this
@@ -687,6 +691,96 @@ var that = this
 
 
         return false
+    } else {
+        return this.alsoHitTheVendingMachineIfYouAreThereAndYouHaventHitItYet(obj, menmen)
+    }
+  },
+
+  alsoHitTheVendingMachineIfYouAreThereAndYouHaventHitItYet: function (obj, menmen) {
+    console.log('checking the thing!', this.player.x, this.vendBroken)
+    var x = this.player.x
+    if (!this.vendBroken && this.player.body.touching.down && x >= 45 && x < 50) {
+        this.vendBroken = true
+        this.game.musician.playFX('shatter')
+
+
+        this.hpDisplay.setText(dec('health', 15) + '/100')
+        // this.game.tint
+        this.game.musician.playFX('crunch')
+        this.takeDamage()
+        this.checkForDeath()
+
+
+
+        // check for vendbroken in vend thing, say something else instead
+        // deduct some health, do the pain animation
+        // same for no option
+
+
+
+
+
+        var that = this
+        drawMenu(this.game, menmen,
+                 {name: 'OUCH!',
+                    description: 'you hit the vending machine with your ' + obj.name + ' and hurt yrself in the process and now its broken good job',
+                    yes: 'worth it *flexes*'
+                },
+                     function (menu) {
+                        // THE FAN
+
+                        menu.destroy()
+                        that.inDialog = false
+                    })
+        return false
+    } else if (this.player.body.touching.down && x >= 45 && x < 50) {
+        // OH THIS SHOULD EXPLODINATE!
+        this.hpDisplay.setText(dec('health', 25) + '/100')
+        // this.game.tint
+        this.game.musician.playFX('crunch')
+        this.takeDamage()
+        this.checkForDeath()
+var that = this
+        drawMenu(this.game, menmen,
+                 {name: 'again? srsly?',
+                    description: 'you hit the vending machine AGAIN with your ' + obj.name + ', which didnt help, and actually hurt more. nice.',
+                    yes: 'i am a nihilist who revels in the destruction of all existence, yes thanks'
+                },
+                     function (menu) {
+                        // THE FAN
+                        menu.destroy()
+                        that.inDialog = false
+                    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return false
+    } else {
+        return true
     }
   },
   explodinate: function (type) {
@@ -984,7 +1078,19 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     if (this.arrowvend) this.arrowvend.destroy()
     var that = this
     var cash
-    if (!this.game.vendingItems.length) {
+    if (this.vendBroken){
+        drawMenu(this.game, menmen, {
+                    name: 'VEND-O-3000',
+                 description: 'u broke the vending machine, remember? GOOD JOB',
+                 yes: 'nice',
+                 no: 'wowwwwww'},
+                 function (men, obj) {
+                    men.destroy()
+                    that.inDialog = false
+                 }, function (obj) {
+                    that.inDialog = false
+                 })
+    } else if (!this.game.vendingItems.length) {
         drawMenu(this.game, menmen, {
                     name: 'VEND-O-3000',
                  description: 'SOLD OUT! YOU HAVE CONSUMED EVERYTHING THERE IS TO CONSUME GOOD JOB',
@@ -1181,6 +1287,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     save.events.onInputDown.add(function () {
         this.stuffDone++
       var c = get('poemCount')
+      this.poemCount++
       var days = ['', '', '', '']
       // record the day/time the poem was written
       // THE FIRST DAY! would be hellllla far in the past tho. only see that after exiting.
@@ -1533,7 +1640,7 @@ this.wizard = this.game.add.text(400, 320, 'use arrow keys to move. press down t
     if (this.ascendingTheLadder && !this.isDone) {
         if (this.player.y < 200 && !this.isDone) {
             this.isDone = true
-            var al = feature.alignment || get('alignment')
+            var al = get('alignment')
 
 
             // {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0
@@ -1559,7 +1666,7 @@ if (!this.inDialog){
     var yDir = 0
 
 
-    if (this.stuffDone > 7 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasNotGoneOffYet && Math.random() < 0.003) {
+    if (this.stuffDone > 7 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasUsedSomething && this.hasNotGoneOffYet && ((this.poemCount > 5 && Math.random() < 0.1) || (Math.random() < 0.003)  )              ){
         this.hasNotGoneOffYet = false
         this.setOffTheBoomBoom()
         // make everything explode?
