@@ -28,6 +28,7 @@
     "databae": "^1.0.3",
     "dj-snazzy-snare": "^1.0.0",
     "fast-ish-markov": "^1.0.2",
+    "imagemin-cli": "^2.1.0",
     "int2freq": "^1.0.1",
     "livereloadify": "^2.0.0",
     "load-sample-2-buff": "^1.0.1",
