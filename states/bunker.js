@@ -20,6 +20,7 @@ bunker.prototype = {
     if (get('fanStillBroken') && feature.playNoise) {
         this.game.musician.startComputerNoise()
     }
+    this.stuffDone = 0
 
     //  We're going to be using physics, so enable the Arcade Physics system
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -48,7 +49,7 @@ bunker.prototype = {
 
 
 
-    this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
+    this.theMainbg = this.game.add.tileSprite(0, 0, 640, 720, 'wallll');
 
 
 
@@ -522,6 +523,7 @@ bunker.prototype = {
   },
 
   openDialog: function (thing) {
+            this.stuffDone+= 0.5
     var that = this
     if (this.isFaded && thing.faded) {
         thing = thing.faded
@@ -549,8 +551,8 @@ bunker.prototype = {
             menu.destroy()
         }
         if (thing.theSwitch) {
-            this.launchedTheMissiles = true
-            escapeTheBunker(true)
+            that.launchedTheMissiles = true
+            that.escapeTheBunker(true)
         }
 
     }, function (thing) {
@@ -566,7 +568,7 @@ bunker.prototype = {
             set('alignment', al)
         }
         if (thing.theSwitch) {
-            escapeTheBunker(false)
+            that.escapeTheBunker(false)
         }
     })
 
@@ -761,6 +763,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
   useThing: function (thing, menmen) {
     var continueMenu = true
     var explodeIt
+    var that = this
     switch(thing.fx) {
         case 'gameOver1':
             set('gameOver', 1)
@@ -843,8 +846,10 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
 
                 bread.angle = ((Math.random() * 2) - 1) * ((Math.random() * 25) + 5)
                 bread.scale.setTo(0.35)
+                that.world.sendToBack(bread)
             })
             this.world.bringToTop(menmen)
+            this.world.sendToBack(this.theMainbg)
             break;
         case 'punchStuff':
             continueMenu = this.hitTheFanIfYouAreThereAndYouHaventHitItYet(thing, menmen)
@@ -1017,7 +1022,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     }
   },
   buyThing: function (menu) {
-
+            this.stuffDone++
     var item = this.game.vendingItems.pop()
     var newMoneyFlow = dec('wallet', 5)
     this.hasBoughtStuff = true
@@ -1174,6 +1179,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     }, this);
 
     save.events.onInputDown.add(function () {
+        this.stuffDone++
       var c = get('poemCount')
       var days = ['', '', '', '']
       // record the day/time the poem was written
@@ -1553,7 +1559,7 @@ if (!this.inDialog){
     var yDir = 0
 
 
-    if (this.counter++ > 7500 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasNotGoneOffYet && Math.random() < 0.003) {
+    if (this.stuffDone > 7 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasNotGoneOffYet && Math.random() < 0.003) {
         this.hasNotGoneOffYet = false
         this.setOffTheBoomBoom()
         // make everything explode?
@@ -1631,7 +1637,7 @@ if (!this.inDialog){
     if (this.cursors.up.isDown && this.player.body.touching.down) {
         if (this.wizard) this.wizard.destroy()
         this.game.musician.playFX('pew')
-      this.player.body.velocity.y = -200 - (140 * this.speediness);
+      this.player.body.velocity.y = -320 - (20 * this.speediness);
 
 
     }

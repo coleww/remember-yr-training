@@ -24,7 +24,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
     sevenup = game.add.sprite(50, 300, obj.sprite)
     sevenup.scale.setTo(2.5)
   }
-      var yay  = game.add.text(50, 670, obj.yes, { fontSize: '25px', fill: '#0D0', wordWrap: true, wordWrapWidth: game.world.width / 2 - 50 });
+      var yay  = game.add.text(50, 670, obj.yes, { fontSize: '25px', fill: '#00D', wordWrap: true, wordWrapWidth: game.world.width / 2 - 50 });
       yay.inputEnabled = true;
       var nay
       var that = this
@@ -39,7 +39,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
           yesCB(menmen, obj)
       }, this);
       if (obj.no) {
-        nay = game.add.text(game.world.width / 2, 670, obj.no, { fontSize: '25px', fill: '#D00', wordWrap: true, wordWrapWidth: game.world.width / 2 - 50 });
+        nay = game.add.text(game.world.width / 2, 670, obj.no, { fontSize: '25px', fill: '#00D', wordWrap: true, wordWrapWidth: game.world.width / 2 - 50 });
 
         nay.inputEnabled = true
         nay.events.onInputDown.add(function  (thing) {
