@@ -8,7 +8,7 @@ module.exports = function (game, bg, obj, yesCB, noCB) {
       if (typeof bg == 'string') {
         menmen = game.add.sprite(0, 150, bg);
         if (bg == 'parch') {
-          menmen.scale.setTo(1, 1.5)
+          menmen.scale.setTo(4, 6)
         } else {
           menmen.scale.setTo(3.75, 5)
         }

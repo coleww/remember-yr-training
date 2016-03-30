@@ -24,8 +24,8 @@ DeathPit.prototype = {
 
     this.speediness = 0.25
     this.game.musician.change('deathPit')
-      this.game.add.tileSprite(0, 0, 640, 960, 'wall_2');
-
+     var w = this.game.add.tileSprite(0, 0, 640, 960, 'wall_2');
+     w.scale.setTo(4)
 
     //  We're going to be using physics, so enable the Arcade Physics system
 

@@ -64,7 +64,7 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
 
 
     var nuke = this.game.add.sprite(-90, -200, 'nuke');
-    nuke.scale.setTo(0.665, 1)
+    nuke.scale.setTo(2)
     nuke.alpha = 0
     var that = this
     var done = false

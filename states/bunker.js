@@ -227,7 +227,7 @@ bunker.prototype = {
     // this.game.world.bringToTop(staticy)
 
     var tippyTop = this.platforms.create(this.game.world.width / 2 - 72, 343, 'grid');
-    tippyTop.scale.setTo(0.05, 0.1)
+
     tippyTop.body.setSize(1000, 1, 0, 0)
     tippyTop.body.immovable = true
     tippyTop.body.checkCollision.down = false;
