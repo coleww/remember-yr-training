@@ -10,7 +10,6 @@ var songs = {
   // happyEnding: require('./songs/happyEnding'),
   // sadEnding: require('./songs/sadEnding'),
   // secretEnding: require('./songs/secretEnding'),
-  // silo: require('./songs/silo'),
   // vending: require('./songs/vending'),
   outside: require('./songs/outside'),
   tense: require('./songs/tense'),
