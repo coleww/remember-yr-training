@@ -1,21 +1,26 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
 
-
-a game about poetry and jetpacks
+a game about poetry and waiting for things to happen
 
 ### THIS CODE IS A HOT MESS AND SO AM I
 
+I made this game to teach myself how to make games, as such it is terrible.
 
 
+------------------------------------------
+
+## ASSETS
 
 
-
-
-
-https://www.freesound.org/people/MentalSanityOff/sounds/156578/
-
+### code/tutorials
+http://phaser.io/tutorials/making-your-first-phaser-game
+https://gumroad.com/a/333067379
+http://codepen.io/jackrugile/pen/fqHtn
+http://phaser.io/examples
 http://www.lessmilk.com/game-design-1/
+
+### sprites
 http://opengameart.org/content/my-first-tileset-rocks
 http://opengameart.org/content/filthy-ectoplasm
 http://opengameart.org/content/battery-power-icon
@@ -30,28 +35,15 @@ http://opengameart.org/content/urban-landscape
 http://opengameart.org/content/spinning-banana
 http://opengameart.org/content/cat-sprites
 http://opengameart.org/content/kiwi-sprites
-https://www.freesound.org/people/DigitalDominic/sounds/175385/
 http://opengameart.org/content/deer
 http://opengameart.org/content/german-shepherd-0
 http://opengameart.org/content/blue-babydragon
 http://opengameart.org/content/little-penguin
 http://opengameart.org/content/characters-the-woods
 http://opengameart.org/content/fierce-almost-war-horse
-https://www.freesound.org/people/thefsoundman/sounds/118513/
-https://www.freesound.org/people/Benboncan/sounds/167563/
-https://www.freesound.org/people/Ekokubza123/sounds/104183/
-https://www.freesound.org/people/thefsoundman/sounds/118513/
-https://www.freesound.org/people/Reitanna/sounds/252218/
 http://opengameart.org/content/cute-cloud
 http://opengameart.org/content/unicorn
 http://opengameart.org/content/weird-alien-textures
-IS BASICALLY A BUNCH OF CODE HACKED FROM:
-http://phaser.io/tutorials/making-your-first-phaser-game
-https://gumroad.com/a/333067379
-http://codepen.io/jackrugile/pen/fqHtn
-http://phaser.io/examples
-ASSETS:
-(not everything on this list ended up being used, but hopefully everything I used is on this list!)
 http://untamed.wild-refuge.net/rmxpresources.php?characters
 http://pousse.rapiere.free.fr/tome/
 http://opengameart.org/content/farming-tool-icons
@@ -113,6 +105,15 @@ http://opengameart.org/content/candle-sprite
 http://opengameart.org/content/lpc-street-lamp
 http://opengameart.org/content/2d-object-pack
 http://opengameart.org/content/a-blocky-dungeon
+
+### audio
+https://www.freesound.org/people/DigitalDominic/sounds/175385/
+https://www.freesound.org/people/thefsoundman/sounds/118513/
+https://www.freesound.org/people/Benboncan/sounds/167563/
+https://www.freesound.org/people/Ekokubza123/sounds/104183/
+https://www.freesound.org/people/thefsoundman/sounds/118513/
+https://www.freesound.org/people/Reitanna/sounds/252218/
+https://www.freesound.org/people/MentalSanityOff/sounds/156578/
 https://www.freesound.org/people/f4ngy/sounds/240789/
 https://www.freesound.org/people/keweldog/sounds/181774/
 https://www.freesound.org/people/MeefBeef/sounds/333256/
