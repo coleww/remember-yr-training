@@ -3,4 +3,4 @@ somehow crawl for all the attributions for the credits and somehow include a lis
 ASSETS: maybe lofi-them somehow? lower # of colors?
 MARKOV: get it down to 1mb~
 SOUND: compress more somehow? shorten?
-HOW TO SUPER CACHE THAT THANG?
+HOW TO SUPER CACHE THAT THANG?o
