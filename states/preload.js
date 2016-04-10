@@ -17,7 +17,7 @@ preload.prototype = {
 
 
 
-    game.load.image("bluesky", "assets/sprites/bgs/mrsbluesky.png")
+    game.load.image("bluesky", "assets/sprites/mrsbluesky.png")
 
 
 
@@ -122,62 +122,62 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("fist", "assets/sprites/fist.png")
     game.load.image("parch", "assets/sprites/parchment.png")
 
-    game.load.image("wallArt1", "assets/sprites/wallart/L3_WallDeco21.png")
-    game.load.image("wallArt2", "assets/sprites/wallart/L3_WallDeco26.png")
-    game.load.image("wallArt3", "assets/sprites/wallart/L3_WallDeco52.png")
-    game.load.image("wallArt4", "assets/sprites/wallart/Scroll0023.png")
-    game.load.image("wallArt5", "assets/sprites/wallart/Scroll0025.png")
+    game.load.image("wallArt1", "assets/sprites/L3_WallDeco21.png")
+    game.load.image("wallArt2", "assets/sprites/L3_WallDeco26.png")
+    game.load.image("wallArt3", "assets/sprites/L3_WallDeco52.png")
+    game.load.image("wallArt4", "assets/sprites/Scroll0023.png")
+    game.load.image("wallArt5", "assets/sprites/Scroll0025.png")
 
 
     game.load.image("barry", "assets/sprites/barry.png")
-    game.load.image("nattymtns", "assets/sprites/bgs/nattymtns.png")
+    game.load.image("nattymtns", "assets/sprites/nattymtns.png")
 
-    game.load.image("nattysky", "assets/sprites/bgs/nattysky.png")
-    game.load.image("nattygrass", "assets/sprites/bgs/nattygrass.png")
-    game.load.image("nattymtn", "assets/sprites/bgs/nattymtn.png")
-    game.load.image("nattyclouds", "assets/sprites/bgs/nattyclouds.png")
-    game.load.image("nattybgrounds", "assets/sprites/bgs/nattybgrounds.png")
-    game.load.image("nattyduo", "assets/sprites/bgs/nattyduo.png")
-    game.load.image("nattylight", "assets/sprites/bgs/nattylight.png")
-    game.load.image("nattyfg", "assets/sprites/bgs/nattyfg.png")
-    game.load.image("WaterFountain", "assets/sprites/bgs/WaterFountain.png")
-    game.load.image("treeee", "assets/sprites/bgs/treeee.png")
-    game.load.image("tinytree", "assets/sprites/bgs/tinytree.png")
-    game.load.image("spooky_trees", "assets/sprites/bgs/spooky_trees.png")
-    game.load.image("nothertree", "assets/sprites/bgs/nothertree.png")
-    game.load.image("lilgrass", "assets/sprites/bgs/lilgrass.png")
-    game.load.image("grass", "assets/sprites/bgs/grass.png")
-    game.load.image("flower", "assets/sprites/bgs/flower.png")
-    game.load.image("dirt", "assets/sprites/bgs/dirt.png")
-    game.load.image("bigtree", "assets/sprites/bgs/bigtree.png")
-    game.load.image("anotherbigtreee", "assets/sprites/bgs/anotherbigtreee.png")
-    game.load.spritesheet("spinning_banana", "assets/sprites/animals/spinning_banana.png", 50, 25)
-    game.load.spritesheet("horse", "assets/sprites/animals/horse.png", 90, 64)
-    game.load.image("cow", "assets/sprites/animals/cow.png")
-    game.load.image("drag", "assets/sprites/animals/drag.png")
-    game.load.spritesheet("kiwi", "assets/sprites/animals/kiwix2.png", 104, 66)
-    game.load.spritesheet("owl", "assets/sprites/animals/owl_vander.png", 15, 20)
-    game.load.image("penguin", "assets/sprites/animals/penguin_pixeled.png")
-    game.load.spritesheet("catone", "assets/sprites/animals/catspritesx2.png", 100, 74)
-    game.load.spritesheet("rabbit", "assets/sprites/animals/rabbit_walk.png", 16, 16)
-    game.load.spritesheet("spritesheet", "assets/sprites/animals/spritesheet.png", 90, 60)
-    game.load.spritesheet("fanworking", "assets/sprites/computer/fanworking.png", 96, 96)
-
-
-
-
-
-    game.load.spritesheet("blinky1", "assets/sprites/computer/blinky1.png", 16, 46)
-    game.load.spritesheet("blinky2", "assets/sprites/computer/blinky2.png", 16, 45)
-    game.load.image("earpiece", "assets/sprites/computer/earpiece.png")
-
-    game.load.image("Cog", "assets/sprites/computer/Cog.png")
-    game.load.image("Cog2", "assets/sprites/computer/Cog2.png")
+    game.load.image("nattysky", "assets/sprites/nattysky.png")
+    game.load.image("nattygrass", "assets/sprites/nattygrass.png")
+    game.load.image("nattymtn", "assets/sprites/nattymtn.png")
+    game.load.image("nattyclouds", "assets/sprites/nattyclouds.png")
+    game.load.image("nattybgrounds", "assets/sprites/nattybgrounds.png")
+    game.load.image("nattyduo", "assets/sprites/nattyduo.png")
+    game.load.image("nattylight", "assets/sprites/nattylight.png")
+    game.load.image("nattyfg", "assets/sprites/nattyfg.png")
+    game.load.image("WaterFountain", "assets/sprites/WaterFountain.png")
+    game.load.image("treeee", "assets/sprites/treeee.png")
+    game.load.image("tinytree", "assets/sprites/tinytree.png")
+    game.load.image("spooky_trees", "assets/sprites/spooky_trees.png")
+    game.load.image("nothertree", "assets/sprites/nothertree.png")
+    game.load.image("lilgrass", "assets/sprites/lilgrass.png")
+    game.load.image("grass", "assets/sprites/grass.png")
+    game.load.image("flower", "assets/sprites/flower.png")
+    game.load.image("dirt", "assets/sprites/dirt.png")
+    game.load.image("bigtree", "assets/sprites/bigtree.png")
+    game.load.image("anotherbigtreee", "assets/sprites/anotherbigtreee.png")
+    game.load.spritesheet("spinning_banana", "assets/sprites/spinning_banana.png", 50, 25)
+    game.load.spritesheet("horse", "assets/sprites/horse.png", 90, 64)
+    game.load.image("cow", "assets/sprites/cow.png")
+    game.load.image("drag", "assets/sprites/drag.png")
+    game.load.spritesheet("kiwi", "assets/sprites/kiwix2.png", 104, 66)
+    game.load.spritesheet("owl", "assets/sprites/owl_vander.png", 15, 20)
+    game.load.image("penguin", "assets/sprites/penguin_pixeled.png")
+    game.load.spritesheet("catone", "assets/sprites/catspritesx2.png", 100, 74)
+    game.load.spritesheet("rabbit", "assets/sprites/rabbit_walk.png", 16, 16)
+    game.load.spritesheet("spritesheet", "assets/sprites/spritesheet.png", 90, 60)
+    game.load.spritesheet("fanworking", "assets/sprites/fanworking.png", 96, 96)
 
 
 
 
-    game.load.image("pipe", "assets/sprites/bgs/pipe-top.png")
+
+    game.load.spritesheet("blinky1", "assets/sprites/blinky1.png", 16, 46)
+    game.load.spritesheet("blinky2", "assets/sprites/blinky2.png", 16, 45)
+    game.load.image("earpiece", "assets/sprites/earpiece.png")
+
+    game.load.image("Cog", "assets/sprites/Cog.png")
+    game.load.image("Cog2", "assets/sprites/Cog2.png")
+
+
+
+
+    game.load.image("pipe", "assets/sprites/pipe-top.png")
 
 
 
@@ -193,58 +193,58 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
 
     game.load.image("weedbag", "assets/sprites/weedbag.png")
 
-    game.load.image("redmtn", "assets/sprites/bgs/redmtn.png")
+    game.load.image("redmtn", "assets/sprites/redmtn.png")
 
-    game.load.image("bldng", "assets/sprites/bgs/buildings-layer.png")
+    game.load.image("bldng", "assets/sprites/buildings-layer.png")
     game.load.image("pumpkin", "assets/sprites/pumpkin.png")
     game.load.image("friend", "assets/sprites/friend.png")
-    game.load.image("base", "assets/sprites/computer/container_1.png")
-    game.load.image("butts", "assets/sprites/computer/misc_2.png")
-    game.load.image("speaker", "assets/sprites/computer/obj_speaker001.png")
-    game.load.image("tv", "assets/sprites/computer/obj_tv001.png")
-    game.load.image("radio", "assets/sprites/computer/obj_radio001.png")
-    game.load.image("fan", "assets/sprites/computer/obj_fan001.png")
-    game.load.image("mach", "assets/sprites/computer/theMachine.png")
-    game.load.image("siren", "assets/sprites/computer/policecar_n.png")
-    game.load.image("bulb", "assets/sprites/computer/car1.png")
-    game.load.image("fuse", "assets/sprites/computer/bus.png")
-    game.load.spritesheet("arrows", "assets/sprites/computer/arrows.png", 30, 25) // 4
-    game.load.spritesheet("bars", "assets/sprites/computer/bars.png", 33.333333333333333333, 100) // 3
-    game.load.spritesheet("circs", "assets/sprites/computer/circs.png", 25, 25) // 6
-    game.load.spritesheet("squares", "assets/sprites/computer/squares.png", 30, 32) // 4
-    game.load.spritesheet("ticks", "assets/sprites/computer/ticks.png", 25, 100) // 6
-    game.load.spritesheet("switchy", "assets/sprites/computer/switch.png", 50, 34) // 2
+    game.load.image("base", "assets/sprites/container_1.png")
+    game.load.image("butts", "assets/sprites/misc_2.png")
+    game.load.image("speaker", "assets/sprites/obj_speaker001.png")
+    game.load.image("tv", "assets/sprites/obj_tv001.png")
+    game.load.image("radio", "assets/sprites/obj_radio001.png")
+    game.load.image("fan", "assets/sprites/obj_fan001.png")
+    game.load.image("mach", "assets/sprites/theMachine.png")
+    game.load.image("siren", "assets/sprites/policecar_n.png")
+    game.load.image("bulb", "assets/sprites/car1.png")
+    game.load.image("fuse", "assets/sprites/bus.png")
+    game.load.spritesheet("arrows", "assets/sprites/arrows.png", 30, 25) // 4
+    game.load.spritesheet("bars", "assets/sprites/bars.png", 33.333333333333333333, 100) // 3
+    game.load.spritesheet("circs", "assets/sprites/circs.png", 25, 25) // 6
+    game.load.spritesheet("squares", "assets/sprites/squares.png", 30, 32) // 4
+    game.load.spritesheet("ticks", "assets/sprites/ticks.png", 25, 100) // 6
+    game.load.spritesheet("switchy", "assets/sprites/switch.png", 50, 34) // 2
 
-    game.load.spritesheet("static", "assets/sprites/computer/dss.png", 64, 64)
+    game.load.spritesheet("static", "assets/sprites/dss.png", 64, 64)
 
-    game.load.image("fireball", "assets/sprites/plosions/fireball.png")
+    game.load.image("fireball", "assets/sprites/fireball.png")
 
     game.load.image("nuke", "assets/sprites/Castle_Romeo.png")
-    game.load.image("fireblast", "assets/sprites/plosions/fireblast.png")
+    game.load.image("fireblast", "assets/sprites/fireblast.png")
 
-    game.load.image("flame", "assets/sprites/plosions/flame.png")
+    game.load.image("flame", "assets/sprites/flame.png")
     game.load.spritesheet("sweetbook", "assets/sprites/sweetbook.png", 28, 35) // 2
-    game.load.image("BootsGreen", "assets/sprites/vending/CrystalsGreen.png")
-    game.load.image("BootsSoft", "assets/sprites/vending/CrystalsBlue.png")
-    game.load.image("BootsMetal", "assets/sprites/vending/CrystalsPurple.png")
-    game.load.image("FoodAle", "assets/sprites/vending/FoodAle.png")
-    game.load.image("FoodBread", "assets/sprites/vending/FoodBread.png")
-    game.load.image("FoodDrumstick", "assets/sprites/vending/FoodDrumstick.png")
-    game.load.image("MushroomBrown", "assets/sprites/vending/HB_MushroomBrownSpotted.png")
-    game.load.image("MushroomPurple", "assets/sprites/vending/HB_MushroomPurple.png")
-    game.load.image("MushroomRed", "assets/sprites/vending/HB_MushroomRed.png")
-    game.load.image("RobeB", "assets/sprites/vending/PotionAquamarine.png")
-    game.load.image("RobeG", "assets/sprites/vending/PotionEmerald2.png")
-    game.load.image("RobeR", "assets/sprites/vending/PotionShortRuby.png")
-    game.load.image("Sword1", "assets/sprites/vending/Sword25.png")
-    game.load.image("Sword2", "assets/sprites/vending/Sword26.png")
-    game.load.image("Sword3", "assets/sprites/vending/SwordMedievalMagical.png")
-    game.load.image("VialG", "assets/sprites/vending/VialGreen.png")
-    game.load.image("VialR", "assets/sprites/vending/VialRed.png")
-    game.load.image("VialY", "assets/sprites/vending/VialYellow.png")
-    game.load.image("instructions", "assets/sprites/vending/instructions.png")
-    game.load.image("bloodnote", "assets/sprites/vending/bloodynote.png")
-    game.load.image("poemsbook", "assets/sprites/vending/how2poem.png")
+    game.load.image("BootsGreen", "assets/sprites/CrystalsGreen.png")
+    game.load.image("BootsSoft", "assets/sprites/CrystalsBlue.png")
+    game.load.image("BootsMetal", "assets/sprites/CrystalsPurple.png")
+    game.load.image("FoodAle", "assets/sprites/FoodAle.png")
+    game.load.image("FoodBread", "assets/sprites/FoodBread.png")
+    game.load.image("FoodDrumstick", "assets/sprites/FoodDrumstick.png")
+    game.load.image("MushroomBrown", "assets/sprites/HB_MushroomBrownSpotted.png")
+    game.load.image("MushroomPurple", "assets/sprites/HB_MushroomPurple.png")
+    game.load.image("MushroomRed", "assets/sprites/HB_MushroomRed.png")
+    game.load.image("RobeB", "assets/sprites/PotionAquamarine.png")
+    game.load.image("RobeG", "assets/sprites/PotionEmerald2.png")
+    game.load.image("RobeR", "assets/sprites/PotionShortRuby.png")
+    game.load.image("Sword1", "assets/sprites/Sword25.png")
+    game.load.image("Sword2", "assets/sprites/Sword26.png")
+    game.load.image("Sword3", "assets/sprites/SwordMedievalMagical.png")
+    game.load.image("VialG", "assets/sprites/VialGreen.png")
+    game.load.image("VialR", "assets/sprites/VialRed.png")
+    game.load.image("VialY", "assets/sprites/VialYellow.png")
+    game.load.image("instructions", "assets/sprites/instructions.png")
+    game.load.image("bloodnote", "assets/sprites/bloodynote.png")
+    game.load.image("poemsbook", "assets/sprites/how2poem.png")
     game.load.image("candle", "assets/sprites/candle.png")
     game.load.image("menu", "assets/sprites/Menu_2.png")
     game.load.image("ladder", "assets/sprites/ladder1.png")
@@ -271,7 +271,7 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("blankpaper", "assets/sprites/PaperDecoration_Blank.png")
     game.load.image("paper3", "assets/sprites/SinglePage.png")
    game.load.image("arrow", "assets/sprites/rodyk.png")
-    game.load.image("battery", "assets/sprites/vending/icon-power.png")
+    game.load.image("battery", "assets/sprites/icon-power.png")
     game.load.image('ground', 'assets/sprites/gbground.png');
     game.load.spritesheet('cryobed', 'assets/sprites/cryobed.png', 64, 64);
     game.load.image('platform', 'assets/sprites/gbplat.png');
