@@ -33,27 +33,26 @@ preload.prototype = {
 
 
 
-    game.load.image("crumbledplatform", "assets/sprites/deathpit/crumbledplatform.png")
+    game.load.image("crumbledplatform", "assets/sprites/crumbledplatform.png")
 
 
-    game.load.image("body1", "assets/sprites/deathpit/body1.png")
+    game.load.image("body1", "assets/sprites/body1.png")
     game.load.image("boxen", "assets/sprites/box.png")
 
-    game.load.image("jetpack", "assets/sprites/jetpack.png")
-    game.load.image("body2", "assets/sprites/deathpit/body2.png")
+    game.load.image("body2", "assets/sprites/body2.png")
 
-    game.load.image("web", "assets/sprites/deathpit/web.png")
-game.load.image("skull", "assets/sprites/deathpit/skull.png")
-
+    game.load.image("web", "assets/sprites/web.png")
+game.load.image("skull", "assets/sprites/skull.png")
 
 
 
-    game.load.image("pots", "assets/sprites/deathpit/pots.png")
 
-    game.load.image("wall_2", "assets/sprites/deathpit/wall_2.png")
+    game.load.image("pots", "assets/sprites/pots.png")
+
+    game.load.image("wall_2", "assets/sprites/wall_2.png")
 
 
-     game.load.spritesheet("torchy", "assets/sprites/deathpit/torch.png", 32, 48)
+     game.load.spritesheet("torchy", "assets/sprites/torch.png", 32, 48)
 
 
      game.load.spritesheet("the_coin_spinny", "assets/sprites/coin_sheet.png", 40.333333333333336, 42)
@@ -76,7 +75,6 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.spritesheet("boss", "assets/sprites/boss.png", 96, 96)
     game.load.spritesheet("trippyb", "assets/sprites/trippyb.png", 96, 96)
     game.load.image("breaded", "assets/sprites/breaded.png")
-    game.load.image("ship", "assets/sprites/ship.png")
     game.load.image("smoke", "assets/sprites/smoke.png")
     game.load.image("barrier", "assets/sprites/barrier.png")
     game.load.image("separator", "assets/sprites/separator.png")
@@ -255,7 +253,6 @@ game.load.image("skull", "assets/sprites/deathpit/skull.png")
     game.load.image("book2", "assets/sprites/Book2.png")
     game.load.image("mug", "assets/sprites/mug.png")
     game.load.image("jug", "assets/sprites/jug.png")
-    game.load.image("paw", "assets/sprites/paw.png")
     game.load.image("bricky", "assets/sprites/birck.png")
     game.load.image("pizza", "assets/sprites/pizza.png")
     game.load.image("papert", "assets/sprites/papertowlrolll.png")
