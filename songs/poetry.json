@@ -132,7 +132,7 @@
   nexts: {
     chorus: ["chorus", "chorus", "chorus"]
   },
-  bpm: 460,
+  bpm: 360,
   key: {
     tonic: "E3",
     scale: "major"

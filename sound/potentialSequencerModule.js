@@ -46,6 +46,10 @@ module.exports = function (currentSong) {
     },
     update: function (theNextSong, wait) {
       wait ? nextSong = theNextSong : song = theNextSong
+      if (!wait) {
+        this.stop()
+        this.start()
+      }
     },
     modulupdate: function (songy, args) {
       var theNextSong = songy
