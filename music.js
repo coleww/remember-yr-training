@@ -78,14 +78,17 @@ Object.keys(insts).forEach(function(ik) {
     change: function (newPattern) {
       sequencer.update(songs[newPattern])
     },
+    modulupdate: function (newPattern, args) {
+      sequencer.modulupdate(args)
+    },
     setMainVolume: function (val) {
-
+      // TODO: DO THESE
     },
     setFXVolume: function (val) {
-
+// TODO: DO THESE
     },
     setMusicVolume: function (val) {
-
+// TODO: DO THESE
     },
     stopAlarm: function () {foley.stopAlarmNoise()},
     updateComputerNoise: function (g,x,y, z, a) {foley.updateComputerNoise(g, x, y, z, a)},

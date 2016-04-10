@@ -45,6 +45,14 @@ module.exports = function (currentSong) {
     },
     update: function (theNextSong, wait) {
       wait ? nextSong = theNextSong : song = theNextSong
+    },
+    modulupdate: function (songy, args) {
+      var theNextSong = songy
+      Object.keys(args).forEach(function (key) {
+        theNextSong[key] = args[key]
+      })
+
+      song = theNextSong
     }
   }
 }

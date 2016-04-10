@@ -24,7 +24,14 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/mrsbluesky.png')"
 
 
     this.speediness = 0.25
-    this.game.musician.change('outside')
+
+    // TODO: update this to be "flavorful"
+    this.game.musician.modulupdate('outside', {bpm: 420,
+      key: {
+        tonic: "D3",
+        scale: "pentMin"
+      }
+    })
 
 
     var sky = this.game.add.sprite(0, 0, 'bluesky');
