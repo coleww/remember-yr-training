@@ -24,13 +24,14 @@ document.body.style.backgroundImage = "url('assets/sprites/background_32.png')"
     this.speediness = 0.25
 
     // TODO: update this to be "flavorful"
-    this.game.musician.modulupdate('outside', {bpm: 420,
+    this.game.musician.stop()
+    this.game.musician.modulupdate('outside', {bpm: 900,
       key: {
         tonic: "D3",
         scale: "pentMin"
       }
     })
-
+    this.game.musician.start()
     var sky = this.game.add.sprite(0, 0, 'bg32');
     sky.scale.setTo(2, 8)
 

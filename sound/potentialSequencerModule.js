@@ -42,6 +42,7 @@ module.exports = function (currentSong) {
     },
     stop: function () {
       clearInterval(interval)
+      interval = undefined
     },
     update: function (theNextSong, wait) {
       wait ? nextSong = theNextSong : song = theNextSong

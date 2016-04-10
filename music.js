@@ -72,14 +72,14 @@ Object.keys(insts).forEach(function(ik) {
       if (features.playMusic)  sequencer.start()
     },
     stop: function () {
-      foley.stop()
+      // foley.stop()
       sequencer.stop()
     },
     change: function (newPattern) {
       sequencer.update(songs[newPattern])
     },
     modulupdate: function (newPattern, args) {
-      sequencer.modulupdate(args)
+      sequencer.modulupdate(songs[newPattern], args)
     },
     setMainVolume: function (val) {
       // TODO: DO THESE
