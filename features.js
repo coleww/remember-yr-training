@@ -1,7 +1,7 @@
 module.exports = {
   playNoise: true,
   playMusic: true,
-  startState: 'fight',
+  startState: 'conflicted',
   currentDay: 1,
   fanOff: true,
   deathPitActive: true

@@ -166,29 +166,29 @@ this.nana.enableBody = true
                               this.game.add.text(50, 56, 'YOU FLOAT OFF LIKE A SHOPPING BAG CAUGHT IN A BREEZE', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
 }
 
-                        if (!this.ended && this.player.y > 700 ) {
+                        if (!this.ended && this.player.y > 900 ) {
                           //        this.game.add.text(50, 56, 'YOU FLOAT OFF LIKE A SHOPPING BAG CAUGHT IN A BREEZE', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300px' });
 
 
 
                           this.ended = true
-                          var bg = this.game.add.sprite(0, 0, 'black');
-                          bg.scale.setTo(5, 7)
-                          // bg.anchor.setTo(0.5, 0.5);
-                          bg.alpha = 0;
-                          var that = this
-                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 1500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
-                          t.onLoop.add(function () {
-                              console.log('looped!')
-                              // t.onLoopCallback(function(){console.log('Y?')})
-                              that.game.tweens.remove(t)
+                          // var bg = this.game.add.sprite(0, 0, 'black');
+                          // bg.scale.setTo(5, 7)
+                          // // bg.anchor.setTo(0.5, 0.5);
+                          // bg.alpha = 0;
+                          // var that = this
+                          // var t = this.game.add.tween(bg).to( { alpha: 1 }, 1500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
+                          // t.onLoop.add(function () {
+                          //     console.log('looped!')
+                          //     // t.onLoopCallback(function(){console.log('Y?')})
+                          //     that.game.tweens.remove(t)
 
-                            bg.destroy()
-                            that.game.state.start('ending')
+                          //   bg.destroy()
+                            this.game.state.start('ending')
 
                             // OHHH MAYBE DROP THE PLAYER IN HERE?
 
-                          }, this)
+                          // }, this)
                           // OH! THIS IS HOW U GET TO THE CREDITS!
                           // u fell off the dang thing
                           // TODO: what happen if u fall off the thing?
