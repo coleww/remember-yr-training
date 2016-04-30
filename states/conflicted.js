@@ -25,10 +25,10 @@ document.body.style.backgroundImage = "url('assets/sprites/background_32.png')"
 
     // TODO: update this to be "flavorful"
     this.game.musician.stop()
-    this.game.musician.modulupdate('outside', {bpm: 900,
+    this.game.musician.modulupdate('outside', {bpm: 300,
       key: {
-        tonic: "D3",
-        scale: "pentMin"
+        tonic: "A3",
+        scale: "minor"
       }
     })
     this.game.musician.start()

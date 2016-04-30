@@ -58,8 +58,7 @@ Outside.prototype = {
   },
   create: function(){
 
-
-document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
+document.body.style.backgroundImage = "url('assets/sprites/bgs/exterior-parallaxBG1.png')"
 
     this.score = 0
     this.inDialog = true
@@ -69,10 +68,10 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
     this.speediness = 0.25
 
     // TODO: update this to be "flavorful"
-    this.game.musician.modulupdate('outside', {bpm: 420,
+    this.game.musician.modulupdate('outside', {bpm: 275,
       key: {
-        tonic: "D3",
-        scale: "pentMin"
+        tonic: "E3",
+        scale: "major"
       }
     })
 
@@ -334,10 +333,10 @@ sike3.body.checkCollision.down = false;
           //  Add and update the score
           this.score += 1;
           this.scoreText.text = 'friends: ' + this.score;
-          if (this.score % 10 == 0) this.makeCoins()
+          if (this.score % 5 == 0) this.makeCoins()
 
 
-          if (!this.ended && this.score % 200 == 0) {
+          if (!this.ended && this.score % 25 == 0) {
 
               //
               this.ended = true
@@ -346,18 +345,32 @@ sike3.body.checkCollision.down = false;
               // bg.anchor.setTo(0.5, 0.5);
               bg.alpha = 0;
               var that = this
-              var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
-              t.onLoop.add(function () {
-                  console.log('looped!')
-                  // t.onLoopCallback(function(){console.log('Y?')})
-                  that.game.tweens.remove(t)
+// var t = this.game.add.tween(bigBg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
+// t.onLoop.add(function () {
+// console.log('looped!')
+// // t.onLoopCallback(function(){console.log('Y?')})
+// that.game.tweens.remove(t)
+// bigBg.destroy()
 
-                bg.destroy()
+
+
+
+// // OHHH MAYBE DROP THE PLAYER IN HERE?
+
+// }, this)
+              // var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
+              // t.onLoop.add(function () {
+              //     console.log('looped!')
+
                 that.game.state.start('ending')
+                  // t.onLoopCallback(function(){console.log('Y?')})
+                  // that.game.tweens.remove(t)
 
-                // OHHH MAYBE DROP THE PLAYER IN HERE?
+              //   bg.destroy()
 
-              }, this)
+              //   // OHHH MAYBE DROP THE PLAYER IN HERE?
+
+              // }, this)
               // OH! THIS IS HOW U GET TO THE CREDITS!
               // u fell off the dang thing
               // TODO: what happen if u fall off the thing?

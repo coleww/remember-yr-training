@@ -111,6 +111,7 @@ game.load.image("skull", "assets/sprites/skull.png")
     game.load.image("ecto", "assets/sprites/ecto.png")
     game.load.image("son", "assets/sprites/son.png")
 
+    game.load.image("clock", "assets/sprites/clockface.png")
 
 
 

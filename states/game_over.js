@@ -34,43 +34,13 @@ var endings = {
     },
     // not actual a game over screen, u just get stuck in the death pit
   gameOver505: {
-    sprite: 'the_fan',
+    sprite: 'fan',
     scale: [5, 7],
     description: 'the cooling system for this station was powered by a black hole, which you unleashed, consuming the entirety of existence. GOOD JOB, BUDDY.',
     name: '☠ X_X ☠',
     song: 'dead'
     },
-  gameOver50: {
-    sprite: 'goodjob',
-    scale: [5, 7],
-    description: 'you bump into something on your way out of the silo and explode. good job. gonna let you give that one another shot.',
-    name: 'KABLOOM!!!!',
-    next: 'Silo',
-    song: 'dead'
-  },
-  gameOver51: {
-    sprite: 'bummed',
-    scale: [5, 7],
-    description: 'again? srsly? alright, one more try, then it is lights out for you!',
-    name: 'KABLOOM!!!!',
-    next: 'Silo',
-    song: 'dead'
-  },
-  gameOver52: {
-    sprite: 'trinity',
-    scale: [5, 7],
-    description: 'i see you have disproven the old "third try\'s a charm" theory. good job upending physics there. at this point i am in such disbelief that i will let you continue your sad attempts to escape certain death.',
-    name: 'KABLOOM!!!!',
-    next: 'Silo',
-    song: 'dead'
-  },
-  gameOver53: {
-    sprite: 'sons',
-    scale: [5, 7],
-    description: 'we are severely disappointed in you. do not speak to me or my child ever again.',
-    name: 'KABLOOM!!!!',
-    song: 'dead'
-  },
+
   gameOver999: {
     sprite: 'clock',
     scale: [5, 7],

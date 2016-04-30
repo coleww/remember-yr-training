@@ -17,7 +17,8 @@ Outside.prototype = {
 
 
 
-document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
+
+document.body.style.backgroundImage = "url('assets/sprites/parallax-mountain-bg.png')"
     this.score = 0
     this.inDialog = true
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -26,10 +27,10 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
     this.speediness = 0.25
 
     // TODO: update this to be "flavorful"
-    this.game.musician.modulupdate('outside', {bpm: 420,
+    this.game.musician.modulupdate('outside', {bpm: 666,
       key: {
-        tonic: "D3",
-        scale: "pentMin"
+        tonic: "F4",
+        scale: "pentMaj"
       }
     })
 
@@ -55,7 +56,7 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
 
 
 
-    var p = this.game.add.sprite(170, 566, 'pumpkin')
+    var p = this.game.add.sprite(170, 586, 'pumpkin')
     p.scale.setTo(0.5)
 
     var ground = this.platforms.create(125, this.game.world.height - 340, 'crumbledplatform');
@@ -235,26 +236,26 @@ sike3.body.immovable = true
         if (Math.random() < 0.6) c.body.velocity.x += (Math.random() * 2) - 1
       })
       if (!this.inDialog){
-                        if (!this.ended && this.player.y > 600 ) {
+                        if (!this.ended && this.player.y > 900 ) {
                           //
                           this.ended = true
-                          var bg = this.game.add.sprite(0, 0, 'black');
-                          bg.scale.setTo(5, 7)
-                          // bg.anchor.setTo(0.5, 0.5);
-                          bg.alpha = 0;
-                          var that = this
-                          var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
-                          t.onLoop.add(function () {
-                              console.log('looped!')
-                              // t.onLoopCallback(function(){console.log('Y?')})
-                              that.game.tweens.remove(t)
+                          // var bg = this.game.add.sprite(0, 0, 'black');
+                          // bg.scale.setTo(5, 7)
+                          // // bg.anchor.setTo(0.5, 0.5);
+                          // bg.alpha = 0;
+                          // var that = this
+                          // var t = this.game.add.tween(bg).to( { alpha: 1 }, 500, Phaser.Easing.Linear.None, false, 0, 0, 1).start();
+                          // t.onLoop.add(function () {
+                          //     console.log('looped!')
+                          //     // t.onLoopCallback(function(){console.log('Y?')})
+                          //     that.game.tweens.remove(t)
 
-                            bg.destroy()
-                            that.game.state.start('ending')
+                          //   bg.destroy()
+                            this.game.state.start('ending')
 
                             // OHHH MAYBE DROP THE PLAYER IN HERE?
 
-                          }, this)
+                          // }, this)
                           // OH! THIS IS HOW U GET TO THE CREDITS!
                           // u fell off the dang thing
                           // TODO: what happen if u fall off the thing?

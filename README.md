@@ -1,6 +1,41 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
 
+
+
+
+    // erm, on a timer, updagte a text thing with the next block of credits text
+    // then reset the game
+    // but wth the poem exporter option available
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 a game about poetry and waiting for things to happen
 
 ### THIS CODE IS A HOT MESS AND SO AM I
@@ -21,6 +56,7 @@ http://phaser.io/examples
 http://www.lessmilk.com/game-design-1/
 
 ### sprites
+http://opengameart.org/content/clock-face-black-and-white
 http://opengameart.org/content/my-first-tileset-rocks
 http://opengameart.org/content/filthy-ectoplasm
 http://opengameart.org/content/battery-power-icon
@@ -53,6 +89,7 @@ http://opengameart.org/content/bomb-explosion-animation
 http://opengameart.org/content/broken-glass
 http://opengameart.org/content/city-pixel-tileset
 http://opengameart.org/content/lpc-flames
+http://opengameart.org/content/glitch-background-assets
 http://opengameart.org/content/nature-tileset
 http://opengameart.org/content/sky-background
 http://opengameart.org/content/haunted-forest-trees
@@ -64,6 +101,7 @@ http://opengameart.org/content/forest-background
 http://opengameart.org/content/pixel-art-flame-icon
 http://opengameart.org/content/platshrooms
 http://opengameart.org/content/heart-animation
+http://opengameart.org/content/castle-platformer
 http://opengameart.org/content/mountain-at-dusk-background
 http://opengameart.org/content/country-side-platform-tiles
 http://opengameart.org/content/recycle-items-set
