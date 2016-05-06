@@ -1,6 +1,25 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
 
+FINAL TODO I SWEAR:
+
+- add error handling to the sequencer to make sure u don't break web audio
+- chrome chugs along but it seems to make FF hate itself :<
+
+
+-----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
 a lil "platformer" about poetry and saving the world, or something
 
 ### THIS CODE IS A HOT MESS AND SO AM I
