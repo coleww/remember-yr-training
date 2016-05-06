@@ -21,7 +21,7 @@ Ending.prototype = {
     //   this.jetPacked = false
     //     this.game.state.restart()
     // }
-    alert('the end')
+    // alert('the end')
     this.game.musician.modulupdate('poetry', {bpm: 125,
       key: {
         tonic: "F3",
@@ -38,14 +38,19 @@ document.body.style.backgroundImage = "url('assets/sprites/wall.png')"
 
 
     bg.animations.play('slow');
-
-
+    this.game.add.text(100, 250, 'THE END', { fontSize: '100px', fill: '#FFF' });
+    this.counter = 0
   },
 
   update: function() {
     // erm, on a timer, updagte a text thing with the next block of credits text
     // then reset the game
     // but wth the poem exporter option available
+    this.counter++
+    set('beatTheGame', true)
+    if (this.counter > 1000) {
+        this.game.state.start('TitleScreen')
+    }
   }
 
 }

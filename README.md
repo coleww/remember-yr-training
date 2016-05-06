@@ -2,18 +2,15 @@ REMEMBER YOUR TRAINING
 -----------------------------------
 
 
-
-
-    // erm, on a timer, updagte a text thing with the next block of credits text
-    // then reset the game
-    // but wth the poem exporter option available
-    
-
-
-
-
-
-
+TODO:
+write scraper to get attributions! make proper credits
+poetry: whats up with the BPM?
+missile launch: don't let them interact again! just destroy it?
+once launched: why can't u jump down?
+the "go to the surface and check text is all fuckered too!"
+if u took too long to exit, don't let them ascend in that case!
+gameoverscreen: blue text hard to read?
+fix the rednesson the day opening?
 
 
 
@@ -24,29 +21,16 @@ REMEMBER YOUR TRAINING
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-a game about poetry and waiting for things to happen
 
 ### THIS CODE IS A HOT MESS AND SO AM I
 
 I made this game to teach myself how to make games, as such it is terrible.
 
+All of the music is procedurally generated, which is pretty nifty
 
 ------------------------------------------
 
-## ASSETS
-
+# ASSETS
 
 ### code/tutorials
 http://phaser.io/tutorials/making-your-first-phaser-game
@@ -54,6 +38,8 @@ https://gumroad.com/a/333067379
 http://codepen.io/jackrugile/pen/fqHtn
 http://phaser.io/examples
 http://www.lessmilk.com/game-design-1/
+http://untamed.wild-refuge.net/rmxpresources.php?characters
+http://pousse.rapiere.free.fr/tome/
 
 ### sprites
 http://opengameart.org/content/clock-face-black-and-white
@@ -80,8 +66,6 @@ http://opengameart.org/content/fierce-almost-war-horse
 http://opengameart.org/content/cute-cloud
 http://opengameart.org/content/unicorn
 http://opengameart.org/content/weird-alien-textures
-http://untamed.wild-refuge.net/rmxpresources.php?characters
-http://pousse.rapiere.free.fr/tome/
 http://opengameart.org/content/farming-tool-icons
 http://opengameart.org/content/objects-0
 http://opengameart.org/content/animated-particle-effects-2
