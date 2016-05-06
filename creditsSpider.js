@@ -9,9 +9,9 @@ function doThatThang(domain) {
     var parsedHTML = $.load(html)
     // get all img tags and loop over them
     try {
-      fs.appendFileSync('./theNoiseCredits', parsedHTML('.username').first().text() + '\n')
-      fs.appendFileSync('./theNoiseCredits', parsedHTML('div.field-item.even h2').text() + '\n')
-      fs.appendFileSync('./theNoiseCredits', parsedHTML('.license-icon a').attr('href') + '\n')
+      fs.appendFileSync('./theNoiseCredits', parsedHTML('#sound_author a').text() + '\n')
+      fs.appendFileSync('./theNoiseCredits', parsedHTML('#single_sample_header').last().text() + '\n')
+      fs.appendFileSync('./theNoiseCredits', parsedHTML('#sound_license a').attr('href') + '\n')
       fs.appendFileSync('./theNoiseCredits', domain + '\n')
       console.log('---------------------------------------------------')
     } catch (e) {
@@ -24,4 +24,4 @@ function doThatThang(domain) {
 
 var worker = require('work-ethic')
 
-worker(require('./credits').sprites, doThatThang, console.log.apply('DONE'), 1000)
+worker(require('./credits'), doThatThang, console.log.apply('DONE'), 1000)
