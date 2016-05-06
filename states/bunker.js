@@ -1648,7 +1648,7 @@ if (!this.inDialog){
     var yDir = 0
 
 
-    if (this.stuffDone > 7 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasUsedSomething && this.hasNotGoneOffYet && ((this.poemCount > 5 && Math.random() < 0.1) || (Math.random() < 0.003)  )              ){
+    if (this.stuffDone > 2 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasUsedSomething && this.hasNotGoneOffYet && ((this.poemCount >= 3 && Math.random() < 0.05) || (Math.random() < 0.005)  )              ){
         this.hasNotGoneOffYet = false
         this.setOffTheBoomBoom()
         // make everything explode?

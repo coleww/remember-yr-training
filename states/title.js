@@ -48,7 +48,7 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
     var poems = []
     for (var i = 0; i < get('poemCount'); i++) {
       var poem = get('poem' + i)
-      poems.push(poem)
+      if (poem) poems.push(poem)
     }
 
 
