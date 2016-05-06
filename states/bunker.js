@@ -459,12 +459,12 @@ bunker.prototype = {
         var counter = 0
 
         var that = this
-        var over = false
+        this.over = false
         setInterval(function () {
             counter++
 
-            if (counter > 60 && !that.ascendingTheLadder && !over) {
-                over = true
+            if (counter > 30 && !that.ascendingTheLadder && !that.over) {
+                that.over = true
                 set('gameOver', 999)
                 that.explodinate('evil')
             }
@@ -1446,7 +1446,10 @@ this.itIsTheLastDay = true
 
               that.game.world.bringToTop(that.papert)
             }
-
+            if (feature.explode) {
+            that.hasNotGoneOffYet = false
+            that.setOffTheBoomBoom()
+        }
             }
         }, 100)
 
@@ -1546,15 +1549,15 @@ this.itIsTheLastDay = true
         this.inDialog = true
         this.openDialog(this.game.computerStuff[0])
         // on top of the radio. mention the view?
-      } else if (this.isEscaping && y > 490 && y < 500 && x > 320 && x < 360) {
+      } else if (this.isEscaping && !this.over && y > 490 && y < 500 && x > 320 && x < 360) {
 
+        this.ascendingTheLadder = true
         this.game.world.bringToTop(this.chute)
         this.game.world.bringToTop(this.platforms)
         this.inDialog = true
         // this.player.body.gravity = -1
         this.chute.body.setSize(0,0,0, 0);
         this.player.body.velocity.y = -1000
-        this.ascendingTheLadder = true
       }
     }
 
