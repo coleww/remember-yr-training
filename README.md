@@ -13,6 +13,10 @@ All of the music is procedurally generated based on template seed, which is pret
 So each "song" gets "performed" differently every time u play, but will always sound kinda like the same song.
 nice.
 
+### the interactive poetry generating engine is pretty {ok sign hand emoji}
+
+it lets u see ZOMG _inside the markov chain_ ZOMG
+
 ### hey hey hey there are hella endings!
 
 there are like...3-5 "endings" where u see the "credits", and probably close to a dozen ways to die or "lose". FUN! Fun!

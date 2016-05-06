@@ -32,13 +32,22 @@ var markov = require('fast-ish-markov')
 
 var m = markov([], 1)
 m.load(require('./theMarkov'))
-
 module.exports = function (start) {
   if (start == undefined || !start.replace(/\s/g, '')) {
     // pick a rando start
-    return m.fill(m.pick(), 1)
+    var res1 = m.fill(m.pick(), 1)
+    while (res1.match(/slave/i)) { //
+      res1 = m.fill(m.pick(), 1)
+    }
+
+    return res1
   } else {
     var words = m.fill(start, 2).split(' ')
-    return words[words.length - 1]
+    var res2 = words[words.length - 1]
+    while (res2.match(/slave/i)) { //
+        words = m.fill(start, 2).split(' ')
+        res2 = words[words.length - 1]
+    }
+    return res2
   }
 }

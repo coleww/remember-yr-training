@@ -26,7 +26,7 @@
     "browserify-shim": "^3.8.12",
     "bubble-bass": "^1.1.0",
     "cheerio": "^0.20.0",
-    "databae": "^1.0.3",
+    "databae": "^1.1.0",
     "dj-snazzy-snare": "^1.0.0",
     "fast-ish-markov": "^1.0.2",
     "imagemin-cli": "^2.1.0",
