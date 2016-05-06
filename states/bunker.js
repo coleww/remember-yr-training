@@ -91,6 +91,12 @@ bunker.prototype = {
     topBarrier.body.immovable = true
 
 
+    var tippyTop = this.platforms.create(this.game.world.width / 2 - 72, 343, 'grid');
+
+    tippyTop.body.setSize(200, 1, 0, 0)
+    tippyTop.body.immovable = true
+    tippyTop.body.checkCollision.down = false;
+    tippyTop.scale.setTo(2, 2)
 
     this.chute = this.platforms.create(this.game.world.width / 2 + 25, 150, 'chute');
     this.chute.scale.setTo(0.45, 0.78)
@@ -225,12 +231,6 @@ bunker.prototype = {
     staticy.animations.add('roll')
     staticy.play('roll', 1.33, true)
     // this.game.world.bringToTop(staticy)
-
-    var tippyTop = this.platforms.create(this.game.world.width / 2 - 72, 343, 'grid');
-
-    tippyTop.body.setSize(1000, 1, 0, 0)
-    tippyTop.body.immovable = true
-    tippyTop.body.checkCollision.down = false;
 
     var chair = this.game.add.sprite(this.game.world.width / 2 + 30 , this.game.world.height - 305, 'chair');
     chair.scale.setTo(5)
