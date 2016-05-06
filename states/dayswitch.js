@@ -93,24 +93,24 @@ DaySwitch.prototype = {
     }, this);
 
 
-    var bigBg = this.game.add.sprite(-900, -1100, 'damage');
-    bigBg.scale.setTo(50,58)
-    // bigBg.anchor.setTo(0.5, 0.5);
-    bigBg.alpha = 1;
-    var that = this
-    var t = this.game.add.tween(bigBg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
-    t.onLoop.add(function () {
-        console.log('looped!')
-        // t.onLoopCallback(function(){console.log('Y?')})
-        that.game.tweens.remove(t)
-      bigBg.destroy()
+    // var bigBg = this.game.add.sprite(-900, -1100, 'damage');
+    // bigBg.scale.setTo(50,58)
+    // // bigBg.anchor.setTo(0.5, 0.5);
+    // bigBg.alpha = 1;
+    // var that = this
+    // var t = this.game.add.tween(bigBg).to( { alpha: 0 }, 3000, Phaser.Easing.Linear.None, false, 0, 200, 1).start();
+    // t.onLoop.add(function () {
+    //     console.log('looped!')
+    //     // t.onLoopCallback(function(){console.log('Y?')})
+    //     that.game.tweens.remove(t)
+    //   bigBg.destroy()
 
 
 
 
-      // OHHH MAYBE DROP THE PLAYER IN HERE?
+    //   // OHHH MAYBE DROP THE PLAYER IN HERE?
 
-    }, this)
+    // }, this)
 
   }
 }
