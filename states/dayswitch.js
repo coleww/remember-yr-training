@@ -42,9 +42,7 @@ DaySwitch.prototype = {
 
     var dates = [null, 'DAY ONE', 'Sep. 15, \'83, midnight!', "9/23/83 04:22:37", 'September 26, 1983...']
     var descroppies = [null, 'HELLO\nYOU HAVE BEEN ASSIGNED TO STATION L-A-V_07\nYOU WILL PROVIDE ENGINEERING SUPPORT TO THE TECNICAL(sp?) APPARATUS CURRENTLY OPERATING ON SITE\nREMEMBER YOUR TRAINING!',
-    'you have lost track of the days. weeks. how long has it been? months. you could count the pages in your journal. did they say when your replacement is supposed to arrive? nothing to do but wait',
-    'you awaken before sunrise (not thhat you can see the sun). you cannot recall what you did yesterday, everything blurs into a smooth surface of time space upon which you glide aimlessly.',
-    'just another day, ordinary average, nothing unusual about it...']
+    'you have lost track of the days. weeks. how long has it been? months. you could count the pages in your journal. did they say when your replacement is supposed to arrive? nothing to do but wait']
 
     var title = dates[day]
     var descroppie = descroppies[day]

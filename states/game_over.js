@@ -42,7 +42,7 @@ var endings = {
     },
 
   gameOver999: {
-    sprite: 'clock',
+    sprite: 'key',
     scale: [5, 7],
     description: 'you took too long to exit the bunker and it exploded with you in it. also by pressing the button u started a nuclear war that destroys the earth. good job destroying all the humans, comrade!',
     name: 'FOR GREAT ROBOT JUSTICE!',
@@ -70,7 +70,7 @@ gameOverScreen.prototype = {
     var bg = this.game.add.sprite(0, 0, ending.sprite);
     bg.scale.setTo(ending.scale[0], ending.scale[1])
     var whatHappened  = this.game.add.text(50, 150, ending.name, { fontSize: '25px', fill: '#900', wordWrap: true, wordWrapWidth: 300  });
-    var confirm  = this.game.add.text(50, 270, ending.description, { fontSize: '20px', fill: '#08D', wordWrap: true, wordWrapWidth: 500 });
+    var confirm  = this.game.add.text(50, 270, ending.description, { fontSize: '20px', fill: '#900', wordWrap: true, wordWrapWidth: 500 });
     confirm.inputEnabled = true;
     var that = this
     //REFACTOR THISSSSSSSSSSS

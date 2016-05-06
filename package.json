@@ -25,6 +25,7 @@
     "browserify": "^13.0.0",
     "browserify-shim": "^3.8.12",
     "bubble-bass": "^1.1.0",
+    "cheerio": "^0.20.0",
     "databae": "^1.0.3",
     "dj-snazzy-snare": "^1.0.0",
     "fast-ish-markov": "^1.0.2",
@@ -37,12 +38,14 @@
     "pie-ano": "^1.1.1",
     "randomcolor": "^0.4.3",
     "really-hi-hat": "^1.0.0",
+    "request": "^2.72.0",
     "sparkle-motion": "^1.1.0",
     "this-is-probably-ok-to-say": "^1.0.100",
     "tom-from-space": "^1.0.0",
     "touch-down-dance": "^1.0.0",
     "uglifyify": "^3.0.1",
     "warlock-bass": "^1.0.0",
-    "watchify": "^3.7.0"
+    "watchify": "^3.7.0",
+    "work-ethic": "^1.1.1"
   }
 }

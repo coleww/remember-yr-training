@@ -455,7 +455,7 @@ bunker.prototype = {
         // this.game.musician.playFX('modem')
 
         this.game.musician.playFX('missilelaunch')
-        this.game.add.text(5, 850, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: '20px', fill: '#F00', wordWrap: true, wordWrapWidth: '400px'})
+        this.game.add.text(5, 850, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: '17px', fill: '#000', wordWrap: true, wordWrapWidth: 400})
         var counter = 0
 
         var that = this
@@ -474,7 +474,7 @@ bunker.prototype = {
         // play tense soundtrack
     } else {
         this.game.musician.playFX('windloop')
-        this.game.add.text(5, 850, 'Yr p sure that was a false alarm, but maybe u should climb to the surface just to double check?', { fontSize: '20px', fill: '#0F0'})
+        this.game.add.text(5, 850, 'Yr p sure that was a false alarm, but maybe u should climb to the surface just to double check?', { fontSize: '15px', fill: '#000', wordWrap: true, wordWrapWidth: 500})
 
         // silence everthing
         // play nice ambient music
@@ -582,26 +582,7 @@ bunker.prototype = {
     // IF it's the chest/vending machine, defer to those
   },
   maybeGoToSleep: function () {
-    if (false && this.hasWrittenAPoemToday && get('currentDay') <= 2) {
-        var that = this
-        drawMenu(this.game, 'parch',
-                 {name: 'GO TO SLEEP?',
-                    description: 'is it sleepy time?',
-                    yes: 'PLZ',
-                    no: 'i must work'
-                },
-                     function (menu) {
-                        menu.destroy()
-                        that.inDialog = false
-                        that.game.musician.stopComputerNoise()
-                        that.game.musician.fadeOut()
-                        inc('currentDay')
-                        that.game.state.start("DaySwitch")
-                    }, function () {
 
-                        that.inDialog = false
-                    })
-    } else {
         var that = this
         drawMenu(this.game, 'parch',
                  {name: 'CRY-O-BED',
@@ -612,9 +593,7 @@ bunker.prototype = {
                         menu.destroy()
                         that.inDialog = false
                     })
-    }
 
-    // pop open a yes/no dialog, reset stuff accordingly. make sure they wrote a poem that day
   },
   hitTheFanIfYouAreThereAndYouHaventHitItYet: function (obj, menmen) {
 

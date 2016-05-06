@@ -163,6 +163,7 @@ game.load.image("skull", "assets/sprites/skull.png")
     game.load.spritesheet("fanworking", "assets/sprites/fanworking.png", 96, 96)
 
 
+    game.load.image("key", "assets/sprites/key.png")
 
 
 
