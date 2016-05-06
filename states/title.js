@@ -26,7 +26,7 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
     playButton.anchor.set(0.5)
 
     console.log(get('poemCount'))
-    if (get('poemCount')) {
+    if (get('poemCount') && get('beatTheGame')) {
         var poemButton = game.add.button(game.width / 2, game.height - 150, "boxen", this.showPoems)
         poemButton.anchor.set(0.5)
         poemButton.scale.setTo(3)
