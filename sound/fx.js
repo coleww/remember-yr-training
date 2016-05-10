@@ -36,10 +36,10 @@ panner.coneOuterGain = 1;
         if (['noise', 'windloop', 'horribletone'].indexOf(sample) !== -1) {
           samplers[sample].loop = true
           //
-          if (sample == 'noise') {
+          if (sample == 'noise' || sample == 'horribletone') {
             samplers[sample].connect(panner)
             var noiseGain = ac.createGain()
-            noiseGain.gain.value = 0.05
+            noiseGain.gain.value = 0.45
             panner.connect(noiseGain)
             noiseGain.connect(foleyVol)
           } else  {

@@ -1,30 +1,15 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
 
-FINAL TODO I SWEAR:
-
-- add error handling to the sequencer to make sure u don't break web audio
-- chrome chugs along but it seems to make FF hate itself :<
-
-
------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
 a lil "platformer" about poetry and saving the world, or something
 
 ### THIS CODE IS A HOT MESS AND SO AM I
 
 I made this game to teach myself how to make games, as such it is terrible. The next one will be better i promise`*` 
+
+### only likely to work at all in chrome
+
+i'm not sure why it fails so horrendously in firefox, but it does. but i mean, hey, u can't play splatoon on yr xbox so i figure this is an acceptable level of cross platform support for the videos game industry.
 
 ### oh but the music is cool
 

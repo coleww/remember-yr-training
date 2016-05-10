@@ -46,12 +46,14 @@ Object.keys(insts).forEach(function(ik) {
   Object.keys(songs).forEach(function(sk) {
     Object.keys(songs[sk].instruments).forEach(function(ik) {
         songs[sk].instruments[ik].play = function (arg) {
-          var configs = songs[sk].instruments[ik].config || {}
+          var configs = merge({attack: 0.001, decay: 0.001, sustain: 0.001, release: 0.001, peak: 0.5, mid: 0.3, end: 0.0001}, songs[sk].instruments[ik].config)
           var multi = songs[sk].instruments[ik].multi || 1
-          var note = songs[sk].instruments[ik].melodic ? {freq: int2freq(arg, songs[sk].key) * multi} : {}
-
-          insts[ik].update(merge(note, configs), ac.currentTime)
-          insts[ik].start(ac.currentTime)
+          var note = songs[sk].instruments[ik].melodic ? {freq: (int2freq(arg, songs[sk].key) || int2freq(0, songs[sk].key)) * multi} : {}
+          // console.log(ik, merge(note, configs))
+          // try {
+            insts[ik].update(merge(note, configs), ac.currentTime)
+            insts[ik].start(ac.currentTime)
+          // } catch (e) {}
         }
     })
   })
