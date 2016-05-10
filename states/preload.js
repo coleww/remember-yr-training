@@ -412,7 +412,7 @@ game.load.image("skull", "assets/sprites/skull.png")
         oneTime: [true, true, true],
         yes: ['eat that thing!', 'eat that thing!', 'eat that thing!'],
         no: ['maybe i shouldn\'t eat that', 'maybe i shouldn\'t eat that', 'maybe i shouldn\'t eat that'],
-        extended: ['you transform into a green speedster! like a stoner "The Flash(tm DC comic books)"!', 'you transform into a shiny blue popsicle! you find it harder to move around now', 'WHOA! just as you are about to eat the purple crystals they scream out "WHOA DON\'T EAT ME I AM A SHAPESHIFTER!" and magically transform into a pile of money. You shrug and stuff them into yr wallet. "mine now", you remark, smugly.'],
+        extended: ['you transform into a speedy green demon! wooooooosh!', 'you transform into a shiny blue popsicle! you find it harder to move around now', 'WHOA! just as you are about to eat the purple crystals they scream out "WHOA DON\'T EAT ME I AM A SHAPESHIFTER!" and magically transform into a pile of money. You shrug and stuff them into yr wallet. "mine now", you remark, smugly.'],
         fx: ['greenspeed','flashy','$25'],// what happens when the thing is used, run thru huge switch statement o_o
         seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
 

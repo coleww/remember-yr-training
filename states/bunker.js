@@ -998,6 +998,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
             this.launchedTheMissiles = true
             this.setOffTheBoomBoom(true)
             this.escapeTheBunker(true)
+            this.hasNotGoneOffYet = false
             break;
     }
     if (continueMenu) {
@@ -1648,7 +1649,7 @@ if (!this.inDialog){
     var yDir = 0
 
 
-    if (this.stuffDone > 2 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasUsedSomething && this.hasNotGoneOffYet && ((this.poemCount >= 3 && Math.random() < 0.05) || (Math.random() < 0.005)  )              ){
+    if (!this.launchedTheMissiles && this.stuffDone > 5 && !this.inDialog && this.itIsTheLastDay && this.hasWrittenAPoemToday && this.hasBoughtStuff && this.hasUsedSomething && this.hasNotGoneOffYet && ((this.poemCount >= 3 && Math.random() < 0.05) || (Math.random() < 0.0015)  )              ){
         this.hasNotGoneOffYet = false
         this.setOffTheBoomBoom()
         // make everything explode?
