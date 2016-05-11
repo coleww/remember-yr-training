@@ -16,10 +16,14 @@ var reset = require('./states/reset')
 var MobileDetect = require('mobile-detect')
 
 var md = new MobileDetect(window.navigator.userAgent);
-
+var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
 if (md.mobile()) {
   var note = document.createElement('h1')
   note.textContent = ':< sorry, this game does not work too well on mobile devices :<'
+  document.body.appendChild(note)
+} else if (!isChrome) {
+  var note = document.createElement('h1')
+  note.textContent = ':< sorry, this game does not work too well on web browsers that are not Chrome :<'
   document.body.appendChild(note)
 } else {
 
