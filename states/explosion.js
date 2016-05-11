@@ -29,7 +29,7 @@ Outside.prototype = {
   },
   create: function(){
 
-
+    this.canMove = true
     this.score = 0
     this.inDialog = true
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
@@ -78,7 +78,12 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
           done = true
           setTimeout(function () {
             clearInterval(intybro)
-            that.game.state.start('ending')
+
+            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.canMove = false
+            setTimeout(function () {
+              that.game.state.start('ending')
+            }, 5000)
           }, 5000)
         }
       }, 500)
@@ -224,7 +229,7 @@ return interv
                       this.game.physics.arcade.collide(this.nana, this.platforms);
                       this.game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
 
-      if (!this.inDialog){
+      if (!this.inDialog && this.canMove){
 
           if (!this.jumped && this.player.y > 500 ) {
             this.jumped = true

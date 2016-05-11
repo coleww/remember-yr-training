@@ -67,6 +67,7 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/exterior-parallax
 
     this.speediness = 0.25
 
+    this.canMove = true
     // TODO: update this to be "flavorful"
     this.game.musician.modulupdate('outside', {bpm: 275,
       key: {
@@ -313,7 +314,7 @@ sike3.body.checkCollision.down = false;
 
     },
     collectCoin: function (player, coin) {
-
+var that = this
         // Removes the coin from the screen
       // PLAY A SOUND TOO!
       if (!coin.collected) {
@@ -362,7 +363,12 @@ sike3.body.checkCollision.down = false;
               // t.onLoop.add(function () {
               //     console.log('looped!')
 
-                that.game.state.start('ending')
+
+            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.canMove = false
+            setTimeout(function () {
+              that.game.state.start('ending')
+            }, 5000)
                   // t.onLoopCallback(function(){console.log('Y?')})
                   // that.game.tweens.remove(t)
 
@@ -444,7 +450,7 @@ sike3.body.checkCollision.down = false;
       this.coins.forEach(function (c) {
         if (Math.random() < 0.01) c.scale.x *= -1
       })
-      if (!this.inDialog){
+      if (!this.inDialog && this.canMove){
 
 
 

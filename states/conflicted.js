@@ -20,6 +20,7 @@ Outside.prototype = {
     this.score = 0
     this.inDialog = true
 
+    this.canMove = true
 document.body.style.backgroundImage = "url('assets/sprites/background_32.png')"
     this.speediness = 0.25
 
@@ -155,11 +156,12 @@ this.nana.enableBody = true
 
 
     update: function () {
+      var that = this
               this.game.physics.arcade.collide(this.player, this.platforms);
                       this.game.physics.arcade.collide(this.nana, this.platforms);
                       this.game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
 
-      if (!this.inDialog){
+      if (!this.inDialog && this.canMove){
 
           if (!this.jumped && this.player.y > 500 ) {
             this.jumped = true
@@ -184,7 +186,11 @@ this.nana.enableBody = true
                           //     that.game.tweens.remove(t)
 
                           //   bg.destroy()
-                            this.game.state.start('ending')
+            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.canMove = false
+            setTimeout(function () {
+              that.game.state.start('ending')
+            }, 5000)
 
                             // OHHH MAYBE DROP THE PLAYER IN HERE?
 

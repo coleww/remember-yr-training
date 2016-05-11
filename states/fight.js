@@ -24,6 +24,7 @@ document.body.style.backgroundImage = "url('assets/sprites/parallax-mountain-bg.
     this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
 
+    this.canMove = true
     this.speediness = 0.25
 
     // TODO: update this to be "flavorful"
@@ -227,6 +228,7 @@ sike3.body.immovable = true
 
     },
     update: function () {
+      var that = this
               this.game.physics.arcade.collide(this.player, this.platforms);
                       this.game.physics.arcade.collide(this.coins, this.platforms);
                       this.game.physics.arcade.overlap(this.player, this.coins, this.collectCoin, null, this);
@@ -235,7 +237,7 @@ sike3.body.immovable = true
       this.coins.forEach(function (c) {
         if (Math.random() < 0.6) c.body.velocity.x += (Math.random() * 2) - 1
       })
-      if (!this.inDialog){
+      if (!this.inDialog && this.canMove){
                         if (!this.ended && this.player.y > 900 ) {
                           //
                           this.ended = true
@@ -251,7 +253,12 @@ sike3.body.immovable = true
                           //     that.game.tweens.remove(t)
 
                           //   bg.destroy()
-                            this.game.state.start('ending')
+
+            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.canMove = false
+            setTimeout(function () {
+              that.game.state.start('ending')
+            }, 5000)
 
                             // OHHH MAYBE DROP THE PLAYER IN HERE?
 
