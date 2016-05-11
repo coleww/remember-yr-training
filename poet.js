@@ -36,20 +36,13 @@ module.exports = function (start) {
   if (start == undefined || !start.replace(/\s/g, '')) {
     // pick a rando start
     var res1 = m.fill(m.pick(), 1)
-    // erm, i could see this leading to bad things, but editing them out of the markov chain now would be a pain, and i hate this codebase and just want to release this so it wasn't a total waste of time, i mean, it did help me learn that i hates games development passionately why do people do this idgi. perhaps a twine game next time.
-    while (res1.match(/slave|ass|shit|bitch|fuck|cunt|slut|poon|gay|trans/i) || !tipots(res1)) { //
-      res1 = m.fill(m.pick(), 1)
-    }
+
 
     return res1
   } else {
     var words = m.fill(start, 2).split(' ')
     var res2 = words[words.length - 1]
-    // erm, i could see this leading to bad things, but editing them out of the markov chain now would be a pain, and i hate this codebase and just want to release this so it wasn't a total waste of time, i mean, it did help me learn that i hates games development passionately why do people do this idgi. perhaps a twine game next time.
-    while (res2.match(/slave|ass|shit|bitch|fuck|cunt|slut|poon|gay|trans/i) || !tipots(res2)) { //
-        words = m.fill(start, 2).split(' ')
-        res2 = words[words.length - 1]
-    }
+
     return res2
   }
 }
