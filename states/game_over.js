@@ -69,8 +69,8 @@ gameOverScreen.prototype = {
     var ending = endings['gameOver' + get('gameOver')]
     var bg = this.game.add.sprite(0, 0, ending.sprite);
     bg.scale.setTo(ending.scale[0], ending.scale[1])
-    var whatHappened  = this.game.add.text(50, 150, ending.name, { fontSize: '25px', fill: '#900', wordWrap: true, wordWrapWidth: 300  });
-    var confirm  = this.game.add.text(50, 270, ending.description, { fontSize: '20px', fill: '#900', wordWrap: true, wordWrapWidth: 500 });
+    var whatHappened  = this.game.add.text(50, 150, ending.name, { fontSize: '25px', fill: '#900', wordWrap: true, wordWrapWidth: 300, backgroundColor: '#000'  });
+    var confirm  = this.game.add.text(50, 270, ending.description, { fontSize: '20px', fill: '#900', wordWrap: true, wordWrapWidth: 500, backgroundColor: '#000' });
     confirm.inputEnabled = true;
     var that = this
     //REFACTOR THISSSSSSSSSSS

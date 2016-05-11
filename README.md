@@ -1,6 +1,11 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
 
+TODO: 
+
+- make endings less sudden
+- maybe just like, freeze the inputs/characters, write some text about what u did, then jolt to THE END afterwards
+
 a lil "platformer" about poetry and saving the world, or something
 
 ### THIS CODE IS A HOT MESS AND SO AM I

@@ -798,6 +798,8 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         exploding.scale.setTo(Math.random() * 7)
         exploding.angle = (Math.random() * 360) - 180
         }
+        // fuckme
+        that.game.world.bringToTop(that.player)
 
         if (count > 250) {
             clearInterval(interv)

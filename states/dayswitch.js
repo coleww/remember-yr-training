@@ -2,6 +2,7 @@ var db = require('../db')
 var get = db.get
 var set = db.set
 var inc = db.inc
+var feature = require('../features')
 // construct markov poet barrier maker thing based on their choices or lack thereof
 // save which lines they touch
 // make enemies? explosions? slowly rising fire?
@@ -47,15 +48,14 @@ DaySwitch.prototype = {
     var title = dates[day]
     var descroppie = descroppies[day]
 // TODO: REMOVE THIS
-    if (get('isTrappedInTheDeathPitForever') ){
+var confirmotron = [null, 'I DO! i mean.. I WILL!', 'sheesh ok wow','i wonder how many days there are to this game and if anything else happens besides writing poetry and inspecting items :/', 'that is a bit alarming'][day]
+
+    if (get('isTrappedInTheDeathPitForever') && feature.deathPitActive){
         title = 'AGONY AND PAIN'
         descroppie = 'you are trapped in the death pit forever, remember? how could you ever forget?!?!?!'
-        this.game.state.start("DeathPit")
+        confirmotron = 'i suffer'
+        // this.game.state.start("DeathPit")
     }
-
-
-    var confirmotron = [null, 'I DO! i mean.. I WILL!', 'sheesh ok wow','i wonder how many days there are to this game and if anything else happens besides writing poetry and inspecting items :/', 'that is a bit alarming'][day]
-    if (get('isTrappedInTheDeathPitForever')) confirmotron = 'i suffer'
 
 
     var instruct = this.game.add.text(50, 220, title, { fontSize: '30px', fill: '#FFF' });
@@ -79,7 +79,7 @@ DaySwitch.prototype = {
 
 
 
-        if (get('isTrappedInTheDeathPitForever') ){
+        if (get('isTrappedInTheDeathPitForever') && feature.deathPitActive){
             that.game.state.start("DeathPit")
         } else if (day == 1) {
             inc('currentDay')
