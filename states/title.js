@@ -42,7 +42,7 @@ titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
     // ALSO a screen to see yr saved poems? BUT ONLY if u beat the game already!
   },
   startGame: function(){
-    this.game.state.start("DaySwitch")
+    this.game.state.start("DaySwitch", true, false)
   },
   showPoems: function(){
     var poems = []
