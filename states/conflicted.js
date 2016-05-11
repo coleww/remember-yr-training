@@ -186,7 +186,7 @@ this.nana.enableBody = true
                           //     that.game.tweens.remove(t)
 
                           //   bg.destroy()
-            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'live a lil next time, get wild! why not?', { fontSize: '42px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300', backgroundColor: '#FFF' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')

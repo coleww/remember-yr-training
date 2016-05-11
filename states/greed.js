@@ -237,6 +237,7 @@ sike3.body.immovable = true
                         if (!this.ended && this.player.y > 900 ) {
                           //
                           this.ended = true
+                          this.player.scale.setTo(0,0)
                           // var bg = this.game.add.sprite(0, 0, 'black');
                           // bg.scale.setTo(5, 7)
                           // // bg.anchor.setTo(0.5, 0.5);
@@ -250,7 +251,7 @@ sike3.body.immovable = true
 
                           //   bg.destroy()
 
-            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'YOUR GREED WILL BE YOUR END', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')

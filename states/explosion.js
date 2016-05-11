@@ -79,7 +79,7 @@ document.body.style.backgroundImage = "url('assets/sprites/bgs/redmtn.png')"
           setTimeout(function () {
             clearInterval(intybro)
 
-            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'hey, maybe next time, try not to end the world, ok?', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')

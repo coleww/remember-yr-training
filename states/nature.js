@@ -317,7 +317,7 @@ sike3.body.checkCollision.down = false;
 var that = this
         // Removes the coin from the screen
       // PLAY A SOUND TOO!
-      if (!coin.collected) {
+      if (!coin.collected && this.canMove) {
     this.game.musician.playFX('giggle')
         coin.collected = true
         setTimeout(function () {
@@ -364,7 +364,7 @@ var that = this
               //     console.log('looped!')
 
 
-            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'hey can we hang out sometime? c-c-cool', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')

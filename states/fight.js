@@ -240,6 +240,7 @@ sike3.body.immovable = true
       if (!this.inDialog && this.canMove){
                         if (!this.ended && this.player.y > 900 ) {
                           //
+                          this.player.scale.setTo(0,0)
                           this.ended = true
                           // var bg = this.game.add.sprite(0, 0, 'black');
                           // bg.scale.setTo(5, 7)
@@ -254,7 +255,7 @@ sike3.body.immovable = true
 
                           //   bg.destroy()
 
-            that.game.add.text(100, 256, '', { fontSize: '32px', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'only your fists will protects you...', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')
