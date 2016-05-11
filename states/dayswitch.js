@@ -85,7 +85,7 @@ var confirmotron = [null, 'I DO! i mean.. I WILL!', 'sheesh ok wow','i wonder ho
             inc('currentDay')
            that.game.state.start("DaySwitch")
         } else {
-            that.game.state.start("Bunker")
+            that.game.state.start("Bunker", true, false)
         }
 
     }, this);

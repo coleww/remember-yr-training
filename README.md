@@ -1,6 +1,12 @@
 REMEMBER YOUR TRAINING
 -----------------------------------
 
+TODO:
+
+- how to make it actually refresh after a playthru? 
+
+
+
 a lil "platformer" about poetry and saving the world, or something
 
 ### THIS CODE IS A HOT MESS AND SO AM I
