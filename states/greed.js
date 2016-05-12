@@ -251,7 +251,7 @@ sike3.body.immovable = true
 
                           //   bg.destroy()
 
-            that.game.add.text(100, 256, 'YOUR GREED WILL BE YOUR END', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'wow, cool, looks like there is no nuclear war out here, just money. endless ebbing seas of useless of money.', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')

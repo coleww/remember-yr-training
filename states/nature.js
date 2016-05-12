@@ -364,7 +364,7 @@ var that = this
               //     console.log('looped!')
 
 
-            that.game.add.text(100, 256, 'hey can we hang out sometime? c-c-cool', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'looks like everything is a-ok in this world! there is no nuclear war and now u have a lot of friends! cool! you won!', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')

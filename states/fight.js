@@ -255,7 +255,7 @@ sike3.body.immovable = true
 
                           //   bg.destroy()
 
-            that.game.add.text(100, 256, 'only your fists will protects you...', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
+            that.game.add.text(100, 256, 'there is no nuclear war out here, but if there was one, you would fight it with punches.', { fontSize: '42px', backgroundColor: '#FFF', fill: '#000', font: 'Impact', wordWrap: true, wordWrapWidth: '300' });
             that.canMove = false
             setTimeout(function () {
               that.game.state.start('ending')
