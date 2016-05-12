@@ -112,7 +112,6 @@ game.load.image("skull", "assets/sprites/skull.png")
     game.load.image("ecto", "assets/sprites/ecto.png")
     game.load.image("son", "assets/sprites/son.png")
 
-    game.load.image("clock", "assets/sprites/clockface.png")
 
 
 
@@ -283,36 +282,6 @@ game.load.image("skull", "assets/sprites/skull.png")
 
     // TODO: check if the player has a saved game
 
-    var itIsTheVeryFirstTime = !get('playCount')
-    var itIsANewGame = true
-
-    if (itIsTheVeryFirstTime) {
-        set('playCount', 1)
-        set('poemCount', 0)
-    }
-
-    if (itIsANewGame) {
-        set('siloDeaths', 0)
-        set('fanStillBroken', features.fanOff)
-        set('wall1', true)
-        set('wall2', true)
-        set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
-        set('seeds', [])
-        set('currentDay', features.currentDay)
-        set('wallet', 20)
-        set('health', 100)
-        set('escapingDrunkenly', false)
-        set('launched', false)
-        set('fast', false)
-        set('gameOver', 0)
-        set('explode', false)
-        set('slow', false)
-        set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
-        set('gameOver', false)
-    } else {
-        // it is a saved game...do nothing?
-    }
-
 
 
 
@@ -414,7 +383,7 @@ game.load.image("skull", "assets/sprites/skull.png")
         no: ['maybe i shouldn\'t eat that', 'maybe i shouldn\'t eat that', 'maybe i shouldn\'t eat that'],
         extended: ['you transform into a speedy green demon! wooooooosh!', 'you transform into a shiny blue popsicle! you find it harder to move around now', 'WHOA! just as you are about to eat the purple crystals they scream out "WHOA DON\'T EAT ME I AM A SHAPESHIFTER!" and magically transform into a pile of money. You shrug and stuff them into yr wallet. "mine now", you remark, smugly.'],
         fx: ['greenspeed','flashy','$25'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
+        seed: ['nature', 'fight', 'greed']// keys to an object of corpii for later?
 
       },
       {name: 'foods',
@@ -455,7 +424,7 @@ game.load.image("skull", "assets/sprites/skull.png")
 
         extended: ['you gain 25 hp!', 'you are so refreshed by this soda that you puke up ten bucks!', 'you gain 25 hp!'],
         fx: ['hp25','$10','hp25'],// what happens when the thing is used, run thru huge switch statement o_o
-        seed: ['nature', 'nature', 'greed']// keys to an object of corpii for later?
+        seed: ['nature', 'fight', 'greed']// keys to an object of corpii for later?
       },
       {name: 'swords',
         descriptions: ['this sword appears to be constantly on fire, which is itself pretty frigging sweet, but on top of that free heater for life? KA CHING',

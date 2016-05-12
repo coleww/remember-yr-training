@@ -28,9 +28,9 @@ DaySwitch.prototype = {
 
 
 
-    console.log('dayloading!')
+    // console.log('dayloading!')
     var day = get('currentDay')
-    console.log(day)
+    // console.log(day)
 
     var bg = this.game.add.sprite(-65, -65, 'dsbg' + (day + 1));
     bg.scale.setTo(9, 12)

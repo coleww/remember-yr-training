@@ -1,7 +1,10 @@
 var titleScreen = function(game){
   this.game = game
 }
-var get = require('databae').get
+var features = require('../features')
+var db = require('databae')
+var get = db.get
+var set = db.set
 titleScreen.prototype = {
   create: function(){
     var game = this.game
@@ -10,6 +13,36 @@ titleScreen.prototype = {
     titleBG.scale.setTo(9, 12)
 titleBG.animations.add('slow', [0, 1, 2, 3], 1, true);
 
+
+    var itIsTheVeryFirstTime = !get('playCount')
+    var itIsANewGame = true
+
+    if (itIsTheVeryFirstTime) {
+        set('playCount', 1)
+        set('poemCount', 0)
+    }
+
+    if (itIsANewGame) {
+        set('siloDeaths', 0)
+        set('fanStillBroken', features.fanOff)
+        set('wall1', true)
+        set('wall2', true)
+        set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
+        set('seeds', [])
+        set('currentDay', features.currentDay)
+        set('wallet', 20)
+        set('health', 100)
+        set('escapingDrunkenly', false)
+        set('launched', false)
+        set('fast', false)
+        set('gameOver', 0)
+        set('explode', false)
+        set('slow', false)
+        set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
+        set('gameOver', false)
+    } else {
+        // it is a saved game...do nothing?
+    }
 
 
     titleBG.animations.play('slow');

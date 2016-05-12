@@ -88,7 +88,7 @@ gameOverScreen.prototype = {
         set('inventory', [{name: 'battery', description: 'it looks sort of, plugged into you? maybe don\'t mess with it OK?', yes: 'w/e i do what i want it, unplug it', no: 'leave it alone ofc', sprite: 'battery', fx: 'gameOver1'}])
         set('seeds', [])
         set('currentDay', features.currentDay)
-        set('wallet', 25)
+        set('wallet', 20)
         set('health', 100)
         set('alignment', {greed: 0, fight: 0, nature: 0, pos: 0, neg: 0})
         set('gameOver', false)

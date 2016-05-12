@@ -39,7 +39,7 @@ bunker.prototype = {
 
 
 
-
+    this.ascendingTheLadder = false
 
 
 
@@ -455,7 +455,7 @@ bunker.prototype = {
         // this.game.musician.playFX('modem')
 
         this.game.musician.playFX('missilelaunch')
-        this.game.add.text(5, 850, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: '17px', fill: '#000', wordWrap: true, wordWrapWidth: 400})
+        this.game.add.text(5, 850, 'YOU MUST ESCAPE THE BUNKER BEFORE IT EXPLODES!!!!', { fontSize: '20px', fill: '#000', wordWrap: true, wordWrapWidth: 400})
         var counter = 0
 
         var that = this
@@ -474,7 +474,7 @@ bunker.prototype = {
         // play tense soundtrack
     } else {
         this.game.musician.playFX('windloop')
-        this.game.add.text(5, 850, 'Yr p sure that was a false alarm, but maybe u should climb to the surface just to double check?', { fontSize: '15px', fill: '#000', wordWrap: true, wordWrapWidth: 500})
+        this.game.add.text(5, 850, 'Yr p sure that was a false alarm, but maybe u should climb to the surface just to double check?', { fontSize: '25px', fill: '#000', wordWrap: true, wordWrapWidth: 500})
 
         // silence everthing
         // play nice ambient music
@@ -1123,7 +1123,7 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
     item.sprites.forEach(function (opt, i) {
       var staticy = that.game.add.button(75 + i * 180, 325, opt);
       staticy.scale.setTo(4)
-      var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '15px', fill: '#000', wordWrap: true, wordWrapWidth: 150  });
+      var descrip = that.game.add.text(75 + i * 180, 466, item.descriptions[i], { fontSize: '19px', fill: '#000', wordWrap: true, wordWrapWidth: 150  });
       staticy.inputEnabled = true
       staticy.events.onInputDown.add(function () {
         var al = get('alignment')
@@ -1311,7 +1311,17 @@ var exploding = that.game.add.sprite( Math.random() * that.game.world.width, Mat
         this.isFaded = false
     }
 
-
+    this.hasUsedSomething = false
+    this.lowerLadder = false
+    this.isEscaping = false
+    this.launchedTheMissiles = false
+    this.vendBroken = false
+    this.isFaded = false
+    this.canPunch = false
+    this.hasBoughtStuff = false
+    this.hasWrittenAPoemToday = false
+    this.ascendingTheLadder = false
+    this.isDone = false
 
 
     // have player emerge from bed?
